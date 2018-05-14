@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>let不允许重复声明</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	{
+		var a = 100;
+		var a = 200;
+		console.log(a);
+	}
+	// 报错
+	{
+		var b = 100;
+		let b = 200;
+		console.log(b);
+	}
+	// 报错
+	{
+		let c = 100;
+		var c = 200;
+		console.log(c);
+	}
+	// 报错
+	{
+		let d = 100;
+		let d = 200;
+		console.log(d);
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

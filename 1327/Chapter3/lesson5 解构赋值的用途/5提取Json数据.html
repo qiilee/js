@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>提取Json数据</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	var jsonData = {
+		id: "007",
+		name: "Conan",
+		age: 28,
+		score: {
+			Chinese: 98,
+			Math: 148,
+			English: 107
+		}
+	};
+	console.log(jsonData);
+
+	console.log("ES5:");
+	console.log("Person's Number is:" + jsonData.id);
+	console.log("Person's Name is:" + jsonData.name);
+	console.log("Person's age is:" + jsonData.age);
+	console.log("Person's Chinese score is:" + jsonData.score.Chinese);
+	console.log("Person's Math score is:" + jsonData.score.Math);
+	console.log("Person's English score is:" + jsonData.score.English);
+
+	console.log("ES6:");
+	let { id: number, name, age, score: score } = jsonData;
+	console.log("Person's Number is:" + number);
+	console.log("Person's Name is:" + name);
+	console.log("Person's age is:" + age);
+	console.log("Person's Chinese score is:" + score.Chinese);
+	console.log("Person's Math score is:" + score.Math);
+	console.log("Person's English score is:" + score.English);
+</script>
+</head>
+<body>
+
+</body>
+</html>

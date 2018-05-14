@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>let不存在变量提升</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	//ES5
+	console.log("ES5:");
+	var a = [];
+	for (var i = 0; i < 10; i++) {
+		var c = i;
+		a[i] = function () {
+			console.log(c);
+		};
+	};
+	a[5]();	//9
+
+	//ES6
+	console.log("ES6:");
+	var b = [];
+	for (var j = 0; j < 10; j++) {
+		let d = j;
+		b[j] = function () {
+			console.log(d);
+		};
+	};
+	b[5]();	//5
+</script>
+</head>
+<body>
+
+</body>
+</html>
