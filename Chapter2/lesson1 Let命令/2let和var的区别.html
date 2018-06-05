@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>let与var的区别</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	{
+		var a = 100;
+		let b = 200;
+	}
+	console.log(a);	//100
+	console.log(b);	//b is not defined -- Error
+</script>
+</head>
+<body>
+
+</body>
+</html>

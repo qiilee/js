@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>第一种场景</title>
+<script type="text/javascript">
+	var time = new Date();
+
+	function fun() {
+		console.log(time);
+		if (false) {
+			var time = "Hello World!";
+		};
+	};
+
+	fun();	//undefined
+</script>
+</head>
+<body>
+
+</body>
+</html>

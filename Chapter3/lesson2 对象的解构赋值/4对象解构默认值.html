@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>对象解构默认值</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	var { x = 3 } = {};
+	console.log(x);	//3
+
+	var { x, y = 5 } = { x: 1 };
+	console.log(x);	//1
+	console.log(y);	//5
+
+	var { message: msg = "You Are A Person!" } = {};
+	console.log(msg);	//You Are A Person!
+</script>
+</head>
+<body>
+
+</body>
+</html>

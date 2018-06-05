@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>现有对象的方法</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	console.log(Math.sin(Math.PI/6));	//0.49999999999999994
+
+	let { sin, cos, tan, log } = Math;
+	console.log(sin(Math.PI/6));		//0.49999999999999994
+</script>
+</head>
+<body>
+
+</body>
+</html>

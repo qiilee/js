@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>非遍历结构--报错</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/traceur">
+	var [temp] = 1;			//1[Symbol.iterator] is not a function at eval
+	var [temp] = false;		//false[Symbol.iterator] is not a function at eval
+	var [temp] = NaN;		//NaN[Symbol.iterator] is not a function at eval
+	var [temp] = undefined; //Cannot read property 'Symbol(Symbol.iterator)' of undefined at eval
+	var [temp] = null;		//Cannot read property 'Symbol(Symbol.iterator)' of null at eval
+</script>
+</head>
+<body>
+
+</body>
+</html>

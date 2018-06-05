@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>块级作用域</title>
+<script src="../../../vendor/traceur.js"></script>
+<script src="../../../vendor/bootstrap.js"></script>
+<script type="text/javascript">
+	console.log("ES5:");
+
+	function fun() {
+		var num = 100;
+		if (true) {
+			var num = 200;
+		};
+		console.log(num);
+	};
+
+	fun();	//200
+</script>
+<script type="text/traceur">
+	console.log("ES6:");
+
+	function fun() {
+		let num = 100;
+		if (true) {
+			let num = 200;
+		};
+		console.log(num);
+	};
+
+	fun();	//100
+</script>
+</head>
+<body>
+
+</body>
+</html>
