@@ -4,24 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <title>const数组</title>
-<script src="../../../vendor/traceur.js"></script>
-<script src="../../../vendor/bootstrap.js"></script>
+<script src="../../vendor/traceur.js"></script>
+<script src="../../vendor/bootstrap.js"></script>
 <script type="text/traceur">
 	const arr = [];
-	console.log(arr);
-	console.log(arr.length);
+	console.log(arr);//[]
+	console.log(arr.length);//0
 	console.log("------");
 	arr.push("Hello world!");
-	console.log(arr);
-	console.log(arr.length);
+	console.log(arr);//["Hello world!"]
+	console.log(arr.length);//1
 	console.log("------");
 	arr.length = 0;
-	console.log(arr);
-	console.log(arr.length);
+	console.log(arr);//[]
+	console.log(arr.length);//0
 	console.log("------");
 
 	// 错误用法
-	arr = ["Hello Everyone!"];
+	// arr = ["Hello Everyone!"];
 </script>
 </head>
 <body>
