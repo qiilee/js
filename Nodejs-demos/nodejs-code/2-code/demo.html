@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试对象</title>
+</head>
+<body>
+	
+	<script>
+		var module = {
+			exports: {}
+		}
+
+		var exports = module.exports;
+
+		// exports.name = '小明';
+
+		var obj = {
+			name: '小明'
+		}
+
+		exports = obj;
+
+		console.log(module);
+
+		// 标准公开的方式是module.exports
+		// 通过exports 可以间接的为 module.exports 赋值
+		// 所以exports 也可以公开
+
+		// 不可以 exports = 一个新对象是不可以
+		// module.exports = 可以等于任何值 
+	</script>
+</body>
+</html>

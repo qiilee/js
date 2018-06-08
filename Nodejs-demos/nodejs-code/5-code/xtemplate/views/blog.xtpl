@@ -1,0 +1,39 @@
+{{extend ('./layout')}}
+
+{{#block ('table')}}
+
+<table>
+	<tr>
+		<td>姓名</td>
+		<td>年龄</td>
+		<td>分数{{% {{}} %}}</td>
+	</tr>
+	{{#each (students)}}
+	{{#if (this.score > 86)}}
+	<tr>
+		<td>{{this.name}}</td>
+		<td>{{this.age}}</td>
+		<td>{{this.score}}</td>
+	</tr>
+	{{else}}
+	<tr>
+		<td>{{this.name}}</td>
+		<td>{{this.age + 10}}</td>
+		<td><span>{{this.score}}</span></td>
+	</tr>	
+	{{/if}}
+	{{/each}}
+</table>
+
+{{/block}}
+
+{{#block ('section')}}
+<h2>博客</h2>
+<figure>
+	<figcaption>
+		<h3>这张图美不美</h3>
+	</figcaption>
+	<img src="/images/cc.jpg" alt="">
+</figure>
+{{/block}}
+

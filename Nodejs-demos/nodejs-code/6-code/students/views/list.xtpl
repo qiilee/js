@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学员信息</title>
+	<link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+	<table>
+		<caption>学员信息</caption>
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>手机号码</th>
+			<th>邮箱地址</th>
+			<th>所属学院</th>
+			<th>入学成绩</th>
+			<!-- <th>入学时间</th>
+			<th>毕业时间</th> -->
+			<th>操作</th>
+		</tr>
+		{{#each (students)}}
+		<tr>
+			<td>{{this.name}}</td>
+			{{#if (this.sex === 0)}}
+			<td>男</td>
+			{{else}}
+			<td>女</td>
+			{{/if}}
+			<td>{{this.age}}</td>
+			<td>{{this.phone}}</td>
+			<td>{{this.email}}</td>
+			<td>{{this.subject_text}}</td>
+			<td>{{this.score}}</td>
+			<!-- <td>{{this.date_start}}</td>
+			<td>{{this.date_end}}</td> -->
+			<td>
+				<a href="/edit?id={{this.id}}">编辑</a>
+				<a href="/delete?id={{this.id}}">删除</a>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</body>
+</html>

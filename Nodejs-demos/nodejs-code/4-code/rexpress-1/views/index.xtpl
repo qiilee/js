@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+</head>
+<body>
+	<h1>首页</h1>
+	<form action="/login" method="post">
+		姓名: <input type="text" name="username">
+		密码: <input type="password" name="pass">
+		<input type="submit" value="提交">
+	</form>
+</body>
+</html>

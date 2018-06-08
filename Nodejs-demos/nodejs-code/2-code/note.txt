@@ -1,0 +1,68 @@
+
+1、文件模块，就是一个以.js结尾的文件或者以.json结尾的文件
+
+2、加载文件模块，与加载系统一致使用 require 进行
+
+3、文件被模块加载时，与系统的路径写法一不样
+
+   a) 只需要写上模块名称  
+
+   	  1) 系统模块 require('fs');
+   	  2) node_modules下的模块 require('a');
+
+   b) 模块路径
+
+      1) 相对路径 ./ 或 ../ ,相对于当前程序
+      2) 绝对路径 E://  或者 /var/www (类unix)
+
+4、模块的功能一般具有通用性，是经过封装的，需要将封装好的方法
+   或者属性公开出来才更有意义。
+
+   使用module.exports 将模块的属性或方法公开
+
+   例如
+   var person = {
+       name: "张帅",
+       age: 18
+   }
+
+   module.exports = person;
+
+   还可以通过 exports 来实现，其本质是 exports = module.exports
+
+   所以为exports 添加属性并赋值就间接的为module.exports 添加属性
+
+   以上面数据为例
+
+   exports.name = '张帅';
+   exports.age = 18;
+
+   但是 exports = {
+       // 是不正确的，原因在于exports 不再指向 modules.exports了
+   }
+
+5、一个模块如果由多个文件组成称为多文件模块也叫包，一般放到统一的
+   目录中，再使用一个package.json的文件对这个包进行描述，例如 此包
+   的名称、包的作者、包的版本、包的入口文件等。
+
+   使用npm init 即可根据提示创建package.json，其中一有属性main，较
+   为关键，此属性的含义是指当其它模块引入当前包的时候默认的引入的
+   文件。
+
+   例如 ./mods/users/a.js
+        ./mods/users/b.js
+        ....
+        ./mods/users/index.js
+
+   这时users这个目录我们就称为包了
+
+   其它模块，例如 demo.js要使用些模时可以这样写
+
+   const users = require('./mods/user/index.js')
+
+   const users = require('./mods/user')
+
+
+
+botuer
+123456

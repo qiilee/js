@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>许愿墙</title>
+	<link rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+	<div id="top">
+		<span id="send"></span>
+	</div>
+	<div id="main">
+		{{each lists}}
+		<dl class="paper {{$value.style}}">
+			<dt>
+				<span class="username">{{$value.nickname}}</span>
+				<span class="num">No.{{$value.no}}</span>
+			</dt>
+			<dd class="content">{{$value.content}}</dd>
+			<dd class="bottom">
+				<span class="time">{{$value.time}}</span>
+				<a href="" class="close"></a>
+			</dd>
+		</dl>
+		{{/each}}
+	</div>
+
+	<div id="send-form">
+		<p class="title">
+			<span>&nbsp;</span>
+			<a href="" id="close"></a>
+		</p>
+		<form action="" name="wish">
+			<p>
+				<label for="username">昵称：</label>
+				<input type="text" name="nickname" id="username"/>
+			</p>
+			<p>
+				<label for="content">愿望：(您还可以输入&nbsp;<span id="font-num">50</span>&nbsp;个字)</label>
+				<textarea name="content" id="content"></textarea>
+			</p>
+			<div id="phiz">
+				<img src="/images/phiz/zhuakuang.gif" alt="抓狂" />
+				<img src="/images/phiz/baobao.gif" alt="抱抱" />
+				<img src="/images/phiz/haixiu.gif" alt="害羞" />
+				<img src="/images/phiz/ku.gif" alt="酷" />
+				<img src="/images/phiz/xixi.gif" alt="嘻嘻" />
+				<img src="/images/phiz/taikaixin.gif" alt="太开心" />
+				<img src="/images/phiz/touxiao.gif" alt="偷笑" />
+				<img src="/images/phiz/qian.gif" alt="钱" />
+				<img src="/images/phiz/huaxin.gif" alt="花心" />
+				<img src="/images/phiz/jiyan.gif" alt="挤眼" />
+			</div>
+			<span id="send-btn"></span>
+		</form>
+	</div>
+	<script type="text/template" id="tpl">
+		<dl class="paper <%= style %>">
+			<dt>
+				<span class="username"><%= nickname %></span>
+				<span class="num">No.<%= no %></span>
+			</dt>
+			<dd class="content"><%= content %></dd>
+			<dd class="bottom">
+				<span class="time"><%= time %></span>
+				<a href="" class="close"></a>
+			</dd>
+		</dl>
+	</script>
+	<script src="/js/jquery-1.7.2.min.js"></script>
+	<script src="/js/template-native.js"></script>
+	<script src="/js/index.js"></script>
+</body>
+</html>

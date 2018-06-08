@@ -1,0 +1,16 @@
+{{extend ('./layout')}}
+
+{{#block ('section')}}
+<form action="/" method="post">
+	姓名: <input type="text" name="username">
+	密码: <input type="password" name="pass">
+	<input type="submit" value="提交">
+</form>
+<h2>{{title}}</h2>
+<figure>
+	<figcaption>
+		<h3>{{{content.title}}}</h3>
+	</figcaption>
+	<img src="{{content.link}}" alt="">
+</figure>
+{{/block}}

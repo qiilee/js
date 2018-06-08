@@ -1,0 +1,50 @@
+
+1、创建数据库
+
+2、创建数据表（一个库中可以有多个数据表）
+
+3、表是由若干字段构成，并且字段是有类型限制
+
+4、数据是行的形式存在的
+
+   id     name     age     sex     email
+
+   1      itcast   18      男      admin@itcast.cn
+   2      web      16      女      web@itcast.cn
+
+5、查询
+   
+   select 字段名1, 字段名2... from 表名;
+
+   a) 排序
+
+   select 字段名1, 字段名2... from 表名 order by 字段名;
+
+   b) 过滤
+
+   select 字段名1, 字段名2... from 表名 where 条件1 and 条件2
+
+   select 字段名1, 字段名2... from 表名 where 条件1 or 条件2
+
+   c) 分组
+
+   select 字段名1, sum(字段名2)... from 表名 group by 字段名
+
+   select avg(age) as totalage from users group by sex; // 平均年龄
+   select sum(age) from users group by sex; // 总年龄
+
+6、插入
+
+   insert into 表名 (字段名1, 字段名2...) values(值1, 值2...)
+
+7、修改
+
+   update 表名 set 字段名1=新值1, 字段名2=新值2, ...
+
+   update 表名 set 字段名1=新值1, 字段名2=新值2 where 条件1 and 条件2
+   update 表名 set 字段名1=新值1, 字段名2=新值2 where 条件1 or 条件2
+
+8、删除
+
+   delete from 表名 where 条件1 and 条件1
+   delete from 表名 where 条件1 or 条件1

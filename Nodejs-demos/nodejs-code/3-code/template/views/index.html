@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>首页</h1>
+	<table>
+		{{each data as val key}}
+		<tr>
+			<td>{{key+1}}</td>
+			<td>{{val.name}}</td>
+			<td>{{val.age}}</td>
+			<td>
+				<table>
+					{{each val.childs}}
+					<tr>
+						<td>{{$value.name}}</td>
+						<td>{{$value.age}}</td>
+					</tr>
+					{{/each}}
+				</table>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+</body>
+</html>

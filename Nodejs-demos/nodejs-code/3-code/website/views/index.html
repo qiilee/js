@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nodejs服务器</title>
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+	<div class="viewport">
+		<h1>{{title}}</h1>
+		<nav>
+			{{each navs}}
+			<a href="{{$value.link}}">{{$value.text}}</a>
+			{{/each}}
+		</nav>
+		<section>
+			<h2>首页</h2>
+			<figure>
+				<figcaption>
+					<h3>这张图美不美</h3>
+				</figcaption>
+				<img src="/images/aa.jpg" alt="">
+			</figure>
+		</section>
+	</div>
+	<script src="/js/jquery.min.js"></script>
+</body>
+</html>
