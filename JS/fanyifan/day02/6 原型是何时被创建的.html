@@ -6,7 +6,8 @@
 </head>
 <body>
 <script>
-    //
+    //总结： 实例在被创建的那一刻它的原型就已经固定了，不随之后prototype属性指向其他的对象而发生变化。
+
     function Person(){
 
     }
@@ -14,13 +15,13 @@
         console.log('我是原型上面的方法')
     }
     var person = new Person();
-    person.sayHello();
+    person.sayHello();//我是原型上面的方法
     // 将构造函数的prototype属性指向了一个空的对象
     Person.prototype={}
     // 虽然我们将构造函数的prototype属性指向了一个空的对象，但是实力person的原型依旧
     //是那个拥有sayHello方法的原型。
-    person.sayHello();
-    console.log(person.__proto__)
+    person.sayHello();//我是原型上面的方法
+    console.log(person.__proto__);//{sayHello: ƒ, constructor: ƒ}
     var person2 = new Person();
 
     // 使用person2 去调用sayHello方法,会报一个错误
@@ -28,7 +29,6 @@
     // 原型上面有这个方法的话就能够调用
     //  原型上面没有这个方法就不能调用。
 
-    // 实例在被创建的那一刻它的原型就已经固定了，不随之后prototype属性指向其他的对象而发生变化。
 
 </script>
 </body>

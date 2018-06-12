@@ -57,14 +57,14 @@
     // 利用命名空间来解决变量名冲突的问题，然后利用小命名空间来解决后期管理和维护代码
     //的问题。
 
-    var btn1 = nameSpace.getById('btn1');
-    var btn2 = nameSpace.getById('btn2');
-    var oDiv = nameSpace.getByClassName('change');
+    var btn1 = nameSpace.getDOM.getById('btn1');
+    var btn2 = nameSpace.getDOM.getById('btn2');
+    var oDiv = nameSpace.getDOM.getByClassName('change');
     btn1.onclick=function(){
-        nameSpace.setClassName(oDiv,'change changeTo')
+        nameSpace.style.setClassName(oDiv,'change changeTo')
     }
     btn2.onclick=function() {
-        nameSpace.setClassName(oDiv, 'change')
+        nameSpace.style.setClassName(oDiv, 'change')
     }
 
 
