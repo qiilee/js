@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端给服务器发送请求的集中方式.</title>
+</head>
+<body>
+    <!--
+        发送请求的几种方式
+           1:首先我们学习了 直接在浏览器地址栏输入地址
+           2:<a href=""> 点击超链接也是发送请求
+           3:表单提交发送请求.
+        大概常见的请求方式有两种  get，post
+           哪些是get 方式提交，哪些是post 方式提交
+           在地址栏输入，超链接，src href 都是get 方式提交。
+        还有一个是表单提交。
+             表单提交相对比较灵活，可以是get 方式，也可以使用post
+            <form action="" method="GET/POST">
+             </form>
+         get 方式提交怎么发送数据到服务器，
+            get 方式发送的数据都在地址的后面.
+                比如说我发送到服务端的数据是用户的信息
+                地址后面的第一个字符必须是?
+                接下来是参数名称，参数对应的值
+                接下来如果是第二个参数
+         post 方式提交怎么发送数据到服务器.
+
+    -->
+    <a href="get.php?username=zhangsan&age=11">get 方式提交</a>
+    <br><br>
+
+    <!--
+    post 提交，假设是表单提交。这个表单会吧表单项里面的数据
+  自动提交到服务器，参数名是  name="mobile" 参数值是 用户输入的值.
+    -->
+
+    <form action="post.php" method="post">
+        手机号:<input type="text" name="mobile"><br><br>
+        <input type="submit" value="post 方式去提交">
+    </form>
+</body>
+</html>

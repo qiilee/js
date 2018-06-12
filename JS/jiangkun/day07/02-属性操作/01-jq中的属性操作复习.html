@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+</head>
+<body>
+    <img src="" alt="">
+    <br>
+    <a href=""></a>
+    <br>
+    <input type="checkbox" checked>
+    <input type="text" readonly>
+
+</body>
+<script>
+    // attr:
+    //  $( ... ).attr( property, value )
+    // 设置对应 DOM 元素的 属性 property 为 value
+    //  $( ... ).attr( property )
+    // 获得第 0 个 的 DOM 元素 的 property 属性值
+
+    /*
+    console.log( 'src = ' + $( 'img' ).attr( 'src' ) );
+    console.log( 'href = ' + $( 'a' ).attr( 'href' ) );
+
+
+    // 设置
+    $( 'img' ).attr( 'src', 'http://pic38.nipic.com/20140228/3822951_135521683000_2.jpg' );
+
+    $( 'a' ).attr( 'href', 'http://www.itcast.cn' ).text( '哇哈哈' );
+
+    console.log( 'src = ' + $( 'img' ).attr( 'src' ) );
+    console.log( 'href = ' + $( 'a' ).attr( 'href' ) );
+    */
+
+
+    // $( 'input' ).attr( 'checked', true ); 
+
+    // $( 'input' ).attr( 'checked', false ); 
+
+
+
+
+
+    // prop
+    // $( 'img' ).prop( 'src', 'http://pic38.nipic.com/20140228/3822951_135521683000_2.jpg' );
+    // $( 'a' ).prop( 'href', 'http://www.itcast.cn' ).text( '哇哈哈' );
+
+    // $( 'input' ).prop( 'checked', true ); 
+    // $( 'input' ).prop( 'checked', false ); 
+
+
+    // 自定义属性
+    // $( 'body' ).attr( 'itcast', '哇哈哈' );
+    // $( 'body' ).prop( 'itcast', '哇哈哈' );
+
+
+    // 一般开发时为了讲究规范
+    // 1> 凡是使用 键值对属性的时候 使用 attr
+    // 2> 凡是使用 自定义属性的时候 使用 attr
+    // 3> 凡是使用 单属性的时候 使用 prop
+    // 4> 凡是使用 内置属性的时候 使用 prop
+
+    $( 'img' ).attr( 'title', 'true' );
+
+</script>
+</html>

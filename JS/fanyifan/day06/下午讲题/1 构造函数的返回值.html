@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function f1() {
+        this.age = 10;
+        return 20;//基本数据类型
+    }
+    var p3 = new f1();//构造函数
+    console.log(p3.age);// 10*/
+    //return 20和其它简单类型输出10；
+    //return[]或{}返回undfined有些不明白
+
+
+    function f1() {
+        this.age = 10;
+        return [];//基本数据类型
+    }
+    var p3 = new f1();//p3 是一个空的数组
+    console.log(p3.age);// 根据属性搜索原则，p3本身上面没有age属性，原型链上也没有age这个属性
+    // p3.age最后就会返回一个undefined
+</script>
+</body>
+</html>

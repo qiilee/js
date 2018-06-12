@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //子代选择器,必须是子元素中满足条件的才可以
+            //$("div>span").text("我是div内部的span");
+
+            //这是取不到li中的后代li
+            //css方法
+            //$("ul>li").css("backgroundColor","red");
+
+            //后代选择器
+            //$("ul li").css("backgroundColor","red");
+
+
+        });
+    </script>
+</head>
+<body>
+<!--<div>-->
+    <!--<span></span>-->
+    <!--<span></span>-->
+    <!--<span></span>-->
+    <!--<span></span>-->
+    <!--<span></span>-->
+<!--</div>-->
+
+<ul>
+    <li></li>
+    <li></li>
+    <li>
+        <ol>
+            <li></li>
+        </ol>
+    </li>
+    <li></li>
+</ul>
+
+<span></span>
+<span></span>
+</body>
+</html>

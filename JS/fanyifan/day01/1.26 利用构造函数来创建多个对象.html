@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 利用构造函数来创建多个对象
+    function Person(){
+        this.name='jack';
+        this.age=18;
+    /*    return {};*/
+    }
+    var person1 = new Person()
+    console.log(person1)
+
+    var person2 = new Person();
+    console.log(person2)
+    console.log(person1===person2)//false说明构造函数创建出来的两个对象是不同的对象
+    //我们也可以把构造函数创建出来的对象称作构造函数创建出来的实例。
+
+
+    // 使用构造函数的注意点：
+    /*
+    * 1 一般情况下构造函数的首字母需要大写，因为我们在看到一个函数首字母
+    * 大写的情况，就认定这是一个构造函数，需要跟new关键字进行搭配使用，创建一个新的
+    * 实例（对象）
+    * 2 构造函数在被调用的时候需要跟new关键字搭配使用。
+    * 3 在构造函数内部通过this+属性名的形式为实例添加一些属性和方法。
+    * 4 构造函数一般不需要返回值，如果有返回值
+    * 4.1 如果返回值是一个基本数据类型，那么调用构造函数，返回值仍旧是那么创建出来的
+    * 对象。
+    * 4.2 如果返回值是一个复杂数据类型，那么调用构造函数的时候，返回值就是这个return之后的
+    * 那个复杂数据类型。
+    *
+    * */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+    
+    <div ng-controller="controller1">
+        <input type="text" ng-model="txt"><br />
+
+        <input type="text" ng-model="txt"><br />
+    </div>
+
+    <hr>
+
+    <div ng-controller="controller2">
+        <input type="text" ng-model="txt"><br />
+
+        <input type="text" ng-model="txt"><br />
+    </div>
+
+</body>
+<script>
+
+    var module = angular.module( 'mainApp', [] )
+    // 如果代码只是这么写, 等价于 不写 ng-app 的名字 也不写 script 代码
+
+    module.controller( 'controller1', function ( $scope ) {
+        // window.scope1 = $scope;
+        $scope.txt = '请输入数据';
+    });
+
+    module.controller( 'controller2', function ( $scope ) {
+        // window.scope2 = $scope;
+    });
+
+    // 不应该将所有的功能放到 主模块中
+    // 理论上是说 将 功能放在子模块中
+
+</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+        }
+
+        #box {
+            margin-top: 2000px;
+        }
+    </style>
+    <script src="common.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+<script>
+    var ts = document.getElementById("ts");
+
+    //当鼠标一移动，图片就跟着跑
+    document.onmousemove = function (e) {
+        //由于page的属性有兼容性问题，我们需要对他进行替换
+        //我们的页面到底是谁
+        //有两种支持方式，有的浏览器支持html的卷曲，有的支持body的卷曲
+        //写一写获取兼容html和body的代码
+        //console.log(document.documentElement.scrollTop);
+        //console.log(document.body.scrollTop);
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+//        var x = e.clientX + scrollTop
+
+        ts.style.left = e.clientX + scrollLeft + "px";
+        ts.style.top = e.clientY + scrollTop + "px";
+    };
+
+
+</script>
+</body>
+</html>

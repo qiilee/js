@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+        }
+
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+
+        }
+
+        .wrap img {
+            display: block;
+            border: 0;
+        }
+    </style>
+    <script src="../../jquery-1.12.4.min.js"></script>
+    <script>
+        //1 入口函数
+        $(document).ready(function () {
+            //2 找到要操作的元素，设置事件
+            $(".wrap li").mouseenter(function () {
+                //设置自己透明度为1，再设置所有兄弟透明度为0.5
+                $(this).css("opacity", "1").siblings().css("opacity", "0.5");
+
+            });
+
+            //3 移出大盒子的时候，设置所有li为透明度1
+            $(".wrap").mouseleave(function () {
+                //设置li的移出效果，会造成闪烁
+                //$(this).css("opacity","1").siblings().css("opacity","1");
+
+                $(this).find("li").css("opacity", "1");
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/06.jpg" alt=""/></a></li>
+    </ul>
+</div>
+</body>
+</html>

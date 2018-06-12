@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击" id="btn">
+</body>
+<script>
+    // 考虑兼容问题
+
+    function s ( name ) { return document.querySelectorAll( name ); }
+
+
+    var eventObj = { };  
+    // 缓存, 这个缓存中存储的是一个键值对, 键名是事件的类型, 值是一个数组存储的是事件处理函数
+
+    function addEvent ( control, type, callback ) {
+
+        if ( !eventObj[ type ] ) {
+            // 不应该考虑封装, 而是直接写在事件的处理函数上
+            var handle = function ( e ) {
+                for ( var i = 0; i < eventObj[ type ].length; i++ ) {
+                    eventObj[ type ][ i ].call( control, e );
+                }
+            };
+
+
+            eventObj[ type ] = [];
+
+            if ( control.addEventListener ) {
+                control.addEventListener( type, handle );
+            } else {
+                control.attachEvent( 'on' + type, handle );
+            }
+        }
+
+        eventObj[ type ].push( callback );
+    }
+
+    var btn = s( '#btn' )[ 0 ];
+
+    addEvent( btn, 'click', function ( e ) {
+        console.log( 'this = ' + this );
+        console.log( 'e = ' + e );
+    } );
+
+    addEvent( btn, 'click', function ( e ) {
+        console.log( '触发了点击事件' );
+    } );
+
+
+
+
+
+
+
+
+
+
+
+var getEventController = 
+(function () {
+
+    function add() {
+        // ...
+    }
+    function remove() {
+        // ...
+    }
+
+    function getEventController( control ) {
+        var eventObj = {};
+        return {
+            addEvent: add,
+            removeEvent: remove
+        };
+    };
+
+    return getEventController;
+})();
+
+var btn = s( '...' )[ 0 ];
+var btnEventObj = getEventController( btn );
+
+var div = s( '...' )[ 0 ];
+var divEventObj = getEventController( div );
+
+
+
+</script>
+</html>

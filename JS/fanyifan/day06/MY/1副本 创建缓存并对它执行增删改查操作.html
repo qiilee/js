@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //实现一个函数，可以对缓存进行增删改查操作,缓存超出长度限制就，删除掉最早的缓存
+
+    function createCache(){
+        var cache={};
+        var arr = [];
+        return {
+            set:function(key,value){
+                if(cache[key]){
+                    cache[key]=value;
+                    return;
+                }else{
+                    if(arr.length>=3){
+                        delete cache[arr.shift()];
+                        cache[key]=value;
+                        arr.push(key);
+                    }else{
+                        cache[key]=value;
+                        arr.push(key);
+                    }
+                }
+            },
+            get:function(key){
+                if(cache[key]){
+                   return cache[key];
+                }else{
+                   console.log("缓存中未找到");
+                }
+            },
+            remove:function(key){
+                if(cache[key]){
+                    delete  cache[key];
+                    var index = arr.indexOf(key);
+                    arr.splice(index,1);
+                }
+            }
+        }
+    }
+    var personCache= createCache();
+    //修改或增加操作。
+    personCache.set('name1','jack1');
+    personCache.set('name2','jack2');
+    personCache.set('name3','jack3');
+    personCache.set('name4','jack4');
+    personCache.set('name3','jack1');
+    //查询操作
+    console.log(personCache.get('name3'))
+    //删除操作
+    personCache.remove('name3');
+
+
+
+
+
+</script>
+</body>
+</html>

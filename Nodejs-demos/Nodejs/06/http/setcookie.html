@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>什么是cookie？</title>
+</head>
+<body>
+	<h3>cookie 是存储在客户端（浏览器）的一个数据，javascript是可以操作cookie的</h3>
+	
+	<script>
+		// 使用 document.cookie 可以设置cookie，也可读取 cookie
+		// console.log(document.cookie);
+
+		// 什么是cookie？
+
+		// 1、cookie 是一个字符串
+		// 2、满足key=val; key1=val1的格式
+		// 3、cookie 是有时效的，默认为关闭浏览器
+		// 4、可以跨页面读取（但是有域的限制）
+		// 5、cookie一定被设置，
+		//    同域下的所有页面所有的请求都会将cookie当成请求头进行传输
+		document.cookie = 'name=itcast; expires=' + new Date('2017-03-10');
+		document.cookie = 'age=11';
+		document.cookie = 'sex=boy';
+
+		// cookie 有什么作用？
+		// a) cookie是一个数据，可以被用作跨页面变量
+		//    由cookie会被当成请求头信息被传递，所以不建
+		//    议存储过多的数据，因为会降低性能，并且cookie只能存约4K数据
+
+		// b) cookie真正的用途是解决HTTP无状态的
+
+
+	</script>
+
+</body>
+</html>

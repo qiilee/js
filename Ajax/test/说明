@@ -1,0 +1,74 @@
+这个是第一种方式访问:
+http://192.168.138.65:80 进入到了我的服务器 没有权限
+还有两种方式访问
+这个是可以访问的.
+http://127.0.0.1:80 (127.0.0.1 实际上就是访问本地的ip)
+//localhost 本地主机.
+http://localhost:80
+
+ 我们要想知道为什么没有权限，以及这个服务器怎么去玩。
+一般这种软件都是需要进行配置的。
+
+第一个配置:
+
+c://wamp
+    C:\wamp\bin\apache\Apache2.2.21\conf\httpd.conf
+    第235 行添加：允许所有的ip可以访问这个服务器.
+    allow from all
+
+第二个配置:
+
+178行：DocumentRoot "d:/A_Itcast/"
+205行: <Directory "d:/A_Itcast/">
+跟webstorm 的工作空间保持一致.
+
+
+配置虚拟主机 ，了解
+
+通过www.jd.com，www.tianmao.com  进入到我指定的页面。
+
+一定要知道思路：
+http://www.sohu.com 在地址栏输入，先进入到dns 服务器，
+在dns 服务器里面根据域名找到ip，根据ip 去访问对应的服务器。
+
+实际上这个在进入dns 之前还有一步
+http://www.jd.com 或者 http://www.tianmao.com在地址栏输入
+首先会进入到我的操作系统下面
+C:\Windows\System32\drivers\etc\hosts
+它会先到这个目录的这个文件夹host下面去找 对应的映射关系
+如果没有找到，再进入到dns 服务器，（修改后不需重启wamp）
+在dns 服务器里面根据域名找到ip，根据ip 去访问对应的服务器。
+
+
+www.tianmao.com 以及www.jd.com 被本地的
+C:\Windows\System32\drivers\etc\hosts 文件
+找到映射关系，实际上是去找127.0.0.1
+实际上是进入到 d:/A_Itcast/找index.html
+我需要开始重新配置.
+
+==========================================================
+在一台Web服务器上，我们可以通过配置虚拟主机，然后分别设定根目录，实现对多个网站的管理。
+具体步骤如下：
+1、开启虚拟主机辅配置，在 C:\wamp\bin\apache\Apache2.2.21\conf\httpd.conf中找到467 行
+去掉前面的#号注释，开启虚拟主机配置,去掉#之后就会去httpd-vhost.conf 里面去进行查找
+
+2、配置虚拟主机，打开 C:\wamp\bin\apache\Apache2.2.21\conf\extra\httpd-vhosts.conf
+分别修改以下三项
+DocumentRoot "E:/www/example"
+ServerName "example.com "
+ServerAlias "www.example.com"
+其它项无需指定。
+
+3、修改DNS（hosts）文件
+打开C:\Windows\System32\drivers\etc\hosts
+目录是固定的
+
+注：修改hosts文件权限
+
+4、重启Apache
+
+5、浏览器访问www.example.com
+
+
+
+

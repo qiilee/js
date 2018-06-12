@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <!--http://www.tuling123.com/plugin/proexp.html-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F7F7F7;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .chatbox {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #CCC;
+            background-color: #FFF;
+            border-radius: 5px;
+        }
+
+        .messages {
+            height: 350px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #CCC;
+            overflow: scroll;
+        }
+
+        .messages h5 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .messages p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .self {
+            text-align: left;
+        }
+
+        .other {
+            text-align: right;
+        }
+
+        .form {
+            height: 150px;
+        }
+
+        .form .input {
+            height: 110px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form .btn {
+            height: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid #CCC;
+        }
+        .form textarea {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .form input {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 20px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<h3>简单的Ajax实例</h3>
+<div class="chatbox">
+    <!-- 这里放置 聊天内容 -->
+    <div class="messages">
+
+    </div>
+    <!-- 表单 -->
+    <div class="form">
+        <!-- 输入框 -->
+        <div class="input">
+            <!--我要发送的消息-->
+            <textarea>
+
+            </textarea>
+        </div>
+        <!-- 按钮 -->
+        <div class="btn">
+            <input type="button" value="发送">
+        </div>
+    </div>
+</div>
+<!--模板，我要写到页面上面的内容的 模板.-->
+<!--
+   <div class="self">
+        <h5>我说</h5>
+        <p>你好</p>
+    </div>
+    <div class="other">
+        <h5>对方说</h5>
+        <p>你好</p>
+    </div>
+-->
+
+<script type="text/template" id="templateId">
+     <div class="<%=info%>">
+            <h5>
+                <%if(info=='self'){%>
+                    我说:
+                <%}else{%>
+                    对方说:
+                <%}%>
+            </h5>
+        <p><%=message%></p>
+     </div>
+</script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/template-native.js"></script>
+<script>
+        $(".btn>input").on("click",function(){
+                //获取到用户输入的值.
+                var message=document.querySelector(".input>textarea").value;
+                /*
+                * 获取到用户输入的值之后，我要把这个值放在那里message 里面.
+                * 组装成标签放在页面里面.
+                * */
+                var obj={
+                    info:"self",
+                    message:message,
+                }
+                var html=template("templateId",obj);
+                $(".messages").append(html);
+                /*我发送请求给聚合，把字符串，它给我返回内容*/
+                $.ajax({
+                       url:"http://op.juhe.cn/robot/index?info="+message+"&key=ae3390c79549f80de081ad7c55f7dbb3",
+                       type:"get",
+                       dataType:"jsonp",
+                       success:function(data){
+                           console.log(data);
+                           var otherData={
+                                info:"other",
+                                message:data.result.text
+                           }
+                           var html=template("templateId",otherData);
+                           $(".messages").append(html);
+                       }
+                })
+        });
+</script>
+
+
+</body>
+</html>

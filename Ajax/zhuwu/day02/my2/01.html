@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+     <input type="button" value="查询">
+     <div class="box"></div>
+
+     <script>
+     	document.querySelector("input[type=button]").onclick = function(){
+          var xhr = new XMLHttpRequest();
+          xhr.open("post",'01.php');
+          xhr.setRequestHeader("Content-Type",'application/x-www-form-urlencoded');
+          xhr.send(null);
+          xhr.onreadystatechange = function(){
+             if(xhr.readyState == 4&&xhr.status==200){
+             	var data = xhr.responseText;
+//                console.log(data);
+                 var arr  = data.split(",");
+//                 console.log(arr);
+                 for (var i = 0; i < arr.length; i++) {
+                    var div = document.createElement("div");
+                     div.innerHTML  = arr[i];
+                     document.body.appendChild(div);
+                 }
+             }
+
+
+
+          }
+
+
+     	}
+
+
+
+     </script>
+</body>
+</html>

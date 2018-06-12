@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .odd {
+            background-color: red;
+        }
+        .even {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>1111</li>
+    <li>2222</li>
+    <li>3333</li>
+    <li>4444</li>
+    <li>5555</li>
+    <li>6666</li>
+</ul>
+<script>
+    //    myself thrice
+    var ul = document.getElementById("list");
+    var childs = ul.children;
+    for (var i = 0; i < childs.length; i++) {
+        if (i % 2 == 0) {
+            childs[i].setAttribute("class", "odd");
+        } else {
+            childs[i].setAttribute("class", "even");
+        }
+    }
+
+
+    //myself twice
+    // var ul = document.getElementById("ul");
+    // var childs = ul.children;
+    // for (var i = 0; i < childs.length; i++) {
+    //   if(i%2==0){
+    //       childs[i].className = "red";
+    //   }else{
+    //       childs[i].className = "green";
+    //   }
+    // }
+
+
+    //ql  myself
+    //   var ul = document.getElementById("ul");
+    //    var childs = ul.children;
+    //    for(var i =0;i<childs.length;i++){
+    //       if(i%2==0){
+    //            childs[i].setAttribute("class","red");
+    //       }else{
+    //           childs[i].setAttribute("class","green");
+    //       }
+    //    }
+
+
+
+
+
+//  teacher::
+//    // 1. 获得要操作的对象
+//    var ul = document.getElementById("list");
+//    var lis = ul.children;//仅仅获得子标签节点
+//    // 2. 根据奇偶行，来生成对应的颜色 ，偶数行是blue,奇数行是red
+//   for(var i=0;i<lis.length;i++){
+//       if(i%2==0){
+////           lis[i].className = "even";
+//           lis[i].setAttribute("class","even");
+//       }else {
+////           lis[i].className = "odd";
+//           lis[i].setAttribute("class","odd");
+//       }
+//   }
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //1
+    var oneColor = "red";
+    function outer(){
+        var oneColor = "blue";
+        function inner(){
+            console.log(oneColor);
+        }
+        inner();
+    }
+    outer();
+
+
+
+    //2
+    /*console.log(str,num);
+    var str = "jack";
+    var num = 39;
+    function fn(){
+        console.log(str,num);
+        num = 14;
+        str = "rose";
+        var num = 20;
+        console.log(str,num);
+    }
+    fn();
+    console.log(str,num);*/
+
+
+
+    //3
+    var num = 123;
+    function f() {
+        function foo() {
+            var num = 999;
+            console.log(num)//999
+        }
+        num = 456;
+        foo();//999
+        console.log(num);//456
+    }
+    f()
+</script>
+</body>
+</html>

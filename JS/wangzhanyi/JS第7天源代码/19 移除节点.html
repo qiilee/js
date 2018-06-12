@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li id="li1">这是第1个li标签</li>
+    <li>这是第2个li标签</li>
+    <li>这是第3个li标签</li>
+    <li>这是第4个li标签</li>
+</ul>
+<script src="common.js"></script>
+<script>
+    //移除第一个标签子节点**********************************************
+    //    var list  = document.getElementById("list");
+    //    var node = ele.getFirstElement(list);
+    //    list.removeChild(node);// 移除节点
+
+
+    //移除所有标签子节点*********************************
+    var list = document.getElementById("list");
+    var childs = list.children;
+    console.log(childs.length);
+    var cishu = childs.length;
+    for (var i = 0; i < cishu; i++) {
+        list.removeChild(childs[0]);
+    }
+
+
+    //移除最后的子节点*****************************************8
+    //    var list = document.getElementById("list");
+    //    var lastNode = ele.getLastElement(list);
+    //    list.removeChild(lastNode);  // 移除节点
+
+
+</script>
+</body>
+</html>

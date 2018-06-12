@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+         $(function(){
+
+                $("input").bind("click",function(){
+                    $.get("02get.php?username=zhangsan", function(data){
+                          alert(data);
+                    })
+                });
+         });
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="get 方式提交">
+</body>
+</html>

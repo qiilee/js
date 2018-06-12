@@ -1,0 +1,18 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var arr = [1, 2, 3, 5, 3, "js"];//key即为索引，数组中的元素为属性值
+        //对象var arr = {name: "qilei", age: 15, sex: "男"};
+        for (var key in arr) {
+//            console.log(arr.key);//undefined  这样是错误的  没有key这个属性
+            console.log(key);//0--5  字符串形式
+            console.log(arr[key]);//每一个值
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

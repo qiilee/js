@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        function f1() {
+            var a;//不找 b,c;a是局部变量 b,c是全局变量
+                  //如果是var a ,b,c 就都提前了
+            a = b = c = 9;
+            console.log(a);//9
+            console.log(b);//9
+            console.log(c);//9
+        }
+        f1();
+        console.log(c);//9
+        console.log(b);//9
+        console.log(a);// a is not defined
+
+        //结果：9  9  9  9  9  a is not defined
+
+        //        f1();
+        //        console.log(c);
+        //        console.log(b);
+        //        console.log(a);
+        //        function f1(){
+        //            var a =b = c =9;
+        //            console.log(a);
+        //            console.log(b);
+        //            console.log(c);
+        //        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 利用混入式继承来向原型中添加属性以及方法
+
+    function mixin(obj1,obj2){
+        for(var key in obj2){
+            obj1[key]=obj2[key]
+        }
+    }
+
+    function Person(){
+    }
+    var study={
+        stuChinese:function(){
+            console.log('我在学习语文')
+        },
+        stuMath:function(){
+            console.log('我在学习数学')
+        }
+    }
+    // 利用mixin函数来进行混入式继承，把study中的方法添加到原型当中
+    mixin(Person.prototype,study);
+    var person = new Person();
+    person.stuChinese();
+    person.stuMath();
+    var gym= {
+        pingpong:function(){
+            console.log('我会打乒乓球')
+        },
+        basketball:function(){
+            console.log('教练，我想打篮球')
+        }
+    }
+    mixin(Person.prototype,gym)
+
+
+</script>
+</body>
+</html>

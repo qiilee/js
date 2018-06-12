@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    // 现在正中心绘制一个点
+    ctx.fillRect( cas.width / 2 - 5, cas.height / 2 - 5, 10, 10 );
+
+
+    // 绘制圆
+    ctx.arc( cas.width / 2, cas.height / 2, 150, 0, 2 * Math.PI );
+
+    ctx.stroke();
+
+</script>
+</html>

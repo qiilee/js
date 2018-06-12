@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 150px;
+            border: 1px dashed red;
+            margin: 10px 0;
+        }
+        p {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<script src="./src/Itcast.core.js"></script>
+<script src="./src/Itcast.dom.js"></script>
+<script>
+    // Itcast.fn.appendTo = function ( arr ) {
+    //     // this, 是伪数组, 要加的是 this[ 0 ]
+    //     // 将其加到 arr[ i ] 中
+    //     var tmp = [], tmpNode;
+    //     for ( var i = 0; i < arr.length; i++ ) {
+    //         if ( i == arr.length - 1 ) {
+    //             tmp.push( this[ 0 ] );
+    //             arr[ i ].appendChild( this[ 0 ] );         
+    //         } else {
+    //             tmpNode = this[ 0 ].cloneNode( true );
+    //             tmp.push( tmpNode );
+    //             arr[ i ].appendChild( tmpNode );
+    //         }
+    //     }
+    //     // 此时一共有几个 div, 有 3 个
+    //     // 有几个 p 标签, 4 个
+
+    //     // appendTo 要返回最终加到页面中的元素的情况, 因此在加入之前应该先存起来
+    //     return tmp; // 最终要返回的是 Itcast 对象
+    // }
+
+
+
+    // 简单优化
+    Itcast.fn.appendTo = function ( arr ) {
+        // this, 是伪数组, 要加的是 this[ 0 ]
+        // 将其加到 arr[ i ] 中
+        var tmp = [], tmpNode;
+        for ( var i = 0; i < arr.length; i++ ) {
+            tmpNode = i == arr.length - 1 ? this[ 0 ] : this[ 0 ].cloneNode( true );
+            tmp.push( tmpNode );
+            arr[ i ].appendChild( tmpNode );
+        }
+        return tmp; // 最终要返回的是 Itcast 对象
+    }
+
+
+</script>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+
+    var p1 = I( '<p>ppp</p>' );
+    var p2 = p1.appendTo( I( 'div' ) );
+
+</script>
+
+</html>

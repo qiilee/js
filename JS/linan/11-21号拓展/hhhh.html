@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            margin: 200px auto;
+            width: 1000px;
+            height: 500px;
+            perspective: 2000px;
+            overflow: hidden;
+        }
+        .wrap .box{
+            transform-style: preserve-3d;
+            margin: 100px auto;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            transform-origin: 180px 180px -180px;
+            transition: all 7s linear;
+            animation: move 10s  linear infinite both;
+        }
+        .box div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+        .box div span{
+            display: inline-block;
+            width: 96px;
+            height: 96px;
+            line-height: 96px;
+            margin: 2px;
+            background: #AFD400;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            animation: move1 5s linear infinite both;
+        }
+        @keyframes move {
+            0%{
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100%{
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        @keyframes move1 {
+            0%{
+                width: 0;
+                height: 0;
+            }
+            100%{
+                width: 96px;
+                height: 96px;
+            }
+        }
+        .box div:nth-child(1){
+            top: 300px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+        .box div:nth-child(1) span{
+            background: #7b007b;
+        }
+        .box div:nth-child(2){
+            top: -300px;
+            transform-origin: bottom;
+            transform: rotateX(90deg);
+        }
+        .box div:nth-child(2) span{
+            background: #0000ed;
+        }
+        .box div:nth-child(3){
+            left: 300px;
+            transform-origin: left;
+            transform: rotateY(90deg);
+
+        }
+        .box div:nth-child(3) span{
+            background: #003300;
+        }
+        .box div:nth-child(4){
+            transform-origin: right;
+            transform: rotateY(-90deg);
+            left: -300px;
+        }
+        .box div:nth-child(4) span{
+            background: #008800;
+
+        }
+        .box div:nth-child(5){
+            transform: translateZ(-300px);
+        }
+        .box div:nth-child(5) span{
+            background: #08d7a2;
+        }
+        .box div:nth-child(6){
+            transform: translateZ(0px);
+
+        }
+        .box div:nth-child(6) span{
+            background: #660000;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box">
+        <div>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+        <div>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+        <div>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+        <div>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+        <div>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+        <div>
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

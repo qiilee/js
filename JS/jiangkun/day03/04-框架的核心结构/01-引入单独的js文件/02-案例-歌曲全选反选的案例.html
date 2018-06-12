@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>    
+    <div id="control"></div>
+</body>
+<script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+<script>
+    var musices = [];
+    for ( var i = 0; i < 10; i++ ) {
+        musices.push( '歌曲' + i );
+    } 
+
+
+    // 生成 input:checkbox 标签
+    $($.map( musices, function ( v, i ) {
+        return '<input type="checkbox" />' + v + '<br />';
+    }).join( '' )).appendTo( '#container' );
+
+    // 添加 按钮
+    var $btn_all = $( '<input type="button" value="全选" >' )
+    $btn_all.appendTo( '#control' );
+    var $btn_no = $( '<input type="button" value="全不选" >' )
+    $btn_no.appendTo( '#control' );
+    var $btn_fan = $( '<input type="button" value="反选" >' );
+    $btn_fan.appendTo( '#control' );
+
+
+    // 添加事件
+    // 只需要给按钮添加事件即可
+    // 1> 全选
+    $btn_all.click(function () {
+        $( '#container input' ).prop( 'checked', true );
+    });
+    // 2> 全部选
+    $btn_no.click(function () {
+        $( ':checkbox' ).prop( 'checked', false );
+        // 表单元素, 可以使用 
+        // :button, :form, :checkbox, :select, :radio, 等过滤器直接获取
+    });
+    // 3> 反选
+    $btn_fan.click(function () {
+        $( ':checkbox' ).each(function () {
+            this.checked = !this.checked;
+        })
+    });
+
+
+</script>
+</html> 

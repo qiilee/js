@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>无标题文档</title>
+    <script>
+        //总结： 思想
+
+        var arr = ["小明", "小米", "小明", "小白", "小米"];
+
+        var json = {};
+
+        var aResult = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            if (!json[arr[i]]) {
+                aResult.push(arr[i]);
+                json[arr[i]] = 1;
+            }
+        }
+        console.log(aResult);
+        //        document.write(JSON.stringify(aResult));
+    </script>
+</head>
+
+<body>
+</body>
+</html>

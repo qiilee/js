@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="抽奖" id="but"/>
+<select>
+    <option value="">一等奖</option>
+    <option value="">二等奖</option>
+    <option value="">三等奖</option>
+    <option value="">四等奖</option>
+    <option value="">五等奖</option>
+    <option value="">六等奖</option>
+</select>
+<script>
+    var input = document.getElementById("but");
+    var options = document.getElementsByTagName("option");
+
+    input.onclick = function () {
+        for (var i = 0; i < options.length; i++) {
+           options[i].selected = false;
+        }
+        //写options.length 比 直接写6 更合适
+        var index = Math.floor(Math.random()*options.length);
+        options[index].selected =true;
+    }
+
+</script>
+</body>
+</html>

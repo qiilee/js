@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //写一个函数传过来一个日期对象，返回yyyy-MM-dd HH:mm:ss形式的字符串
+    function getDate(obj){
+        var year = obj.getFullYear();
+        var month = obj.getMonth()+1; //0--11
+        // getDay() 获得的是星期几，而是从周日开始算的
+        var day = obj.getDate();
+        var hour = obj.getHours();
+        var minute= obj.getMinutes();
+        var second = obj.getSeconds();
+//        if(month<10){
+//           month= "0"+month;
+//        }else {
+//            month = month;
+//        }
+        month= month<10?"0"+month:month;
+        day = day <10?"0"+day:day;
+        hour = hour<10?"0"+hour:hour;
+        minute= minute<10?"0"+minute:minute;
+        second=second<10?"0"+second:second;
+        console.log(year+"-"+month+"-"+day+"  "+hour+":"+minute+":"+second);
+    }
+    // 创建日期对象
+    var date = new Date();//创建了一个日期对象
+    getDate(date);
+</script>
+</body>
+</html>

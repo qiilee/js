@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+    <span id="sp">我是sp</span>
+</div>
+<script>
+/*总结：
+* 1、主要就是为我们封装了一个可以一次性添加多种多样的标签的防回流函数--myAdd
+*
+*
+*
+* */
+    //先给sp设置事件
+    var sp = document.getElementById("sp");
+    sp.onclick = function () {
+        console.log("我是sp的事件内容");
+    };
+
+    var box = document.getElementById("box");
+    myAdd(box, '<div> <p class="hehe"></p> <p class="hehe"></p> <p class="hehe"></p> <p></p> <span></span> <ul> <li></li> <li></li> <li class="current"></li> <li></li> <li></li> </ul> </div>');
+
+    //innerHTML的好处 好处是可以创建十分复杂的结构
+    //再循环中使用innerHTML设置会有很大性能问题
+
+    //document.createElement() 没有性能问题，复杂
+    //appendChild() insertBefore()
+
+    //我们可不可以创建一个函数
+    function myAdd(tag, html) {
+        //第一种innerHTML 性能问题不能用
+        //innerHTML的第二个问题，会让内部已经具有事件的元素的事件无法使用
+        //必须使用appendChild()进行添加
+        //由于appendChild必须传入一个节点，
+        //如何将html的内部节点取出来
+
+        //我们可以创建一个标签
+        var div = document.createElement("div");
+        div.innerHTML = html;
+
+        //取出div中所有的元素，仅仅获得子标签节点
+        var son = div.children;
+
+
+        //将每一个节点添加到tag中
+        //在循环的时候，每次放入一个，会造成多次回流
+        //我们可以先使用documentFragment进行承载
+        var df = document.createDocumentFragment();
+        for (var i = 0; i < son.length; i++) {
+            df.appendChild(son[i]);
+        }
+
+        //将df中所有元素放入tag
+        tag.appendChild(df);
+    }
+
+
+</script>
+</body>
+</html>

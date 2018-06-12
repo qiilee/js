@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    function getSum(a,b){
+//        return a+b;
+//    }
+//    function getSum(a,b,c){
+////        a = a||0;
+////        b = b ||0;
+////        c = c ||0;
+////        return a+b+c;
+//
+//        console.log(arguments.length);
+//       ******* arguments是函数的伪数组的对象，存储的实参的元素
+//                     相当于是一个实参的备份
+//    }
+//  var sum =   getSum(20,50,30,60,80,100,200);
+//    console.log(sum);
+    // JS很灵活，即使实参的个数和形参的个数不一样的话，函数一样可以执行
+
+
+    function  getSum(){
+        // getSum里面有一个隐式的伪数组arguments，也是就是实参的备份
+        var sum = 0;
+        for(var i=0;i<arguments.length;i++){
+            sum+=arguments[i];
+        }
+        return sum;
+    }
+
+   var sum = getSum(10,20,30,40,50,60,70,80,90);
+    console.log(sum);
+
+</script>
+</body>
+</html>

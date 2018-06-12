@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var getSum = function(a,b){
+//        return a+b;
+//    }
+//    var sum = getSum(30,40);
+//    console.log(sum);
+
+   var f1 = function(){
+       console.log("这是f1的函数在执行。。。");
+   };
+   f1();
+   (function(){
+   console.log("这是f1的函数在执行。。。========");
+})();
+    // 自执行函数，声明完了，立即进行调用执行
+    // 多用于执行一次或是调用一次的函数，后面jquery框架中用了很多这样的函数
+
+   // var f2 = function(){
+   //     console.log("这是函数f2在执行====");
+   // }
+   // f2();
+(function(){
+    console.log("这是函数f2在执行====++++++++++");
+})();
+
+(function(){
+    console.log("这是要执行的代码。。。");
+})();
+</script>
+</body>
+</html>

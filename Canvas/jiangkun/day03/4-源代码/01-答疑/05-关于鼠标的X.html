@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>答疑</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #dv {
+            margin: 1000px 100px 0px;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        .container {
+            border: 1px dashed blue;
+            margin: 100px 100px 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dv"></div>
+    <div class="container"></div>
+    123
+</body>
+<script>
+    document.querySelector( '#dv' ).onmousemove = function ( e ) {
+        // console.log( e.screenX + ', ' + e.screenY );
+
+        document.querySelectorAll( '.container' )[ 0 ].innerHTML =
+            // e.clientX + ', ' + e.clientY;
+
+            // e.layerX + ', ' + e.layerY + '<br />' +
+            // e.offsetX + ', ' + e.offsetY;
+
+            // e.pageX + ', ' + e.pageY;
+
+            'client: ' + e.clientX + ', ' + e.clientY + '<br />' +
+            'screen: ' + e.screenX + ', ' + e.screenY + '<br />' +
+            'layer: ' + e.layerX + ', ' + e.layerY + '<br />' +
+            'offset: ' + e.offsetX + ', ' + e.offsetY + '<br />' +
+            'page: ' + e.pageX + ', ' + e.pageY + '<br />' +
+            'XY: ' + e.x + ', ' + e.y + '<br />'
+    };
+</script>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">123
+    <li>这是第1个li标签节点</li>
+    <li>这是第2个li标签节点</li>
+    <li id="li3">这是第3个li标签节点</li>
+    <li>这是第4个li标签节点</li>
+</ul>
+<script>
+    // 下一个或是上一个相邻的兄弟姊妹节点
+    // 能力检测  就是要看当前的浏览器是否支持此对象的属性或是方法
+    //if先是判断高级浏览器支持的方式；
+    //else再是是IE8及之前的低版本的浏览器支持的方式
+    //My mistake  : else{                              //缺少var ele = ele.nextSibling
+    //                if(ele && ele.nodeType != 1) {   //if 换成while
+    //                ele = ele.nextSibling;
+    //                }
+    //                  return  ele ;
+    //                }
+
+
+    //  myself  twice
+    //   var li3 = document.getElementById("li3");
+    //   console.log( getNextElement(li3));
+    //    function getNextElement(ele) {
+    //       if(ele.nextElementSibling){
+    //           return ele.nextElementSibling;
+    //       }else{
+    //           var ele = ele.nextSibling;
+    //           while(ele&&ele.nodeType!=1){
+    //               ele = ele.nextSibling;
+    //           }
+    //           return ele ;
+    //       }
+    //    }
+
+
+    //  myself  once
+    //    var li3 = document.getElementById("li3");
+    //    console.log(getNextElement(li3));
+    //    function getNextElement(ele) {
+    //        if (ele.nextElementSibling) {
+    //            return ele.nextElementSibling;
+    //        } else {
+    //            var ele = ele.nextSibling;
+    //            while(ele && ele.nodeType != 1) {
+    //                ele = ele.nextSibling;
+    //            }
+    //            return ele;
+    //        }
+    //    }
+
+
+    //   Teacher::::::::::::::::::::::::::::::;
+    //    var li3 = document.getElementById("li3");
+    //        /**
+    //         * 封装了一个兼容性版本的获取下一个相邻的标签节点的函数
+    //         * @param element
+    //         * @returns {*}
+    //         */
+    //
+    //    function getNextSibling(element){
+    //        // 能力检测  就是要看当前的浏览器是否支持此对象的属性或是方法
+    //        if(element.nextElementSibling) {
+    //             return element.nextElementSibling;//高级浏览器支持的方式
+    //        }else { // 是IE8及之前的低版本的浏览器支持的方式
+    //            var ele = element.nextSibling;
+    //            while(ele&&ele.nodeType!=1){ // 每一个条件是保证对象得真实存，不是undefined，再一个就是这个节点不是标签
+    //              ele =  ele.nextSibling; //继续在当前标签对象往后找
+    //            }
+    //            return ele;
+    //        }
+    //    }
+    //
+    //    var node = getNextSibling(li3);
+    //    console.log(node.innerText);
+
+
+
+
+
+// teacher:::::
+//        // 下一个或是上一个相邻的兄弟姊妹节点
+//    var li3 = document.getElementById("li3");
+//        /**
+//         * 封装了一个兼容性版本的获取下一个相邻的标签节点的函数
+//         * @param element
+//         * @returns {*}
+//         */
+//
+//    function getNextSibling(element){
+//        // 能力检测  就是要看当前的浏览器是否支持此对象的属性或是方法
+//        if(element.nextElementSibling) {
+//             return element.nextElementSibling;//高级浏览器支持的方式
+//        }else { // 是IE8及之前的低版本的浏览器支持的方式
+//            var ele = element.nextSibling;
+//            while(ele&&ele.nodeType!=1){ // 每一个条件是保证对象得真实存，不是undefined，再一个就是这个节点不是标签
+//              ele =  ele.nextSibling; //继续在当前标签对象往后找
+//            }
+//            return ele;
+//        }
+//    }
+//
+//    var node = getNextSibling(li3);
+//    console.log(node.innerText);
+//
+//    // previousSibling  previousElementSibling
+
+
+
+</script>
+</body>
+</html>

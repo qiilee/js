@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  setTimeout 方法以及任务队列
+    // 定时器：让函数在时间间隔之后开始执行
+
+    /*setTimeout(function(){
+        console.log(1)
+    },1000)*/
+
+    // 给setTimeout第一个参数传入一个字符串
+    /*setTimeout('console.log(1)',1000)*/
+   /* setTimeout(new Function('console.log(1)'),1000)*/
+
+
+
+    // 主队列以及任务队列
+    // 主队列：js中一些同步的代码，会在主队列中进行执行
+    // 任务队列： js中一些异步的代码，会在任务队列中执行。
+
+    // js执行的顺序问题？
+    // js会先把主队列中的代码执行完，然后遇到异步代码的时候会把代码放入任务队列，然后等待所有的同步任务执行完毕，才去执行任务队列中的任务。
+
+
+    // setTimeout setInterval  事件是会进入任务队列。
+
+
+
+//    setTimeout(function(){
+//        console.log(1)//1
+//    },1000)
+//    setTimeout(function(){
+//        console.log(3)
+//    },2000)
+//
+//    for(var i = 0;i<10000000;i++){
+//    }
+//    console.log(2)//
+
+    // 代码在执行的时候会先执行主队列中的任务，然后主队列任务执行完毕才会去执行任务队列中的任务。
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

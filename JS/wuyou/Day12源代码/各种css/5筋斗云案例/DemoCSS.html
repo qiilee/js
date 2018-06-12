@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .nav {
+            width: 800px;
+            height: 42px;
+            margin: 100px auto;
+            background: url(images/rss.png) right center no-repeat;
+            background-color: #fff;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .nav li {
+            width: 83px;
+            height: 42px;
+            text-align: center;
+            line-height: 42px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .nav span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 83px;
+            height: 42px;
+            background: url(images/cloud.gif) no-repeat;
+        }
+
+        ul {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <span id="cloud"></span>
+    <ul id="navBar">
+        <li>北京校区</li>
+        <li>上海校区</li>
+        <li>广州校区</li>
+        <li>深圳校区</li>
+        <li>武汉校区</li>
+        <li>关于我们</li>
+        <li>联系我们</li>
+        <li>招贤纳士</li>
+    </ul>
+</div>
+<script>
+    //1 当鼠标移入到某一个li的上面时，云彩会飘到当前li上面
+    //2 鼠标移出时，云彩会回到初始位置
+    //3 点击某一个li时，如果再移出，这时云彩会回到新的位置上
+
+    //1 获取要操作的元素
+    var navBar = document.getElementById("navBar");
+    var lis = navBar.children;
+    var cloud = document.getElementById("cloud");
+    //声明一个变量去记录指定位置
+    var pos = 0;
+
+    //2 给lis每个li设置移入事件
+    for (var i = 0; i < lis.length; i++) {
+        //3 移入效果
+        lis[i].onmouseover = function () {
+            //cloud 渐渐的飘到指定位置（当前被移入的li的offsetLeft）
+            animate(cloud, this.offsetLeft);
+        };
+        //4 移出效果
+        lis[i].onmouseout = function () {
+            //cloud回到初始位置 0
+            animate(cloud, pos);
+        };
+        //5 点击效果
+        lis[i].onclick = function () {
+            //点击的时候修改了移出某个盒子时，要回到的位置
+            pos = this.offsetLeft;
+        };
+    }
+
+
+    function animate(tag, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //取出盒子的当前位置
+            //offsetLeft属性在取值的时候会四舍五入
+            var leader = tag.offsetLeft;
+            //缓动公式的一部分是更改step的值
+            var step = (target - leader ) / 10;
+            //由于offsetLeft在取值的时候会四舍五入，我们的step如果比较小，会造成无法运动的问题
+            //根据步数的正负，更改取整方式
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //缓动公式
+            leader = leader + step;
+            //设置给box的left值
+            tag.style.left = leader + "px";
+            //检测是否走到了指定位置
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+</script>
+</body>
+</html>

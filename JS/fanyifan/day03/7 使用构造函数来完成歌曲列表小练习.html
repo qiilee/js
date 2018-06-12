@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 构造函数来创建一个实例
+    // 实例身上存储着各自的歌曲信息。
+    // 共有的方法  ===》原型
+
+
+  /*  //获取歌手信息
+    s1.getSinger()
+    //删除一个歌曲
+    s1.removeSong();
+    //添加一首歌曲
+    s1.addSong()*/
+
+
+    var songs = [
+        {
+            sName:'最炫民族风',
+            sSinger:'凤凰传奇'
+        },
+        {
+            sName:'捉泥鳅',
+            sSinger:'滑树森'
+        },
+        {
+            sName:'捉泥鳅',
+            sSinger:'卓依婷'
+        }
+    ]
+  function SongList(list){
+      //在构造函数当中把相应的歌曲信息存储在对象本身上，
+      this.list=list||[];
+  }
+
+  // 利用对象的动态特性为原型添加共有的方法
+ /* SongList.prototype.getSinger=function(){
+
+  }
+  SongList.prototype.removeSong=function(){
+
+  }
+  SongList.prototype.addSong=function(){
+
+  }*/
+ // 利用覆盖原型的方式为原型添加共有方法
+    SongList.prototype={
+        getSinger:function(sName){
+            // 用一个list来接收歌曲列表
+            var list = this.list;
+            // 创建一个数组来存储歌手名
+            var singer = [];
+            // 循环遍历歌曲列表
+            for(var i= 0;i<list.length;i++){
+                if(sName===list[i].sName){
+                    singer.push(list[i].sSinger)
+                }
+            }
+            // 判断singer是不是一个空数组
+            if(singer.length===0){
+                return '没有找到相关的歌手信息'
+            }
+            return singer;
+        },
+        removeSongBySName:function(sName){
+            // 接收到歌曲信息
+            var list = this.list;
+            //对歌曲信息进行循环遍历
+            for(var i=0;i<list.length;i++){
+                // 判断歌曲列表中是否存在要删除的歌曲
+                if(sName===list[i].sName){
+                    list.splice(i,1);
+                    i--;
+                }
+            }
+        },
+        removeSongBySSinger:function(sSinger){
+            var list = this.list;
+            //对歌曲信息进行循环遍历
+            for(var i=0;i<list.length;i++){
+                // 判断歌曲列表中是否存在要删除的歌曲
+                if(sSinger===list[i].sSinger){
+                    list.splice(i,1);
+                    i--;
+                }
+            }
+        },
+        addSong:function(song){
+            //获取到歌曲列表
+            var list = this.list;
+            list.push(song);
+        }
+    }
+
+  // 创建一个实例，实例本身存储着歌曲列表的信息
+  var s1 = new SongList(songs);
+  console.log(s1);
+
+  // 查询一下歌手信息
+    console.log(s1.getSinger('捉泥鳅'));//['滑树森','卓依婷']
+
+    //删除歌曲信息
+    s1.removeSongBySName('最炫民族风');
+    console.log(s1.list);
+    s1.removeSongBySSinger('滑树森');
+    console.log(s1.list)
+
+    // 添加歌曲
+    s1.addSong({
+        sName:'甜蜜蜜',
+        sSinger:'邓丽君'
+    })
+    console.log(s1.list);// 捉泥鳅  甜蜜蜜
+
+
+
+
+    var s2 = new SongList([{sName:'双节棍',sSinger:'周董'}]);
+    s2.addSong({
+        sName:'青花瓷',
+        sSinger:'周杰伦'
+    })
+    console.log(s2.list);
+
+
+    // s1调用的方法跟s2调用的方法都是存储在原型上面的共有方法
+    console.log(s1.addSong===s2.addSong)
+    console.log(s1.removeSongBySSinger===s2.removeSongBySSinger)
+    console.log(s1.getSinger===s2.getSinger);
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

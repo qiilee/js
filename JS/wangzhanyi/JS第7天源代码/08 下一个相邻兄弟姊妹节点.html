@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li>这是第1个li标签节点</li>
+    <li>这是第2个li标签节点</li>
+    <li id="li3">这是第3个li标签节点</li>
+    <li>这是第4个li标签节点</li>
+</ul>
+<script>
+    // 下一个或是上一个相邻的兄弟姊妹节点
+    //nextSibling
+    //获取的当前标签对象的下一个相邻的节点，高级浏览器会获得空白文本节点，
+    // 但是IE8及之前的低版本的浏览器，会忽略空白 文本节点
+
+    //nextElementSibling
+    //仅仅会获得下一个相邻的标签节点，是高级浏览器支持的方式，但是IE8及之前的低版本的浏览器不支持
+
+
+    var li3 = document.getElementById("li3");
+
+
+    // teacher:::::
+    //        var node = li3.nextSibling;
+    //        console.log(node.nodeType);
+    //    var node1 = node.nextSibling;
+    //    console.log(node1.nodeType);
+
+    //       var node = li3.nextElementSibling;
+    //    console.log(node);
+    //    console.log(node.nodeType);
+
+    //once
+    var li3 = document.getElementById("li3");
+    var node1 = li3.nextSibling;
+    var node2 = li3.nextElementSibling;
+
+    console.log()
+
+
+
+/* teacher:::::::::
+        // 下一个或是上一个相邻的兄弟姊妹节点
+    var li3 = document.getElementById("li3");
+    // nextSibling
+//        var node = li3.nextSibling; // 获取的当前标签对象的下一个相邻的节点，高级浏览器会获得空白文本节点，但是IE8及之前的低版本的浏览器，会忽略空白 文本节点
+//        console.log(node.nodeType);
+//    var node1 = node.nextSibling;
+//    console.log(node1.nodeType);
+
+    var node = li3.nextElementSibling; // 仅仅会获得下一个相邻的标签节点，是高级浏览器支持的方式，但是IE8及之前的低版本的浏览器不支持
+    console.log(node);
+    console.log(node.nodeType);
+
+    //
+
+    */
+</script>
+</body>
+</html>

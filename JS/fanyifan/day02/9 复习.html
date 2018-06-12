@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //属性搜索原则
+
+    function Person(){
+        this.name='jack'
+    }
+    Person.prototype.name= 'rose'
+    var person = new Person();
+   /* console.log(person.name)*/
+   console.log(Person.prototype)
+    console.log(person.constructor===Person.prototype.constructor)
+    console.log(person.constructor===Person)
+
+
+    // 数组的原型的原型
+   /* console.log(Array.prototype)//存放了数组的常用方法
+    console.log(Array.prototype.__proto__)// 数组的原型的原型 存放了对象的共有方法
+    console.log(Object.prototype)//存放了对象的共有方法
+    console.log(Object.prototype===Array.prototype.__proto__)//true*/
+
+
+
+
+</script>
+</body>
+</html>

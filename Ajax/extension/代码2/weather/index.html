@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        function showweather(){
+            //利用ajax调用天气信息
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    eval("var info="+xhr.responseText);
+                    var s = "";
+                    s += "地址："+info.weatherinfo.city+"<br />";
+                    s += "温度："+info.weatherinfo.temp+"<br />";
+                    s += "风向："+info.weatherinfo.WD+"<br />";
+
+                    document.getElementById('result').innerHTML = s;
+                }
+            }
+            xhr.open('get','./data.php');
+            xhr.send(null);
+        }
+        window.onload = function(){
+            showweather();
+        }
+        </script>
+
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <h2>网站首页面(获得天气信息)</h2>
+        <div id="result"></div>
+
+        <hr />
+        <iframe width="130" scrolling="no" height="120" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=4&color=%2300B0F0&icon=3&wind=1&num=1"></iframe>
+        <hr />
+        <iframe width="450" scrolling="no" height="18" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=1&color=%2300B0F0&icon=3&wind=1&num=2"></iframe>
+    </body>
+</html>

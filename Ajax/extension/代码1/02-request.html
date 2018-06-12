@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        //ajax发起请求
+        function f1(){
+            //创建ajax对象，对象调用成员实现对服务器的请求
+            //① 创建对象
+            var xhr = new XMLHttpRequest();
+
+            //② 创建一个新的http请求(打开浏览器，输入请求地址)
+            //xhr.open(请求方式get/post,请求地址[,异步同步请求]);
+            xhr.open("get",'./02.php');
+
+            //③ 发送请求
+            //xhr.send(post请求数据 / get请求设置null);
+            xhr.send(null);
+        }
+        </script>
+    </head>
+    <body>
+        <h2>ajax发起请求</h2>
+        <input type="button" value="触发" onclick="f1()" />
+    </body>
+</html>

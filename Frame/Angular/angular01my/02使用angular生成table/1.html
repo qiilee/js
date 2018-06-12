@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='../angular-1.5.8/angular.js'></script>
+</head>
+
+<body ng-app="mainApp">
+<input type="text" ng-model='txt'/><br>
+<table border='1' width='400'>
+    <thead>
+    <th ng-repeat='k in obj.title'>{{k}}</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in obj.datas|filter:txt">
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.gender}}</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+    //总结：angular的使用
+    //item in obj.datas|filter:txt 后面不了解
+    //语法多体会
+    //
+    var obj = {
+        title:['name','age','gender'],
+        datas:[
+            {name:'li1',age:12,gender:'男'},
+            {name:'li2',age:12,gender:'男'},
+            {name:'li3',age:12,gender:'男'},
+            {name:'li4',age:12,gender:'女'},
+            {name:'li5',age:13,gender:'男'},
+            {name:'li6',age:14,gender:'男'},
+            {name:'li7',age:16,gender:'男'},
+            {name:'li8',age:12,gender:'男'},
+        ]
+    }
+
+    angular.module('mainApp',[]).
+            run(function($rootScope){
+                $rootScope.obj =obj;
+            });
+</script>
+</html>

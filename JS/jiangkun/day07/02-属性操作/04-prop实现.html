@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script src="./src/Itcast.style.js"></script>
+    <script>
+
+        Itcast.fn.prop = function ( attrName, attrValue ) {
+            if ( typeof attrName == 'string' ) {
+                if ( attrValue === undefined ) {
+                    return this[ 0 ][ attrName ];
+                   
+                } else if ( typeof attrValue  === 'function' ) {
+                    return this.each( function ( i ) {
+                        this[ attrName ] = attrValue( i );
+                    });
+
+                } else {
+                    return this.each( function () {
+                        this[ attrName ] = attrValue;
+                    });
+                }
+
+            } else if ( Object.prototype.toString.call( attrName ) === '[object Object]' ) {
+                return this.each(function () {
+                    var that = this;
+                    Itcast.each( attrName, function ( k, v ) {
+                        that[ k ] = v;
+                    });
+                });
+
+            }
+
+
+        } 
+    </script>
+</head>
+<body>
+    <br>
+    <a href=""></a>
+    <input type="checkbox"><br>
+    <img src="" alt="">
+</body>
+<script>
+    I( 'img' ).prop( 'src', 'http://pic38.nipic.com/20140228/3822951_135521683000_2.jpg' );
+
+    I( 'a' ).prop( 'href', 'http://www.itcast.cn').each(function () {
+        this.innerHTML = '哇哈哈';
+    });
+
+    I( 'input' ).prop( 'checked', true );
+    // I( 'input' ).prop( 'checked', false );
+
+
+    console.log( 'src = ' + I( 'img' ).prop( 'src' ) );
+    console.log( 'href = ' + I( 'a' ).prop( 'href' ) );
+    console.log( 'checked = ' + I( 'input' ).prop( 'checked' ) );
+
+    I( 'input' ).prop( 'checked', false );
+
+    console.log( 'checked = ' + I( 'input' ).prop( 'checked' ) );
+
+
+    I( 'img' ).prop( 'title', true );
+
+</script>
+</html>

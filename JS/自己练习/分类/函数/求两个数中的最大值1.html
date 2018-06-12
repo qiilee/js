@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    console.log(getMax(undefined,1));
+    function getMax(num1, num2) {
+        if(isNaN(num1)||isNaN(num2)){
+            alert("输入不合法");
+            return;
+        }
+        return num1 > num2 ? num1 : num2;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<script>
+    //获得要操作的对象
+    var inputs = document.getElementsByTagName("input");
+
+    for(var i =0;i<inputs.length;i++){
+        inputs[i].onclick = function () {
+            for(var j = 0;j<inputs.length;j++){
+              inputs[j].style.backgroundColor="";
+            }
+            this.style.backgroundColor="red"; //很重要  this     不可以用 inputs[i]代替
+        }
+
+    }
+</script>
+</body>
+</html>

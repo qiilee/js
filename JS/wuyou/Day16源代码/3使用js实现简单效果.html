@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 150px;
+            background-color: pink;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+    <script>
+        /*总结：
+        *
+        *
+        *
+        * */
+        //1 js入口函数:让你的代码在页面完全加载后执行
+        window.onload = function () {
+            //2 显示盒子部分
+            var btn1 = document.getElementById("btn1");
+            var divs = document.getElementsByTagName("div");
+            //3 添加事件
+            btn1.onclick = function () {
+                //4 遍历divs
+                for (var i = 0; i < divs.length; i++) {
+                    divs[i].style.display = "block";
+                }
+            };
+
+            //5 点击设置文本
+            var btn2 = document.getElementById("btn2");
+            //6 添加事件
+            btn2.onclick = function () {
+                for (var i = 0; i < divs.length; i++) {
+                    //7 设置文本内容
+                    divs[i].innerText ="我是一个快乐的小盒子";
+                }
+            };
+        };
+
+
+
+
+    </script>
+</head>
+<body>
+<button id="btn1">点击显示盒子</button>
+<button id="btn2">点击显示文字</button>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>

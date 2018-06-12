@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    //总结：img.onload,图片加载完
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    
+    // 1, 准备图片对象
+    var img = document.createElement( 'img' );  // new Image()
+    // 2, 设置图片的 src
+    img.src = 'http://b.hiphotos.baidu.com/image/pic/item/0dd7912397dda144fcaa4e72b6b7d0a20df4864a.jpg';
+
+    // 3, 绘图
+    img.onload = function () {
+        ctx.drawImage( img, 100, 100 );
+    }
+    
+
+
+
+/*
+
+    // 利用 canvas 作为图片源
+    var newCas = document.createElement( 'canvas' );
+    newCas.width = 100, 
+    newCas.height = 100;
+    var newCtx = newCas.getContext( '2d' );
+    
+    newCtx.fillRect( 0, 0, 100, 100 );
+
+
+    ctx.drawImage( newCas, 200,200 );
+*/
+</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.9.1.js"></script>
+</head>
+<body>
+<script>
+   /* console.log($)*/
+   // 需求： 动态地创建一个红色的div，100px,然后把它添加到页面当中。
+    $('<div></div>').css({
+        background:'red',
+        width:'100px',
+        height:'100px'
+    }).appendTo(document.body);
+</script>
+</body>
+</html>

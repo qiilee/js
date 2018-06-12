@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+    var cas = document.querySelector("canvas");
+    //    console.log(cas);
+    var ctx = cas.getContext("2d");
+    ctx.strokeRect(0,0,10,10);
+    ctx.strokeRect(0,30,10,10);
+    ctx.strokeRect(0,60,10,10);
+    ctx.strokeRect(0,90,10,10);
+    ctx.strokeRect(0,120,10,10);
+    ctx.strokeRect(0,150,10,10);
+</script>
+</body>
+</html>

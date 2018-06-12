@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Object的原型链
+    //如果我们把Object当做一个实例，
+    // 它的原型对象就是它的构造函数的prototype属性的值
+
+    //所有的函数的原型对象都是Function.prototype
+    //所有的函数的构造函数都是Function
+    console.log(Object.__proto__===Function.prototype);//true
+    console.log(Array.__proto__===Function.prototype);//true
+    console.log(RegExp.__proto__===Function.prototype);//true
+    console.log(String.__proto__===Function.prototype);//true
+    console.log(Boolean.__proto__===Function.prototype);//true
+    console.log(Number.__proto__===Function.prototype);//true
+    console.log(Date.__proto__===Function.prototype);//true
+    console.log(Function.__proto__===Function.prototype);//true
+
+
+
+</script>
+</body>
+</html>

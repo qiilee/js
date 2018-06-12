@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // in操作符的作用以及 优先级
+
+//    if(!"a" in window){
+//        // !'a'会转变为false,if判断语句中就相当于判断 false in window
+//        var a = 123;
+//    }
+//    console.log(a)
+
+
+
+    /*var a
+    if((!"a") in window){//if判断语句里面是true还是false？
+
+        a = 123;
+    }
+    console.log(a)*/
+
+
+//    console.log(false in window)
+//    console.log(undefined in window)
+//    var a
+//    if(a in window){//if判断语句里面是true还是false？
+//        a = 123;
+//    }
+//    console.log(a)
+//
+//   console.log(window.undefined);
+
+
+
+   // in操作符的作用
+    // 判断我们的对象本身上面或者原型链上是否有一个属性。
+
+    function Person(){
+        this.xxx = undefined;
+    }
+    Person.prototype.yyy=1;
+
+    // 生成一个新的实例
+    var person = new Person;
+
+    console.log(person)
+
+    //'xxx'在person本身上面
+    console.log('xxx' in person);//只要对象或者原型上有这个属性，那么就会返回true，不管这个属性的值是一个什么值。
+    // 'yyy'在person的原型上面。
+    console.log('yyy' in person)// true
+
+
+
+</script>
+</body>
+</html>

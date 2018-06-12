@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 回调函数就是一个普通的函数，里面封装了可执行的代码，将此函数传递到其它的地方，进行调用
+
+    // 比如我们要进行一些运算 +    -     *   /    %    求两个数的数学运算结果
+    function getSum(a,b){
+        return a+b;
+    }
+//    function getCha(a,b){
+//        return a-b;
+//    }
+    var getCha = function(a,b){
+        return a-b;
+    };
+    function getCheng(a,b){
+        return a*b;
+    }
+
+    function getResult(a,b,fn){
+       return  fn(a,b);
+    }
+//    var result = getResult(50,90,getSum);
+//    var result = getResult(50,90,getCha);
+//    var result = getResult(50,90,function(a,b){
+//        return a-b;
+//    });
+
+    var result = getResult(100,200,function(a,b){
+        return a+b;
+    });
+    console.log(result);
+
+//    function getResult(a,b,seprator){
+//        if(seprator=="+"){
+//            return a+b;
+//        }else if(seprator=="-"){
+//            return a-b;
+//        }else if(seprator=="*"){
+//            return a*b;
+//        }
+//    }
+//   var result =   getResult(50,90,"-");
+//    console.log(result);
+
+    // 函数是一种数据类型，可以存在变量当中，进行传递
+    // 将函数做为参数进行传递的函数，这样的函数叫做回调函数(就是一个普通的函数，起了一个名字而已)
+    // 作用：封装了一些代码，进行传递，到可执行的地方去调用
+</script>
+</body>
+</html>

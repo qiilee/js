@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    求阶乘
+//        5! => 5 * 4 * 3 * 2 * 1
+//        n! => n * ( n - 1 ) * ( n - 2 ) * ... * 1
+//        1!    1
+//        2!    1*2
+//        3!    1*2*3
+    function jie(n){
+        if(n==1){
+           return 1;
+        }
+        return jie(n-1)*n;
+    }
+
+    console.log(jie(3));
+</script>
+</body>
+</html>

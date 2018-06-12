@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 使用日期对象之前，先将日期对象创建出来
+    // 使用构造函数的方式，先将日期对象创建出来
+//    var array = new Array();
+    // 1970 1 1 0：0：0 000
+    //var date = new Date();
+//    console.log(date);
+//    console.log(date.toString());
+////    date.toDateString();// 外国人喜欢用的
+////    date.toLocalDateString();
+//console.log(date.toDateString());
+//    console.log(date.toLocaleDateString());
+
+
+    // 1min = 60sec
+    // 1s = 1000    后面的定时器都是以毫秒计的
+  //  getTime()  返回毫秒数和valueOf()结果一样
+  //  getMilliseconds()
+  //  getSeconds()  返回0-59
+  //  getMinutes()  返回0-59
+  //  getHours()   返回0-23
+  //  getDay()     返回星期几 0 周日   6周6
+  //  getDate()    返回当前月的第几天,当月的几号
+  //  getMonth()   返回月份，从0开始  0--11
+  //  getFullYear()   返回4位的年份  如 2016
+
+    // 先创建一个日期对象出来，再调用对象的方法
+    var date = new Date();
+    console.log(date.getTime());// 1970 1 1 0:00:00 000
+    console.log(date.getMilliseconds());
+    console.log(date.getSeconds());
+    console.log(date.getMinutes());
+    console.log(date.getDay());
+    console.log(date.getDate());
+    console.log(date.getMonth()); // 11   0--11
+    console.log(date.getFullYear());
+
+    //写一个函数传过来一个日期对象，返回yyyy-MM-dd HH:m    m:ss形式的字符串
+
+    function getDate(){
+        // 年
+        // 2016-11-18 15:06:09
+    }
+
+    var date = new Date();
+    getDate(date);
+</script>
+</body>
+</html>

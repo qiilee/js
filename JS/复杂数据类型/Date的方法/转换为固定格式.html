@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //写一个函数传过来一个日期对象，返回yyyy-MM-dd HH:mm:ss形式的字符串
+
+    function getDate(date){
+        var years = date.getFullYear();// 年
+        var months = date.getMonth()+1;
+        var dates = date.getDate();
+        var hours = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+
+        months = months < 10 ? "0" + months : months;
+        dates = dates < 10 ? "0" + dates : dates;
+        hours = hours < 10 ? "0" + hours : hours;
+        min = min < 10 ? "0" + min : min;
+        sec = sec < 10 ? "0" + sec : sec;
+        return (years+"-"+months+"-"+dates+" "+hours+":"+min+":"+sec);
+        // 2016-11-18 15:06:09
+    }
+
+    var date = new Date();
+    document.writeln(getDate(date).big());
+</script>
+</body>
+</html>

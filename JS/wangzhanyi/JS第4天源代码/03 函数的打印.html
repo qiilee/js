@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function fn(){
+        console.log(123);
+    }
+//    fn();
+    console.log(fn);
+    var f1 = function(){
+        console.log(456);
+    };
+    console.log(f1);
+
+    /**
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @returns {number}
+     */
+    function getSum(a,b,c){
+        // a b c是属于getSum这个函数内部区域的，是不需要使用var声明的
+        c= c || 0;
+//        return a+b+c;
+        return 100;
+    }
+    getSum(20,30);
+    div.onclick = function(){
+
+    };
+    var arr = [10, 12, 10, 12, 11, 11, 14,15,14,13, 13]
+
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = 1; j < arr.length; j++) {
+            if (arr[i] == arr[j]) {
+                arr.splice(j, 1);
+            }
+        }
+    }
+    console.log(arr);
+</script>
+</body>
+</html>

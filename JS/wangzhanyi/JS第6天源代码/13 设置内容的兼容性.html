@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+//    var str = "<ul><li>这是第1个li标签</li><li>这是第2个li标签</li><li>这是第3个li标签</li><li>这是第4个li标签</li></ul>";
+//    box.innerHTML = str;
+
+    setText(box,"这是用一个兼容性的设置内容的方式");
+
+    function setText(element,value){
+        // 能力检测    就是看当前的浏览器是支持此对象的属性或是方法
+        if(typeof element.innerText =="string"){ // IE8及之前的浏览器支持的方式
+            element.innerText = value;
+        }else { // 进入到这里，就是低版本的火狐浏览器支持的方式
+            element.textContent = value;
+        }
+    }
+</script>
+</body>
+</html>

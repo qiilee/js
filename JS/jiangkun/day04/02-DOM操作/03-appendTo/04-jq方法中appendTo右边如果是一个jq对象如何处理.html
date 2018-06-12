@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 150px;
+            border: 1px dashed red;
+            margin: 10px 0;
+        }
+        p {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script src="../../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+<script>
+
+    var p1 = $( '<p>ppp</p>' );
+    var p2 = p1.appendTo( $( 'div' ) );
+
+</script>
+
+</html>

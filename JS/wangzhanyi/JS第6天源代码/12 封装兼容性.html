@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <p>这是第一个p标签</p>
+    <p>这是第二个p标签</p>
+    <p>这是第三个p标签</p>
+    <p>这是第四个p标签</p>
+</div>
+<script>
+    // innerText  IE8及之前的浏览器   textContent：低版本的火狐浏览器
+    var box = document.getElementById("box");
+//    console.log(box.innerText);
+    // 函数就是代码复用的一种机制或是封装某种功能的代码段
+    function getText(element){
+//        var str = element.innerText;
+        if(typeof element.innerText =="string"){ // 一般是boolean类型的值，或是关系表达式或是逻辑表达式  如果if的小括号里面放的是其它的数据类型的话，是先将其它的数据类型转换为对应的boolean类型的值，再进行判断   Boolean()
+            return element.innerText; //IE8及之前的浏览器支持的方式
+        }else {
+            return element.textContent; //低版本的火狐浏览器支持的方式
+        }
+    }
+    var str = getText(box);
+    console.log(str);
+</script>
+</body>
+</html>

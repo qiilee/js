@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" name="input" id="input" autofocus placeholder="输入英文，分割的数值" />
+<button id="but">去重排序</button>
+
+
+
+</body>
+<script>
+    but.onclick = function(){
+        var txt = input.value;
+        var arr = txt.split(",");
+        alert(arr);
+        var arr1 = sort(arr);
+
+        alert(arr1)
+        var arr2 = quchong(arr1);
+        alert(arr2);
+
+
+    }
+
+
+
+    //去重功能
+//    function quchong(arr){
+//        var res = [];
+//        for(var i = 0; i < arr.length; i++){
+//            var repeat = false;
+//            for(var j = 0; j < res.length; j++){
+//                if(arr[i] == res[j]){
+//                    repeat = true;
+//                    break;
+//                }
+//            }
+//            if(!repeat){
+//                res.push(arr[i]);
+//            }
+//        }
+//        return res;
+//    }
+//    //alert(quchong([1,2,1,3,1.2]))
+
+    //排序功能
+
+    function aa(arr){
+        var arr1=[];
+//       for(var i=0;i<arr.length;i++){
+//           if(arr1.indexOf(arr[i])==-1){
+//               arr1.push(arr[i])
+//           }
+//       }
+
+return arr1;
+    }
+
+    console.log(aa([2,2,4,3,2]));
+    function sort (arr) {
+        for (var i = 0;i<arr.length-1;i++) {
+            for (var j = 0; j < arr.length-i-1; j++) {
+                if (arr[j]>arr[j+1]) {
+                    var temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+
+        }
+        return arr;
+    }
+    //alert(sort([1,2,1,2,11,12,1]))
+
+
+</script>
+</html>

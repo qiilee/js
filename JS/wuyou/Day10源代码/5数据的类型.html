@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //数据类型分为两种 ：
+    //基本数据类型： string number boolean null undefined
+    //复杂数据类型:  object  - array date math
+    //对象的特性：只有对象才具有属性和方法
+
+    //基本数据类型和复杂数据类型的区别：
+    //1 保存数据的个数上:
+    //   基本类型值只能表示单一的一个数据
+    //   复杂数据类型可以一个保存多个数据
+    //2 再内存中保存的方式不同
+    // 基本类型再内存中的保存方式以及在复制时的表现形式（复制前后两个数据不相互关联）
+    // 复杂类型在内存中的保存方式
+
+    //直接使用赋值的方式去赋值复杂类型，并不是真的复制了
+    //我们在复制的时候一般不会这么做，也不要这么做
+//    var arr = [1,2,3,4,5];
+//    var arr3 = arr;
+//    //修改新复制的arr3的元素
+//    arr3[0] = 100;
+//    //
+//    console.log(arr);
+
+    //第一种方式 遍历一个一个值的复制
+
+    //第二种方式 arr.concat()  连接 返回一个数组
+    var arr = [1, 2, 3, 4, 5];
+    var arr3 = [7, 7, 7, 7, 7];
+    //将两个数组进行连接
+    //var resultArr = arr.concat(arr3)
+    //arr[0] = 1000;
+    //console.log(resultArr);
+    //console.log(arr);
+
+    //当使用concat方法时我们可以不传入参数
+    var resultArr = arr.concat();
+    console.log(resultArr);
+    arr[0] = 1000;
+    console.log(resultArr);
+
+
+    //不同称呼：
+    //基本类型又称为值类型
+    //复杂类型又叫引用类型
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        // 浏览器能力检查( 高级 )
+        // 1> 函数能力判断
+        //      判断浏览器是否自带该方法( 其中一种方法 )
+        //      判断对应的方法是不是浏览器自带的
+        //    r = /function.+\{.*\[native code\]/;
+
+        // 2> 属性能力判断( 高级技巧 )
+        //      innerText
+        //      用能力来判断 
+        //      先定义一个 div 标签, 然后 设置一下 他的 innerText 属性
+        //      然后使用 dom 方法获得里面的文本元素.
+        //      判断两个文本是否相同, 如果相容表明 浏览器具有该能力
+        var support = {};
+        support.innerText = (function () {
+            var div = document.createElement( 'div' );
+            div.innerText = 'test Text';
+            var childNode = div.lastChild; // 支持
+
+            return childNode.nodeValue == 'test Text'; // 是否支持
+        })();
+
+
+        function text( node, text ) {
+            // 如果传入了 text 属性 意味着设置 node 节点的 内容( 文本 )
+            // 如果没有传入 text 属性就是表明 返回 node 里面的文本
+            // 如果系统支持 innerText 则可以直接使用, 不支持自己实现
+            if ( support.innerText ) {
+                // 兼容
+                if ( text ) {
+                    // 传了
+                    return this.each(function () {
+                        this.innerText = text;
+                    })
+                } else {
+                    // 没传
+                    return this[ 0 ].innerText;
+                }
+            } else {
+                // 不兼容
+                // 如果是赋值, 取( 递归将里面的每一个元素节点全部取出 )
+                // 即此时需要一个算法 在 元素上 设置其文本, 或者返回其文本
+            }
+        }
+    
+    </script>
+</head>
+<body>
+    <div>
+        123
+        <div>456
+            <div>789</div>
+            0ab
+        </div>
+        cde
+    </div>
+
+</body>
+</html>

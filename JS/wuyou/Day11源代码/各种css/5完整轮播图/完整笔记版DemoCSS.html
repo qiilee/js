@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen">
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <ol>
+            <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+        </ol>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+
+<script>
+    //自己总结：
+    // for中，arrLeft和arrRight中的特殊判断条件
+
+
+    // for中点击事件内部：if(pic == lisUl.length-1){ul.style.left = 0+"px";}
+
+
+//    arrLeft 中
+//    if(pic ==0){
+//        ul.style.left = -(lisUl.length-1)*imgWid+"px";
+//        pic = lisUl.length-1
+//    }
+
+
+//    arrRight中
+//    if(pic == lisUl.length-1){
+//        ul.style.left = 0+"px";
+//        pic=0;
+//    }
+//     排他后：------》因为pic会取到lis.length-1这个值，此时lisOl伪数组中取不到
+//    if(pic==lisUl.length-1){
+//        lisOl[0].className = "current";
+//    }else{
+//        lisOl[pic].className = "current";
+//    }
+
+
+    //1 根据图片的张数设置下面用于点击切换的小方块
+    //2 点击按钮设置按钮变色并且让图片进行切换(简单轮播图效果)
+    //3 移入移出显示隐藏盒子
+    //4 点击左右按钮进行运动
+    //5 无缝的滚动，需要克隆第一张图片放到最后
+    //6 自动播放
+
+
+    //1 获取元素
+    var box = document.getElementById("box");
+    //伪数组和数组的区别，就是伪数组没有数组方法
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var lisUl = ul.children;
+    //获取图片宽度
+    var imgWid = screen.offsetWidth;
+    //获取左右按钮
+    var arr = box.children[1];
+    var arrLeft = arr.children[0];
+    var arrRight = arr.children[1];
+    //1 为ol创建出小按钮
+    for (var i = 0; i < lisUl.length; i++) {
+        var li = document.createElement("li");
+        ol.appendChild(li);
+        li.innerHTML = i + 1;
+    }
+    //2，为第一个按钮设置颜色
+    var lisOl = ol.children;
+    lisOl[0].className = "current";
+    //3 注册事件
+    for (var i = 0; i < lisOl.length; i++) {
+        lisOl[i].index = i;
+        lisOl[i].onclick = function () {
+            if(pic == lisUl.length-1){
+               ul.style.left = 0+"px";
+            }
+            paiTa();
+            this.className = "current";
+            animate(ul,-this.index*imgWid);
+            pic = this.index;
+        }
+    }
+    var firstPic = lisUl[0].cloneNode(true);
+    ul.appendChild(firstPic);
+  //4.左右焦点事件
+    var timer = null;
+    timer =setInterval(function () {
+        arrRight.click();
+    },1500)
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        clearInterval(timer);
+    }
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        timer =setInterval(function () {
+            arrRight.click();
+        },1500)
+    }
+
+    var pic =0;
+    arrLeft.onclick = function () {
+        if(pic ==0){
+            ul.style.left = -(lisUl.length-1)*imgWid+"px";
+            pic = lisUl.length-1
+        }
+        pic--;
+        animate(ul,-pic*imgWid);
+        paiTa();
+        lisOl[pic].className = "current";
+
+    }
+    
+    arrRight.onclick  = function () {
+        if(pic == lisUl.length-1){
+            ul.style.left = 0+"px";
+            pic=0;
+        }
+        pic++;
+        animate(ul,-pic*imgWid);
+        paiTa();
+        if(pic==lisUl.length-1){
+            lisOl[0].className = "current";
+        }else{
+            lisOl[pic].className = "current";
+        }
+
+    }
+
+//排他函数
+    function paiTa(){
+        for (var j = 0; j < lisOl.length; j++) {
+            lisOl[j].className = "";
+        }
+    }
+    //移动函数
+    function animate(tag, target) {
+        //将定时器设置在tag的自定义属性上
+        clearInterval(tag.timer);
+        //设置定时器，进行运动
+        tag.timer = setInterval(function () {
+            //获取初始位置
+            var leader = tag.offsetLeft;
+            //设置步长
+            var step = 9;
+            //根据leader和target的大小关系去设置step的正负
+            step = leader > target ? -step : step;
+            //检测什么时候可以进行运动
+            //有时候，不能正好运动到指定位置
+            //我们需要检测，当前位置距离目标位置的长度是否够一步
+            //如果足够走一步，随便走，
+            //如果不够，直接走到指定位置
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //套用公式，计算要运动到的新位置
+                leader = leader + step;
+                //将新位置设置给元素，进行运动
+                tag.style.left = leader + "px";
+            } else {
+                //直接走到指定位置
+                tag.style.left = target + "px";
+                //到达指定位置，清除定时器
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+</script>
+</body>
+</html>

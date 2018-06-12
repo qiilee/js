@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var arr =[];
+        while(true){
+            var num = prompt("请输入一个数字");
+            if(num=="end"){
+               console.log(getMax(arr));
+                break;
+            }
+            arr[arr.length] = num;
+
+
+        }
+
+        function getMax(array) {
+            array = array || []; //判断array是否为数组
+
+            if (array.length == 0) {
+                return;
+            }
+
+            var max = array[0];
+            for (var i = 1; i < array.length; i++) {
+                max = max < array[i] ? array[i] : max;
+
+            }
+            return max;
+        }
+    </script>
+</head>
+<body>
+练习5：不断要求用户输入一个数字
+（假定用户输入的都是正整数），
+当用户输入end的时候显示刚才输入的数字中的最大值
+
+</body>
+</html>

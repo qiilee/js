@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<button id="remove">移除一个事件</button>
+
+<script>
+    var btn = document.getElementById("btn");
+    var remove = document.getElementById("remove");
+
+    //添加事件的新方式
+    //addEventListener   add添加  event事件  listener监听者  添加事件监听
+    //第一个参数为事件类型 不加on  第二个参数是事件处理程序
+    btn.addEventListener("click", function () {
+        console.log("今天天气不错");
+    });
+
+    //可以放置多次添加事件时的覆盖问题
+    btn.addEventListener("click", fun);
+
+    function fun() {
+        console.log("这是小明的垃圾代码");
+    }
+
+    //移除事件的方式
+    //removeEventListener()
+    //两个参数 第一个参数 移除的事件类型  第二个参数是事件处理程序
+    //由于可能添加过多次，需要在移除时指明要移除哪一个事件处理程序
+    //需要保证移出的参数跟设置时的参数是同一个
+
+    //点击remove按钮时移除事件
+    remove.onclick = function () {
+        btn.removeEventListener("click", fun);
+    };
+
+
+    //函数表达式后面的匿名函数不需要起名字，起了名字在外面也无法使用，只能在函数内使用
+    //var fun2 = function b() {
+    //    console.log("我是fun2");
+    //    //console.log(b);
+    //};
+    //console.log(fun2);
+    ////    console.log(b);
+    //fun2();
+
+
+</script>
+</body>
+</html>

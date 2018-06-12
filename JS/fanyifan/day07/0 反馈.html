@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   /* function f1() {
+        this.age = 10;
+        // 内部的this是实例
+        return 20;
+    }
+    var p3 = new f1();//f1通过构造函数模式调用 。
+    console.log(p3.age);//输出实例身上的age属性 */
+
+
+    /*function f1() {
+    this.age = 10;
+    // 内部的this是实例
+    return [];
+    }
+    var p3 = new f1();//f1通过构造函数模式调用 。
+    console.log(p3)
+    console.log(p3.age);//根据属性搜索原则，最后会输出undefined   */
+
+
+ /*  var arr = [{name: '张三1'}, {name: '张三2'}, {name: '张三3'}, {name: '张三4'}];
+   //
+   for (var i = 0; i < arr.length; i++) {
+       arr[i].sayHello = function () {
+               //当前作用域不存在i这个变量，
+               console.log(i);
+           };
+   }
+   console.log(i)
+   //
+   for (var j = 0; j < arr.length; j++) {
+       arr[j].sayHello(i);//都会输出4
+   }*/
+
+
+    //沙盒模式
+    // 有一个不会干扰到外界的一块区域
+    // 形式 自执行函数
+
+
+   /* ~function(){
+        //沙盒模式的作用，把内部的变量跟外部的变量隔离开来，让内部的代码不会影响到全局中的代码。
+        function listToArray(obj){
+            /!*return Array.prototype.slice.call(obj,0)*!/
+            return [].slice.call(obj,0)
+        };
+        // 不传入window
+        // 1 那么每次使用window这个变量的时候，都需要去进行变量搜索，变量搜索需要时间，因此会带来不必要的而性能问题 。
+        // 2 传入window能够使代码压缩得更好
+        w.utils={
+            listToArray:listToArray
+        }
+    }(window,undefined)
+
+
+   //沙盒模式中为什么要传入undefined
+   //在有些浏览器中undefined是能够被修改的。
+
+     console.log(utils);*/
+
+    // 需求：让控制台中依次输出1-10
+
+    /*for(var i=1;i<=10;i++){
+        console.log(i)
+    }*/
+    /*~function (){
+        for(var i =1;i<=10;i++){
+            console.log(i)
+        }
+    }()
+
+    console.log(i)//降低了全局污染的可能性 */
+
+
+
+   //那个事件流的封装函数上，函数重写的时候为什么不能用函数声明的方式，函数声明的方式不能把之前的给覆盖掉。而要用表达式的方式
+
+    /*function a(){
+        console.log(1)
+        //在当前作用域中并没有声明过a这个变量，因此需要到外界作用域中去搜索这个变量a
+        //就找到了全局中的a，然后把它变成一个新的函数。
+        a=function(){
+            console.log(2)
+        }
+    }
+    a()//1
+
+    a()//2*/
+
+    function a(){
+        console.log(1);
+        function a(){
+            console.log(2)
+        }
+      /*  var a = 0;*/
+    }
+    a();//1
+    a();//1
+
+
+
+</script>
+</body>
+</html>

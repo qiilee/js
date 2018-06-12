@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 完成一个创建缓存的函数
+
+
+    // 函数实现的思路
+    /*
+    * 1. 有一个缓存区，这个缓存区要存储在作用域？
+    *  把这个缓存区放入一个函数体内，然后外界就无法访问到这个私有的变量了，只能通过闭包的形式对缓存进行增加，修改，删除，查询的操作。
+    * 2利用闭包对缓存进行增删改查操作
+    * 2.1 如果传入函数的是一个参数，就是删除操作。如果缓存区中有这个缓存，就删除这个缓存，如果没有就return，或者返回一段话“缓存区中未找到该缓存，不用删除”
+    * 2.2  增加跟修改的操作
+    * 2.2.1 如果缓存中有想要修改的缓存，直接修改掉就可以了。
+    * 2.2.2 如果是增加的操作，就需要去判断一下缓存区的长度，
+    *    如果缓存区的长度超出了限制，就需要缓存区中最先存入的缓存进行删除操作，
+    *    如果说缓存区的长度没有超出限制，就直接增加一项缓存。
+    *
+    *问题：如何去判断缓存区的长度。
+    *    利用数组来管理缓存区中有多少条缓存，以及缓存存入的先后。
+    * */
+
+    function createCache(){
+        //把缓存放入一个函数，利用作用域保护内部的私有变量的特性来使缓存不受外界干扰。
+        var cache = {};
+        var arr = [];
+        // 实现对缓存的增删改查。
+        return function(key,value){
+            //判断参数的长度，判断是否是查询操作。
+            if(arguments.length===0){
+                return cache;
+            }
+            //先去判断是参数的长度，来判断是否是删除的操作。
+            if(value===undefined){
+                delete cache[key];
+                // 相应的删除掉数组中的某一项。
+                //通过key值查找到想要删除的那一项的索引。
+                var index= arr.indexOf(key);
+                //删除一项缓存的时候数组的长度也要同步的发生变化，splice方法
+                //会改变原有的数组，长度也就减小一个数。
+                arr.splice(index,1);
+                return;
+            }
+            // 实现修改和增加的操作。
+            // 实现修改
+            if(cache[key]){
+                //把缓存中的某一项，修改为我们传入的value;
+                cache[key]=value;
+            }else{
+                //增加的一个操作。
+                // 如果缓存长度超出了限度，就需要删除最开始存入的一项，
+                //如果说没有超出限度，就直接增加一项。
+                // 不要忘记数组也需要同步的操作
+                if(arr.length>=3){
+                    //删除掉数组的第一项,并且获取到第一项，然后删除掉对象当中相应的缓存。
+                    var deleteArr=arr.shift();
+                    //删除掉对象中相应的那一项缓存
+                    delete cache[deleteArr];
+                    // 给缓存中添加一项
+                    cache[key]=value;
+                    //数组也要同步的添加一项
+                    arr.push(key);
+                }else{
+                    //没有超出长度限制，直接增加给缓存中增加一项
+                    cache[key]=value;
+                    //数组也要同步的增加。
+                    arr.push(key);
+                }
+            }
+        }
+    }
+
+
+    // 创建了某一类缓存，可以通过这个缓存函数对该类缓存进行查询缓存，增加缓存，
+    //以及修改缓存的操作。
+    var personCache= createCache();
+
+
+
+
+    // 增加某一类缓存
+    personCache('name1','jack1')
+    personCache('name2','jack2')
+    personCache('name3','jack3')
+    personCache('name4','jack4')
+    personCache('name5','jack5')
+
+    // 修改缓存的操作
+    personCache('name4','rose4');
+
+    // 在缓存区中找到相应的key 属性名，就可以删除掉这条缓存 。
+    personCache('name3')
+
+    // 添加一个查询的操作。
+    console.log(personCache());// 输出两项 'rose4'  'jack5'
+
+
+    // 有一个这样的需求：
+    // 缓存的长度应该有一个限制
+    // 缓存如果超出了限制，就把之前的缓存删除掉。
+    // 假设每类缓存
+
+    </script>

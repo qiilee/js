@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 400px;
+            height: 400px;
+            background-color: #a687ff;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #ecab6d;
+        }
+
+        #box4 {
+            width: 100px;
+            height: 100px;
+            background-color: #404bec;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+
+<script>
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+
+    //给每个元素添加点击事件
+
+    //    box1.onclick = function (e) {
+    //        //e是事件内部的一个工具箱，其中一个工具可以阻止事件冒泡或者捕获\
+    //        //阻止事件传播
+    //        e.stopPropagation();
+    //
+    //        console.log("box1");
+    //    };
+    //
+    //    box2.onclick = function (e) {
+    //        e.stopPropagation();
+    //        console.log("box2");
+    //    };
+    //
+    //    box3.onclick = function (e) {
+    //        e.stopPropagation();
+    //        console.log("box3");
+    //    };
+
+
+    //阻止捕获
+    box1.addEventListener("click", function (e) {
+        e.stopPropagation();
+        console.log("box1");
+    }, true);
+
+    box2.addEventListener("click", function (e) {
+        e.stopPropagation();
+        console.log("box2");
+    }, true);
+
+    box3.addEventListener("click", function (e) {
+        e.stopPropagation();
+        console.log("box3");
+    }, true);
+
+    //如果强行添加捕获的执行方式，执行的时候是采用从外向里的触发方式
+    //尽管阻止了传播，也无法执行到需要触发的元素
+    //不要使用捕获再去取消事件的传播
+
+
+</script>
+</body>
+</html>

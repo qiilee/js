@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 400px;
+            height: 400px;
+            border: 10px solid #000;
+            position: relative;
+            padding:50px;
+
+        }
+        #son{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 50px;
+            border: 10px solid #000;
+            margin: 50px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="son"></div>
+</div>
+<script>
+    //标签.offsetLeft 表示当前元素到定位的父盒子之间的距离，边框到边框
+    //给父盒子padding呢？？？？
+    //获取son的offsetLeft
+    var son = document.getElementById("son");
+    console.log(son.offsetLeft);
+
+    //offsetLeft 只读属性
+    son.offsetLeft = 10000;
+    console.log(son.offsetLeft);
+
+
+
+</script>
+
+</body>
+</html>

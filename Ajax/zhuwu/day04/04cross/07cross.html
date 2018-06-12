@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+
+    <script>
+            $(function(){
+                    $.ajax({
+                         url:"http://op.juhe.cn/robot/index?info=你好&key=ae3390c79549f80de081ad7c55f7dbb3",
+                         type:"get",
+                         dataType:"jsonp",
+                         success:function(data){
+                             console.log(data);
+                         }
+                    });
+
+            });
+    </script>
+
+</body>
+</html>

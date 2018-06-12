@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+<div>{{date}}</div>
+<div>{{date | date:'yyyy年MM月dd日 hh时mm分ss秒'}}</div>
+<div>{{newDate}}</div>
+</body>
+<script>
+    //总结：date的两种过滤方式
+    //  mm与MM 分别代表的是分钟和月份
+    //  代表时间的字母大小写是区分的，yyyy就是yyyy
+    //   HH与hh区别就是  24小时制与2小时制
+    angular.module('mainApp', [])
+            .controller('mainController', function ($scope, $filter) {
+                var curr = new Date();
+                $scope.date = curr;
+                $scope.newDate = $filter('date')(curr, 'hh:mm:ss dd:MM:yyyy');
+                //                       过滤器   数据     格式
+            })
+</script>
+</html>

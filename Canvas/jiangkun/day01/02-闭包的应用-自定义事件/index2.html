@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击" id="btn">
+</body>
+<script>
+    // 不考虑浏览器兼容, 实现刚才的需求
+
+    // 调用一个事件是没有问题的, 但是调用多个事件就有问题了
+    // 事件又要按照顺序调用, 所以使用数组存储
+    // 计划, 每次 add 事件的时候, 病没有存到 按钮上面, 而是存到数组中了
+    // 而点击按钮触发的事件其实只有一个函数, 是从数组中取出每一个函数依次调用
+
+    function s ( name ) { return document.querySelectorAll( name ); }
+
+
+    var events = [];
+
+
+    function addEvent ( control, type, callback ) {
+        // 此时是在给 control 添加 事件 type 处理函数 callback
+        events.push( callback );
+
+
+        // control.addEventListener( type, function () {
+        //     for ( var i = 0; i < events.length; i++ ) {
+        //         events[ i ]();
+        //     }
+        // });
+
+        control[ 'on' + type ] = function () {
+            for ( var i = 0; i < events.length; i++ ) {
+                events[ i ]();
+            }
+        };
+    }
+
+
+    addEvent( s( '#btn' )[ 0 ], 'click', function () {
+        console.log( 1 );
+    } );
+
+    addEvent( s( '#btn' )[ 0 ], 'click', function () {
+        console.log( 2 );
+    } );
+
+</script>
+</html>

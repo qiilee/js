@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 经典继承 : 产生一个新的对象，这个对象能够访问到另外一个对象身上的
+    //属性和方法
+    var obj  = {
+        name:'jack',
+        age:18
+    }
+
+    // 经典继承的方法：Object.create
+
+/*    var o  = Object.create(obj);
+    console.log(o.name)
+    console.log(o.age)
+    console.log(o)//o本身上面没有name和age这样两个属性
+    console.log(o.__proto__===obj)//true*/
+
+    // 兼容性问题：ie9才支持这个方法
+
+ /*   var o = {};
+    o.__proto__=obj;
+    console.log(o.name)
+    console.log(o.age)*/
+
+
+    /*function Fn(){
+    }
+    Fn.prototype=obj;*/
+
+    //经典继承方法的兼容性实现
+
+
+    /**
+     * 经典继承
+     * @param obj 被继承的对象
+     */
+    function create(obj){
+        function Fn(){
+        }
+        Fn.prototype=obj;
+//        var o = new Fn();
+//        return o;
+        return new Fn();
+        //返回一个新的对象，这个对象的原型是传入的参数
+    }
+
+    var obj1 = create(obj);
+    console.log(obj1);
+    console.log(obj1.name);
+    console.log(obj1.age)
+
+
+</script>
+</body>
+</html>

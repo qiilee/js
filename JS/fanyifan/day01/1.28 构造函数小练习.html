@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 创建一个Student构造函数，要求name、 age 、math、chinese、english
+
+    function Student(name,age,math,chinese,english){
+        this.name=name;
+        this.age=age;
+        this.math=math;
+        this.chinese=chinese;
+        this.english=english;
+        /*this.sayHello=function(){
+            console.log('大家好，我是'+this.name);
+        }*/
+    }
+    Student.prototype.sayHello=function(){
+        console.log('大家好，我是'+this.name);
+    }
+    var xiaohong = new Student('小红',13,99,99,99);
+    console.log(xiaohong)
+    xiaohong.sayHello();
+
+    var xiaoming = new Student('小明',14,88,88,88);
+    console.log(xiaoming);
+    xiaoming.sayHello()
+
+    console.log(xiaoming.sayHello===xiaohong.sayHello)//true
+
+    //问题：小红调用的sayHello方法和小明调用的sayHello方法是同一个方法吗？
+    // 不同 。
+
+    // 这样做存在的问题：
+    //每创建一个实例，就会新创建一个新的函数，就会造成内存占用过多的问题。
+
+    // 原型 
+    // 作用：实现资源共享
+    // 什么是原型:实例在被创建的那一刻，构造函数的prototype属性的值。
+
+
+
+
+
+</script>
+</body>
+</html>

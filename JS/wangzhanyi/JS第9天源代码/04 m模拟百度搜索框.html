@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 400px;
+            margin: 200px auto;
+            /*border: 1px solid #000;*/
+        }
+        #txtSearch {
+            width: 300px;
+        }
+        #pop {
+            width: 300px;
+            border: 1px solid red;
+            padding: 0px;
+        }
+        #pop ul {
+            list-style-type : none;
+            margin: 5px;
+            padding: 0px;
+        }
+        #pop ul li{
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" value="" id="txtSearch"/>
+    <input type="button" value="搜索" id="btnSearch"/>
+    <!--<div id="pop">-->
+    <!--<ul>-->
+    <!--<li>abc</li>-->
+    <!--<li>abcd</li>-->
+    <!--<li>abcde</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+</div>
+
+
+<script src="common.js"></script>
+<script>
+    // 当我们往输入框输入内容的时候，浏览器会默认的发送一条ajax请求 去到服务器的数据库是查询数据
+    // 去查询有多少数据是以我们输入的内容为开头的数据，把以输入的内容为开头的数据，提取出来返回到浏览器，渲染到输入框的下面
+
+    var  arr =["a","ab","abc","abcd","abcde","mmm","akp","ppp"];
+
+    //myself  first  初始版
+    //获取要操作的对象
+    var box = document.getElementById("box");
+    var txtSearch = document.getElementById("txtSearch");
+   //注册点击事件，吧以输入内容开头的数组元素过滤出来
+    txtSearch.onkeyup = function () {
+        var v = txtSearch.value;
+        var filterArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i].indexOf(v)==0){
+                filterArr.push(arr[i]);
+            }
+        }
+    //div已经创建  要删除
+        var div  =document.getElementById("pop");
+        if(div){
+            box.removeChild(div);
+        }
+//过滤出来的数组长度为0   不创建向下执行
+        if(!filterArr.length){
+            return;
+        }
+//文本框没输入内容 ，不想下执行
+        if(!v){
+          return;
+        }
+
+        //创建div   ul，把过滤出来的元素添加到li中
+        div  = document.createElement("div");
+        div.id="pop";
+        box.appendChild(div);
+        var ul = document.createElement("ul");
+        div.appendChild(ul);
+
+
+
+        for (var i = 0; i < filterArr.length; i++) {
+            var li = document.createElement("li");
+           ul.appendChild(li);
+             li.innerHTML =  filterArr[i];
+            li.onmouseover  = function () {
+                this.style.backgroundColor = "#c0c0c0";
+            }
+            li.onmouseout = function () {
+                this.style.backgroundColor ="white";
+            }
+            li.onclick = function () {
+                txtSearch.value = this.innerHTML;
+                box.removeChild(div);
+            }
+        }
+    }
+
+
+    // 1. 键盘按下并抬起的时候，获得用户输入的数据
+    // 2. 拿着用户输入的数据，去数据库搜索以用户输入的内容为开头的数据
+    // 3. 找到以用户输入的内容为开头的数据，存入新的容器中
+    // 4. 根据匹配到的数据(根据新数组的长度，来动态的生成列表中的li)，动态的生成列表
+    // 5. 判断特殊情况
+</script>
+</body>
+</html>

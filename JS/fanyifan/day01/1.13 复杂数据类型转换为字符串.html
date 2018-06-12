@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 复杂数据类型如何转变为字符串
+    /*
+    * 首先，会调用valueOf方法，如果方法的返回值是一个基本数据类型，就返回这个值
+    * 如果调用valueOf方法之后的返回值仍旧是一个复杂数据类型，就会调用该对象的toString方法
+    * 如果toString方法调用之后的返回值是一个基本数据类型，就返回这个值，
+    * 如果toString方法调用之后的返回值是一个复杂数据类型，就报一个错误。
+    * */
+//    var obj = {
+//        valueOf:function(){
+//            return 1;
+//        }
+//    }
+//    console.log(obj+'')//'1'
+
+
+//    var obj = {
+//        valueOf:function(){
+//            return [1,2];
+//        }
+//    }
+//    console.log(obj+'')//'[object Object]';
+
+    /*var obj = {
+        valueOf:function(){
+            return [1,2];
+        },
+        toString:function(){
+            return 1;
+        }
+    }
+    console.log(obj+'')//'1';*/
+
+/*
+    /!*var obj = {
+        valueOf:function(){
+            return [1,2];
+        },
+        toString:function(){
+            return [1,2,3];
+        }
+    }
+    console.log(obj+'')//报错 Uncaught TypeError: Cannot convert object to primitiv*!/e value;*/
+    var arr = [new Object(),new Date(),new RegExp(),new String(),new Number(),new Boolean(),new Function(),
+    new Array(),Math]
+    console.log(arr.length)
+
+    for(var i = 0;i<arr.length;i++){
+        arr[i].valueOf=function(){
+            return 1
+        }
+        arr[i].toString=function(){
+            return 'toString'
+        }
+        console.log(arr[i]+'')
+    }
+
+// 1、开始的时候return [1,2,3]处为 return "valueof"
+// 得到的返回值是valueof
+//             toString
+//             7valueof
+// 说明：
+// 其他八种复杂数据类型是先调用valueOf方法，时间对象是先调用toString方法
+// 2、最后改成的return [1,2,3]
+//  得到的返回值是9toString
+//    说明执行valueof后都来执行toString
+</script>
+</body>
+</html>

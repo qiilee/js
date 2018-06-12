@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 模拟从后台拿到的数据
+            var datas = [{
+                name: "哇哈哈",
+                url: "http://www.itcast.cn",
+                type: "IT最强培训机构"
+            }, {
+                name: "黑马程序员",
+                url: "http://www.itheima.com",
+                type: "大学生IT培训机构"
+            }, {
+                name: "传智前端学院",
+                url: "http://web.itcast.cn",
+                type: "前端的黄埔军校"
+            }, {
+                name: "传智前端学院",
+                url: "http://web.itcast.cn",
+                type: "前端的黄埔军校"
+            }, {
+                name: "传智前端学院",
+                url: "http://web.itcast.cn",
+                type: "前端的黄埔军校"
+            }];
+
+            //基本思路：每次点击按钮根据datas中对象的个数创建tr,根据tr中td的个数创建td
+
+            //借助html方法，使用字符串拼接的方式去拼出内部结构
+            $("#j_btnGetData").click(function () {
+                var arr = [];
+
+                //先遍历datas
+                for (var i = 0; i < datas.length; i++) {
+                    var obj = datas[i];
+                    //每次创建一个行
+                    var str = "<tr><td>" + obj.name + "</td><td>" + obj.url + "</td><td>" + obj.type + "</td></tr>";
+                    arr.push(str);
+                }
+
+                $("#j_tbData").html(arr.join(""));
+            })
+        });
+    </script>
+</head>
+
+<body>
+<input type="button" value="获取数据" id="j_btnGetData"/>
+<table>
+    <thead>
+    <tr>
+        <th>标题</th>
+        <th>地址</th>
+        <th>说明</th>
+    </tr>
+    </thead>
+    <tbody id="j_tbData">
+
+
+    </tbody>
+</table>
+</body>
+
+</html>

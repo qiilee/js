@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动的点</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+
+    var currX = cas.width / 2, 
+        currY = cas.height / 2;
+
+    // 一开始默认在正中间有一个矩形, 鼠标点击那里, 矩形就移动到那里
+    ctx.fillRect( currX - 10, currY - 10, 20, 20 );
+
+
+    // 添加鼠标的点击事件获得目标坐标
+    var intervalId;
+    cas.onmousedown = function ( e ) {
+        clearInterval( intervalId );
+
+        var x = e.offsetX,
+            y = e.offsetY;
+        
+        // 开始绘图
+        // ctx.clearRect( 0, 0, cas.width, cas.height );
+        // ctx.fillRect( x - 10, y - 10, 20, 20 );
+
+        intervalId = setInterval(function () {
+            
+            // 重绘
+            // 1, 判断是否已经非常接近目标. 如果接近则直接将 curr? = ?
+            //      如果不是非常接近, 就按照增量办法 为 curr? += ...
+            var distanceX = Math.abs( x - currX );
+            var distanceY = Math.abs( y - currY );
+            // 比例: 以 x 的增量为基准
+            // deltaX / deltaY == distanceX / distanceY
+            var k = distanceY / distanceX;   // 有了该比例以后, 增量 deltaX 为基准的话, deltaY = deltaX * k
+
+            // 设定增量
+            var deltaX = 1;
+            var deltaY = deltaX * k;
+
+            // 方向标记
+            var markX = x > currX ? 1 : -1;
+            var markY = y > currY ? 1 : -1;
+
+            // 现在是否接近
+            if ( x - deltaX <= currX && currX <= x + deltaX &&
+                 y - deltaY <= currY && currY <= y + deltaY ) {
+                // 在 很接近的位置了
+                currX = x;
+                currY = y;
+                clearInterval( intervalId ); // 已经到达
+            } else {
+                // 没有很接近
+                // 按照增量变化
+                currX += markX * deltaX;
+                currY += markY * deltaY;
+            }
+
+
+
+            // 2, 擦除
+            ctx.clearRect( 0, 0, cas.width, cas.height );
+
+            // 3, 重绘
+            ctx.fillRect( currX - 10, currY - 10, 20, 20 );
+
+        }, 16.67 );
+    }
+</script>
+</html>

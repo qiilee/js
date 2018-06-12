@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            height: 30px;
+            background: #036663;
+            border-bottom: 1px solid #369;
+            line-height: 30px;
+            padding-left: 30px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+
+        }
+
+        .d-box {
+            width: 400px;
+            height: 300px;
+            border: 5px solid #eee;
+            box-shadow: 2px 2px 2px 2px #666;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            background-color: white;
+        }
+
+        .hd {
+            width: 100%;
+            height: 25px;
+            background-color: #7c9299;
+            border-bottom: 1px solid #369;
+            line-height: 25px;
+            color: white;
+            cursor: move;
+        }
+
+        #box_close {
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="javascript:;" id="register">注册信息</a>
+</div>
+
+<!--盒子-->
+<div class="d-box" id="d_box">
+    <div class="hd" id="drop">注册信息 (可以拖拽)
+        <span id="box_close">【关闭】</span>
+    </div>
+    <div class="bd"></div>
+</div>
+<script src="common.js"></script>
+<script>
+    //1 获取元素
+    var d_box = document.getElementById("d_box");
+    var drop = document.getElementById("drop");
+
+    //2 点住盒子时获取鼠标在盒子内的位置。
+    drop.onmousedown = function (e) {
+        //3 鼠标移动时获取鼠标位置，让盒子简单跟随。
+        var e = e || event;
+        var h = e.clientY - d_box.offsetTop;
+        var w = e.clientX - d_box.offsetLeft;
+
+        document.onmousemove = function (e) {
+            //4 根据鼠标在盒子内的位置进行偏移，实现拖拽效果。
+            var e = e || event;
+            //获取鼠标位置。设置给d_box
+            d_box.style.left = e.clientX - w + "px";
+            d_box.style.top = e.clientY - h + "px";
+        }
+
+    };
+
+    drop.onmouseup = function () {
+        document.onmousemove = null;
+    };
+
+
+    //5 鼠标抬起，清除鼠标移动事件，让盒子停止移动。
+
+</script>
+</body>
+</html>

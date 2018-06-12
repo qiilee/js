@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+        <ul>
+            <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+        </ul>
+        <div class="arrow" id="arrow">
+            <a href="javascript:;" class="prev" id="arrLeft"></a>
+            <a href="javascript:;" class="next" id="arrRight"></a>
+        </div>
+    </div>
+</div>
+
+<script src="js/animate.js"></script>
+<script>
+    //标注了每个图片要运动到的位置
+    var config = [
+        {
+            width: 400,
+            top: 20,
+            left: 50,
+            opacity: 0.2,
+            zIndex: 2
+        },//0
+        {
+            width: 600,
+            top: 70,
+            left: 0,
+            opacity: 0.8,
+            zIndex: 3
+        },//1
+        {
+            width: 800,
+            top: 100,
+            left: 200,
+            opacity: 1,
+            zIndex: 4
+        },//2
+        {
+            width: 600,
+            top: 70,
+            left: 600,
+            opacity: 0.8,
+            zIndex: 3
+        },//3
+        {
+            width: 400,
+            top: 20,
+            left: 750,
+            opacity: 0.2,
+            zIndex: 2
+        },//4
+    ];//config其实就是一个配置单 规定了每张图片的大小位置层级透明度
+
+    //获取元素
+    var slide = document.getElementById("slide");
+    var list = slide.children[0];
+    var lis = list.children;
+    var wrap = document.getElementById("wrap");
+    var arr = slide.children[1];
+    var arrLeft = arr.children[0];
+    var arrRight = arr.children[1];
+
+    //第一步是根据config中对应的元素，让每个li运动到指定位置
+    //遍历config
+    changePos();
+
+    //第二步设置移入移出，箭头的显示和隐藏
+    wrap.onmouseover = function () {
+        //让arr渐渐的显示
+        animate(arr, {"opacity": 1});
+    };
+
+    wrap.onmouseout = function () {
+        //让arr渐渐的显示
+        animate(arr, {"opacity": 0});
+    };
+
+    //第三步 点击右按钮
+    arrRight.onclick = function () {
+        //我们发现，点击一次右按钮时，跟将config中第一个元素删除的效果相同
+        //我们又发现，最后一个li对应了被删除掉的那一个位置
+
+        //总结，每次点击右按钮时，做的事情就是
+        //修改config中的元素位置：将config中第一个元素删除后放到config的最后位置
+        config.push(config.shift());
+        //config在更改以后，li不会运动的
+        //让li根据config中新的元素位置，再次进行运动
+        changePos();
+    };
+
+
+    //第四步 点击左按钮
+    arrLeft.onclick = function () {
+        //将config中最后一个元素拿到第一个位置上
+        config.unshift(config.pop());
+
+        //让每一个li根据config中的新位置进行运动
+        changePos();
+    };
+
+
+    function changePos() {
+        for (var i = 0; i < config.length; i++) {
+            //让lis中的某个li运动到config对应的一个元素上
+            animate(lis[i], config[i]);
+        }
+    }
+
+
+</script>
+</body>
+</html>

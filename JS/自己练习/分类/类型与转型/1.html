@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var name = "张三";
+    console.log(name);//这里显示 张三   不会输出“张三”
+    console.log(typeof name); //string
+
+
+    console.log(10/0);//Infinity无穷大
+    console.log(isFinite(10/0));//Finite有限的
+
+    var a ='123';
+    var b ='abc';
+    console.log(a-0);
+    console.log(b*1);//隐式的尝试把a与b转成数字
+
+
+    var c =[];
+    var d =[];
+    console.log(c == d);//false
+</script>
+</body>
+</html>

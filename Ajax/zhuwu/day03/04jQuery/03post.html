@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+
+            $("input").bind("click",function(){
+                $.post("03post.php",{"username":"1"}, function(data){
+                      alert(data);
+                })
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="post 方式提交">
+</body>
+</html>

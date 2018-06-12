@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">按钮</button>
+
+<script>
+    var btn = document.getElementById("btn");
+
+    btn.onclick = fun;
+    //    btn.onmouseover = fun;
+    //    btn.onmouseout = fun;
+
+
+    function fun(e) {
+        //e 是一个形参 这个参数不是用户传入的，而是事件本身给你传入的
+        //e 中包含了关于本次事件触发的一些信息
+        console.log(e.type);
+
+        alert("今天天气不错");
+    }
+
+
+    //直接触发某个标签的点击事件
+    //btn.click();
+
+
+    //错误的写法，只是调用了事件处理程序中的函数代码，不是真正的触发了事件
+    //btn.onclick();
+
+
+</script>
+</body>
+</html>

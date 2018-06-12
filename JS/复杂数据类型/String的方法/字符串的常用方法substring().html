@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //注 如果 indexStart 等于 indexEnd，substring 返回一个空字符串。
+    // 如果省略 indexEnd，substring 提取字符一直到字符串末尾。
+    //  如果任一参数小于 0 或为 NaN，则被当作 0。
+    //  如果任一参数大于 stringName.length，则被当作 stringName.length。
+    // 如果 indexStart 大于 indexEnd，则 substring 的执行效果就像两个参数调换了一样。 所以输出结果同上；
+    var anyString = "Mozilla";
+    console.log(anyString.substring(1));//ozilla
+    console.log(anyString.substring(2));//zilla
+
+    console.log(anyString.substring(0,3));//Moz
+    console.log(anyString.substring(3,0));//Moz
+    console.log(anyString.substring(0,3).length);//Moz
+    console.log(anyString);//
+
+
+    console.log(anyString.substring(4,7));//lla
+    console.log(anyString.substring(7,4));//lla
+
+    console.log(anyString.substring(0,6));//Mozill
+    console.log(anyString.substring(0,7));//Mozilla
+    console.log(anyString.substring(0,10));//Mozilla
+
+
+
+
+</script>
+</body>
+</html>

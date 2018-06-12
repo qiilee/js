@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //比如我想要匹配字符串，有任意一个字符为abcdefghijklmn都可以
+    //a-n之间所有小写字母
+    //var reg = /[a-n]/;
+
+    //匹配所有小写字母
+    //var reg = /[a-z]/
+    //console.log(reg.test("1232455326f"));
+
+    //匹配所有大写字母
+    //var reg = /[A-Z]/;
+
+    //匹配所有的数字
+    //var reg = /[0-9]/;
+
+
+    //组合类
+    //匹配所有数字小写字母大写字母
+    var reg = /[0-9a-zA-Z]/;
+    //可以自由组合
+    var reg = /[M-Z3-7f-q]/;
+    var reg = /[M-Zf-q]/;
+    var reg = /[1-3f-q]/;
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //    1.内存开辟空间，存储新创建的对象
+    //    2.会把this设置为当前对象
+    //    3.执行函数内部的代码，设置对象的属性和方法
+    //    4.返回新创建的对象
+    function Student(name, age, score) {
+
+        this.name = name;
+        this.age = age;
+        this.score = score;
+        this.sayHi = function () {
+            console.log("大家好，我叫：" + this.name);
+        };
+
+    }
+    var s1 = new Student("小明", 18, 10);
+    var s2 = new Student("小云", 12, 99);
+    console.log(s1.name);
+    console.log(s2.name);
+    console.log(s1.age);
+    console.log(s2.age);
+    s1.sayHi();
+    s2.sayHi();
+
+    console.log("========================");
+
+
+    //对象：无序属性的集合，我们可以把对象看成键值对
+    var a = new Object();
+    a["name"] = "小红";
+    a.age = 19;
+     console.log(a.name);
+     console.log(a["age"]);
+     for(var i =0;i<10;i++){
+         a["n"+i]=i;
+     }//动态的给对象增加属性
+    console.log(a.n2);
+
+</script>
+</body>
+</html>

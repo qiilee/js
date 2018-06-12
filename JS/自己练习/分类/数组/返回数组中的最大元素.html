@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        /**
+         * 求一组数中的最大值
+         * @type {number[]}
+         * @param array {Array}
+         * @returns {number}
+         */
+        var array = [12, 23, 43, 1, 2, 56, 7];
+        console.log(getMax(array));
+        function getMax(array) {
+            array = array || []; //判断array是否为数组
+
+            if (array.length == 0) {
+                return;
+            }
+
+            var max = array[0];
+            for (var i = 1; i < array.length; i++) {
+                max = max < array[i] ? array[i] : max;
+
+            }
+            return max;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

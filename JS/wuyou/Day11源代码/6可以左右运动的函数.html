@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            /*left: 500px;*/
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">按钮</button>
+<button id="btn2">按钮</button>
+<div id="box"></div>
+
+<script>
+    //获取元素
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box = document.getElementById("box");
+    //设置定时器
+    var timer = null;
+    //我们手动设置的默认值是不科学的，这个值应该为盒子当前的所在位置
+    //var leftValue = 0;
+
+    //添加事件
+    btn1.onclick = function () {
+        animate(box, 400)
+    };
+
+
+    //添加事件
+    btn2.onclick = function () {
+        animate(box, 600);
+    };
+
+    //让某个盒子运动到某一个位置
+    function animate(tag, target) {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //leader的值的获取,元素的当前位置
+            var leader = tag.offsetLeft;
+            //step的值设置,step需要根据leader和target的关系判断正负
+            var step = 9;
+            //检测
+            step = leader < target ? step : -step;
+
+            //当元素没有运动到指定位置时就可以进行运动
+            if (leader != target) {
+                //匀速运动公式
+                //标签的位置（新） = 标签的位置（旧） + 步长
+                leader = leader + step;
+                //设置给left属性
+                tag.style.left = leader + "px";
+            } else {
+                clearInterval(timer);
+            }
+
+        }, 17);
+    }
+
+
+</script>
+</body>
+</html>

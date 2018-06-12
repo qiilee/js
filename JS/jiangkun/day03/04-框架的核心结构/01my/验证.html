@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script src='itcast.js'></script>
+<script>
+    //总结：多练
+    var lists = '1,2,3,4,5,6'.split(',');
+
+    var html ='<ul>'+ F.map(lists,function (v, i) {
+      return '<li>'+v+'</li>';
+    }).join('')+'</ul>';
+
+    new F('#container')[0].innerHTML = html;
+
+    new F(' ul li').each(function(v,i){
+        this.onmouseover = function(){
+            this.style.backgroundColor = 'red';
+        }
+    }).each(function(v,i){
+        this.onmouseout = function(){
+            this.style.backgroundColor = '';
+        }
+    })
+</script>
+</html>

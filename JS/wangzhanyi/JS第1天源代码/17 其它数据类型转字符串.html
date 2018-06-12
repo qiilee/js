@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 其它数据类型转字符串，也分两种， 一个是显式 .toString(),String()，一个是隐式 ""
+
+//    var a = 123;
+//    console.log(typeof a);
+//    a = a+"";
+//    console.log(typeof a);
+
+//    var a = true;
+//    a = a+""; // 用""连接的话，可以保证原值不变，但是数据类型变了
+//    console.log(typeof a);
+//    console.log(a);
+
+//    var a = undefined;
+    //    console.log(typeof a);
+    //    a = a+"mmmm";
+    //    console.log(typeof a );
+    //    console.log(a);
+    // 程序中有这么一句话，叫万物皆对象  所有的对象都有toString()方法 但是有两是特殊的,undefined和null是没有toString()方法的，如果要将这两个进行显式转换的话，必须 String()
+//    var a = 123;
+//    var b = false;
+//    a = a.toString();
+//    b = b.toString();
+//    console.log(typeof a);
+//    console.log(typeof b);
+
+    var a = undefined;
+    console.log(typeof a);
+    a = String(a);
+    console.log(typeof a);
+
+    var b = null;
+    console.log(typeof b);
+    b = String(b);
+    console.log(typeof b);
+</script>
+</body>
+</html>

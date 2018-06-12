@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击" id="btn">
+</body>
+<script>
+    // 不考虑浏览器兼容, 实现刚才的需求
+
+    // 调用一个事件是没有问题的, 但是调用多个事件就有问题了
+    // 事件又要按照顺序调用, 所以使用数组存储
+    // 计划, 每次 add 事件的时候, 病没有存到 按钮上面, 而是存到数组中了
+    // 而点击按钮触发的事件其实只有一个函数, 是从数组中取出每一个函数依次调用
+
+    function s ( name ) { return document.querySelectorAll( name ); }
+
+
+    var eventObj = { };  
+    // 缓存, 这个缓存中存储的是一个键值对, 键名是事件的类型, 值是一个数组存储的是事件处理函数
+
+
+    function addEvent ( control, type, callback ) {
+        if ( !eventObj[ type ] ) {
+            console.log( '初始化 ' + type + ' 事件' );
+
+            // 如果有 就什么也不做, 如果没有应该初始化
+            eventObj[ type ] = [];
+
+            control.addEventListener( type, function () {
+                for ( var i = 0; i < eventObj[ type ].length; i++ ) {
+                    eventObj[ type ][ i ]();
+                }
+            } );
+        }
+
+        console.log( '追加事件处理函数' );
+    }
+
+
+    var btn = s( '#btn' )[ 0 ];
+
+    addEvent( btn, 'click' );
+    addEvent( btn, 'click' );
+    addEvent( btn, 'click' );
+    addEvent( btn, 'click' );
+    addEvent( btn, 'click' );
+
+    addEvent( btn, 'keyup' );
+    addEvent( btn, 'keyup' );
+    addEvent( btn, 'keyup' );
+    addEvent( btn, 'keyup' );
+
+
+    addEvent( btn, 'mouseover' );
+    addEvent( btn, 'mouseover' );
+    addEvent( btn, 'mouseover' );
+</script>
+</html>

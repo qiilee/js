@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        //instance of 关键字  是否是谁的对象
+        //返回boolean值
+        var o = [];
+
+        console.log(o instanceof Array);
+        console.log(o instanceof Date);
+
+        //用法
+        function f1(arr){
+            //检测参数是否合法
+            arr = arr||[];
+            //检测arr是否是一个数组
+            if(!(arr instanceof Array)){
+             return -1;
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

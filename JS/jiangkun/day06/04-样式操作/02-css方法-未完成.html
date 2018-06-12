@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+    <script>
+        Itcast.fn.css = function ( key, value ) {
+            // 如何实现了
+            // 判断参数, 使用三个模式进行编写
+            if ( value === undefined ) {
+                if ( typeof key == 'string' ) {
+                    // 获得样式
+                } else {
+                    // 设置多个样式
+                    return this.each(function () {
+                        var that = this;
+                        Itcast.each( key, function ( k, v ) {
+                            that.style[ k ] = v;
+                        });
+                    });
+                }
+            } else {
+                // 设置单个样式
+                // 给 this 中的每一个 DOM 元素 增加对应的样式
+                return this.each( function () {
+                    this.style[ key ] = value;
+                });
+            }
+
+
+            // =====
+            // if ( typeof key == 'object' ) {
+
+            // } else if ( value === undefined ){ 
+
+            // } else {
+
+            // }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div style="width:100px; height: 200px; background-color: blue;">1</div>
+    <div>2</div>
+    <div>3</div>
+</body>
+<script>
+    $( 'div' ).css( 'backgroundColor', function ( i, v ) {
+        console.log( arguments );
+        return [ 'red', 'green', 'blue' ][ i ];
+    });
+
+
+    // var obj = $( 'div' ).first().css( [ 'width', 'height' ] );
+
+
+</script>
+</html>

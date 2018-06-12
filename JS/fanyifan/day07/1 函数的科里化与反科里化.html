@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数的科里化   科里是一个人名
+    // 让一个函数使用于比较窄的适用场景
+
+   /* function eat(){
+        return '做饭'
+    }
+    function study(){
+        return '上学'
+    }
+
+    function somebodyDoSomeThing(name,doThing){
+        console.log(name+doThing())
+    }
+
+    // 把之前的函数变为一个适应性更强的函数
+
+    var xiaomingDo= somebodyDoSomeThing.bind(null,'小明')
+    xiaomingDo(eat);
+    xiaomingDo(study);*/
+
+   function listToArray(obj){
+       return [].slice.call(obj,0)
+   }
+
+    //函数反科里化
+    //让一个函数适用于更广的范围。
+
+
+    // bind方法要处理兼容性问题
+    Function.prototype.bind=function(obj){
+        // 第一次传入的参数会保留在bind的作用域当中。
+        //把类数组转换为数组
+        //调用bind方法的函数就是bind方法中的this
+        var self = this;//this就是调用bind方法的函数
+        var firstArg = listToArray(arguments).slice(1);
+        return function(){
+            //这是经过bind方法处理之后的新函数
+            //获取第二次传入的参数
+            var secondArg = listToArray(arguments);
+            //组成一个完整的参数数组
+            var finalArg= firstArg.concat(secondArg);
+            //新函数执行的时候fn执行
+            console.log(window)
+            return self.apply(obj,finalArg);
+        }
+    }
+
+
+    Function.prototype.uncurry=function(){
+       /* return Array.prototype.slice.call(obj)*/
+       return this.call.bind(this)
+    };
+
+    //Array.prototype.slice之前只适用于数组。
+
+    //让某一个对象能够使用到数组原型上面的slice方法
+    /* Array.prototype.slice.call(obj);
+    Object.prototype.toString.call(obj)*/
+
+
+   var slice = Array.prototype.slice.uncurry()//uncurry在调用的时候内部的this
+    function fn(name,age){
+       var arr = slice(arguments,0);
+       console.log(arr)
+    }
+    fn('jack',18)
+
+
+    var push  = Array.prototype.push.uncurry();
+
+
+    var obj= {};
+    push(obj,'jack')
+
+
+    Array.prototype.push.call(obj,'jack')
+    push(obj,18)
+    console.log(obj)
+
+    var toString = Object.prototype.toString.uncurry();
+
+
+    var arr = [1,2,3]
+
+    toString(arr)//'[object Object]'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

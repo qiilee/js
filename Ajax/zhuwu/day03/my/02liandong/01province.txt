@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "provinceName": "河南省",
+        "cities": [
+            {
+                "id": 11,
+                "cityName": "洛阳市",
+                "areas":[
+                     {
+                         "areaId":31,
+                         "areaName":"牡丹县"
+                     },
+                     {
+                          "areaId":32,
+                          "areaName":"通州区"
+                    },
+                      {
+                           "areaId":33,
+                           "areaName":"丰台区"
+                     }
+                ]
+            },
+            {
+                "id": 12,
+                "cityName": "驻马店市"
+            },
+            {
+                "id": 13,
+                "cityName": "南阳市"
+            },
+            {
+                "id": 14,
+                "cityName": "开封市"
+            },
+            {
+                "id": 15,
+                "cityName": "周口市"
+            },
+            {
+                "id": 16,
+                "cityName": "平顶山市"
+            },
+            {
+                "id": 17,
+                "cityName": "信阳市"
+            },
+            {
+                "id": 18,
+                "cityName": "安阳市"
+            },
+            {
+                "id": 19,
+                "cityName": "濮阳市"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "provinceName": "湖南省",
+        "cities":[
+            {
+                 "id":21,
+                 "cityName":"浏阳市"
+            },
+            {
+                "id":22,
+                "cityName":"益阳市"
+            },
+            {
+                "id":23,
+                "cityName":"衡阳市"
+            },
+            {
+                "id":24,
+                "cityName":"岳阳市",
+                "areas":[
+                    {
+                         "id":41,
+                         "areaName":"岳阳县"
+                    },
+                    {
+                         "id":42,
+                         "areaName":"朝阳区"
+                    },
+                    {
+                         "id":43,
+                         "areaName":"海淀区"
+                    }
+               ]
+            },
+            {
+                "id":221,
+                "cityName":"邵阳市"
+            }
+        ]
+    }
+]

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 字符串转数字类型分两大类  一个是显式类型转换， 一个是隐式类型转换 + - * / %
+    //
+//    var  num = "123456";
+    //    console.log(typeof num);
+    ////    num = +num;
+    ////    var num1 = num - 100;
+    //    // 只要涉及到数学运算中的-*/%都会先将字符串转换成对应的数字，再进行相应的数学运算
+    //    console.log(num1);
+
+//    var num = "258";
+//    var num1 = num%2;
+//    console.log(num1);
+//    var a ="123ab";
+//    var b = a - 10;
+//    console.log(b);// NaN  not  a  number  不是一个数字  NaN是属于number类型的，表示数字的一种不正常的状态，
+    // 任何涉及NaN的操作，结果都是NaN
+    //NaN非常的特殊，特殊到自己都不认识自己
+
+//    console.log(NaN==NaN);
+    // 显式类型转换  Number()   parseInt()   parseFloat()
+//    var a = "123abc";
+//    var b = Number(a); //是将整个字符串都进行转换，如果有一个不能转换的话，就NaN的错误
+//    console.log(b);
+//    console.log(typeof b);
+//    var a = " "; // 空字符串转换成number类型的话，就是0
+//    var b = Number(a);
+//    console.log(b);
+
+//    var  b = true; // boolean类型中的true对应着数字中的1
+//    var a = Number(b);
+//    console.log(a);
+//
+//    var d = false;// boolean类型中的true对应着数字中的0
+//    var c = Number(d);
+//    console.log(c);
+
+//    var a = "123abc";
+//    var b = parseInt(a); // 是将字符串中的字符一个一个的进行转换，直到碰到不能转换的为止
+//    console.log(b);
+
+//    var c = "123.456";
+////    var d = parseInt(c); // int代表整数，不会转换小数
+//    var d = parseFloat(c);// 是可以字符串中的小数转换过来的，其它的使用方式与parseInt
+//    console.log(d);
+    // width  200px
+
+//    var a = undefined;
+//    var b = Number(a); // NaN 代表数字的一种不正常的状态，本来要转换的操作数，转换不成number类型
+//    console.log(b);
+
+//    var o = null;
+//    var m = Number(o); // null是对象的空值状态，转换成number类型的话，就是0
+//    console.log(m);
+
+    // Number() 与parseInt()的区别 转换字符串时的区别
+    // 1. Number()是将整体进行转换，如果有一个不能转换的话，就报NaN
+    // 2.parseInt()是将待转换的字符串类型，一个字符一个字符的进行转换，如果碰到不能转换的字符的话，则返回之前已经转换成功的字符，后面的不再转换
+//    var str = " ";
+////    var a = Number(str);
+////    console.log(a);
+//    console.log(Number(str));
+//    console.log(parseInt(str));// 如果不是数字的话，就是报NaN
+
+//    var str1 = undefined; //undefined是一种数据类型，里面只有一个值，就是undefined
+//    // null也是一种数据类型，也只有一个值，就是null
+//    // boolean有两个值，是true和false
+//    console.log(Number(str1));// 转换一样，都是NaN
+//    console.log(parseInt(str1));// 转换一样，都是NaN
+
+//    var str2 = null; // null是对象类型的一种空值状态
+//    console.log(Number(str2)); // 空值状态的时候，都是0
+//    console.log(parseInt(str2));// NaN
+    console.log(isNaN(" ")); // isNaN 是　不是一个数字　　也就是说不是一个数字的时候，才会返回true,如果是一个数字的话，则返回false  内部先调用Number()，将" "转换成对应的number类型
+
+    var a = "123.456";
+    console.log(Number(a));// Number()会保留小数
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    function fn(){
+//        this.length=6;
+//    }
+//    function foo(){
+//        this.length=10;
+//        fn.call(this);
+//    }
+//    var p1=foo.call(null);
+//    console.log(p1.length);
+
+
+
+var obj={};
+Object.defineProperty(obj,"name",{
+    get:function(){
+        return 10;
+    }
+});
+console.log(obj.name);
+</script>
+</body>
+</html>

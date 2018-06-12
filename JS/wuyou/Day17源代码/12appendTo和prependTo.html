@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //使用append添加
+            //$("div").append($("#text"));
+
+            //我们可以在操作要添加的子节点时使用appendTo将其放入到某个父元素中
+            //$("#text").appendTo($("div"));
+
+            //prependTo
+            $("#text").prependTo($("div"));
+        });
+    </script>
+</head>
+<body>
+
+<div>
+    <span>我是span</span>
+</div>
+<div>
+    <span>我是span</span>
+</div>
+<p id="text">我是p标签</p>
+</body>
+</html>

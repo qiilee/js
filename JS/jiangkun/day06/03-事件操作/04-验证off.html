@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+
+    <!--<script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>-->
+</head>
+<body>
+    <button id="btn"> click </button>
+</body>
+<script>
+/*
+    $( '#btn' ).on( 'click', function () {
+        alert('点击了123');
+    });
+
+    var func;
+    $( '#btn' ).on( 'click', func = function () {
+        alert('点击了');
+    });
+    // 该方法可以 off 掉么?
+
+    // 代码?
+    // $( '#btn' ).off( 'click', function () {
+    //     alert('点击了');
+    // });
+
+    $( '#btn' ).off( 'click', func );
+
+
+
+    // [] == []
+    // {} == {}
+    // function () {} == function () {}
+    // ...
+*/
+
+
+
+    I( '#btn' ).on( 'click', function () {
+        alert( '11111111111111' );
+    });
+    var f;
+    I( '#btn' ).on( 'click', f = function () {
+        alert( '22222222222222222' );
+    });
+
+    I( '#btn' ).off( 'click', f );
+
+
+</script>
+</html>

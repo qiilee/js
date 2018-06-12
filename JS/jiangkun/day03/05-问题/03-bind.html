@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+
+    // document.getElementsByTagName( 'div' );
+    // var f = document.getElementsByTagName;
+    // var div = f.call( document, 'div' );
+    // 运行时绑定, 实时绑定, 动态绑定
+
+    // document.getElementsByTagName( ... )
+    // node.getElementsByTagName( ... )
+
+    // div[ 0 ].innerHTML = '123';
+
+
+    // bind 相当于提前绑定
+    var f = document.getElementsByTagName.bind( document );
+    // 此时 f 还是那个函数, 但是 f 在执行的时候 this 是 document.
+
+    f( 'div' )[ 0 ].innerHTML = '提前绑定';
+
+
+</script>
+</html>

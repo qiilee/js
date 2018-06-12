@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //实现一个函数，可以对缓存进行增删改查操作,缓存超出长度限制就，删除掉最早的缓存
+
+    function createCache(){
+        var cache={};
+        var arr = [];
+        return {
+            set:function(key,value){
+                // 判断缓存中是否存在相应的缓存，如果存在，就修改这个值
+                if(cache[key]){
+                    cache[key]=value;
+                    return;
+                }
+                if(arr.length>=3){
+                    //获取到数组的第一项。
+                    var deleteArr = arr.shift()
+                    //把相应的缓存删除掉
+                    delete cache[deleteArr];
+                    //缓存中增加一项
+                    cache[key]=value;
+                    arr.push(key);
+                }else{
+                    //如果缓存长度没有超出限制，则直接增加一项。
+                    cache[key]=value;
+                    arr.push(key);
+                }
+            },
+            //获取某一项缓存
+            get:function(key){
+                //如果缓存中有这一项，直接返回
+                if(cache[key]){
+                    return cache[key];
+                }else{
+                    //如果缓存中不存在，则给一个提示
+                    console.log('缓存中未找到')
+                }
+            },
+            // 删除某一项缓存
+            remove:function(key){
+                if(cache[key]){
+                    delete cache[key];
+                    //数组中药删除相应的这一项。
+                    var index= arr.indexOf(key);
+                    arr.splice(index,1)
+                }
+            }
+        }
+    }
+    var personCache= createCache();
+    //修改或增加操作。
+    personCache.set('name1','jack1');
+    personCache.set('name2','jack2');
+    personCache.set('name3','jack3');
+    personCache.set('name4','jack4');
+    personCache.set('name3','rose3');
+    //查询操作
+    console.log(personCache.get('name2'))
+    console.log(personCache.get('name3'))
+    console.log(personCache.get('name4'))
+    //删除操作
+    personCache.remove('name3');
+
+
+
+
+
+</script>
+</body>
+</html>

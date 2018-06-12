@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto;
+        }
+
+        table {
+            border-collapse: collapse; /*倒塌，合并边框*/
+            border-spacing: 0; /*边框间隔*/
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th, td {
+            border: 1px solid #d0d0d0;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" name="" id="j_cbAll"/>
+            </th>
+            <th>菜名</th>
+            <th>饭店</th>
+        </tr>
+        </thead>
+        <tbody id="j_tb">
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>西红柿炒鸡蛋</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>红烧狮子头</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>日式肥牛</td>
+            <td>田老师</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    //注意 var flag = true;写的位置，要在点击事件函数之内o，写下外层for内，是错误的
+    //不要把下个for循环放在第一个点击事件内o
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//myself   once
+//    var j_cbAll = document.getElementById("j_cbAll");
+//    var j_tb = document.getElementById("j_tb");
+//    var inputs = j_tb.getElementsByTagName("input");
+//
+//    j_cbAll.onclick = function () {
+//        for (var i = 0; i < inputs.length; i++) {
+////            if (this.checked) {
+////                inputs[i].checked = true;
+////            } else {
+////                inputs[i].checked = false;
+////            }
+//            inputs[i].checked = this.checked;
+//        }
+//
+//
+//    }
+//
+//    for (var k = 0; k < inputs.length; k++) {
+//
+//        inputs[k].onclick = function () {
+//            var flag = true;//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//            for (var j = 0; j < inputs.length; j++) {
+//                if (!inputs[j].checked) {//有一个没选中
+//                    flag = false;
+//                    break;
+//                }
+//            }
+//            j_cbAll.checked = flag;
+//        }
+//    }
+
+
+    //teacher  :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+    ////    //　要获得操作的对象   获取事件源
+    //    var btnAll = document.getElementById("j_cbAll");
+    //
+    //    // 先获得tbody
+    //    var tbody = document.getElementById("j_tb");
+    //    var inputs = tbody.getElementsByTagName("input");
+    //    btnAll.onclick = function () {
+    //        for (var i = 0; i < inputs.length; i++) {
+    ////            if(btnAll.checked == true){
+    ////                inputs[i].checked = true; //选中
+    ////            }else {
+    ////                inputs[i].checked = false; // 不选中
+    ////            }
+    //            inputs[i].checked = btnAll.checked;// 和总checkbox的状态是一样的
+    //        }
+    //    }
+    //    // 当我们点击当前checkbox的时候，要判断 一下其它checkbox的状态
+    //    // 如果所有的checkbox都选中的话，那么 让总的checkbox也选中
+    //    // 如果有一个没有选中的话，那总的按钮也不选中   这是一个判断的临界点，只有一个最特殊的，就是是否有一个没有被选中
+    //    for (var j = 0; j < inputs.length; j++) {
+    //        inputs[j].onclick = function () { //当点击 当前checkbox的时候，下面需要判断 其它 的checkbox的状态
+    //            var isBtnAll = true;// 假设当前的总按钮是一个选中的状态
+    //            for (var k = 0; k < inputs.length; k++) { // 循环判断 checkbox的状态
+    //                if (!inputs[k].checked) {   // 默认的是一个False，不选中的状态
+    //                    isBtnAll = false; //让总的checkbox变成不选中，也就是False
+    //                    break;// 直接跳出当前循环，不再往下循环了，因为有一个已经没有被中，所以总的也不选中
+    //                }
+    //            }
+    //            btnAll.checked = isBtnAll;// 让总的checkbox和isBtnAll的状态是一样的
+    //        }
+    //    }
+
+</script>
+</body>
+</html>

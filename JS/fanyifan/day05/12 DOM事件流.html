@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 300px;
+            height:300px;
+            background: darksalmon;
+        }
+        #div2{
+            width: 200px;
+            height:200px;
+            background: darkblue;
+        }
+        #div3{
+            width: 100px;
+            height:100px;
+            background: goldenrod;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+<script>
+    // DOM事件流
+    // 事件捕获，事件冒泡
+    // 在标准浏览器中，两种事件流都支持，但是在ie低版本浏览器中，只支持事件冒泡。
+
+    // 获取div
+    var div1 = document.getElementById('div1')
+    var div2 = document.getElementById('div2')
+    var div3 = document.getElementById('div3')
+
+
+    function fn1(){
+        console.log('div1')
+    }
+    function fn2(){
+        console.log('div2')
+    }
+    function fn3(){
+        console.log('div3')
+    }
+    // 使用true的话是事件捕获，使用false的话是事件冒泡。
+    // addEventListener 第一个参数是函数
+   /* div1.addEventListener('click',fn1,true)
+    div2.addEventListener('click',fn2,true)
+    div3.addEventListener('click',fn3,true)*/
+
+
+    //ie浏览器中的事件流只有事件冒泡 ie11 不支持attachEvent方法
+    //attachEvent 第一个参数 ‘on’+EventType，第二个参数是一个函数
+    /*div1.attachEvent('onclick',fn1);
+    div2.attachEvent('onclick',fn2);
+    div3.attachEvent('onclick',fn3);*/
+
+
+    //解决addEventListener兼容性的问题
+    //判断浏览器是否支持addEventListener方法，如果支持该方法，就是用
+    //addEventListener，如果不支持这一方法，就是用attachEvent方法。
+
+    // 写一个函数来实现addEventListener的兼容性问题
+
+
+
+    /*
+    * ele DOM元素
+    * type 事件类型
+    * 第三个参数省略，因为非标准浏览器只能使用事件冒泡，因此我们在标准浏览器中也只使用事件冒泡，依次来解决兼容性问题。
+    * */
+
+
+
+    var count=0;
+    /*function addEvent(ele,type,fn){
+        count++;
+        //判断浏览器支不支持某一个方法，支持的话就使用这个方法，不支持的话就用另一个方法
+        if(ele.addEventListener){
+            ele.addEventListener(type,fn);
+        }else{
+            ele.attachEvent('on'+type,fn);
+        }
+    }*/
+
+    //利用函数重写来减少js的执行次数(惰性思想)
+    /*
+    * 如果已经判断当前浏览器支持某个方法
+    * 这时候就重写掉函数，让函数下一次执行的时候不会再进行重复的判断。
+    * */
+
+    function addEvent(ele,type,fn){
+        count++;
+        if(ele.addEventListener){
+            addEvent=function(ele,type,fn){
+                ele.addEventListener(type,fn,false)
+            }
+            addEvent(ele,type,fn)
+        }else{
+            addEvent=function(ele,type,fn){
+                ele.attachEvent('on'+type,fn);
+            }
+            addEvent(ele,'on'+type,fn);
+        }
+    }
+
+
+    addEvent(div1,'click',fn1)
+    addEvent(div2,'click',fn2)
+    addEvent(div3,'click',fn3)
+    addEvent(div1,'click',fn1)
+    addEvent(div2,'click',fn2)
+    addEvent(div3,'click',fn3)
+    console.log(count)
+
+
+    // 刚才写的addEvent方法在每次进入addEvent方法之后，都会对是否能够支持某一个方法进行判断，这样比较浪费性能。
+
+    //通过函数重写的方法来提高性能 （惰性思想）
+    //重写之后的函数不用每次都进行if else判断，就提高了代码的效率
+
+
+
+
+
+
+</script>
+</body>
+</html>

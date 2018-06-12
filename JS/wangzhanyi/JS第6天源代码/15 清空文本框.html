@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="请输入要搜索的值 " id="txt"/>
+<script>
+    //搜索文本框当获得焦点的时候清空默认值离开后显示输入的值
+    // 1. 先获得要操作的对象
+    var txt = document.getElementById("txt");
+    // 2. 给事件源注册事件
+    txt.onfocus = function (){
+        if(this.value=="请输入要搜索的值 "){
+            this.value = "";
+        }else {
+            this.value = this.value; // 此时还是显示输入的值
+        }
+    }
+    // 3. 失去焦点的时候，如果没有输入的内容的话，要再显示默认的值
+    txt.onblur = function (){
+           if(this.value==""){
+               this.value ="请输入要搜索的值 ";
+           }else {
+               this.value = this.value;// 此时还是显示输入的值
+           }
+    }
+</script>
+</body>
+</html>

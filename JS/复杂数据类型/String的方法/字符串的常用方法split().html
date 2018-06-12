@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var myString = "Hello World. How are you doing?";
+
+    //如果 separator 是一个空字符串，则 str 将被转换为由字符串中字符组成的一个数组。
+    //返回结果["H", "e", "l", "l", "o", " ", "W", "o", "r", "l", "d", ".", " ", "H", "o", "w", " ", "a", "r", "e", " ", "y", "o", "u", " ", "d", "o", "i", "n", "g", "?"]  用心去体会
+    console.log(myString.split(""));
+
+    // 如果忽略 separator，则返回整个字符串的数组形式。 ["Hello World. How are you doing?"]
+    console.log(myString.split());
+
+    // 当找到一个 seperator 时，separator 会从字符串中被移除，返回存进一个数组当中的子字符串。["Hello", "World.", "How", "are", "you", "doing?"] 说白了separator就是分割元素；
+    console.log(myString.split(" "));
+
+
+
+
+    console.log("***********************************************************************8")
+
+
+
+    //split() 分割字符串
+    var str = "a-b-c-d-e-f";
+    //我要取出abcdef
+    var arr = str.split("-");
+    console.log(arr);//["a", "b", "c", "d", "e", "f"]
+    //数组中的join() 合并
+    console.log(arr.join(""));//abcdef
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, ol, li, img {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 490px;
+            height: 270px;
+            padding: 5px;
+            position: relative;
+            border: 1px solid #ccc;
+            margin: 100px auto 0;
+        }
+
+        .ad {
+            width: 490px;
+            height: 270px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        #box img {
+            width: 490px;
+        }
+
+        .ad ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .ad ol li {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background: #fff;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+            _display: inline;
+        }
+
+        .ad ol li.current {
+            background: yellow;
+        }
+
+        .ad ul li {
+            float: left;
+        }
+
+        .ad ul {
+            position: absolute;
+            top: 0;
+            width: 2940px;
+        }
+
+        .ad ul li.current {
+            display: block;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="all">
+    <div class="ad">
+        <ul id="imgs">
+            <li><img src="images/1.jpg"/></li>
+            <li><img src="images/2.jpg"/></li>
+            <li><img src="images/3.jpg"/></li>
+            <li><img src="images/4.jpg"/></li>
+            <li><img src="images/5.jpg"/></li>
+        </ul>
+    </div>
+    <div id="arr">
+        <span id="left">&lt;</span>
+        <span id="right">&gt;</span>
+    </div>
+</div>
+<script>
+    //获取页面元素
+    var box = document.getElementById("box");
+    var ad = box.children[0];
+    var ul = ad.children[0];
+    var arrow = document.getElementById("arr");
+    var arrLeft = arrow.children[0];
+    var arrRight = arrow.children[1];
+    var imgWid = ad.offsetWidth;
+
+    box.onmouseover = function () {
+        arrow.style.display = "block";
+    }
+    box.onmouseout = function () {
+        arrow.style.display = "none";
+    }
+    //设置一个变量  记录滚过去的图片数量
+    var pic = 0;
+    //为arrRight注册事件
+    arrRight.onclick = function () {
+        //这时还要判断条件，pic的临界值
+        if (pic < ul.children.length - 1) {
+            pic++;
+            animate(ul, -pic * imgWid);
+        }
+
+    }
+    arrLeft.onclick = function () {
+        //这时还要判断条件，pic的临界值
+        if (pic > 0) {
+            pic--;
+            animate(ul, -pic * imgWid);
+        }
+
+    }
+
+
+    //  teacher:::::::::::::::::::::::::::::
+    //    //移入盒子显示arr
+    //    box.onmouseover = function () {
+    //        arr.style.display = "block";
+    //    };
+    //    box.onmouseout = function () {
+    //        arr.style.display = "none";
+    //    };
+    //
+    //    //需要使用一个变量统计当前滚过的张数
+    //    var pic = 0;
+    //    //点击左右按钮，让图片滚动
+    //    arrRight.onclick = function () {
+    //        //当pic<ul.children.length-1的时候才让图片滚动
+    //        if (pic < ul.children.length - 1) {
+    //            pic++;
+    //            var target = -pic * imgWid;
+    //            animate(ul, target);
+    //        }
+    //    };
+    //
+    //    arrLeft.onclick = function () {
+    //        if (pic > 0) {
+    //            pic--;
+    //            var target = -pic * imgWid;
+    //            //一定要注意，target最终是设置给left属性，left最大就是0
+    //            animate(ul, target);
+    //        }
+    //    };
+
+
+    // 封装个函数:函数的作用就是让一个标签运动到一个位置
+    function animate(tag, target) {
+        //每次点击之前先清除一次
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //获取标签当前的位置
+            var leader = tag.offsetLeft;
+            var step = 9;
+            //需要对step的正负进行判断，因为有可能target<leader
+            if (leader > target) {
+                step = -step;
+            }
+            //由于有的时候，leader不能正常的等于target，会在target的前后来回跳动
+            //判断当前要走的这一步跟target的距离，如果距离不足一步，就不能让盒子继续走了，我们可以让leader=target
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //对象新的位置=对象当前位置+要移动的位置
+                leader = leader + step;
+                tag.style.left = leader + "px";
+            } else {
+                //如果不足一步，就设置box的位置为target
+                tag.style.left = target + "px";
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+</script>
+</body>
+</html>

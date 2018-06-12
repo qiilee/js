@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var foo3 = new Function('var temp = 100; this.temp = 200; return temp + this.temp;');
+
+    alert(typeof(foo3));
+    alert(foo3());
+
+    /*运行结果：  function
+     300    使用系统内置函数对象来构建一个函数，
+     这和方法一中的第一种方式在效果和初始化优先级上都完全相同
+     ，就是函数体以字符串形式给出。 */
+</script>
+</body>
+</html>

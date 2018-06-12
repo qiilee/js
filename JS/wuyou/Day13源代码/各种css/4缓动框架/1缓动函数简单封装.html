@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<button id="btn">跑到400</button>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var timer = null;
+
+    box.onclick = function () {
+//        clearInterval(timer);
+//        timer = setInterval(function () {
+//            var leader = box.offsetLeft;
+//            var step = (200 - leader) / 10;
+//            //需要对step进行处理
+//            step = Math.ceil(step);
+//
+//            leader = leader + step;
+//            box.style.left = leader + "px";
+//            //到了位置。定时器不用了就需要清除，节能环保
+//            if (leader == 200) {
+//                clearInterval(timer);
+//            }
+//        }, 17);
+        animate(box,200);
+    };
+
+    btn.onclick = function () {
+//        clearInterval(timer);
+//        timer = setInterval(function () {
+//            var leader = box.offsetLeft;
+//            var step = (400 - leader) / 10;
+//            //需要对step进行处理
+//            step = Math.ceil(step);
+//
+//            leader = leader + step;
+//            box.style.left = leader + "px";
+//            //到了位置。定时器不用了就需要清除，节能环保
+//            if (leader == 400) {
+//                clearInterval(timer);
+//            }
+//        }, 17);
+        animate(box,400);
+    }
+
+    function animate(tag,target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            var leader = tag.offsetLeft;
+            var step = (target - leader) / 10;
+            //需要对step进行处理
+            step = step>0?Math.ceil(step):Math.floor(step);
+
+            leader = leader + step;
+            tag.style.left = leader + "px";
+            //到了位置。定时器不用了就需要清除，节能环保
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+
+
+</script>
+<script>
+
+
+</script>
+</body>
+</html>

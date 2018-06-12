@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：obj[str[i]] 切不可以写成 obj.str[i]
+    //    设置默认的最大值为0    默认的字母为‘’
+    var str = 'aabcdefghijjhasdasdasqaaaaaaaaa';
+    var obj = {};
+    for (var i = 0; i < str.length; i++) {
+        if (!(obj[str[i]])) {
+            obj[str[i]] = 1;
+        } else {
+            obj[str[i]]++;
+        }
+    }
+    //    console.log(obj);
+
+    var max = 0;
+    var char ='';
+    for (key in obj) {
+        if (obj[key] > max) {
+            max = obj[key];
+            char = key;
+        }
+    }
+    console.log(char);
+    console.log(max);
+</script>
+</body>
+</html>

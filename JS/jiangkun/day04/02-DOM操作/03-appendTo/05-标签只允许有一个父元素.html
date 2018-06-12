@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 150px;
+            border: 1px dashed red;
+            margin: 10px 0;
+        }
+        p {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="p">ppp</p>
+    </div>
+    <div id="div"></div>
+</body>
+<script>
+    var p = document.querySelectorAll( '#p' )[ 0 ],
+        div = document.querySelectorAll( '#div' )[ 0 ];
+    
+    // 
+    div.appendChild( p.cloneNode( true ) );
+
+</script>
+</html>

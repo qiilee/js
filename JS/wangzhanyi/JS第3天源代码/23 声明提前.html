@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function f1(){
+        console.log(123);
+    }
+     f1();
+
+     var f2;
+    // f2();
+    f2 = function(){
+        console.log(789);
+    }(function(){console.log(456);}());
+
+    // f2();
+</script>
+</body>
+</html>

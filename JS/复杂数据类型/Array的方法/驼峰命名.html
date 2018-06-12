@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var str = "get-element-by-id​";
+    var str1 = str.split("-");
+    for(var i =1;i<str1.length;i++){
+        str1[i]=str1[i].charAt(0).toUpperCase()+str1[i].substr(1,str1[1].length-1);
+    }
+    var newStr = str1.join("");
+    console.log(newStr);
+</script>
+</body>
+</html>

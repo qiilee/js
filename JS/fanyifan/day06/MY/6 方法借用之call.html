@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：方法借用模式 call ，正常传参
+
+//1、call:::::::::::::::::
+//    var obj1 = {
+//        name: 'xxx'
+//    }
+//    var obj2 = {
+//        name: 'yyy'
+//    }
+//    function fn(name, age) {
+//        console.log(this)
+//        console.log(obj1 === this)
+//        console.log(obj2 === this)
+//        console.log(name, age)
+//    }
+//    fn.call(obj1,'jack',18);
+//    fn.call(obj2,'rose',12);
+//
+
+    //如下为运行所得
+//    Object {name: "xxx"}
+//    true
+//    false
+//    jack 18
+//    Object {name: "yyy"}
+//    false
+//    true
+//    rose 12
+
+//****************利用call判断数据类型**********************************************************
+
+
+    // 利用方法借用模式把Object.prototype.toString内部的this指向为一个数组 。
+    var arr = [1,2,3];
+    var ret = Object.prototype.toString.call(arr);
+    console.log(ret);// '[object Array]'
+
+    //判断一个值是否是数组数据类型
+//    function isArray(obj){
+//        return Object.prototype.toString.call(obj)==='[object Array]'
+//    }
+//
+//    console.log(isArray(arr));
+
+
+
+    //判断一个值是否是Date数据类型
+    function isDate(obj){
+        return Object.prototype.toString.call(obj)==='[object Date]'
+    }
+    var date = new Date();
+    /*console.log(isDate(arr));//false
+     console.log(isDate(date));//true*/
+
+
+
+    // 判断一个值是否是布尔数据类型
+    var tr = new Boolean();
+    function isBoolean(obj){
+        return Object.prototype.toString.call(obj)==='[object Boolean]'
+    }
+    /*console.log(isBoolean(tr))//true*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

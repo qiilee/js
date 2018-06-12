@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <style>
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p>pppp</p>
+    <p>pppp</p>
+    <p>pppp</p>
+    <p class="c">pppp</p>
+    <p>pppp</p>
+    <p>pppp</p>
+</div>
+<div>
+    <p>pppp</p>
+    <p>pppp</p>
+    <p class="c">pppp</p>
+    <p>pppp</p>
+</div>
+<div>
+    <p>pppp</p>
+    <p class="c">pppp</p>
+    <p>pppp</p>
+    <p>pppp</p>
+</div>
+</body>
+<script>
+//1、为了看p元素的父元素的个数，  要明白I().each()
+    var length = I('p').parent().each(function(){
+        this.style.width = '200px';
+        this.style.height = '200px';
+        this.style.border = '1px dashed red';
+        this.style.margin = '10px 0';
+        console.log(this);
+    }).length;
+    console.log(length);
+
+    //nextall
+    I('.c').each(function(){
+        this.style.backgroundColor = 'red';
+    }).nextAll().each(function(){
+        this.style.backgroundColor = 'green';
+    });
+
+    //prevAll
+    I('.c').prevAll().each(function(){
+        this.style.backgroundColor = 'yellow'
+    });
+
+    //next
+    I('.c').next().each(function(){
+        this.style.backgroundColor = 'skyblue'
+    });
+    //prev
+I('.c').prev().each(function(){
+    this.style.backgroundColor = 'pink'
+});
+</script>
+</html>

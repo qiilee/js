@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 什么是作用域链
+    // 概念： 作用域跟作用域之间的嵌套关系，就是作用域链
+
+    // js中如何生成一个作用域
+   /* var num =456;
+    function foo(){
+     /!*   var num =123*!/
+        function fo(){
+            console.log(num);
+        }
+        fo()
+    }
+    foo();// 输出123*/
+
+    // foo的外部作用域是全局作用域
+    // fo的作用域是foo的作用域，foo外部还有一个全局作用域 。
+
+
+    /*var num =456;
+    function foo(){
+        function fo(){
+            console.log(num);
+        }
+        fo()
+    }
+    foo();// 输出456*/
+
+
+    // 变量搜索原则
+    /*
+    * 首先会在当前作用域查找有没有相关变量，有的话，就找到这个变量
+    * 如果没有的话就到外部作用域去查找有没有相关的变量，
+    * 一直查找到全局作用域，如果还是没有找到，就抱一个错误：
+    * 如果找到，就返回这个变量
+    * */
+
+
+   /* var num =456;// 456 ===>123
+    function foo(){
+        function fo(){
+            num = 123;
+        }
+        fo()
+    }
+    foo();
+    console.log(num)//123; */
+
+
+
+
+    function foo(){
+        function fo(){
+            num = 123;
+        }
+        fo()
+    }
+    foo();
+    console.log(window.num)//123;
+    console.log(num);//123
+
+
+    window.xxx='哇哈哈'
+    console.log(xxx);
+
+
+    // 变量设置原则
+    /*
+    * 首先会在当前作用域查找有没有相关的变量，如果有的话，就设置这个变量，
+    * 如果没有，就沿着作用域链一级一级向上查找，找到就设置这个变量，
+    * 一直找到全局作用域，还是没找到的话就给window设置一个属性为这个变量
+    * */
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<script type="text/javascript">
+//创建ajax对象
+
+//自动识别浏览器
+if(typeof XMLHttpRequest != 'undefined'){
+    //① 主流方式 XMLHttpRequest官方名称   ajax艺名
+    var xhr = new XMLHttpRequest();
+}else{
+    //② IE浏览器(6/7/8)方式
+    var xhr = new ActiveXObject('Microsoft.XMLHTTP');  //最原始ajax对象
+    var xhr = new ActiveXObject('Msxml2.XMLHTTP');  //升级
+    var xhr = new ActiveXObject('Msxml2.XMLHTTP.3.0');  //升级
+    //var xhr = new ActiveXObject('Msxml2.XMLHTTP.5.0');  //升级
+    var xhr = new ActiveXObject('Msxml2.XMLHTTP.6.0');  //IE最高版本(停止维护)
+}
+alert(xhr);
+
+</script>

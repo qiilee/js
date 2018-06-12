@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>答疑</title>
+   
+</head>
+<body>
+    
+</body>
+<script>
+    // 1, 创建文本节点
+    var txtNode = document.createTextNode( '哈<span>哈</span>哈' );
+    // 2, 将文本节点加到 body 中
+    document.body.appendChild( txtNode );
+
+
+    // DOM 的原生方法
+    // 设置图片的路径, 如何写代码?
+    // img.src = ...
+    // img.setAttribute( 'src', '...' )
+
+
+    // 为什么需要 DOM
+    // html 的本质就是 文本, 字符串
+    // <div>1<div>2</div>3</div>
+    // 将 2 改变成红色
+    // <div>1<div style="color: red;">2</div>3</div>
+    // 手动解析
+
+    // DOM 的价值是不是就是将一个简单的字符串, 转换成 dom 树, 同时
+    // 提供一系列增删改查的 api
+
+    // 核心 DOM, DOM-Core
+    
+
+    // 由于 HTML 非常的常用, 因此发明了 HTML-DOM
+
+
+    // document.body.itcast = '哇哈哈';
+
+    document.body.setAttribute( 'itcast', '哇哈哈' );
+
+</script>
+</html>

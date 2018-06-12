@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--现在是移入li，li变红，移出li，li变白，这么一个效果，然后点击按钮，可以向ul中添加一个li子节点-->
+<input type="button" name="" id="btn" value="添加" />
+<ul id="ul1">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+</ul>
+<script>
+    window.onload = function(){
+        var oBtn = document.getElementById("btn");
+        var oUl = document.getElementById("ul1");
+        var aLi = oUl.getElementsByTagName('li');
+        var num = 4;
+
+        //事件委托，添加的子元素也有事件
+        oUl.onmouseover = function(ev){
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            if(target.nodeName.toLowerCase() == 'li'){
+                target.style.background = "red";
+            }
+
+        };
+        oUl.onmouseout = function(ev){
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            if(target.nodeName.toLowerCase() == 'li'){
+                target.style.background = "#fff";
+            }
+
+        };
+
+        //添加新节点
+        oBtn.onclick = function(){
+            num++;
+            var oLi = document.createElement('li');
+            oLi.innerHTML = 111*num;
+            oUl.appendChild(oLi);
+        };
+    }
+//    看，上面是用事件委托的方式，新添加的子元素是带有事件效果的，我们可以发现，
+// 当用事件委托的时候，根本就不需要去遍历元素的子节点，只需要给父级元素添加事件就好了，
+// 其他的都是在js里面的执行，这样可以大大的减少dom操作，这才是事件委托的精髓所在。
+</script>
+</body>
+</html>

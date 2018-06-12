@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            padding: 20px;
+            border: 10px solid #000;
+            margin: 10px;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //使用css方法去设置和获取标签的样式
+            //console.log($("#box").css("width"));
+
+            //jq中对样式的操作提供了一套新的方法
+            //height和width 获取的值只是width/height的值。不含padding
+            //console.log($("#box").width());
+
+            //获取结果含 padding + width
+            //console.log($("#box").innerWidth());
+
+            //获取结果含 border + padding + width
+            //console.log($("#box").outerWidth());
+
+            //获取结果含 margin + border + padding + width
+            //console.log($("#box").outerWidth(true));
+
+
+            //上述方法同样可以进行设置
+            //设置宽度 width
+            //$("#box").width(200);
+
+            //设置innerWidth  padding 和 width的总和
+            //width属性的值改变
+            //$("#box").innerWidth(200);
+
+            //设置outerWidth  设置的是border + padding + width 的总和为多少
+            //width属性的值改变
+            //$("#box").outerWidth(300);
+
+            //设置outerWidth  设置的是margin + border + padding + width 的总和为多少
+            //width属性的值改变
+            //$("#box").outerWidth(300,true);
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>

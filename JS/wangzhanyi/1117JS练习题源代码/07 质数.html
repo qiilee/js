@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //找出100内所有的素数(素数，只能被1和本身整除),并统计出素数的个数//
+    // 最小的质数是2
+    // 15  1 15   2--14
+    // 15  3  5
+    // 16  2  4  8
+    // 18  2 3  6  9
+    // 20  2  4  5  10
+    // 19  2 3 4  5 6 7 8 9 10
+//    var count = 0;
+//    for(var i=2;i<=100;i++){ // 表示是得到2--100之间的每一个数
+//        var flag = true;//假设当前的这个数据就是一个质数
+//        for(var j=2;j<i;j++){
+//            if(i%j==0){
+//                //如果能整除，说明不是质数
+//                flag = false;
+//                break;
+//            }
+//        }
+//        if(flag){
+//            count++;
+//            console.log(i+"====="+count);
+//        }
+//    }
+
+    // 提高效率 的写法
+//    var count = 0;
+//    for(var i=2;i<=100;i++){ // 表示是得到2--100之间的每一个数
+//        var flag = true;//假设当前的这个数据就是一个质数
+//        for(var j=2;j<=i/2;j++){
+//            if(i%j==0){
+//                //如果能整除，说明不是质数
+//                flag = false;
+//                break;
+//            }
+//        }
+//        if(flag){
+//            count++;
+//            console.log(i+"====="+count);
+//        }
+//    }
+    //3.让用户输入一个数,判断是不是素数
+
+//    var num = +prompt("请输入一个数字");
+//    var flag = true; //假设这个数就是一个质数
+//   for(var i=2;i<=num/2;i++){
+//       if(num%i==0){
+//           //不是质数
+//           flag = false;
+//           break;
+//       }
+//   }
+//    if(flag){
+//        console.log("是一个质数");
+//    }else {
+//        console.log("不是一个质数");
+//    }
+
+    function isZhiShu(num){ // 代码复用的一种机制或是封装某种功能的代码段
+        var flag = true; //假设这个数就是一个质数
+        for(var i=2;i<=num/2;i++){
+            if(num%i==0){
+                //不是质数
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            console.log("是一个质数");
+        }else {
+            console.log("不是一个质数");
+        }
+    }
+    var num = +prompt("请输入一个数字");
+   var result = isZhiShu(num);
+    console.log(result);
+</script>
+</body>
+</html>

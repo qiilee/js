@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 第一种定义函数的方式  函数声明的方式
+//  var result =getSum(50,60);
+//    console.log(result);
+//    function getSum(a,b){
+//        return a+b;
+//    }
+
+    // 第二种定义函数的方式，是使用函数表达式的方式
+
+    var getSum = function(a,b){  // 没有函数名的函数叫做匿名函数
+        return a+b;
+    }
+    // 调用的时候，和原来的声明的函数是一模一样的，这个变量名可以作为这个匿名函数的调用名
+    var sum =  getSum(30,50);
+    console.log(sum);
+</script>
+</body>
+</html>

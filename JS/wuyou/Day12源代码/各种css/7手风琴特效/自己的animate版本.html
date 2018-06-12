@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    //    animate1(box,400);
+    //    animate2(box,"left",400);
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        annimate4(box, {"zIndex": 4, "opacity":0.2,"width":600,"height":600});
+    }
+    function animate1(tag, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            var leader = tag.offsetLeft;
+            var step = (target - leader) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            tag.style.left = leader + "px";
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+        }, 17)
+
+    }
+
+    function getStyle(tag, attr) {
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+    }
+
+    function animate2(tag, attr, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            var leader = parseInt(getStyle(tag, attr)) || 0;
+            var step = (target - leader) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            tag.style[attr] = leader + 'px';
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+
+        }, 17)
+    }
+
+    function annimate3(tag, obj) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            var flag = true;
+            for (var k in obj) {
+                var leader = parseInt(getStyle(tag, k)) || 0;
+                var target = obj[k];
+                var step = (target - leader) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                leader = leader + step;
+                tag.style[k] = leader + "px";
+                if (leader != target) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                clearInterval(tag.timer);
+            }
+        }, 17)
+    }
+
+    function annimate4(tag, obj) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+                    var flag = true;
+                    for (var k in obj) {
+                        if (k == "opacity") {
+                            var leader = getStyle(tag, k) * 100 || 0;
+                            var target = obj[k] * 100;
+                            var step = (target - leader) / 10;
+                            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                            leader = leader + step;
+                            tag.style[k] = leader / 100;
+                        } else if (k == "zIndex") {
+                            tag.style.zIndex = obj[k];
+                        } else {
+                            var leader = parseInt(getStyle(tag, k)) || 0;
+                            var target = obj[k];
+                            var step = (target - leader) / 10;
+                            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                            leader = leader + step;
+                            tag.style[k] = leader + "px";
+                        }
+                        if (leader != target) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        clearInterval(tag.timer);
+                    }
+                }
+                ,
+                17
+        )
+    }
+</script>
+</body>
+</html>

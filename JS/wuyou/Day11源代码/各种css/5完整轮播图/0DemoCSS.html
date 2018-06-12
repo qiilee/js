@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen">
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <ol>
+            <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+        </ol>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+<script>
+    //先是创建出要操作的对象
+    var box = document.getElementById("box");
+    var screen = box.children[0];
+    var arr = document.getElementById("arr");
+    var arrLeft = document.getElementById("left");
+    var arrRight = document.getElementById("right");
+    var ul = screen.children[0];
+    var lisUl = ul.children;
+    var ol = screen.children[1];
+    var imgWid = screen.offsetWidth;
+
+
+    //1给ol动态创建的小方块
+    for (var i = 0; i < lisUl.length; i++) {
+        var li = document.createElement("li");
+        ol.appendChild(li);
+        li.innerHTML = i + 1;
+    }
+    //2给当前第一个按钮设置颜色
+    var lisOl  = ol.children;
+    lisOl[0].className = "current";
+    //3点击事件
+    for (var i = 0; i < lisOl.length; i++) {
+        lisOl[i].index = i;
+        //创建小方块的点击事件
+       lisOl[i].onclick = function () {
+            if(pic ==lisUl.length-1){
+                ul.style.left = 0+"px";
+            }
+            paita();
+            this.className = "current";
+            animate(ul, -this.index * imgWid);
+            pic = this.index;
+        }
+    }
+
+
+    //克隆第一张图片，并添加到ul中
+    var firstClone = lisUl[0].cloneNode(true);
+    ul.appendChild(firstClone);
+
+    var pic = 0;
+    arrRight.onclick = function () {
+        if (pic == lisUl.length - 1) {
+            ul.style.left = 0 + 'px';
+            pic=0;
+        }
+        pic++;
+        animate(ul, -pic * imgWid);
+        paita();
+        if(pic ==lisUl.length-1){
+            lisOl[0].className  ="current";
+        }else{
+            lisOl[pic].className = "current";
+        }
+
+    }
+
+    arrLeft.onclick = function () {
+        if (pic == 0) {
+            ul.style.left = -(lisUl.length-1)*imgWid+"px";
+            pic=lisUl.length-1;
+        }
+        pic--;
+        animate(ul, -pic * imgWid);
+        paita();
+        ol.children[pic].className = "current";
+
+    }
+
+    var timer = null;
+    timer = setInterval(function () {
+        arrRight.click();
+    },1500);
+    //为左右焦点设置事件
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        clearInterval(timer);
+
+    }
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        timer = setInterval(function () {
+            arrRight.click();
+        },1500);
+    }
+
+    //封装排他函数
+    function paita() {
+        for (var j = 0; j < lisOl.length; j++) {
+            lisOl[j].className = "";
+        }
+    }
+    // 封装个函数:函数的作用就是让一个标签运动到一个位置
+    function animate(tag, target) {
+        //每次点击之前先清除一次
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //获取标签当前的位置
+            var leader = tag.offsetLeft;
+            var step = 9;
+            //需要对step的正负进行判断，因为有可能target<leader
+            if (leader > target) {
+                step = -step;
+            }
+            //由于有的时候，leader不能正常的等于target，会在target的前后来回跳动
+            //判断当前要走的这一步跟target的距离，如果距离不足一步，就不能让盒子继续走了，我们可以让leader=target
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //对象新的位置=对象当前位置+要移动的位置
+                leader = leader + step;
+                tag.style.left = leader + "px";
+            } else {
+                //如果不足一步，就设置box的位置为target
+                tag.style.left = target + "px";
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+</script>
+</body>
+</html>

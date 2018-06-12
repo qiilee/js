@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+    <style>
+        .c {
+            width: 50px;
+            height: 40px;
+            border: 1px dashed red;
+            float: left;
+        }
+    </style>
+</head>
+<body ng-app="mainApp">
+
+    <div ng-controller="MainController">
+
+        <button ng-click="get()">获得数据</button>
+
+        <div  ng-repeat="( k, v ) in set">
+            <div>{{k}}</div>
+            <div ng-repeat="item in v">
+                <div>{{ item.name }}</div>
+                <div>{{ item.pinyin }}</div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+       
+        .controller( 'MainController', function ( $scope, $http ) {
+           
+            $scope.get = function () {
+
+                 $http({
+                     method: 'get',
+                     url: 'http://jklib.org/ele/cities.ashx'
+                 }).success(function ( data ) {
+
+                     console.log( data );
+
+                     $scope.set = data;
+
+                 }).error(function ( e ) {
+                     console.log( '报错' );
+                     console.log( e );
+                 })
+
+
+                // callback=JSON_CALLBACK
+//                $http.jsonp( 'http://jklib.org/ele/citiesjsonp.ashx?callback=JSON_CALLBACK' )
+//                    .success( function ( data ) {
+//                        console.log( data );
+//                    })
+//
+            }
+
+        });
+
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    console.log([] == ![]);//true
+    console.log([] == false);//true
+    console.log(![] == false);//true
+    console.log(Boolean([]) == true);//true
+//    1. [] == false;在==判断时，[]被当做Array数组处理
+//    这里是因为==符号会把两边的类型转换成一样的。这里会转成number
+//    [] == 0 // 把false转为number
+//    "" == 0 // 用array的valueOf/toString获取基本类型
+//    0 == 0 // 空字符串转成数字之后是0，Number('')
+//
+//    2.![] == false; 在==判断前，先做![]运算，此时[]被!当做Array()对象
+//    javascript中所有对象都是true。
+//    !true == false // []也是object，所以是true
+//    false == false // true取反是false
+</script>
+</body>
+</html>

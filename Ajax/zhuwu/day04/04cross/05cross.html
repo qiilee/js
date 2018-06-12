@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用script 标签发送请求，然后使用js 去接收到服务端返回的数据
+           如果我使用js 接收到数据，解析数据，然后就可以放在页面.
+    </title>
+</head>
+<body>
+
+
+<input type="button" value="script 标签发送请求，接收数据">
+
+<script>
+    //总结：：
+    //1、getInfo({"username":"zhangsan"}) 返回的是这个数据，
+    //2、js 去解析，调用这个函数，就会在script 标签里面找这个函数。没有找到就是未定义
+    //
+        function getInfo(obj){
+             //alert("调用.");
+             console.log(obj);
+             //解析数据，放在页面上面.
+        };
+
+
+        document.querySelector("input").onclick=function(){
+
+               var script=document.createElement("script");
+               //能发跨域请求，绝对能发不跨域的请求的
+               script.src="05cross.php?callback=getInfo";
+
+               document.body.appendChild(script);
+
+
+        }
+
+</script>
+</body>
+</html>

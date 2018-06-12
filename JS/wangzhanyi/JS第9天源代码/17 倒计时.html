@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function (){
+               var btn = document.getElementById("btn");
+            var num = 10;
+            var timeId= setInterval(function(){
+                    if(num<=0){
+                        //清空定时器 让按钮变成可选的状态
+                        clearInterval(timeId);
+                        btn.disabled = false;
+                        btn.value = "启用";
+                        return; // 跳出函数，后面的代码都不再执行
+                    }
+                    btn.value = "倒计时开始"+num;
+                    num--;
+                },1000)
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="倒计时开始10" disabled="disabled" id="btn"/>
+
+</body>
+</html>

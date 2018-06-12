@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <input type="button" id="add" value="添加"/>
+    <input type="button" id="remove" value="删除"/>
+    <input type="button" id="move" value="移动"/>
+    <input type="button" id="select" value="选择"/>
+</div>
+<script>
+    /*用事件委托就可以只用一次dom操作就能完成所有的效果，比上面的性能肯定是要好一些的 */
+    window.onload = function () {
+        var oBox = document.getElementById("box");
+        oBox.onclick = function (ev) {
+            var ev = ev || window.event;
+            var target = ev.target || ev.srcElement;
+            if (target.nodeName.toLocaleLowerCase() == 'input') {
+                switch (target.id) {
+                    case 'add' :
+                        alert('添加');
+                        break;
+                    case 'remove' :
+                        alert('删除');
+                        break;
+                    case 'move' :
+                        alert('移动');
+                        break;
+                    case 'select' :
+                        alert('选择');
+                        break;
+                }
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

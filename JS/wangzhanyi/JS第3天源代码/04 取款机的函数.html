@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 定义一个取款机的函数
+    function getMoney(passWord, money) {  // 在定义函数的时候，小括号中的参数叫做形参，起占位置的作用
+        if (passWord == "888888") {
+            return money; // return 关键字用于返回函数内部的数据
+        } else {
+            console.log("密码不正确，请重新输入");
+        }
+    }
+//         var mm=   getMoney("888888",200);
+    var mm = getMoney("88888", 200); // 当我们调用函数的时候，传进来的参数叫实参  有实际意义的数据值
+    console.log(mm);
+    // 函数只要调用就会有返回值，
+    // 1. 如果函数的里面有关键字return及后面有真实的数据，则这个数据就是此函数的返回值
+    // 2. 如果函数里面没有关键字return及后面的数据的话，则此函数被调用后，默认的返回值是undefined
+</script>
+</body>
+</html>

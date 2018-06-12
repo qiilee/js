@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+var fruit = ["苹果","橘子","梨"];
+with(document){
+	write("<ol>");
+	write("<li>"+fruit.join()+"</li>");
+	write("<li>"+fruit.join(":")+"</li>");
+	write("<li>"+fruit.toString()+"</li>");
+	//reverse使用后，数组本身就发生变化
+	write("<li>"+fruit.reverse().join()+"</li>");
+	write("<li>"+fruit.valueOf()+"</li>");
+	write("</ol>");
+}
+</script>
+</body>
+</html>

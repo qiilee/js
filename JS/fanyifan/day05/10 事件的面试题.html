@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+<li>7</li>
+<script>
+
+    var oLi = document.getElementsByTagName('li');
+    /*for(var i = 0;i<oLi.length;i++){
+        oLi[i].onclick=function(){
+            console.log(i);//4 7 6
+        }
+    }*/
+
+    // 为什么输出的是7 而不是具体的索引值？
+
+
+    // 如果想要在点击某个具体的li的时候输出相应索引值，需要怎么去做？
+
+    //1 利用闭包的形式来解决：
+/*    for(var i = 0;i<oLi.length;i++){
+        //使用自执行函数在for循环的过程中把具体的值传入自执行函数，我们可以在自执行函数内部声明一个函数，这个函数访问到的i就是每次循环传入自执行函数的i
+        (function(i){
+/!*            console.log(i)*!/
+             oLi[i].onclick=function(){
+                 console.log(i+1)
+             }
+        })(i)
+       /!*
+        oLi[i].onclick=function(){
+            console.log(i);//4 7 6
+        }*!/
+    }*/
+
+    //2 利用自定义属性的方式解决：
+    for(var i=0;i<oLi.length;i++){
+        // 把具体的索引值，用自定义属性的方式，添加到li标签上
+        oLi[i]['index']=i+1;
+        /*oLi[i].index=i*/
+        oLi[i].onclick=function(){
+            console.log(this.index);
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

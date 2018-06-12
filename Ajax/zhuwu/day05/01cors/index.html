@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+    <!--
+     访问这个页面，必须通过域名 www.jd.com
+         www.jd.com/code/01cors/
+    -->
+    <!--这个是京东的页面.然后发送ajax 请求到 http://www.xxf.com/xxf.php-->
+
+     <input type="button" value="ajax post "/>
+
+     <script>
+            $("input").on("click",function(){
+                 $.ajax({
+                      type:"POST",
+                      url:"http://www.xxf.com/xxf.php",
+                      data:{
+                           username:"linan"
+                      },
+                      success:function(data){
+                             console.log(data);
+                      }
+                 })
+
+            })
+
+     </script>
+
+
+
+</body>
+</html>

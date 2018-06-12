@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 作用域
+    // 作用：保护作用域内部的变量不受外界干扰。
+
+    function fn(){
+        var num =123;
+        function f(){
+            console.log(num)
+        }
+        f();
+        return f;
+    }
+
+
+    var ff = fn();
+    ff()
+    // 闭包的作用：突破作用域限制，然后访问到作用域内部的私有变量。
+
+    /*console.log(num)//num is not defined */
+
+
+    function createCache(){
+        var cache={};
+        var arr = [];
+        return function(key,value){
+            //如果传入一个参数，可以是查询的操作
+            if(value===undefined){
+                return cache[key];
+            }
+            //如果之前的缓存中已经有某一项，就直接修改这一项缓存
+            if(cache[key]){
+                cache[key]=value;
+                return;
+            }
+            //
+            if(arr.length>=3){
+                delete cache[arr.shift()];
+            }
+            cache[key]=value;
+            arr.push(key);
+        }
+    }
+
+    var personCache = createCache();
+
+    personCache('name1','jack1')
+    personCache('name2','jack2')
+    personCache('name3','jack3')
+    personCache('name4','jack4')
+
+    console.log(personCache('name1'))
+    console.log(personCache('name2'))
+
+
+
+
+
+</script>
+</body>
+</html>

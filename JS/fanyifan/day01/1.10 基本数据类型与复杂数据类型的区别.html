@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 基本数据类型与复杂数据类型的区别
+    // 基本数据类型的变量存储着的是实际值
+    // 复杂数据类型的变量存储的是一个内存地址的引用，具体的实际值存储在一个内存地址当中
+
+    var num1 = 123;
+    var num2 = num1;
+    num2 = 456;
+    console.log(num1)//输出123
+
+
+   // 复杂数据类型
+    var obj1 = {
+        name:'高俊',
+        age:18
+    }
+    var obj2 = obj1;
+
+    obj2.gender= '男'
+    console.log(obj1);//{name: "高俊", age: 18, gender: "男"}
+
+</script>
+</body>
+</html>

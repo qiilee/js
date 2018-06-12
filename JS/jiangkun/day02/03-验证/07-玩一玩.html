@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 400px;
+            height: 300px;
+            overflow: scroll;
+        }
+
+        #container div {
+            margin: 10px 0;
+            border: 1px dashed blue;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点击获取数据</button>
+    <div id="container"></div>
+</body>
+<script>
+    document.querySelectorAll('#btn' )[ 0 ].onclick = function () {
+        // url http://tieba.baidu.com/p/2314539885
+        // ajax 
+
+        var xhr = new XMLHttpRequest();
+        // xhr.open( 'GET', 'http://tieba.baidu.com/p/2314539885' );
+        xhr.open( 'GET', 'https://www.douban.com/group/topic/23934101/?start=500' );
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if ( xhr.readyState == 4 && xhr.status == 200 ) {
+
+                var html = xhr.responseText;
+
+                var r = /([0-9a-zA-Z\_\-\.]+)@([0-9a-zA-Z\_\-]+(\.[0-9a-zA-Z\_\-]+)+)/g;
+
+                var m, arrTmp = [];
+                
+                while ( m = r.exec( html ) ) {
+                    arrTmp.push( m[ 0 ] );
+                }
+
+                document.querySelectorAll( '#container' )[ 0 ].innerHTML = arrTmp.map(function ( v ) {
+                    return '<div>' + v + '</div>';
+                }).join( '' );
+
+            }
+        }
+
+
+
+    };
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <style>
+        .container {
+            width: 200px;
+            height: 100px;
+            border: 1px dashed blue;
+        }
+        .box {
+            width: 100px;
+            height: 50px;
+            border: 1px solid red;
+            margin: 20px auto;
+        }
+    </style>
+    <script>
+        // 实例方法 appendTo
+        Itcast.fn.appendTo = function ( dom ) {
+            // this 是 一个伪数组, 其中 第 0 个元素是 一个 dom 对象, 记为 dom1
+            // 而应该将 dom1 加入到 参数传入的 dom 元素中
+            // 因此接下来调用传入的参数 的 appendChild 方法?
+            dom.appendChild( this[ 0 ] );
+            // 为例实现链式编程, 应该返回 this
+            return this;
+
+        }
+    
+    </script>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+<script>
+    I( '<div class="box"></div>' ).appendTo( document.getElementsByClassName( 'container' )[ 0 ] )
+</script>
+</html>

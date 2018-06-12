@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //children  子代
+            //$("ul").children("li").css("backgroundColor","red");
+            //$("ul>li").css("backgroundColor","red");
+
+            //我现在先对ul进行一些操作，然后在对ul中的li进行操作
+            //$("ul").css("backgroundColor","red").children("li").text("我是ul的子元素li");
+            //链式编程
+
+        });
+    </script>
+</head>
+<body>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>
+        <ol>
+            <li></li>
+        </ol>
+    </li>
+    <li></li>
+</ul>
+
+</body>
+</html>

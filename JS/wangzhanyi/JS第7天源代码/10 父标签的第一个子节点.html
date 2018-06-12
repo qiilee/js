@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li>这是第1个li标签节点</li>
+    <li>这是第2个li标签节点</li>
+    <li id="li3">这是第3个li标签节点</li>
+    <li>这是第4个li标签节点</li>
+</ul>
+<script>
+    // 父节点中的第一个子节点
+    var list = document.getElementById("list");
+//    var node = list.firstChild; //所有的浏览器都支持的方式，高级浏览器会获得空白文本节点，而IE8及之前的低版本的浏览器，会忽略空白文本节点
+//    console.log(node.nodeType);
+
+//    var node = list.firstElementChild; // 高级浏览器支持的获取第一个子标签节点的方式，只会获得标签节点，但是IE8及之前的浏览器是不支持此属性的
+//    console.log(node.nodeType);
+//    console.log(node);
+
+
+    /**
+     * 封装了一个兼容版本的获得子标签节点的函数
+     * @param element
+     * @returns {element}
+     */
+    function  getFirstElement(element){
+        // 能力检测
+        if(element.firstElementChild){ // 高级浏览器支持的方式
+            return element.firstElementChild;
+        }else {
+            //低版本的浏览器支持的方式
+            var ele = element.firstChild;
+            while(ele&&ele.nodeType!=1){
+               ele= ele.nextSibling;
+            }
+            return ele;
+        }
+    }
+
+    var node = getFirstElement(list);
+    console.log(node.innerText);
+
+    // lastChild    lastElementChild
+</script>
+</body>
+</html>

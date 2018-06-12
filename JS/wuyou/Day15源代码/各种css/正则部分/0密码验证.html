@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    body {
+        background: #ccc;
+    }
+
+    label {
+        width: 40px;
+        display: inline-block;
+    }
+
+    span {
+        color: red;
+    }
+
+    .container {
+        margin: 100px auto;
+        width: 400px;
+        padding: 50px;
+        line-height: 40px;
+        border: 1px solid #999;
+        background: #efefef;
+    }
+
+    span {
+        margin-left: 30px;
+        font-size: 12px;
+    }
+
+    .wrong {
+        color: red
+    }
+
+    .right {
+        color: green;
+    }
+
+    .strengthLv0 {
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv1 {
+        background: red;
+        height: 6px;
+        width: 40px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv2 {
+        background: orange;
+        height: 6px;
+        width: 80px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+
+    .strengthLv3 {
+        background: green;
+        height: 6px;
+        width: 120px;
+        border: 1px solid #ccc;
+        padding: 2px;
+    }
+</style>
+<body>
+<div class="container">
+    <label>密码</label>
+    <input type="text" id="ipt" maxlength="16">
+    <!--<input type="password" id="inp1" maxlength="16"/>-->
+    <div class="pass-wrap">
+        <em>密码强度：</em>
+
+        <em id="strength"></em>
+
+        <div id="strengthLevel" class="strengthLv0"></div>
+    </div>
+</div>
+<script>
+    //1获取页面元素
+    //获取输入内容
+    var ipt = document.getElementById("ipt");
+    //显示弱中强
+    var strength = document.getElementById("strength");
+    //强度等级的颜色
+    var strengthLevel = document.getElementById("strengthLevel");
+
+
+    var arr = [" ", "弱", "中", "强"];
+
+    //输入的内容中具有几种内容形式跟设置的内容的最后一个数值相同
+
+    //先去获取用户的输入，根据用户输入的输入内容去检测输入的内容形式个数。
+
+    //当我们点击完毕一个按键后，这时去验证用户的输入内容
+    var count = 0;
+
+
+    ipt.onkeyup = function () {
+        //使用一个变量去记录出现过的内容形式个数
+        //有数字的时候
+        if (/\d/.test(this.value)) {
+            //计数加1
+            count++;
+        }
+
+        //有小写字母的时候
+        if (/[a-z]/.test(this.value)) {
+            count++;
+        }
+
+        //有大写字母
+        if (/[A-Z]/.test(this.value)) {
+            count++;
+        }
+
+
+        //判断输入的内容的长度
+        //如果长度小于6，清空count的值
+        if (this.value.length < 6) {
+            count = 0;
+        }
+
+
+        //根据count的值，设置对应的显示内容
+        //设置弱中强
+        strength.innerHTML = arr[count];
+
+        //设置强度条
+        strengthLevel.className = "strengthLv" + count;
+
+    };
+
+
+</script>
+</body>
+</html>

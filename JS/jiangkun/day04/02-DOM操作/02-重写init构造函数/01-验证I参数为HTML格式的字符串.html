@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+</head>
+<body>
+    <div></div>
+</body>
+<script>
+    var obj1 = I( 'div' );
+
+    var obj2 = I( '<div style="border: 1px solid red;">123</div>' );
+
+    document.body.appendChild( obj2[ 0 ] );
+
+</script>
+</html>

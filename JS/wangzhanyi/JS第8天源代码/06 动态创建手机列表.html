@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .cls {
+            list-style-type: none;
+            width: 150px;
+            margin: 0;
+            padding: 0;
+            background-color: #0099cc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="动态生成手机列表" />
+
+<div id="demo">
+    <!--<ul>-->
+        <!--<li>华为</li>-->
+        <!--<li>小米</li>-->
+        <!--<li>魅族</li>-->
+        <!--<li>苹果</li>-->
+    <!--</ul>-->
+</div>
+<script>
+    // 模拟从后台获取到的数据
+    var phones = ["华为", "小米", "魅族", "苹果", "联想", "三星", "锤子", "诺基亚", "黑莓", "oppo", "vivo", "小辣椒", "一加"];
+
+    // 1. 先获得要操作的对象
+    var demo = document.getElementById("demo");
+    var btn = document.getElementById("btn");
+
+    // 2. 给事件源注册事件
+    btn.onclick = function (){
+
+        var ul = document.getElementById("list"); // 根据id获取ul
+        if(ul){ // 一般是放boolean类型的值或是关系表达式或是逻辑表达式，如果是其它类型的值，则会将其它类型的值先转为 为对应的boolean类型的值，再进行判断
+            return;
+            // 1. 如果在函数中使用关键字return，而后面还有数据的话，则用return关键字将数据返回，之后再跳出函数，return后面的代码也不会执行了。
+            // 2. 如果return后面没有数据的话，程序执行到return关键字的时候，则是跳出函数，return后面的代码都不会再执行了
+        }
+        //break: 跳出循环，后面的所有的循环都不会再执行，break后面的代码也不会再执行
+        //continue: 结束本次循环，进到循环条件处，判断 循环条件是否成立，如果成立，继续进行下一次的循环
+
+        //3. 动态的创建元素
+        ul = document.createElement("ul");//ul只有一个，所以是单独的创建一次
+        demo.appendChild(ul);
+        ul.className="cls"; // 是给ul添加类名
+        ul.id ="list"; // 给ul设置id
+        //4. 创建li  根据数组的长度来创建对应的li标签
+        for(var i=0;i<phones.length;i++){
+            var li = document.createElement("li");
+            ul.appendChild(li);
+            li.innerText = phones[i];
+            // 5. 隔行变色
+            if(i%2==0){
+                li.style.backgroundColor="#c0c0c0";
+            }else {
+                li.style.backgroundColor = "#d0d0d0";
+            }
+            // 6. 鼠标移入高亮显示
+            var bg;
+            li.onmouseover = function (){
+                bg= this.style.backgroundColor;
+                  this.style.backgroundColor = "#fff";
+            }
+            li.onmouseout = function (){
+                   this.style.backgroundColor = bg;
+            }
+            // 7. 判断特殊情况
+        }
+    }
+
+</script>
+</body>
+</html>

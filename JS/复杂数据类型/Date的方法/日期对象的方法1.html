@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var date = new Date();
+    console.log(date.toString());//Tue Nov 29 2016 14:43:24 GMT+0800 (中国标准时间)
+    console.log(date.toLocaleString());//2016/11/29 下午2:43:24
+    var time1 = date.getTime();
+    console.log(time1);//1480401804497
+    var time2 = 3*24*60*60*1000;
+    console.log(time2);//259200000   三天的毫秒值
+    console.log(new Date(time1+time2).toLocaleString());//2016/12/2 下午2:43:24
+</script>
+</body>
+</html>

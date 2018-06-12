@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var num = Number(prompt("输入班级人数"));
+        var arr =[];
+        var sum = 0;
+        for(var i = 0;i<num;i++){
+            arr[i]=Number(prompt("输入学员成绩"));
+            sum+=arr[i];
+        }
+        alert("平均成绩是："+(sum/num));
+        alert("总成绩是："+sum);
+    </script>
+</head>
+<body>
+输入班级人数(比如10人),然后依次输入学员成绩，
+计算班级学员的平均成绩和总成绩
+</body>
+</html>

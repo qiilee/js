@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+var fruit = new Array(3);
+//js数组可以放任意类型数据
+ fruit[0]  =new Array("苹果",1,2);
+ fruit[1]  =new Array("橘子",3,4);
+ fruit[2]  =new Array("梨子",5,6);
+for(var i= 0;i<fruit.length;i++){
+	for (var j = 0; j < fruit[i].length; j++) {
+		document.writeln("fruit["+i+"]["+j+"]="+fruit[i][j]+"<br>");
+	}
+	document.write("<br>");
+}
+</script>
+</body>
+</html>

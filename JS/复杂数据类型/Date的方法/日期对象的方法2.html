@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    var date = new Date();// 通过new的方式创建一个日期对象
+    console.log(date); //Tue Nov 29 2016 14:26:41 GMT+0800 (中国标准时间) --其实内部就是自动的调用了toString()
+    console.log(typeof date);//object
+    console.log(date.toString());// 任何对象都有toString()方法
+    console.log(typeof date.toString()); // null  undefined没有toString()
+    console.log(date.valueOf());// 打印了一个13位的数字，从1970 1 1 00：00：00：000开始计算
+    // 其实日期对象，就是13位的数字，我们可以拿这个13位的数字进行一些运算
+    console.log(date.toDateString());//Tue Nov 29 2016 --外国人喜欢用的
+    console.log(date.toLocaleDateString());//2016/11/29
+    console.log(date.toTimeString());//14:26:41 GMT+0800 (中国标准时间)
+    console.log(date.toLocaleTimeString());//下午2:26:41
+
+
+    // 日期转换
+    // 2005，10，1日期的每一部分
+    //"2005-10-1"  字符串的日期格式
+
+    //var date = new Date(2016,6,31); // 外国人的计算方式，月份是从0开始
+    //var date = new Date("2016-07-31");
+
+//    var date = Date.parse("2016-07-32") ; // 解析
+
+    //var date = Date.now();  //TTML5里有的方法，IE9之后的浏览器才支持
+//    var date = +new Date(); // 用的最广泛的，各浏览器都支持的
+//    console.log(date);
+
+
+    //getTime()  返回毫秒数和valueOf()结果一样
+    //getMilliseconds()
+    //getSeconds()  返回0-59
+    //getMinutes()  返回0-59
+    //getHours()   返回0-23
+    //getDay()     返回星期几 0周日   6周6  0--6
+    //getDate()    返回当前月的第几天,当月的几号
+    //getMonth()   返回月份，从0开始
+    //getFullYear()   返回4位的年份  如 2016
+
+
+</script>
+</body>
+</html>

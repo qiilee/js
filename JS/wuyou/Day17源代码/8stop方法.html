@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //我们在执行动画的时候，有时需要让当前触发的动画立刻执行，但是可能前面有许多动画还在等待
+            //如果正常的添加，同样也需要等待
+            //为了立刻能够执行新添加的动画，我们需要找一个新的帮手
+            //stop()  支持两个参数
+            //参数1 是一个bool值  表示是否清除动画队列，清除动画队列中的所有动画
+            //参数2 是一个bool值  表示是否跳到当前运动最终效果
+
+
+            //点击按钮1 给box1设置多次运动
+            $("#start").click(function () {
+                $("#box").slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000).slideDown(1000).slideUp(1000);
+            });
+            //点击按钮2 设置stop方法
+            $("#stop").click(function () {
+                //清除动画队列，同时跳到当前运动的最终效果
+                //$("#box").stop(true,true);
+
+                //直接停止，保留在当前效果
+                //$("#box").stop(true,false);
+
+                //效果比較突兀，不会清除动画队列，但是会跳到当前运动最终效果再开始新的运动
+                //$("#box").stop(false,true);
+
+                //(最常用的)  新的运动会从旧运动当前的效果开始执行
+                $("#box").stop(false, false);
+
+                //两个参数的默认值都为false
+//                $("#box").stop();
+
+            });
+
+        })
+    </script>
+</head>
+<body>
+<button id="start">点击开始运动</button>
+<button id="stop">点击停止运动</button>
+<div id="box"></div>
+</body>
+</html>

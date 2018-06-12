@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width: 600px;
+            border-collapse: collapse;
+        }
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="查询用户信息">
+    <table id="tableId">
+        <tr>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>性别</td>
+            <td>描述</td>
+        </tr>
+
+    </table>
+    <script>
+            document.querySelector("input[type=button]").onclick=function(){
+
+                var xhr=new XMLHttpRequest();
+
+                xhr.open("get","02json.php");
+
+                xhr.send(null);
+
+                xhr.onreadystatechange=function() {
+
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+
+                            var data=xhr.responseText;
+                            alert(data);
+                            var obj=JSON.parse(data);
+                            alert(obj);
+                            console.log(obj);
+                            //这个是一个数组. 数组里面放置的是对象。遍历数组，得到对象，然后根据对象key 得到值
+
+                            for(var i=0;i<obj.length;i++){
+
+                                  var tr=document.createElement("tr");
+                                  var td1=document.createElement("td");
+                                  var td2=document.createElement("td");
+                                  var td3=document.createElement("td");
+                                  var td4=document.createElement("td");
+                                 td1.innerHTML=obj[i].username;
+                                 td2.innerHTML=obj[i].age;
+                                 td3.innerHTML=obj[i].sex;
+                                 td4.innerHTML=obj[i].desc;
+                                 tr.appendChild(td1);
+                                 tr.appendChild(td2);
+                                 tr.appendChild(td3);
+                                 tr.appendChild(td4);
+
+                                document.getElementById("tableId").appendChild(tr);
+
+
+
+
+                            }
+
+
+                    }
+                }
+
+            }
+    </script>
+</body>
+</html>

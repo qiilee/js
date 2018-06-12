@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            vertical-align: top
+        }
+
+        .box {
+            width: 490px;
+            height: 170px;
+            margin: 100px auto;
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .inner {
+            width: 490px;
+            height: 170px;
+            background-color: pink;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .inner ul {
+            width: 1000%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .inner li {
+            float: left;
+        }
+
+        .square {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .square span {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 16px;
+            cursor: pointer;
+        }
+
+        .square span.current {
+            background-color: orangered;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="inner">
+        <ul>
+            <li><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+        </ul>
+        <div class="square">
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    //分析执行规律
+    //点按钮1   滚动了0张
+    //点按钮2   滚动了1张图片的宽度
+    //点按钮3   滚动了2张图的宽度
+    //点按钮4   滚动了3张图的宽度
+    //点按钮5   滚动了4张图的宽度
+
+    //点击按钮的时候。按钮的索引值和滚过的图片张数一样
+
+
+    //1 获取元素
+    var box = document.getElementById("box");
+    var inner = box.children[0];
+    var list = inner.children[0];
+    var sq = inner.children[1];
+    var sps = sq.children;
+
+    //取图片宽，取的时候不要直接取出图片的宽度，因为可能有网络加载问题，取出可视区域的宽度
+    var imgWid = inner.offsetWidth;
+
+    //2 遍历sps取出每一个span
+    for (var i = 0; i < sps.length; i++) {
+        //7 设置sps[i]的索引值
+        sps[i].suoyin = i;
+
+        //3 给每一个span添加点击事件
+        sps[i].onclick = function () {
+            //4 点击按钮变色
+            for (var i = 0; i < sps.length; i++) {
+                sps[i].className = "";
+            }
+            //5 设置自己
+            this.className = "current";
+
+            //6 让ul根据当前按钮的索引值进行运动
+            var target = -this.suoyin * imgWid;
+            animate(list, target);
+        };
+    }
+
+    //让某个盒子运动到某一个位置
+    function animate(tag, target) {
+        //每次传入一个标签准备进行运动
+        //我们可以将定时器的id保存在tag的某一个自定义属性上
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //leader的值的获取,元素的当前位置
+            var leader = tag.offsetLeft;
+            //step的值设置,step需要根据leader和target的关系判断正负
+            var step = 9;
+            //检测
+            step = leader > target ? -step : step;
+            //如果说当前位置和目标位置之间的距离不足一步，就不能再正常走了
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //匀速运动公式
+                //标签的位置（新） = 标签的位置（旧） + 步长
+                leader = leader + step;
+                //设置给left属性
+                tag.style.left = leader + "px";
+            } else {
+                //进入else，说明不足一步了
+                //直接设置盒子运动到指定目标位置
+                tag.style.left = target + "px";
+                clearInterval(tag.timer);
+            }
+
+        }, 17);
+    }
+
+</script>
+</body>
+</html>

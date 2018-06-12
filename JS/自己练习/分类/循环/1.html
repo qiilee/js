@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var name = prompt("请输入您的用户名");
+        var password  = prompt("请输入您的密码");
+         if(name=="admin"&& password == "88888"){
+            alert("正确") ;
+         }else if(name!=="admin"){
+             alert("用户不存在");
+         }else if(name =="admin" && password !== "88888") {
+             alert("密码错误");
+         }
+    </script>
+</head>
+<body>
+练习2：提示用户输入用户名，然后再提示输入密码，
+如果用户名是“admin”并且密码是“88888”，则提示正确，
+否则，如果用户名不是admin还提示用户用户名不存在,如果用户名是admin则提示密码错误.
+</body>
+</html>

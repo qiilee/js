@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .clock {
+            width: 600px;
+            height: 600px;
+            margin: 100px auto;
+            background: url(images/clock.jpg) no-repeat;
+            position: relative;
+        }
+
+        .clock div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(images/hour.png) no-repeat center center;
+        }
+
+        #m {
+            background-image: url(images/minute.png);
+        }
+
+        #s {
+            background-image: url(images/second.png);
+            /*让盒子旋转*/
+            /*旋转 度数*/
+            /*transform: rotate(30deg);*/
+
+        }
+    </style>
+</head>
+<body>
+<div class="clock">
+    <div id="h"></div>
+    <div id="m"></div>
+    <div id="s"></div>
+</div>
+
+
+<script>
+    //1 获取元素
+    var h = document.getElementById("h");
+    var m = document.getElementById("m");
+    var s = document.getElementById("s");
+    var timer = null;
+    //需要在定时器内部，实时去更新当前时间
+    timer = setInterval(function () {
+        //2 获取当前时间
+        var date = new Date();
+
+        //时针一小时转多少度 30度
+        h.style.transform = "rotate(" + 30 * date.getHours() + "deg)";
+
+        //一分钟 6度
+        m.style.transform = "rotate(" + 6 * date.getMinutes() + "deg)";
+
+        //一秒 6度
+        s.style.transform = "rotate(" + 6 * date.getSeconds() + "deg)";
+    }, 20);
+    //先找到要操作的人
+    //这人人要干嘛？
+    //什么时候干，怎么干？
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 使用对象字面量的方式   json对象  的属性要加""
+
+//    var o = {};
+
+    var zs1={
+        "name":"张三",
+        "age":24,
+        "sex":"男"
+    };
+    var ls = {
+        "name":"李四",
+        "age":25,
+        "sex":"男"
+    };
+    var zs ={
+        "name":"尼古拉思*赵四",
+        "age":30,
+        "sex":"男"
+    };
+    var tq={
+        "name":"田七",
+        "age":38,
+        "sex":"女"
+    }
+
+    for(var key in zs1){
+        console.log(key+zs1[key]);
+    }
+//    var arr =["abc",123,null,false];
+//    var datas =[zs1,ls,zs,tq];
+    var datas = [
+        {"name":"张三", "age":24, "sex":"男"},
+        {"name":"李四", "age":25, "sex":"男"},
+        {
+            "name":"尼古拉思*赵四",
+            "age":30,
+            "sex":"男"
+        },
+        {
+            "name":"田七",
+            "age":38,
+            "sex":"女"
+        }
+    ];
+    for(var i=0;i<datas.length;i++){
+        var item = datas[i];
+        console.log(item.name);
+        console.log(item.age);
+        console.log(item.sex);
+    }
+
+    // 祝愿墙   模拟百度搜索框
+</script>
+</body>
+</html>

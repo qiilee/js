@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var oMyForm = new FormData();
+
+    oMyForm.append("username", "Groucho");
+    oMyForm.append("accountnum", 123456); // 数字123456被立即转换成字符串"123456"
+
+    // fileInputElement中已经包含了用户所选择的文件
+    oMyForm.append("userfile", fileInputElement.files[0]);
+
+    var oFileBody = "<a id="a"><b id="b">hey!</b></a>"; // Blob对象包含的文件内容
+    var oBlob = new Blob([oFileBody], { type: "text/xml"});
+
+    oMyForm.append("webmasterfile", oBlob);
+
+    var oReq = new XMLHttpRequest();
+    oReq.open("POST", "http://foo.com/submitform.php");
+    oReq.send(oMyForm);
+</script>
+</body>
+</html>

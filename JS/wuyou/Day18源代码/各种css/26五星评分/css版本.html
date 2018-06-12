@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: teal;
+        }
+
+        .comment li {
+            float: left;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //设置文本
+            var shiXin = "★";
+            var kXin = "☆";
+
+            $(".comment>li").mouseenter(function () {
+                //next()  后一个元素
+                //prev()  上一个元素
+                //nextAll() 后面的所有元素
+                //prevAll();前面的所有元素
+                //让当前li和前面所有li变成实心的
+                //$(this).text(shiXin).prevAll().text(shiXin);
+                //让后面的li变成空心
+                //$(this).nextAll().text(kXin);
+
+                //end()  让你可以访问到上一个操作的对象
+                $(this).text(shiXin).prevAll().text(shiXin).end().nextAll().text(kXin);
+            });
+
+            //移出效果
+            $(".comment").mouseleave(function () {
+                //清除所有人
+                $(this).children().text(kXin);
+                //因为移出的时候可能已经点击过某一个li了，这时候可以选中的部分添加实心效果
+                $(this).children(".current").text(shiXin).prevAll().text(shiXin);
+            });
+
+            //点击效果
+            $(".comment>li").click(function () {
+                //小排他 类名的作用是标记
+                $(this).addClass("current").siblings().removeClass("current");
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+
+</html>

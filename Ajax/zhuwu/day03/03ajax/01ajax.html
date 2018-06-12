@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax 封装</title>
+</head>
+<body>
+
+
+      <script>
+
+            /*
+            * 发送请求，接收数据.
+            *
+            * 现在的这个方法，它支持get 方式提交，也支持post 方式提交.
+            *
+            * */
+            function ajax(obj){
+
+                  var xhr=new XMLHttpRequest();
+
+                 //get 方式提交.
+                 //1：请求的参数在地址后面
+                 //2: 发送的数据是null
+                 if(obj.type.toLocaleLowerCase()=="get"){
+                     //1：请求的参数在地址后面
+                     //2: 发送的数据是null
+                     obj.url=obj.url+"?"+obj.data;
+                     obj.data=null;
+                 }
+                 xhr.open(obj.type,obj.url);
+
+                //如果是post 方式提交.
+                 if(obj.type.toLocaleLowerCase()=="post"){
+                    //请求的参数不在地址后面
+                    // 一个特殊的请求头 Content-Type:"xxx"
+                    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+                 }
+                 xhr.send(obj.data);
+                 //接收到数据，然后把数据响应到客户端.
+                 xhr.onreadystatechange=function(){
+                      //响应成功.
+                      if(xhr.readyState==4 && xhr.status==200){
+                           var data=xhr.responseText;
+
+                           //数据响应完成的时候调用这个回调函数，
+                           //把数据传给回调函数.
+                           obj.success(data);
+
+                      }
+                 }
+
+            }
+
+           /*
+           * 因为我现在要get ajax 传递多个参数，
+           * 一般参数多的情况下，把这些参数封装成一个对象
+           *
+           *
+           * */
+          ajax({
+              url:"01ajax.php",
+              type:"get",
+              data:"username=zhangsan&age=14",
+              //通过传递一个回调函数，
+              success:function(info){
+                   console.log("===="+info);
+                   //解析数据，把数据放在页面上面的某个位置.
+              }
+          });
+
+          //解析数据，填充到页面.
+
+
+
+
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    用户名<input type="text" name="uid" id="uid"/><br>
+    密码<input type="password" name="pwd" id="pwd"><br>
+    <input type="submit" value="登录" id="btn"><br>
+    <div id="message"></div>
+
+</body>
+<script>
+
+    // 验证: 用户必须输入用户名与密码, 否则不予许提交
+    // 给出警告信息
+    var btn = document.querySelectorAll( '#btn' )[ 0 ],
+        uid = document.querySelectorAll( '#uid' )[ 0 ],
+        pwd = document.querySelectorAll( '#pwd' )[ 0 ],
+        message = document.querySelectorAll( '#message' )[ 0 ];
+
+    // 添加事件
+    btn.onclick = function () {
+        // 验证
+        var uidText = uid.value;
+        var pwdText = pwd.value;
+
+        if ( uidText.trim().length == 0 || pwdText.trim().length == 0 ) {
+            message.innerHTML = '请输入完整信息';
+            return false;
+        }
+
+        // 提交成功
+        message.innerHTML = '登录成功';
+    };
+
+</script>
+</html>

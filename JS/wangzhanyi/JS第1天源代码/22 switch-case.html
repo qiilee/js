@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*
+    * 李四的年终工作评定,如果定为A级,则工资涨500元,如果定为B级,则工资涨200元,如果定为C级,工资不变,如果定为D级工资降200元,如果定为E级工资降500元.
+     设李四的原工资为5000,请用户输入李四的评级,然后显示李四来年的工资.
+    * */
+    var level = prompt("请输入李四的工作评级 ");
+    var salary = 5000;
+    switch(level){
+        case "A":
+            salary +=500;
+            break;
+        case "B":
+            salary +=200;
+            break;
+        case "C":
+            break;
+        case "D":
+            salary -=200;
+            break;
+        case "E":
+            salary -=500;
+            break;
+        default :
+            alert("请按套路出牌");
+            break;
+    }
+    console.log(salary);
+</script>
+</body>
+</html>

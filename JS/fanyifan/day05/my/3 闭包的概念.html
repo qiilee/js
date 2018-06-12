@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：这个自己注意下！！！难点
+
+    // 一、、、、、、、、、、、、
+    //     function fn(){
+    //     var obj = {};
+    //     return obj;
+    //     }
+    //     var obj1 = fn();
+    //     var obj2 = fn();
+    //
+    //     //num1跟num2 相等吗？
+    //     console.log(obj1===obj2)// 永远不相等
+
+    // 二、、、、、、、、、、、、、、
+    //    function fn() {
+    //        var num = Math.random();
+    //
+    //        function inner() {
+    //            return num;
+    //        }
+    //        return inner;
+    //    }
+    //    var innerFn = fn();// innerFn函数 就是inner函数
+    //
+    //    var num1 = innerFn();
+    //    var num2 = innerFn();
+    //    console.log(num1 === num2)
+    //    // 利用闭包访问作用域内部的变量
+
+    //三、、、、、、、、、、、、、
+    //    function fn() {
+    //        var obj = {};
+    //
+    //        function inner() {
+    //            return obj;
+    //        }
+    //
+    //        return inner;
+    //    }
+    //    // 在函数外部获取inner函数
+    //    var innerFn = fn();
+    //    var obj1 = innerFn();
+    //    var obj2 = innerFn();
+    //    console.log(obj1 === obj2);
+    //    obj1.name = 'jack';
+    //    obj1.age = 18;
+    //    var obj3 = innerFn();
+    //    console.log(obj3)
+
+    //四、、、、、、、、、、、、、、、、
+    // 在外界访问到obj1 和obj2 变量
+    function fn(){
+        var obj1 = {
+            name:'jack'
+        }
+        var obj2 = {
+            name:'rose'
+        }
+        function inner1(){
+            return obj1
+        };
+        function inner2(){
+            return obj2
+        };
+        var arr = [inner1,inner2];
+        var obj ={
+            inner1:inner1,
+            inner2:inner2
+        };
+        return obj;
+    }
+
+
+
+    var objFn= fn();
+    console.log(objFn)
+
+    var inner1Fn =objFn.inner1;
+    var inner2Fn =objFn.inner2;
+
+    // 利用两个函数去获取两个函数内部的变量
+
+    var obj1 = inner1Fn();// {name:'jack'}
+    var obj2 = inner2Fn();// {name:'rose'}
+    console.log(obj1);
+    console.log(obj2);
+</script>
+</body>
+</html>

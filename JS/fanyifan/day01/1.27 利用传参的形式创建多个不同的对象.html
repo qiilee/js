@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 利用传递不同的参数来使构造函数能够创建多个不同的对象
+
+    function Person(name,age){
+        this.name=name;
+        this.age=age;
+    }
+
+    var person1 = new Person('jack',18)
+    var person2 = new Person('rose',17)
+    console.log(person1)
+    console.log(person2)
+
+
+
+</script>
+</body>
+</html>

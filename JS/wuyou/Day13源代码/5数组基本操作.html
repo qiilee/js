@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //    var arr = [1,2,3,4,5];
+    //从后面操作 push()添加 修改原数组
+    //返回值为数组的新长度
+    //console.log(arr.push("A", "b", "c"));
+    //console.log(arr);
+
+    // pop()修改原数组  返回删除掉的元素
+    //console.log(arr.pop());
+    //console.log(arr);
+
+    //从前面操作
+    // unshift  添加 返回数组新长度，  修改原数组
+    //arr.unshift(100);
+    //arr.unshift(200);
+    //一次添加多个时，插入是根据传参的顺序添加的
+    //arr.unshift(100,200);
+    //console.log(arr);
+
+    //shift
+    //console.log(arr.shift());
+    //console.log(arr);
+
+
+    var arr = [1, 2, 3, 4, 5];
+    //想要得到结果 [2,3,4,5,1];
+    //1 先拿掉第一个元素
+    //var firstEle = arr.shift();
+    //2 添加到最后
+    //arr.push(firstEle);
+    //console.log(arr);
+
+    //将5放到最前面
+    arr.unshift(arr.pop());
+    console.log(arr);
+
+
+</script>
+</body>
+</html>

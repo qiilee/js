@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box"></div>
+<!--<input type="text"/>-->
+<script>
+    var box = document.getElementById("box");
+    var now = +new Date();
+    var arr=[];
+//    for(var i=0;i<1000;i++){
+//        var str = '<input type="text"/><br/>';
+//        box.innerHTML += str;
+//        // 字符串具有不可变性 频繁的拼接字符串，会浪费内存空间
+////        var str1 = "abc";
+////        str1=str1+"mm";
+     // 3883
+//    }
+    for(var i=0;i<1000;i++){
+        var str = '<input type="text"/><br/>';
+        arr.push(str); //不断的将字符串追加到数组当中
+    }
+    box.innerHTML = arr.join("");//join方法将数组中的元素连接成字符串进行输出
+    var end = +new Date();
+    console.log(end-now);// 9毫秒
+</script>
+</body>
+</html>

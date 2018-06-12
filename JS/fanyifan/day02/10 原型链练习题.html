@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+    //创建一个数组
+    var arr = [1,2,3]
+    //数组的进行字符串拼接，调用Array.prototype.valueOf方法，然后调用Array.prototype.toString方法，
+    console.log(arr+'')//'1,2,3'+'' = '1,2,3'
+/*    delete arr.toString;*/
+    // 删除了数组原型上面的toString方法，因此在属性搜索的时候就不会再调用这个方法，会继续向上查找，
+    //找到Object.prototype上面的toString方法进行调用。
+    delete Array.prototype.toString;
+    console.log(arr+'') //  Object.prototype.toString   '[object Array]'
+
+  /*  var reg = new RegExp();// '[object RegExp]'*/
+
+    //这道题涉及到数组的原型链、Array.prototype.toString方法的作用,
+    //Object.prototype.toString方法的作用
+    //delete运算符的作用、属性删除原则、复杂数据类型转化为字符串过程
+    //属性搜索原则、
+
+
+    //Object.prototype.toString方法的作用，就是将一个复杂数据类型转换成字符串，转换之后的格式
+    //是固定的，'[object 大写的数据类型]'
+
+
+
+
+
+
+
+
+
+
+
+
+    /*var obj = {};
+    obj.toString();//'[object Object]'*/
+
+   /* var date = new Date();
+    console.log(date.toString())
+    delete Date.prototype.toString;
+    console.log(date.toString())//'[object Date]'*/
+    /*var obj1 = new Object();*/
+
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /*  var arr = [1,2,3];
+    console.log(arr+'');//'1,2,3'
+    delete Array.prototype.toString;
+    Array.prototype.valueOf=function(){
+        return '我是被改写的valueOf方法'
+    }
+    console.log(arr+'')//'我是被改写的valueOf方法'*/
+</script>
+</body>
+</html>

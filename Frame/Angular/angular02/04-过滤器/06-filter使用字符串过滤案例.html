@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+    <input type="text" ng-model="search">
+    <div ng-repeat="item in list | filter:search">{{item}}</div>
+</body>
+<script>
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+                var datas = 'A请问企鹅,Bfqrqr,Cqweqw,Dqweqw,Eqweq,Fqwe,Gert,Hyrt,IaAdf,Jdyrty,Kfgjfj,Lsdg,Mdf,Nhjk'.split( ',' );
+                $scope.list = datas;
+            });
+</script>
+</html>

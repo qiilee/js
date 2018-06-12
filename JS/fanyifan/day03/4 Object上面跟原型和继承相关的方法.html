@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //Object身上的属性和方法
+
+
+    // Object.assign
+    // 作用：实现混入式继承
+    // 兼容性问题：ie不兼容
+    /*var obj1 = {
+        num1:1
+    }
+    var obj2 = {
+        num2:2
+    }
+    var obj3 = {
+        num3:3
+    }
+    var o = Object.assign(obj1,obj2,obj3)
+    console.log(o)*/
+
+
+    // Object.create 实现经典继承
+
+
+    // Object.defineProperty
+    // 作用：设置一个属性的属性描述符  是否可枚举
+    /*
+    * 属性描述符
+    * 值 value
+    * 是否可枚举 enumerable
+    * 是否可写  writable
+    * 是否可配置  configurable
+    * */
+
+   /* var obj = {}
+    Object.defineProperty(obj,'name',{
+        //属性值
+        value:'jack',
+        //true的话就是可枚举，false的话就是不可枚举
+        enumerable:true,
+        //如果把可写属性更改为false就没法修改这个属性的属性值
+        writable:false,
+        configurable:true
+    })
+    for(var key in obj){
+        console.log(obj[key])
+    }
+    obj.name='rose'
+    console.log(obj.name)*/
+
+
+    // Object.setPrototypeOf 设置原型
+    // 作用：把一个对象设置为另外一个对象的原型
+   /* var obj1 = {
+        num1:1
+    }
+    var obj2 = {
+        num2:2
+    }
+    Object.setPrototypeOf(obj1,obj2)
+    console.log(obj1)// obj1的原型变化为obj2*/
+
+
+    //Object.getPrototypeOf 获取原型
+    // 获取一个对象的原型
+    var obj  ={}
+    var proto = Object.getPrototypeOf(obj);
+    console.log(proto===Object.prototype)//true
+
+
+    // 获取原型的三种方式
+    /*
+    * 构造函数.prototype
+    * 实例.__proto__
+    * Object.getPrototypeOf(实例)
+    * */
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

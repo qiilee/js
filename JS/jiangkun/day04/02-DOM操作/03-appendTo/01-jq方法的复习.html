@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../../../jQuery版本/jquery-3.0.0.js"></script>
+</head>
+<body>
+    <div>123</div>
+    <div>456</div>
+</body>
+<script>
+    // 一般先创建一个元素, 然后再加入到页面中
+    // $( '<div style="width:400px; height: 100px; border: 1px solid red;"></div>' ).appendTo( $( 'body' ) )
+    
+    // $( '<div style="width:400px; height: 100px; border: 1px dashed red;"></div>' ).appendTo( 'body' )
+
+    $( '<div style="width:400px; height: 100px; border: 1px dotted red;"></div>' ).appendTo( document.body )
+
+    // 注意:
+    // 1> 需要实现创建 html 元素的办法, 重新处理构造函数
+    // 2> 需要参数可以是很多种类型
+
+</script>
+</html>

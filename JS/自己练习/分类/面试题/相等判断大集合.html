@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    console.log(null == undefined);//true
+    console.log("NaN" == NaN);
+    console.log(5 == NaN);
+    console.log(NaN == NaN);
+    console.log(NaN != NaN); //true
+    console.log(NaN !== NaN);//true
+    console.log(false == 0); //true
+    console.log(true == 1);
+    console.log(true == 2);  //false
+    console.log(undefined == 0);//false
+    console.log(null == 0); //false
+    console.log("5" == 5); //true
+    console.log(1 == '1'); //true
+    console.log([] == []);//false
+    console.log(function () {
+                console.log("11");
+            } == function () {
+                console.log("11")
+            });            //false
+</script>
+</body>
+</html>

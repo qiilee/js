@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<button id="remove">移除一个事件</button>
+
+<script>
+    var btn = document.getElementById("btn");
+    var remove = document.getElementById("remove");
+    //ie9以下不支持addEventListener方法
+
+    //ie支持attachEvent()
+    //ie 6 - 10 支持
+    //注定被淘汰
+    //在ie8和以下添加事件的时候，需要注意事件添加的顺序，反向
+
+
+    //第一个参数为事件类型，需要加on，第二个，事件处理程序
+    btn.attachEvent("onclick", function () {
+        console.log("今天天气不错");
+    });
+
+
+    btn.attachEvent("onclick", fun);
+
+    function fun() {
+        console.log("这是小明的垃圾代码");
+    }
+
+    //移除使用detachEvent("onclick",对应的事件处理程序)
+    remove.onclick = function () {
+        btn.detachEvent("onclick", fun);
+    }
+
+
+</script>
+</body>
+</html>

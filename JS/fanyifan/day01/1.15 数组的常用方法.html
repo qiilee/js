@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+    //1 pop
+    //作用：删除掉数组的最后一项　
+    //返回值：删除的那一项
+    //是否改变原有数组:是
+    /*var arr = [1,2,3];
+    var ret = arr.pop();
+    console.log(ret);//3
+    console.log(arr)*/
+
+    //2 push
+    //作用：添加一个元素到数组的末尾
+    // 返回值：数组的长度
+    // 是否改变：是
+   /* var arr = [1,2,3];
+    var ret = arr.push(44);
+    console.log(ret);//4
+    console.log(arr)//*/
+
+    //3 shift
+    // 作用： 删除数组的第一项
+    //返回被删除的那一项
+    // 是否改变：是
+    /*var arr = [1,2,3];
+    var ret = arr.shift();
+    console.log(ret);//1
+    console.log(arr)//*/
+
+    // unshift
+    // 作用：添加数组的第一项
+    //返回值：新数组的长度
+    // 是否改变:是
+   /* var arr = [1,2,3];
+    var ret = arr.unshift(0);
+    console.log(ret);//4
+    console.log(arr)// [0,1,2,3]*/
+
+
+    //splice
+    // 作用： 截取数组
+    // 返回值：截取出来的部分
+    // 是否改变:是
+    // splice方法的第二个参数是截取数组的长度
+  /*  var arr = [1,2,3];
+    var ret = arr.splice(0,1);//包前不包后
+    console.log(ret);//1
+    console.log(arr)//[2,3]*/
+
+
+    // slice
+    // 作用：截取数组
+    //返回值：截取出来的数组
+    // 是否改变：否
+  /*  var arr = [1,2,3];
+    var ret = arr.slice(0,1);//包前不包后
+    console.log(ret);//1
+    console.log(arr)//[1,2,3]*/
+
+
+  // reverse
+    // 作用：反转数组
+    //返回值：新的数组
+    //是否改变：是
+   /* var arr = [1,2,3,4]
+    var ret = arr.reverse();
+    console.log(ret);
+    console.log(arr)
+    console.log(ret===arr)*/
+
+    // sort
+    //作用： 排序
+    //返回值：新的数组
+    //是否改变：是
+
+/*    var arr = [2,5,3,4]
+    var ret = arr.sort(function(a,b){
+        return a-b;
+    });
+    console.log(ret);
+    console.log(arr)
+    console.log(ret===arr)*/
+
+    // toString
+    // 作用：转换为字符串
+    // 返回值：字符串  ele1,ele2,ele3
+    // 是否改变:不会
+
+/*    var arr = [2,5,3,4]
+    var ret = arr.toString()
+    console.log(ret);//'2,5,3,4'
+    console.log(arr)//[2,5,3,4]*/
+
+
+    // forEach 方法
+    // 作用：遍历数组的每一项
+    // 返回值：undefined
+    // 是否改变：否
+   /* var arr = [2,5,3,4]
+    var ret = arr.forEach(function(value){
+        console.log(value)
+    })
+    console.log(ret);//undefined
+    console.log(arr)//[2,5,3,4]*/
+
+
+    // map
+    //作用：对数组进行遍历
+    //返回值：新的数组
+    // 是否改变：否
+    /*var arr = [2,5,3,4]
+    var ret = arr.map(function(value){
+        return value+1;
+    })
+    console.log(ret);//[3,6,4,5]
+    console.log(arr)//[2,5,3,4]*/
+
+    // filter 过滤
+    //作用： 筛选一部分元素
+    //返回值： 一个满足筛选条件的新数组
+    // 是否改变原有数组：不会
+
+    /*var arr = [2,5,3,4]
+    var ret = arr.filter(function(value){
+        return value>3;
+    })
+    console.log(ret);//[5,4]
+    console.log(arr)//[2,5,3,4]*/
+
+
+    // every
+    // 作用：判断数组中的每一项是否满足条件，如果都满足，就返回true
+    // 如果有一个不满足，就返回false
+    // 返回值：布尔值
+    // 是否改变：不会
+   /* var arr = [2,5,3,4]
+    var ret = arr.every(function(value){
+        return value>2;
+    })
+    console.log(ret);//false
+    console.log(arr)//[2,5,3,4]*/
+
+
+    // some
+    // 作用：判断数组中的每一项，如果有一项满足条件，就返回true
+    // 返回值：布尔值
+    // 是否改变：否
+/*    var arr = [2,5,3,4]
+    var ret = arr.some(function(value){
+        return value>4;
+    })
+    console.log(ret);//true
+    console.log(arr)//[2,5,3,4]*/
+
+
+//    var arr = [1,2,3,4]
+    // reduce 方法
+    // 作用：对数组进行迭代，然后两两进行操作，最后返回一个值
+    // 返回值：return出来的结果
+    // 是否改变：不会
+
+//    var ret = arr.reduce(function(a,b){
+//        return a*b;
+//    })
+//    console.log(ret);
+//    console.log(arr)
+
+    // reduceRight
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

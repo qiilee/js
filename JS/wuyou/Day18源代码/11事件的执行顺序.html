@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+
+            //事件委托:  参数1 事件类型   参数2 选择器  参数3 事件处理程序
+            //事件委托的原理：事件冒泡;
+            $("#box").on("click", "p,span", function () {
+                console.log("我是由box内部的p标签执行的事件");
+            });
+
+
+            //在具有事件委托的同时，元素自身还具有事件
+            $("#box").on("click",function () {
+               console.log("我是自己的事件内容");
+            });
+
+            //这时，委托的事件会先执行，然后再去执行自身的事件
+
+        });
+    </script>
+</head>
+<body>
+<button id="btn">点击</button>
+<div id="box">
+    <p>我是一段文本</p>
+    <span>我是span</span>
+    <h1>我是h1</h1>
+</div>
+</body>
+</html>

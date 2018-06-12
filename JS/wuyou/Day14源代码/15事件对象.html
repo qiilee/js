@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    document.onclick = function (e) {
+        //如果在触发事件的时候，去捕捉鼠标的坐标呢？
+
+        //什么是事件对象？ 事件对象中包含了关于当前事件触发时的一些信息
+        //鼠标坐标
+
+
+        //e.clientX 鼠标针对页面可视区域的横坐标
+        //e.clientY 鼠标针对页面可视区域的纵坐标
+
+        //console.log(e.clientX);
+        //console.log(e.clientY);
+        //console.log("-----------------");
+
+
+        //由于事件对象e的使用在ie低版本不支持
+        //ie低版本使用window.event
+
+        //对事件对象进行兼容
+        var e = e || event;
+
+        //点击鼠标的时候将鼠标的坐标设置给box的left跟top
+        box.style.left = e.clientX + "px";
+        box.style.top = e.clientY + "px";
+
+
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //输入班级人数(比如10人),然后依次输入学员成绩，计算班级学员的平均成绩和总成绩
+//    var count = +prompt("请输入班级总人数");// 用户输入的内容都是字符串类型
+//    var i=0;//定义一个初始值
+//    var sum = 0;//定义变量，并赋初值
+//    while(i<count){
+//        var score = +prompt("请输入第"+(i+1)+"个学员的成绩");
+//        sum+=score;// sum = sum+score
+//        i++;//改变循环条件
+//    }
+//    var avg = sum/count;
+//    console.log("班级共有"+count+"个人数，他们的总成绩是:"+sum+",平均成绩是:"+avg);
+    /*老师问学生,这道题你会做了吗?如果学生答"会了(y)",则可以放学.如果学生不会做(n),则老师再讲一遍,再问学生是否会做了......
+            直到学生会为止,才可以放学.
+            直到学生会或老师给他讲了10遍还不会,都要放学
+            */
+//        var answer = prompt("这道题你会做了吗？y/n");
+//    var i=0;
+//    while(answer!="y"&&i<10){
+//        answer = prompt("这道题你会做了吗？y/n");
+//        i++;
+//    }
+//    console.log("放学了。。。");
+
+
+  //  计算1到100之间整数的和；
+
+//    var sum = 0;
+//    var i = 1;
+//    while(i<=100){
+//        sum+=i;
+//        i++; // 改变循环条件
+//    }
+//    console.log(sum);
+  //  练习2：要求用户输入用户名和密码，只要不是admin、888888就一直提示用户名或密码错误,请重新输入
+    do{
+        var answer = prompt("请输入用户名");
+        var password = prompt("请输入密码");
+    }while(answer!="admin"&&password!="888888")
+    console.log("登陆成功");
+</script>
+</body>
+</html>

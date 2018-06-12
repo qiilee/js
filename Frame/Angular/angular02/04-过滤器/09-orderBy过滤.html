@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+    
+    排序: <input type="text" ng-model="key">
+
+<table border="1" width="400">
+    <tbody>
+        <tr ng-repeat="cols in array | orderBy: key">
+            <td>{{cols.name}}</td>
+            <td>{{cols.price | currency }}</td>
+            <td>{{cols.service}}</td>
+            <td>{{cols.address}}</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+<script>
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+                var products = [
+                    { name: 'mp3播放器', price: 100, service: '京东', address: '北京' },
+                    { name: 'mp4播放器', price: 200, service: '京东', address: '北京' },
+                    { name: 'mp5播放器', price: 300, service: '亚马逊', address: '北京' },
+                    { name: 'mp6播放器', price: 400, service: '京东', address: '北京' },
+                    { name: 'mp7播放器', price: 500, service: '自己', address: '北京' },
+                    { name: 'mp8播放器', price: 600, service: '京东', address: '北京' },
+                    { name: 'mp9播放器', price: 700, service: '啦啦啦', address: '北京' },
+                    { name: 'mpa播放器', price: 800, service: '京东', address: '北京' },
+                    { name: 'oppo mp3播放器', price: 120, service: '当当', address: '上海' },
+                    { name: '小米mp3播放器', price: 130, service: '亚马逊', address: '北京' },
+                    { name: '大米mp3播放器', price: 300, service: '自己', address: '南京' },
+                    { name: '糙米mp3播放器', price: 140, service: '仓库', address: '湖北' },
+                    { name: '雪米mp3播放器', price: 150, service: '啦啦啦', address: '光柱' },
+                    { name: '糯米mp3播放器', price: 160, service: '嘻嘻', address: '日本' },
+                    { name: '黑米mp3播放器', price: 170, service: '呵呵', address: '韩国' },
+                    { name: '香米mp3播放器', price: 180, service: '乐乐', address: '美国' }
+                ]; 
+
+                
+                $scope.array = products;
+
+            });
+</script>
+</html>

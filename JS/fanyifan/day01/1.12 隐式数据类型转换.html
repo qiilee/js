@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 隐式数据类型转换
+
+    // 1  数学运算符号+
+    /*console.log(typeof (+'123'));*/
+
+    // 2 if判断语句
+    /*if(undefined){
+        console.log(123)
+    }*/
+    // 3 对象的属性名是字符串，
+    var obj = {}
+    // 会把其他数据类型的值转换成一个字符串‘[object Object]’
+    obj[{}]=1;
+    console.log(obj);
+    obj[2]=2;
+    console.log(obj)
+    obj[null]=3;
+    obj[undefined]=4;
+    console.log(obj);
+    for(var key in obj){
+        console.log(key);
+        console.log(typeof key);
+    }
+
+    // 4 字符串拼接
+
+    console.log(''+1);// '1'
+    console.log('' +null);//'null'
+    console.log(''+[1,2,3]);
+    // 数组转换为字符串，toString方法
+    console.log([1,2,3].toString())//'1,2,3'
+    console.log(''+{});//'[object Object]';
+
+
+    // 5  == 会发生隐式类型转换
+    /*
+    *  = 赋值
+    *  == 判断相等 先去判断数据类型，如果数据类型不同，则会发生隐式类型转换，
+    *  如果相同，则直接比较具体的值
+    *  === 全等  先去判断类型，类型不同则返回false， 如果类型相同，则比较具体的值
+    * */
+
+    console.log(1=='1');// true
+    console.log(1==='1');// false
+
+    //===速度比较快，并且判断地更准确一点
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

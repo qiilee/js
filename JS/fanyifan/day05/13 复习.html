@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 自执行函数
+
+    //函数声明 通过function关键字生命了一个函数
+    //函数表达式
+
+    // 如何让一个函数声明转换为函数表达式
+    /*(function(){
+        console.log(1)
+    })()*/
+
+
+
+    // 函数参数与变量提升
+
+    (function (a) {
+     console.log(a);// 输出函数体
+     function a() {}
+     console.log(a);//输出函数体
+     })( 100 );
+
+    //把自执行函数拆分成一个函数声明，然后再对它进行调用
+
+   /* function fn(a){
+        //1 对参数进行声明和赋值
+        var a;
+        a=100;
+        //2 对函数内的代码进行变量提升。
+        function a() {}
+        console.log(a)/
+        console.log(a);//输出函数体
+    }
+    fn(100)*/
+
+
+   // 闭包的概念
+
+
+
+    // 什么样的代码会进入到任务队列
+    // 定时器   事件
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

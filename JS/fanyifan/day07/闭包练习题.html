@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*var arr = [	{name:"张三"},
+        {name:"李四"},
+        {name:"王五"},
+        {name:"赵钱"},
+        {name:"孙李"} ];
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].show = function () {
+            console.log(arr[i].name);
+        };
+    }
+
+    // 根据以上代码分析以下情况的结果：
+    // 情况一：
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].show();
+        // 正确的结果
+    }
+
+    // 情况二：
+    for (var j = 0; j < arr.length; j++) {
+        arr[j].show();
+    }*/
+    var arr = [{name: '张三1'},
+        {name: '张三2'},
+        {name: '张三3'},
+        {name: '张三4'}];
+    for (var i = 0; i < arr.length; i++) {
+        arr[i].sayHello = (function () {
+            var j = i;
+            return function () {
+                console.log(j);
+            }
+        }());
+    }
+    for (var j = 0; j < arr.length; j++) {
+        arr[j].sayHello();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<students>
+	<student>
+		<name>刘飞</name>
+		<age>20</age>
+		<addr>辽宁</addr>
+	</student>
+	<student>
+		<name>苏建</name>
+		<age>21</age>
+		<addr>河北</addr>
+	</student>
+	<student>
+		<name>王阳</name>
+		<age>18</age>
+		<addr>山东</addr>
+	</student>
+</students>

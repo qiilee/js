@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #000;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="box">今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！今天天气不错！</div>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    //scrollTop 元素内部被卷曲的高度
+
+
+    //onscroll 滚动滚动条的时候触发事件
+    box.onscroll = function () {
+        //计算方式，内容被滚出到顶边框的底部时
+        console.log(box.scrollTop);
+    };
+
+
+    //这个scroll系列属性不是只读的
+    btn.onclick = function () {
+        //设置box的卷曲高度的值为100
+        box.scrollTop = 100;
+    };
+
+
+</script>
+</body>
+</html>

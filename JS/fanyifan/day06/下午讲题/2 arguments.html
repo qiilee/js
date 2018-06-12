@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // arguments 是函数的一个属性，只在函数内部才可以使用
+    // 作用 ： 函数的实参
+    // arguments.length  实参的个数
+    // arguments.callee  代表了函数的自身，可以用来对函数进行自调用，
+    //也就是我们所说的递归
+
+    function fn(name,age){
+        console.log(arguments)
+        //arguments.length代表了实参的个数
+        //函数.length  fn.length
+        console.log(fn.length)//2
+    }
+    fn()
+    fn('jack')
+
+</script>
+</body>
+</html>

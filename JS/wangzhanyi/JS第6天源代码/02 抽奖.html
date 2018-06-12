@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="抽奖" id="btn"/>
+<select name="" id="sel">
+    <option value="">一等奖</option>
+    <option value="">二等奖</option>
+    <option value="">三等奖</option>
+    <option value="">四等奖</option>
+    <option value="">五等奖</option>
+    <option value="">六等奖</option>
+    <option value="">七等奖</option>
+    <option value="">八等奖</option>
+</select>
+<p>这是 一些文字</p>
+<select name="" id="sel2">
+    <option value="">一等奖</option>
+    <option value="">二等奖</option>
+    <option value="">三等奖</option>
+    <option value="">四等奖</option>
+    <option value="">五等奖</option>
+    <option value="">六等奖</option>
+    <option value="">七等奖</option>
+    <option value="">八等奖</option>
+</select>
+<script>
+    // 1. 先获取所有的标签对象
+    var btn = document.getElementById("btn");
+    var sel = document.getElementById("sel");
+    var options = sel.getElementsByTagName("option");
+    // 2. 给事件源注册事件
+    btn.onclick = function (){
+        var index =Math.floor((Math.random()*options.length));
+        options[index].selected = true; //属性值只有一个的时候，需要使用boolean类型来表示
+    }
+</script>
+</body>
+</html>

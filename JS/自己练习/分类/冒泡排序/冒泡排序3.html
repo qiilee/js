@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //var arr = [40, 30, 20, 10];
+    var arr = [10, 20, 30, 40];
+    //5个元素比4次 2个元素比1 arr.length比arr.length-1
+    //for (var i = 1; i <= arr.length - 1; i++) {
+    for (var i = 0; i < arr.length - 1; i++) {//一共比较多少趟
+        var isSorted = true;//表示排好了
+        for (var j = 0; j < arr.length - 1 - i; j++) {//两两比较的次数
+            if (arr[j] > arr[j + 1]) {
+                isSorted = false;
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+        if (isSorted) {
+            break;
+        }
+    }
+    console.log(arr);
+    console.log(isSorted);
+
+
+
+    //        var arr = [1,2,2,6,4,23,7,89];
+    //        //这是循环的次数
+    //        for (var i = 0; i < arr.length-1; i++) {
+    //            var flag = true;
+    //            for (var j = 0; j < arr.length-i-1; j++) {
+    //              if(arr[j]>arr[j+1]){
+    //                  flag = false;
+    //                  var temp = arr[j];
+    //                  arr[j] = arr[j+1];
+    //                  arr[j+1]  = temp;
+    //              }
+    //            }
+    //            if(flag){
+    //                break;
+    //            }
+    //        }
+    //        console.log(arr);
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

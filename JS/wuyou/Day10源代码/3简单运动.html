@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">点我，运动</button>
+<div id="box"></div>
+
+<script>
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    var leftValue = 0;
+    var timer = null;
+    //点击事件
+    //跑到400的时候停下
+    btn.onclick = function () {
+        //为了保证不出现加速，先去清除旧的定时器
+        clearInterval(timer);
+
+        //不能使用局部变量保存定时器
+        timer = setInterval(function () {
+            //检测，如果leftValue不到400 ，让其进行运动
+            if (leftValue < 1000) {
+                //先让leftValue+5
+                leftValue += 5;
+                //设置box的left值
+                box.style.left = leftValue + "px";
+            } else {
+                //定时器使用完毕要清除，即使动作停止了，定时器实际上还在空转
+                clearInterval(timer);
+            }
+        }, 17);
+    };
+    //首先知道效果是什么样的？让一个盒子运动
+    //操作谁？ 盒子
+    //什么时候操作？ 点击按钮的时候
+    //操作盒子做什么？ 缓动函数
+    //如何让元素移动位置？ 定位，并且设置left值（持续不断的更改left）
+    //运动是否具有条件？  运动到400的位置停止
+
+
+</script>
+
+</body>
+</html>

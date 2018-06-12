@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="默认值" id="txt" class="txt2" aa="bbb" ccc="ddd"/>
+<script>
+    //
+    var txt = document.getElementById("txt");
+
+//    txt.className = "";
+    txt.removeAttribute("class"); // 是删除属性和属性名，都删除掉了
+    txt.removeAttribute("aa");
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //覆盖原型
+    // 比较简单，但是必须一次性添加所有的共有方法到原型当中。
+    function Person(){
+
+    }
+    Person.prototype={
+        sayHello:function(){
+            console.log('我是原型上面的sayHello方法');
+        },
+        study:function(){
+            console.log('我是原型上面的study方法')
+        }
+    }
+    var person = new Person();
+    person.sayHello();
+    person.study();
+
+
+
+</script>
+</body>
+</html>

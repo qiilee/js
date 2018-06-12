@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script>
+    
+    // 计算下面的题目
+    // 求 [ 1, 3, 5, 2, 8, 7, 6, 9 ] 的最大值, 最小值, 和, 积, 平均值.
+    // 要求分别使用循环完成.
+    // var arr = [ 1, 3, 5, 2, 8, 7, 6, 9 ];
+    // 怎么封装???
+
+
+    /*
+    // 1, 最大值
+    var max = arr[ 0 ]; 
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( max < arr[ i ] ) {
+            max = arr[ i ];
+        }
+    }
+    console.log( 'max = ' + max );
+
+    // 2, 最小值
+    var min = arr[ 0 ]; 
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( min > arr[ i ] ) {
+            min = arr[ i ];
+        }
+    }
+    console.log( 'min = ' + min );
+
+    // 3, 求和
+    var sum = 0;
+    for ( var i = 0; i < arr.length; i++ ) {
+        sum += arr[ i ];
+    }
+    console.log( '和 = ' + sum );
+
+    // 4, 积
+    var cross = 1;
+    for ( var i = 0; i < arr.length; i++ ) {
+        cross *= arr[ i ];
+    }
+    console.log( '积 = ' + cross );
+    */
+
+
+    /*
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( max < arr[ i ] ) {
+            max = arr[ i ];
+        }
+    }
+    
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( min > arr[ i ] ) {
+            min = arr[ i ];
+        }
+    }
+    
+    for ( var i = 0; i < arr.length; i++ ) {
+        sum += arr[ i ];
+    }
+
+    for ( var i = 0; i < arr.length; i++ ) {
+        cross *= arr[ i ];
+    }
+    */
+
+    /*
+    function each (arr, statement ) { 
+        for ( var i = 0; i < arr.length; i++ ) {
+            // statement 执行
+            // new Function( '...' )
+            // eval( ... ) 
+            // (new Function( 'index', statement ))( i );
+
+            // (function ( index ) {
+            //     if ( max < arr[ index ] ) { max = arr[ index ]; }
+            // })( i );
+
+
+            // 可以执行的函数
+        }
+    }*/
+
+
+    function each( arr, callback ) {
+         for ( var i = 0; i < arr.length; i++ ) { 
+            callback( arr[ i ], i );
+         }
+    }
+
+    var arr = [ 1, 3, 5, 2, 8, 7, 6, 9 ];
+    // 求最大值
+    var max = arr[ 0 ];
+    // each( arr, 'if ( max < arr[ index ] ) { max = arr[ index ]; }' );
+    each( arr, function ( v, i ) {
+        if ( max < v ) {
+            max = v;
+        }
+    });
+
+    console.log( max );
+    // 这么写有一些问题:
+    // 1, 应该在字符串中写什么变量? 那些变量可以用, 那些不能用? 不清楚的.
+    // 2, 如果方法体很长, 这样写会无法维护
+    // 需要重新考虑封装
+</script>
+</html>

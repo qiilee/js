@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        div {
+            width: 400px;
+            height: 250px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="dv">
+
+    <textarea name="tt" id="" cols="50" rows="10">
+        网易邮箱帐号服务条款
+最后修订时间：2016年8月31日
+【注意】欢迎申请使用广州网易计算机系统有限公司及其他合作运营主体（下列简称为“网易公司”或“网易”）提供的服务。请您（下列简称为“用户”）仔细阅读以下全部内容（特别是粗体下划线标注的内容）。如用户不同意本服务条款任意内容，请勿注册或使用网易服务。如用户通过进入注册程序并勾选“我同意网易邮箱帐号服务条款”，即表示用户与网易公司已达成协议，自愿接受本服务条款的所有内容。此后，用户不得以未阅读本服务条款内容作任何形式的抗辩。
+1.服务条款的确认和接纳
+网易服务涉及到的网易产品的所有权以及相关软件的知识产权归网易公司所有。网易公司所提供的服务必须按照其发布的公司章程，服务条款和操作规则严格执行。本服务条款的效力范围及于网易公司的一切产品和服务，用户在享受网易公司任何单项服务时，应当受本服务条款的约束。
+    </textarea>
+    <br/>
+    <input type="button" value="请仔细阅读协议(5)" id="btn" disabled="disabled"/>
+</div>
+<script>
+    var btn = document.getElementById("btn");
+    var timer = null;
+    //设置一个文字去记录当前秒数
+    var count = 5;
+
+    //设置定时器10秒以后，让表单按钮可以使用
+    timer = setInterval(function () {
+        //当count为0的时候，清楚定时器，设置文本，启用按钮
+        if(count == 1){
+            //设置文本
+            btn.value = "同意";
+            btn.disabled = false;
+            //表示本次代码执行是定时器的最后一次
+            clearInterval(timer);
+            //跳出这一次代码执行
+            return;
+
+        }
+
+        //让时间减少
+        //如果count--写在前面。设置的时候是检测count为0的时候
+        count--;
+        //设置文字给btn
+        btn.value = "请仔细阅读协议("+count+")";
+
+    },1000)
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    // 1. 先获得要操作的对象
+    var box = document.getElementById("box"); //获取的是一个标签对象
+//    box.className = ""
+    //
+    var p1 =  document.createElement("p");// 创建的是一个标签对象  先是在内存当中创建的
+    // 给box追加元素
+    box.appendChild(p1);
+    p1.style.width="200px";
+    p1.style.height="200px";
+    p1.style.backgroundColor = "red";
+    p1.innerText = "刚刚创建出来的";
+</script>
+</body>
+</html>

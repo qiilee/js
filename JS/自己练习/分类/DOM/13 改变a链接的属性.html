@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--<a href="http://www.baidu.com" onclick="alert('弹出对话框')">百度</a>-->
+<input type="button" id="btn" value="更新"/>
+<a href="http://www.baidu.com" id="link">百度</a>
+<script type="text/javascript">
+    // 1. 先获得要操作的标签对象
+    var btn = document.getElementById("btn");
+    var link = document.getElementById("link");
+    // 2. 给事件源注册单击事件
+    btn.onclick = function  (){
+//        console.log(link.href);
+        link.href="http://www.itcast.cn";
+//        link.innerText = "哇哈哈"; // innerText用来获取标签间的文本内容  innerHTML
+        console.log(link.innerText);
+    }
+</script>
+</body>
+</html>

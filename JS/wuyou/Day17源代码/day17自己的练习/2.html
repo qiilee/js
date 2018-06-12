@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">66666666666666666</div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script src="jquery-1.12.4.min.js"></script>
+<script>
+    var $a =  $("<div></div>");
+//    console.log($a[0]);  //<div></div>
+//    console.log($a[1]);
+//    console.log($a[2]);   //undefined
+
+     $("#box").append($a);
+     $("#box").prepend("<p>2222</p>");
+
+
+    $("#box").after("<span>3333<span>");
+    $("#box").before("<span>44<span>");
+
+    $("div").append("<p>我是p标签</p>");
+
+</script>
+</body>
+</html>

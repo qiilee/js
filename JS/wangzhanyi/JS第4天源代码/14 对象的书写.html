@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //  可以帮助我们描述一些现实 中的事物
+    //  对象一般是一个具体的事物，可以看的见，摸的着的，是特指的一个事物
+    //  学生对象
+    //  姓名，性别，年龄，地址，QQ号，tel,身高，体重，爱好，三围   行为：学习，睡觉，问问题，打游戏，吃饭，逛街
+    //  汽车
+    //  品牌，价格，颜色，speed,排量，空间，产地，  奔跑
+    //  手机   泛指一类
+    //  品牌，价格，颜色，产地，型号，  行为： 打电话    发短信  聊天  爆炸
+
+    // 比如用程序 来描述 学生这个对象
+    var  array = new Array();
+    var  o = new  Object();//创建了一个空对象
+    o.age = 25;
+    o.sex = "男";
+    o.sayHi = function(){
+        console.log("大家好：我叫"+ o.name+"，我是"+ o.sex+"生,我今年"+ o.age+"岁了;");
+    }
+    o.name = "张三";
+    o.sayHi();
+
+    var  ls = new Object();
+    ls.name = "李四";
+
+
+</script>
+</body>
+</html>

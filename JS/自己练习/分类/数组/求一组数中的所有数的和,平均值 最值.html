@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var arr = [200, 209, 302, 40, 50, 60, 70, 80, 90, 100];
+
+        var sum = 0;
+        var max = arr[0];
+        var min = arr[0];
+        for (var i = 0; i < arr.length; i++) {
+            sum += arr[i];
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+
+        }
+        alert(sum);
+        alert(sum / arr.length);
+        alert(max);
+        alert(min);
+
+
+    </script>
+</head>
+<body>
+求一组数中的所有数的和
+求一组数中的所有数的和 和平均值
+求一组数中的最大值
+求一组数中的最小值
+</body>
+</html>

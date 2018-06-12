@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='src/Itcast.core.js'></script>
+    <script src='src/Itcast.dom.js'></script>
+    <script>
+        var arr = [],
+                push = arr.push;
+        Itcast.extend({
+            next: function (node) {
+                while (node = node.nextSibling) {
+                    if (node.nodeType == 1) {
+                        return node;
+                    }
+                }
+                return null;
+            },
+            prev: function (node) {
+                while (node = node.previousSibling) {
+                    if (node.nodeType == 1) {
+                        return node;
+                    }
+                }
+                return null;
+            },
+            nextAll:function(node){
+                var arr = [];
+                while (node = node.nextSibling) {
+                    if (node.nodeType == 1) {
+                        arr.push(node);
+                    }
+                }
+                return arr;
+            },
+            prevAll:function(node){
+                var arr = [];
+                while (node = node.previousSibling) {
+                    if (node.nodeType == 1) {
+                        arr.push(node);
+                    }
+                }
+                return arr;
+            }
+        });
+
+        Itcast.fn.extend({
+
+        });
+    </script>
+</head>
+<body>
+<div id="one"></div><div id="two"></div>
+<div></div>
+
+<script>
+   // 总结 Itcast.extend({  出错  写了等于与fn
+   // 老师的next与prev方法中用变量tmp接收了node参数，自己没使用
+   // Itcast.fn.extend中的不明白
+   //
+    var next1 = Itcast.next(one);
+    var next2 = one.nextSibling;
+    console.log(next1 == next2); // true
+
+    var prev1 = Itcast.prev(two);
+    var prev2 = two.previousSibling;
+    console.log(prev1 == prev2);
+</script>
+</body>
+</html>

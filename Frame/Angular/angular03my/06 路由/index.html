@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./angular.js"></script>
+    <script src="./angular-route.js"></script>
+    <style>
+        .c {
+            width: 80%;
+            height: 400px
+        }
+    </style>
+</head>
+<body ng-app="mainApp">
+    <div>
+        <a href="#/a">aaaaaaaaaaa</a><br>
+        <a href="#/b">bbbbbbbbbbb</a><br>
+        <a href="#/c">ccccccccccc</a><br>
+        <a href="#/d">ddddddddddd</a><br>
+        <a href="#/e">eeeeeeeeeee</a><br>
+    </div>
+    <ng-view></ng-view>
+</body>
+<script>
+
+    angular.module( 'mainApp', [ 'ngRoute' ] )
+        .config( function ( $routeProvider ) {
+
+            $routeProvider
+                .when( '/a', {
+                    //template: '<p>我是a页面</p>'
+                    templateUrl: './a.html'
+                } )
+                .when( '/b', {
+                    // template: '<p>我是b页面</p>'
+                    templateUrl: './b.html'
+                } )
+                .when( '/c', {
+                    template: '<p>我是c页面</p>'
+                } )
+                .when( '/d', {
+                    template: '<p>我是d页面</p>'
+                } )
+                .when( '/e', {
+                    template: '<p>我是e页面</p>'
+                } )
+                .otherwise( { redirectTo: '/b' } )
+
+        })
+</script>
+</html>

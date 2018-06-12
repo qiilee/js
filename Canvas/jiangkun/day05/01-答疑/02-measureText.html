@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算文本的宽度</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    var obj = ctx.measureText( 'abcdefg' );
+    // 该对象中含有 width 属性
+    console.log( obj.width );
+
+    console.log( ctx.font );
+
+    ctx.font = '20px 宋体';
+
+
+    var obj1 = ctx.measureText( '你好' );
+    console.log( obj1.width );
+    console.log( ctx.font );
+
+</script>
+</html>

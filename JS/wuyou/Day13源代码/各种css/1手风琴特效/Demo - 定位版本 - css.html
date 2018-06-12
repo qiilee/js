@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            list-style: none
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: relative;
+            width: 1200px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div li {
+            width: 1200px;
+            height: 400px;
+            /*float: left;*/
+            position: absolute;
+        }
+
+        div ul {
+            width: 1200px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="tools.js"></script>
+<script>
+    //设置li的背景
+    var box = document.getElementById("box");
+    var list = box.children[0];
+    var lis = list.children;
+
+    //设置图片
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].style.backgroundImage = "url(images/" + (i + 1) + ".jpg)";
+        //设置的定位值是i*240
+        lis[i].style.left = i * 240 + "px";
+
+        //设置一个索引值
+        lis[i].index = i;
+        //移入事件
+        lis[i].onmouseover = function () {
+            //取出所有人
+            for (var i = 0; i < lis.length; i++) {
+                //检测索引值
+                if (i <= this.index) {
+                    animate(lis[i], {"left": i * 100});
+                } else {
+                    animate(lis[i], {"left": i * 100 + 700});
+                }
+            }
+        };
+
+        lis[i].onmouseout = function () {
+            for (var i = 0; i < lis.length; i++) {
+                animate(lis[i], {"left": 240 * i});
+            }
+        }
+
+
+    }
+
+
+</script>
+</body>
+</html>

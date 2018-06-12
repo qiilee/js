@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //children  子代
+            //$("ul").children("li").css("backgroundColor","red");
+            //$("ul>li").css("backgroundColor","red");
+
+            //我现在先对ul进行一些操作，然后在对ul中的li进行操作
+            //$("ul").css("backgroundColor","red").children("li").text("我是ul的子元素li");
+            //链式编程
+
+
+            //每次对一个对象调用一个设置型操作后，都可以继续针对当前对象进行操作
+
+            //链式编程的原理，由于设置型操作不需要返回值，jq的方法利用这一特点，return this;
+
+            //模拟，自己创建一个对象，让其中的一些设置型操作可以进行链式编程
+            var obj = {};
+            //添加一个属性name
+            obj.name = "张三";
+            obj.age = "18";
+
+            //设置两个方法，第一个方法可以修改name属性的值
+            //第二个方法可以修改age的值
+            obj.setName = function (name) {
+                this.name = name;
+                return this;
+            };
+
+            obj.setAge = function (age) {
+                this.age = age;
+                return this;
+            };
+
+            //使用这些方法进行链式编程
+//            obj.setAge(23).setName("李四").setAge(25);
+//            console.log(obj.name);
+//            console.log(obj.age);
+
+
+            var value = obj.setAge(23).setName("李四").setAge(25).name.age;
+            console.log(value);
+
+
+        });
+    </script>
+</head>
+<body>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>
+        <ol>
+            <li></li>
+        </ol>
+    </li>
+    <li></li>
+</ul>
+
+</body>
+</html>

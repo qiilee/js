@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Phone(brand,price,color){
+        this.brand =brand;
+        this.price =price;
+        this.color =color;
+        this.call =function(){
+            return (this.brand+"用着挺好");
+        };
+    }
+    var p1 = new Phone("三星",100,"红色");
+    var p2 = new Phone("华为",1000,"金色");
+    console.log(p1);
+    console.log(p2);
+    console.log(p1.call());
+    console.log(p2.call());
+
+</script>
+</body>
+</html>

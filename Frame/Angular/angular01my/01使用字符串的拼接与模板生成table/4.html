@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='template-native.js'></script>
+    <script type="text/template" id="code">
+
+        <ul>
+            <%for(var i = 0;i<datas.length;i++){%>
+            <%if(!datas[i].isShow) continue;%>
+             <li>
+                 <ul>
+                     <% for( var k in datas[i]){%>
+                     <li><%= datas[i][k] %></li>
+                     <% } %>
+                 </ul>
+             </li>
+            <%}%>
+        </ul>
+    </script>
+</head>
+<body>
+<input type="text" id="txt"/><input type="button" value='查询' id="btn"/>
+<div></div>
+</body>
+<script>
+    var obj = {
+        title: ['name', 'age', 'gender'],
+        datas: [{name: 'qilei1', age: 21, gender: '男',isShow:true},
+                {name: 'qilei2', age: 21, gender: '男',isShow:true},
+                {name: 'qilei3', age: 21, gender: '男',isShow:true},
+                {name: 'qilei4', age: 21, gender: '男',isShow:true},
+                {name: 'qilei5', age: 21, gender: '男',isShow:true},
+                {name: 'qilei6', age: 21, gender: '男',isShow:true},
+                {name: 'qilei7', age: 21, gender: '男',isShow:true},
+               ]
+    }
+    var container = document.querySelectorAll('div')[0],
+            txt = document.querySelectorAll('#txt')[0],
+            btn = document.querySelectorAll('#btn')[0];
+    function render(){
+        container.innerHTML = template('code',obj);
+    }
+    render();
+    btn.onclick = function(){
+        var text = txt.value;
+        for (var i = 0; i < obj.datas.length; i++) {
+            obj.datas[i].isShow = obj.datas[i].name ==text;
+        }
+        render();
+    }
+</script>
+</html>

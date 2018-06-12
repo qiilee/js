@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .demo{
+            width:240px;
+            height:25px;
+            border: 1px solid #ff5c00;
+            padding:10px;
+            border-radius:8px;
+            position:absolute;
+            display: none;
+            background-color: #fff;
+        }
+        .demo em{
+            width:10px;
+            height: 5px;
+            background-image: url("arrow.gif");
+            position: absolute;
+            top:-5px;
+            left:30px;
+
+        }
+        .wz{
+            width:500px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="wz" id="wz">男人都喜欢长的好看，身材好，善解人意，温柔体贴的女人。比如我。不喜欢我的，都不是男人。比如王康。男人都喜欢长的好看，身材好，善解人意，温柔体贴的女人。比如我。不喜欢我的，都不是男人。比如王康。男人都喜欢长的好看，身材好，善解人意，温柔体贴的女人。比如我。不喜欢我的，都不是男人。比如王康。男人都喜欢长的好看，身材好，善解人意，温柔体贴的女人。比如我。不喜欢我的，都不是男人。比如王康。男人都喜欢长的好看，身材好，善解人意，温柔体贴的女人。比如我。不喜欢我的，都不是男人。比如王康。男人都喜欢长的好看，身材好，善解人意，温柔体贴的女人。比如我。不喜欢我的，都不是男人。比如王康。</div>
+<div class="demo" id="demo">
+    <em></em>
+    <div class="bshare-custom icon-medium"><a title="分享到QQ空間" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人網" class="bshare-renren"></a><a title="分享到騰訊微博" class="bshare-qqmb"></a><a title="分享到網易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.com/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh_TW"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.com/b/bshareC0.js"></script>
+</div>
+<script>
+    //获取元素
+    var wz = document.getElementById("wz");
+    var demo = document.getElementById("demo");
+    //当我鼠标抬起的时候盒子现实在鼠标的当前位置
+    wz.onmouseup = function(e){
+        var e = e || window.event;
+        var x = e.pageX;
+        var y = e.pageY;
+        //获取到了文字内容后在显示这个demo
+        var txt;
+        //console.log(window.getSelection().toString()); //获得到我选中的文字内容
+        if(window.getSelection){
+            txt = window.getSelection().toString();
+        }else{
+            txt = document.selection.createRange().text(); //ie678
+        }
+        //如果我获取到了文字内容之后，才让DEMO去显示
+        if(txt){
+            showbox(demo,x,y);
+        }
+    }
+    document.onclick = function(e){
+        var e = e || window.event;
+        var targetId = e.target? e.target.id : e.srcElement.id;
+        if(targetId != "demo"){
+            demo.style.display = "none";
+        }
+    }
+    //随手封装一个盒子显示的函数
+    function showbox(obj,mousex,mousey){
+        setTimeout(function(){
+            obj.style.display = "block";
+            obj.style.left = mousex +'px';
+            obj.style.top = mousey +"px";
+        },150)
+    }
+</script>
+</body>
+</html>

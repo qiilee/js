@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn1"/>
+<input type="button" value="按钮2" id="btn2"/>
+<script>
+    // window是一个对象  location也是一个对象
+    // style也是一个对象
+
+    document.getElementById("btn1").onclick = function (){
+        console.log(window.location.hash); //#后面的部分
+        console.log(window.location.host); // 主机名和端口号
+        console.log(window.location.hostname); // 主机名
+        console.log(window.location.pathname); // 路径名  url中的信息
+        console.log(window.location.port); // 端口
+        console.log(window.location.protocol); // 协议
+        console.log(window.location.search); // 指代的是?后面的信息
+
+    };
+
+    document.getElementById("btn2").onclick = function (){
+//           window.location.href = "http://www.baidu.com"; // 跳转到网址
+            window.location.reload(); // 刷新的作用  true  false
+        // false的时候，是在本地刷新 ，相当 于从缓存中获取数据
+        // true的时候，是强制刷新 ，强制到服务器去重新取数据
+    };
+    var arr = [10,20,["abc",20]];
+    var o ={
+        name:"张三",
+        ls:{
+            age:20,
+            sex:"田"
+        }
+    };
+//    box.style.width
+//    console.log(o.ls.age);
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //  bind的兼容性处理
+    //  bind方法的作用：
+    //   1 预先改变this指向，
+    //   2 原先存入部分参数。
+
+    /*var obj ={}
+
+    function fn(name,age){
+        console.log(this)
+        console.log(name,age)
+    }
+    //使用bind产生一个新的函数，这个函数已经提前改变了this指向，我们还提前传入了第一个参数
+    var f = fn.bind(obj,'jack')//bind方法是通过哪种方式来进行调用的
+    f();*/
+
+    Function.prototype.bind=function(){
+        //把要预处理的函数先缓存到self。
+        var self = this;
+        //在bind方法中arguments是实参集合，
+        // arguments[0]是我们手动指定的那个this指向。
+        var thisObj = arguments[0];
+        //剩下的arguments中的元素就是第一次传入bind方法的参数。
+        var firstArg = [].slice.call(arguments,1);
+        //bind方法会产生一个新的函数
+        return function(){
+            //得到传入新函数的参数
+            var secondArg = [].slice.call(arguments,0)
+            var finalArg = firstArg.concat(secondArg);
+            //在返回出的新的函数中的参数集合arguments就是第二次传入的参数。
+            return self.apply(thisObj,finalArg)
+        }
+    }
+
+
+    var obj ={}
+
+     function fn(name,age){
+     console.log(this)
+     console.log(name,age)
+     }
+     //使用bind产生一个新的函数，这个函数已经提前改变了this指向，我们还提前传入了第一个参数
+     var f = fn.bind(obj,'jack')//bind方法是通过哪种方式来进行调用的
+     f();
+
+
+
+
+
+
+</script>
+</body>
+</html>

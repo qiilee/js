@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //5个元素比4次 2个元素比1 arr.length比arr.length-1
+    //for (var i = 1; i <= arr.length - 1; i++) {
+//    for (var i = 0; i < arr.length - 1; i++) {//一共比较多少趟
+//        for (var j = 0; j < arr.length - 1 - i; j++) {//两两比较的次数
+//            if (arr[j] > arr[j + 1]) {
+//                var temp = arr[j];   40 >30   a = 40
+//                arr[j] = arr[j + 1]; 30
+//                arr[j + 1] = temp;
+//            }
+//        }
+//    }
+//    console.log(arr);
+    var arr = [40, 30, 20, 10,20,30,22,44,40]; //原数组
+    var newarr=[arr[0]]; //假设 存放数组的第一个值 并且放结果
+    for (var i = 0; i < arr.length - 1; i++) {//每次拿原数组的每一个值
+        var flag = true;  //此处是一个标记
+        for (var j = 0; j < newarr.length; j++) { // 和结果数组中的每一个值进行比较
+            if (arr[i] == newarr[j]) {
+               flag = false;//  如果相等不满足条件标记为FLASE
+               break;
+            }
+        }
+        if(flag){       //说明原数组和结果数组中没有相同的元素，这样就把原数组中的值放入结果数组中。
+            newarr.push(arr[i]);
+        }
+    }
+    console.log(newarr);
+
+</script>
+</body>
+</html>

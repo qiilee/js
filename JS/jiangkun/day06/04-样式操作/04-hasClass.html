@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+</head>
+<body>
+    <div class="c">1</div>
+    <div class="cc cc c1 c2">2</div>
+    <div class="c1 c2 c3 c">3</div>
+</body>
+<script>
+    // $( 'div' ).hasClass() 判断 ? 是否含有对应的类样式
+    // 返回值: true, false
+    Itcast.fn.hasClass = function ( className ) {
+        // 判断 this 中的所有 DOM 元素, 只要有一个含有该类样式的元素就返回 true
+        // dom.className.split( ' ' ).indexOf (  'c' ) > -1
+        className = className.trim();
+        for ( var i = 0; i < this.length; i++ ) {
+            var dom = this[ i ],
+                classNames = dom.className && dom.className.split( ' ' );
+
+            if ( classNames && classNames.indexOf( className ) > -1 ) {
+                // 存在
+                return true;
+            }
+        }
+        return false;
+    } 
+
+
+    console.log(I( 'div' ).hasClass( 'c' ));
+
+    console.log( I( 'div' ).first().hasClass( 'c' ) );
+
+    console.log( I( 'div' ).eq( 1 ).hasClass( 'c' ) );
+
+    console.log( I( 'div' ).last().hasClass( 'c' ) );
+    
+</script>
+</html>

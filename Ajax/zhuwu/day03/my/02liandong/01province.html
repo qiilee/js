@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            var obj;
+            var cities;
+            var xhr = new XMLHttpRequest();
+            xhr.open("get","01province.php");
+            xhr.send(null);
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState==4&&xhr.status==200){
+                    var data =xhr.responseText;
+                    //将json字符串转化为js的对象
+//                    alert(data);
+                    obj = JSON.parse(data);
+//                    alert(obj);
+                    console.log(obj);
+                    for (var i = 0; i < obj.length; i++) {
+                        //获得了省名
+                       var provinceName = obj[i].provinceName;
+                        var option = document.createElement("option");
+                        option.innerHTML = provinceName;
+                        document.getElementById("provinceId").appendChild(option);
+                    }
+                }
+            }
+            //显示获得改变后的省名，遍历得到...
+            document.querySelector("#provinceId").onchange = function () {
+                var provinceName = this.value;
+                for (var i = 0; i < obj.length; i++) {
+                   if(obj[i].provinceName == provinceName){
+                       cities=obj[i].cities;
+                       document.getElementById("cityId").innerHTML='<option selected>请选择城市</option>';
+                       document.getElementById("areaId").innerHTML='<option selected>请选择区县</option>';
+                       for (var i = 0; i < cities.length; i++) {
+                           var cityName = cities[i].cityName;
+                           var option = document.createElement("option");
+                           option.innerHTML = cityName;
+                           document.getElementById("cityId").appendChild(option);
+                       }
+                   }
+                }
+            }
+            document.getElementById("cityId").onchange = function () {
+                var cityName = this.value;
+                for (var i = 0; i < cities.length; i++) {
+                  if(cities[i].cityName==cityName){
+                      document.getElementById("areaId").innerHTML='<option selected>请选择区县</option>';
+
+                      var areas = cities[i].areas;
+                      for (var i = 0; i < areas.length; i++) {
+                          var areaName = areas[i].areaName;
+                          var option = document.createElement("option");
+                          option.innerHTML = areaName;
+                          document.getElementById("areaId").appendChild(option);
+                      }
+                  }
+                }
+            };
+
+        }
+    </script>
+</head>
+<body>
+<select id="provinceId">
+    <option selected>请选择省份</option>
+</select>
+<select id="cityId">
+    <option selected>请选择城市</option>
+</select>
+<select id="areaId">
+    <option selected>请选择区县</option>
+</select>
+</body>
+</html>

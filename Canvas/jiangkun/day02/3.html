@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="600"></canvas>
+<script>
+    var cas = document.querySelector("canvas");
+    var ctx = cas.getContext("2d");
+    var arrowHeight = 20;
+    var arrowWidth = 10;
+    var xEnd = 400;
+    var yEnd = 200;
+
+    ctx.moveTo(xEnd,yEnd);
+    ctx.lineTo(xEnd-arrowHeight,yEnd-arrowWidth/2);
+    ctx.lineTo(xEnd-arrowHeight/2,yEnd);
+    ctx.lineTo(xEnd-arrowHeight,yEnd+arrowWidth/2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.beginPath();
+    ctx.lineWidth=2;
+    ctx.moveTo(100,200);
+    ctx.lineTo(xEnd,yEnd);
+    ctx.stroke();
+
+</script>
+</body>
+</html>

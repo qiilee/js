@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 150px;
+            left: 210px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    //1 添加事件
+    box.onclick = function (e) {
+        //2 点击的时候获取鼠标在盒子内的坐标位置
+        //位置 = 鼠标坐标 - 盒子顶部或者左侧的距离
+        var e = e || event;
+        var x = e.clientX - box.offsetLeft;
+        //console.log(x);
+        var y = e.clientY - box.offsetTop;
+        //console.log(y);
+    };
+
+</script>
+</body>
+</html>

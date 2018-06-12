@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            height: 10000px;
+        }
+
+        img {
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+<script>
+    //1 获取元素
+    var ts = document.getElementById("ts");
+    //2 鼠标在页面移动的时候
+    document.onmousemove = function (e) {
+        //3 兼容事件对象
+        var e = e || window.event;
+        //4 将鼠标坐标设置给天使
+        ts.style.left = getPageX(e) + "px";
+        ts.style.top = getPageY(e) + "px";
+
+        //page系列属性在ie低版本不支持，ie也没提供
+        //我们需要自己封装一个函数去凑出这个page的值
+
+    };
+    function myScroll() {
+        return {
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+
+
+    function getPageY(e) {
+        if (e.pageY) {
+            return e.pageY;
+        } else {
+            //需要使用e.clientY + scrollTop
+            return e.clientY + myScroll().top;
+        }
+    }
+
+    function getPageX(e) {
+        if (e.pageX) {
+            return e.pageX;
+        } else {
+            //需要使用e.clientY + scrollTop
+            return e.clientX + myScroll().left;
+        }
+    }
+
+
+</script>
+</body>
+</html>

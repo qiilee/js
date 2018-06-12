@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function fib(n){
+        num++;
+        //边界条件:如果n===1或者n===2,直接返回1
+        if(n===1||n===2){
+            return 1;
+        }
+        return fib(n-1)+fib(n-2)
+    }*/
+
+     /*
+     * 缓存放在哪里？
+     * 加入缓存放在全局中，会造成全局污染的问题。
+     * 为 了保证缓存的安全性，我们不能把缓存放在全局中。
+     * 把缓存放入函数，然后就可以起到保护的作用，并且没有全局污染。
+     *
+     *
+     * 为了访问和修改函数中的缓存，我们使用闭包的形式来打破作用域的限制。
+     * */
+
+     /*
+     * 思路分析
+     * 1  需要有一个缓存区
+     * 2.1如果之前已经计算过并且放入了缓存中，那么就直接读取该计算结果
+     * 2.2如果之前没有计算过该值，那么就计算出该值，然后把该值放入我们的缓存中。
+     * */
+     var count=0;
+    function fib() {
+        // 1  需要有一个缓存区
+        var cache = [];// [undefined,1,1,2,3,5,8]
+        // 计算
+        return function (n){
+            count++;
+            //2.1如果之前已经计算过并且放入了缓存中，那么就直接读取该计算结果
+            if(cache[n]){
+                return cache[n];
+            }
+            //2.2如果之前没有计算过该值，那么就计算出该值，然后把该值放入我们的缓存中。
+            if(n===1||n===2){
+                cache[n]=1;
+                return 1;
+            }
+            // 对函数进行递归，求解具体的值。
+            // 如何对一个匿名函数进行递归？
+            // arguments.callee代表了函数本身
+            var ret  = arguments.callee(n-2)+arguments.callee(n-1);
+            // 把计算的结果放入缓存
+            cache[n]=ret;
+            //返回计算结果
+            return ret;
+        }
+    }
+
+
+    var f = fib();
+    /*console.log(f(5));
+    console.log(count);
+    console.log(f(6))
+    console.log(count);
+    console.log(f(7))
+    console.log(count);*/
+    console.log(f(100))
+    console.log(count);
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

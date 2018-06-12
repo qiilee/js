@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <input type="button" value="上" id="up"><br>
+    <input type="button" value="下" id="down"><br>
+    <input type="button" value="左" id="left"><br>
+    <input type="button" value="右" id="right"><br>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    // 0 高  下
+    // 1 高  左
+    // 2 高  右
+    // 3 高  上
+
+    document.querySelector( '#up' ).onclick = function () {
+        iY = 3;
+    };
+    document.querySelector( '#down' ).onclick = function () {
+        iY = 0;
+    };
+    document.querySelector( '#left' ).onclick = function () {
+        iY = 1;
+    };
+    document.querySelector( '#right' ).onclick = function () {
+        iY = 2;
+    };
+
+    var iY = 0;
+    var img = new Image();
+    img.src="./DMMban.png";
+    img.onload = function () {
+        var x = 0,
+            y = 0,
+            width = img.width / 4,
+            height = img.height / 4;
+
+        var iX = 0;
+        var deltaY = 0;
+        
+        setInterval( function () {
+            ctx.clearRect( 0, 0, 600, 400 );
+
+            ctx.drawImage( img, x + iX * width, y + iY * height, width, height, 100, 100/* + (deltaY+=10) */, width, height );
+            iX = iX == 3 ? 0 : iX + 1;
+
+        }, 200 );
+    };
+</script>
+</html>

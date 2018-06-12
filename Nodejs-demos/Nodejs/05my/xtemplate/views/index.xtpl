@@ -1,0 +1,11 @@
+{{extend ('./layout')}}
+
+{{#block ('section')}}
+<h2>{{title}}</h2>
+<figure>
+	<figcaption>
+		<h3>{{{content.title}}}</h3>
+	</figcaption>
+	<img src="{{content.link}}" alt="">
+</figure>
+{{/block}}

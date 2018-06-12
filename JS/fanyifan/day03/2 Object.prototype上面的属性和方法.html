@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Object.create上面的属性和方法
+
+    // constructor 指向了原型属性所在的构造函数 Object
+    /*console.log(Object.prototype.constructor===Object)*/
+
+    // hasOwnProperty   拥有 自身 属性
+    // 作用：判断某一个属性是不是在自身上。
+
+    function Person(){
+        this.name='jack';
+        this.age=18
+    }
+    Person.prototype.legs = 2;
+    var person = new Person();
+  /*  for(var key in person){
+        // 利用hasOwnProperty 来检测一个属性是否在对象本身上面。
+        if(person.hasOwnProperty(key)){
+            console.log(person[key])
+        }
+    }*/
+
+    // 适用场景：当我们只想遍历对象本身上面的属性和方法，不想遍历原型上面的属性和方法
+    // 就可以使用hasOwnProperty
+
+
+
+    //3 isPrototypeOf
+    // 判断一个对象是不是另一个实例对象的原型。
+    /*console.log(Person.prototype.isPrototypeOf(person))//true
+    console.log(person.__proto__.isPrototypeOf(person))//true*/
+
+
+
+    // 4 propertyIsEnumerable  属性 是否 可枚举性
+    // 作用 查看一个对象自身的属性是否是可枚举的
+    // 如果一个属性是对象本身上面的属性并且这个属性是可枚举的，那么propertyIsEnumerable才会返回true
+
+  /*  console.log(person.propertyIsEnumerable('name'));//true
+    console.log(person.propertyIsEnumerable('xxx'));//false
+    console.log(person.propertyIsEnumerable('legs'));//false*/
+
+
+
+
+  // toLocaleString  跟Object.prototype.toString方法是一样的作用
+    // toString  转换成字符串  ‘[object 大写的数据类型]’
+    /*
+    * 数组调用这个方法产生的是一个 '[object Array]'
+    * 普通的对象调用这个方法     '[object Object]'
+    * 函数调用这个方法           ‘[object Function]'
+    * */
+    //valueOf 返回一个复杂数据类型的Primitive value
+
+    var obj = {}
+    console.log(obj.valueOf());// 输出的是obj的原始值
+    console.log(obj===obj.valueOf());//true
+    console.log(obj.toString())//'[object Object]'
+    console.log(obj.toLocaleString());//'[object Object]'
+
+
+//    // toLocaleString 能够把时间对象转换成本地字符串
+//    // date ===>Date.prototype===>Object.prototype
+//    var date = new Date();
+//    console.log(date.toLocaleString())
+//    console.log(date.toString())
+//
+//    // 想要date调用Object.prototype上面的方法，
+//    // 需要删除Date.prototype上面的方法
+//    delete Date.prototype.toLocaleString;
+//    delete Date.prototype.toString;
+//    // 再次调用toLocaleString和toString方法
+//    console.log(date.toLocaleString())
+//    console.log(date.toString())
+
+
+
+    // Object.prototype.__proto__===null
+//    console.log(Object.prototype.__proto__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

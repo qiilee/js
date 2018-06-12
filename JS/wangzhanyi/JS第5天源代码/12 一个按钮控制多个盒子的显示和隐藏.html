@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="隐藏" onclick = "showOrHide()"/>
+<p style="clear:both"></p>
+<div>这是第1个盒子</div>
+<div>这是第2个盒子</div>
+<div>这是第3个盒子</div>
+<div>这是第4个盒子</div>
+<div>这是第5个盒子</div>
+<div>这是第6个盒子</div>
+<script>
+    // 单击隐藏按钮的时候，让所有的盒子都隐藏起来
+     // 1. 先获得要操作的对象
+    var btn = document.getElementById("btn");
+    var divs = document.getElementsByTagName("div");
+//    btn.onclick = function(){
+//        if(btn.value=="隐藏"){
+//            btn.value = "显示"; // 改变按钮的value值
+//            for(var i=0;i<divs.length;i++){
+//                divs[i].style.display = "none";
+//            }
+//        }else { // 进入到else里面，就是让这些Div显示出来
+//            btn.value ="隐藏";
+//            for(var i=0;i<divs.length;i++){
+//                divs[i].style.display = "block";
+//            }
+//        }
+//    }
+
+    /**
+     *  定义了一个显示或是隐藏的函数
+     */
+    function showOrHide(){
+        if(btn.value=="隐藏"){
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.display = "none";
+            }
+            btn.value ="显示";
+        }else {
+            for(var i=0;i<divs.length;i++){
+                divs[i].style.display = "block";
+            }
+            btn.value ="隐藏";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function f1(a,b){
+            return a+b;
+        }
+        function f1(a,b,c){
+            return a+b+c;
+        }
+        console.log(f1(1,2));
+        //出现的原因是下面的f1把上面的覆盖掉了  不会发生重载
+        //所以在js中不要定义重名的函数
+
+        function alert(a){
+            console.log(a);
+        }
+        alert("abc");//会在控制台输出abc
+    </script>
+</head>
+<body>
+
+</body>
+</html>

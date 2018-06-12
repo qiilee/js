@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+    
+</head>
+<body ng-app="app" >
+    <img ng-src="{{imgSrc}}" alt="">
+</body>
+<script>
+    angular.module( 'app', [] )
+        .run( function ( $rootScope ) {
+            $rootScope.imgSrc = 'http://pic12.nipic.com/20110213/580124_212334691148_2.jpg';
+            
+        });
+
+</script>
+</html>

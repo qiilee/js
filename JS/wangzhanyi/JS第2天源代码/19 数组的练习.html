@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [200,209,302,40,50,60,70,80,90,100];
+    //求一组数中的所有数的和
+    var sum = 0;
+    for(var i = 0; i < arr.length; i++) {
+           sum+= arr[i];
+    }
+    console.log(sum);
+    //求一组数中的所有数的和 和平均值
+//    var avg = sum/arr.length;
+//    console.log(avg);
+    console.log(sum/arr.length);
+    //求一组数中的最大值
+    var max = arr[0];//假设数组中的第一项就是数组中最大的值
+    for(var i=1;i<arr.length;i++){
+        if(max<arr[i]){ //用当前的值依次和数组中循环遍历到的值，进行比较
+            max = arr[i]; // 就将当前循环遍历到的值，重新赋值给max
+        }
+    }
+    console.log(max);
+    //求一组数中的最小值
+    var min = arr[0];//假设数组中的第一项是最小值
+    for(var i=1;i<arr.length;i++){
+        if(min>arr[i]){
+            min = arr[i];
+        }
+    }
+    console.log(min);
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 322px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //1 操作closeButton
+            $("#closeButton").click(function () {
+                $("#bottomPart").animate({
+                    "height": "0px"
+                },1000, function () {
+                    $("#box").animate({
+                        "width": "0px"
+                    },1000, function () {
+                        //在运动结束后可以删除节点
+                        document.body.removeChild($("#box")[0]);
+                    })
+                });
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+<div class="box" id="box">
+    <span id="closeButton"></span>
+
+    <div class="hd" id="headPart">
+        <img src="images/t.jpg" alt=""/>
+    </div>
+    <div class="bd" id="bottomPart">
+        <img src="images/b.jpg" alt=""/>
+    </div>
+</div>
+
+
+</body>
+</html>

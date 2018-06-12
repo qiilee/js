@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="button" value="赋值" id="btnSet"/>
+<input type="button" value="取值" id="btnGet"/>
+<script>
+
+    var inputs = document.getElementsByTagName("input");
+    var btnSet = document.getElementById("btnSet");
+    var btnGet = document.getElementById("btnGet");
+    btnSet.onclick = function (){
+           for(var i=0;i<inputs.length;i++){
+               if(inputs[i].type=="text"){
+                   inputs[i].value = "aa"+i;
+               }
+           }
+    }
+    btnGet.onclick  = function () {
+        var str = "";
+        for(var i=0;i<inputs.length;i++){
+            if(inputs[i].type=="text"){
+                str+=inputs[i].value;
+            }
+        }
+        console.log(str);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+
+    </style>
+    <script src='jquery-1.12.4.min.js'></script>
+    <script>
+        $(function () {
+            $("#p").click(function () {
+               console.log("111");
+            });;
+            var a =  $("#p").clone(false);
+
+            $("#box").append(a);
+            
+            
+        });
+    </script>
+</head>
+<body>
+<div id="box">
+    <p id="p">111111</p>
+</div>
+</body>
+</html>

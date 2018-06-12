@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="默认值" id="txt" class="txt2" aa="bbb" ccc="ddd"/>
+<script>
+    //
+    var txt = document.getElementById("txt");
+    console.log(txt.value);
+    console.log(txt.id);
+    console.log(txt.type);
+    console.log(txt.aa); // JS是无法使用对象.的方式获取我们自己给标签添加的这种自定义属性的
+    console.log(txt.ccc);
+    console.log(txt.getAttribute("aa"));
+    console.log(txt.getAttribute("ccc"));
+</script>
+</body>
+</html>

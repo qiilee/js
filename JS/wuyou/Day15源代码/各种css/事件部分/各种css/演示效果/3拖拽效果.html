@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            height: 30px;
+            background: #036663;
+            border-bottom: 1px solid #369;
+            line-height: 30px;
+            padding-left: 30px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+
+        }
+
+        .d-box {
+            width: 400px;
+            height: 300px;
+            border: 5px solid #eee;
+            box-shadow: 2px 2px 2px 2px #666;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            background-color: white;
+        }
+
+        .hd {
+            width: 100%;
+            height: 25px;
+            background-color: #7c9299;
+            border-bottom: 1px solid #369;
+            line-height: 25px;
+            color: white;
+            cursor: move;
+        }
+
+        #box_close {
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="javascript:;" id="register">注册信息</a>
+</div>
+<div class="d-box" id="d_box">
+    <div class="hd" id="drop">注册信息 (可以拖拽)
+        <span id="box_close">【关闭】</span>
+    </div>
+    <div class="bd"></div>
+</div>
+<script src="../案例代码/common.js"></script>
+<script>
+    var d_box = document.getElementById("d_box");
+    var drop = document.getElementById("drop");
+
+    //onmousedown 点下鼠标时触发
+    //drop拖动部分再点住的时候获取鼠标在盒子内的位置
+    drop.onmousedown = function (e) {
+        var e = e || window.event;
+        //获取位置
+        var leftPos = getPageX(e) - d_box.offsetLeft;
+        var topPos = getPageY(e) - d_box.offsetTop;
+        document.onmousemove = function (e) {
+            //实时的获取鼠标的新位置
+            var x = getPageX(e);
+            var y = getPageY(e);
+
+            d_box.style.left = x - leftPos + "px";
+            d_box.style.top = y - topPos + "px";
+        };
+    };
+
+    //当鼠标抬起，清除移动事件
+    drop.onmouseup = function () {
+        document.onmousemove = null;
+    };
+
+    //1 首先观察效果，我们想要拖动一个盒子。
+    //2 想要实现拖拽，我们需要执行二件事，第一是点住，第二是鼠标移动
+    //3 分别思考，点住的时候做什么？ 移动的时候做什么？
+    //4 我们在移动的时候可以实时的获取鼠标的位置，并且盒子移动是依靠left和top，这之间有什么关系？
+    //5 我们可以在点住的时候先去获取鼠标在盒子内的位置，因为拖拽过程中这个值是不变的。
+    //6 通过计算使盒子移动
+    //7 鼠标抬起，运动停止
+
+</script>
+</body>
+</html>

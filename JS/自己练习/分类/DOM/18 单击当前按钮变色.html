@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<script>
+    // 要求是当单击当前按钮的时候，只有当前按钮的背景颜色 变成红色，其它的不变色
+    // 1. 先获得要操作的对象
+    var inputs = document.getElementsByTagName("input");//这是对象数组
+    // 2. 给事件源注册事件   需要给每一个按钮都要注册单击事件
+    for(var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = function (){
+//               inputs[i].style.backgroundColor="red";
+                for(var j=0;j<inputs.length;j++){ // 先将所有的input的背景颜色设无色
+                    inputs[j].style.backgroundColor="";
+                }
+                 this.style.backgroundColor = "red";
+                //this 这个  当前的，指代当前对象，始终指代当前触发事件的对象，也就是当前的事件源
+            }
+        // 排它思想    遇排它，必循环
+    }
+</script>
+</body>
+</html>

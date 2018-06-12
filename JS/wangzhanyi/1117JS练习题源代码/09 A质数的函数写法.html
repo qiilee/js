@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+注意点：i<=num/2
+       if(num<2)
+var flag = true;
+
+<script>
+    function isZhiShu(num){ // 代码复用的一种机制或是封装某种功能的代码段
+        if(num<2){
+            alert("您输入的值不正确，应该输入2以上的值");
+            return;//跳出当前函数，下面的代码都不会执行
+//            return alert("您输入的值不正确，应该输入2以上的值");
+        }
+        var flag = true; //假设这个数就是一个质数
+        for(var i=2;i<=num/2;i++){
+            if(num%i==0){
+                //不是质数
+                flag = false;
+                break;
+            }
+        }
+        if(flag){
+            console.log("是一个质数");
+        }else {
+            console.log("不是一个质数");
+        }
+    }
+    var num = +prompt("请输入一个数字");
+    var result = isZhiShu(num);
+    console.log(result);
+</script>
+</body>
+</html>

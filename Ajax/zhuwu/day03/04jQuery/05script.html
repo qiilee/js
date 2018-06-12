@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("input").bind("click",function(){
+                    //去载入一个js 文件.
+                    //远程去载入一个js 文件，并且执行js 文件的内容.
+                    $.getScript("js/script.js");
+                    //我在页面多次点击这个按钮
+                    //多次点击的话它会多次发送请求
+                    //然后给这个地址后面添加了一个?_=1232233217,9
+                    //这个是用来解决浏览器的缓存问题的
+                    //假设我的浏览器去访问后台的js 文件，或者css 文件
+                    //当我请求了一次之后，再次去请求。
+                    //浏览器会对我发出去的这个地址进行一个判断
+                    //如果这个地址在上一次请求过，它不会发送请求了，可能从缓存里面去获取.
+
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<div></div>
+<input type="button" value="getScript 方式提交">
+</body>
+</html>

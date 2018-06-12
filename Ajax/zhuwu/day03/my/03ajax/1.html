@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function ajax(obj){
+        var xhr = new XMLHttpRequest();
+        if(obj.type.toLocaleLowerCase()=="get"){
+            obj.url = obj.url+"?"+obj.data;
+            obj.data = null;
+        }
+        xhr.open(obj.type,obj.url);
+
+        if(obj.type.toLocaleLowerCase()=="post"){
+          xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        }
+        xhr.send(obj.data);
+
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState==4&&xhr.status==200){
+                var data = xhr.responseText;
+                obj.success(data);
+            }
+
+        }
+    }
+
+
+    ajax({
+        url:"1.php",
+        type:"post",
+        data:"username=zhangsan&age=14",
+        //通过传递一个回调函数，
+        success:function(info){
+            console.log("===="+info);
+            //解析数据，把数据放在页面上面的某个位置.
+        }
+    });
+</script>
+</body>
+</html>

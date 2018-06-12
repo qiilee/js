@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //1
+    console.log(fn);
+    var fn = function () {
+        console.log(1)
+    }
+    console.log(fn)
+    function fn() {
+        console.log(2)
+    }
+    console.log(fn);
+
+
+    //2
+    /* function bar(){
+     console.log(foo);
+     return;
+     var foo=function(){
+     }
+     }
+     bar();*/
+
+    //3
+/*        console.log(tt);
+     var tt = 'dd';
+     console.log(tt);*/
+    //4
+      if (!a) {
+     var a = 2;
+     }
+     console.log(a); // ?
+
+    //5
+    if(false){
+     function fn(){
+     console.log(1)
+     }
+     }
+     console.log(fn)
+     fn();
+
+
+    /* function fn(){
+     foo();
+     return;
+     function foo(){
+     }
+     }
+     fn()*/
+
+
+</script>
+</body>
+</html>

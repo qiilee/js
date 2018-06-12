@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 求两个数的和
+    function getSum(num1,num2){
+        if(isNaN(num1)||isNaN(num2)){ // isNaN  是的，经过检测，它不是一个数字
+            // 进入到这个if里面的话，说明至少有一个参数不是数字
+            alert("您输入的参数不正确，请输入两个纯数字");
+            return;//会跳出当前函数，return后面的代码不会再执行
+        }
+        return  num1+num2;
+    }
+
+    var sum = getSum(10,"abc");
+    console.log(sum);
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //jq是一大堆程序员一起写的一个文件，内部包含了许多方法，可以让咱们进行编程更加简便
+            //学习jq学习的就是内部方法的使用方式，要学会一个能力，查文档的能力
+
+            //jq的版本问题  1.x没有兼容性问题   2跟3放弃了ie678的支持
+
+            //jq入口函数：$(document).ready(function(){});   $(function(){});
+            //jq入口函数的执行时机：页面结构加载完毕后执行
+
+            //$的本质是一个函数  $()  传入的参数不同，执行的功能也不同
+            //$("div")   $(function(){})   $(document)
+            //$ === jQuery
+
+
+            //jq对象和dom对象之间的关系
+            //dom对象就是通过dom的属性或者方法获取的元素
+            //jq对象就是通过jq的方式获取的元素
+
+            //相互不能使用对方的属性和方法
+
+            //jq对象是dom对象的包装集
+
+            //转换方式
+            //jq -> DOM  可以将jq对象中的某个dom对象取出来  $("div").get(0)  $("div")[0]
+            //DOM -> jq  使用$()包裹一个DOM对象
+
+            //选择器
+            //基本选择器
+            // 标签 $("div");
+            // id   $("#box");
+            // class $(".box");
+            // 并集选择器  $("p,ul,.box");
+            // 交集选择器  $("p.box");
+
+            //层级选择器
+            //子代选择器  $("ul>li");  一定选择的是子元素
+            //后代选择器  $("ul li");  选择子元素和子元素内部的某些标签
+
+            //过滤选择器
+            //eq  $("ul>li:eq(3)"); 取出一些标签中的指定索引值的元素
+            // 可能索引值不是在获取的时候就知道的，可能会进行字符串的拼接
+
+            //odd  $("ul>li:odd")  索引值为奇数的元素
+            //$("ul>li:odd").text("我是索引值为奇数的li");
+
+            //even $("ul>li:even")  索引值为偶数的元素
+
+            //筛选选择器
+            //子代  children
+            //$("ul").css("width","100px").children()
+
+            //后代 find
+            //$("ul").find(".box");
+
+            //父元素  parent
+            //$("p").parent();//可能获取到多个父元素
+
+            //同级元素  siblings()
+            //$("#me").siblings().text("我是兄弟元素");
+
+            //eq
+            //$("ul>li").eq(3)
+
+            //next() 下一个同级元素
+            //prev() 上一个同级元素
+
+        })
+
+    </script>
+</head>
+<body>
+
+<div>
+    <p></p>
+</div>
+<div>
+    <p></p>
+</div>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li id="me"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p>
+        <span>
+    <p>hehe</p>
+    </span>
+    </p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
+</body>
+</html>

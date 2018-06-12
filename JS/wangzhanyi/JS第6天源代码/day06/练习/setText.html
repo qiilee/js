@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div">
+</div>
+<script>
+    var div = document.getElementById("div");
+    setText(div,"1111111111111111111")
+    function setText(element,value){
+        if(typeof element.innerText=="string"){
+            element.innerText=value;
+        }else{
+            element.textContent = value;
+        }
+    }
+</script>
+</body>
+</html>

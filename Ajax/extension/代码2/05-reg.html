@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        window.onload = function(){
+            var fm = document.getElementsByTagName('form')[0];
+            fm.onsubmit = function(){
+                //利用FormData实现form表单信息收集
+                var fd = new FormData(fm);
+                //fd 内部会把普通表单域 和 上传文件域 的信息都收集
+
+                //ajax传递表单信息
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4){
+                        alert(xhr.responseText);
+                    }
+                }
+                
+                //设置监听事件ajax.upload.onprogress
+                xhr.upload.onprogress = function(evt){
+                    //感知附件上传情况,利用事件对象感知
+                    var loaded = evt.loaded;
+                    var total = evt.total;
+                    var per = Math.floor((loaded/total)*100)+"%";
+
+                    document.getElementById('son').innerHTML = per;
+                    document.getElementById('son').style.width = per;
+                }
+                xhr.open('post','./05.php');
+                xhr.send(fd);
+
+                return false;//组织浏览器提交
+            }
+        }
+        </script>
+
+        <style type="text/css">
+        #pat {width:430px;height:40px; border:5px solid blue;}
+        #son {width:0;height:100%; background-color:lightblue;}
+        </style>
+    </head>
+    <body>
+        <h2>ajax+FormData实现 无刷新文件上传</h2>
+        <form method="post" action="" >
+            <p>用户名：<input type="text" name="username" /></p>
+            <p>密码：<input type="password" name="password"  /></p>
+            <p>邮箱：<input type="text" name="email"  /></p>
+            <div id="pat"><div id="son"></div></div>
+            <p>头像：<input type="file" name="user_pic" /></p>
+            <p><input type="submit" value="注册" /></p>
+        </form>
+    </body>
+</html>

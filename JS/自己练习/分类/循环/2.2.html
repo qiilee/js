@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var count = 1;
+        canDoIt();
+
+        function canDoIt() {
+
+            var z = prompt("这道题你会做了吗?");
+            if (z == 'y') {
+                alert("可以放学");
+            } else if (z == 'n') {
+                if(count<4){
+                    alert("我再讲一遍");
+                    count++;
+                    canDoIt();
+                }else{
+                    alert("太傻 放学");
+                }
+
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+老师问学生,这道题你会做了吗?如果学生答"会了(y)",则可以放学.
+如果学生不会做(n),则老师再讲一遍,再问学生是否会做了......
+直到学生会为止,才可以放学.
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--发送一个ajax 请求，我从服务端获取批量的用户数据.-->
+    <!--然后我把这些数据展示到页面上面来.-->
+    <!--
+            我要用四个div ，把后台的美女都分别展示出来
+            <div>王伦</div>
+            <div>赵恒</div>
+            <div>王珊珊</div>
+            <div>美女一枚</div>
+    -->
+</head>
+<body>
+    <input type="button" value="查询用户">
+    <div class="box"></div>
+
+    <script>
+        document.querySelector("input[type=button]").onclick=function(){
+            var xhr=new XMLHttpRequest();
+            xhr.open("POST","05userlist.php");
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send(null);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    var data=xhr.responseText;
+//                    alert(data);// 我要从字符串全里面找到我想要，
+                    var arr=data.split(",");
+                    var div="";
+                    for(var i=0;i<arr.length;i++){
+                        div+="<div>"+arr[i]+"</div>";
+                    }
+                    document.querySelector(".box").innerHTML=div;
+                }
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>

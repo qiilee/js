@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动的点</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+
+    var currX = cas.width / 2 - 10, 
+        currY = cas.height / 2 - 10;
+
+    // 一开始默认在正中间有一个矩形, 鼠标点击那里, 矩形就移动到那里
+    ctx.fillRect( currX, currY, 20, 20 );
+
+
+    // 添加鼠标的点击事件获得目标坐标
+    cas.onmousedown = function ( e ) {
+        var x = e.offsetX,
+            y = e.offsetY;
+        
+        // 开始绘图
+        // ctx.clearRect( 0, 0, cas.width, cas.height );
+        // ctx.fillRect( x - 10, y - 10, 20, 20 );
+
+        var intervalId = setInterval(function () {
+
+            // 擦除
+            ctx.clearRect( 0, 0, cas.width, cas.height );
+
+            // 重绘
+            // 1. 计算坐标
+            // 问题: x, y 的增量是多少
+            // 方案1 做一个匀速的移动
+
+            // 先判断 x 方向的移动办法
+            // x - currX
+            // y - currY
+            // 假定往右上方移动
+            // 1> 先计算xy移动的比例
+            // k = Math.abs( x - currX ) / Math.abs( y - currY )
+            // 比例有了以后, 可以使用 x 作为参考
+            // 如果 x 每次移动 deltaX 单位的话, 那么 y 应该移动 deltaX / k
+            // 增量有了, 接下来需要计算方向了
+
+            // x 是往正方向移动, 每次执行 x += markX * deltaX 即可
+            // y 是往负方向移动, 每次执行 y += markY * deltaY
+
+            // 这个标记的方向如何计算呢?
+            // markX = x > currX ? 1 : -1;
+            // markY = y > currY ? 1 : -1;
+
+            // 每次移动只需要, 绘制矩形了
+
+
+
+
+            // 再判断 y 方向的移动办法
+
+
+
+            // 判断停止
+            // if ( currX >= x && currY <= y ) ...
+            
+
+        }, 16.67 );
+    }
+</script>
+</html>

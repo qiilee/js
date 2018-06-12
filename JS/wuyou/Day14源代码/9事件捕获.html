@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 400px;
+            height: 400px;
+            background-color: #a687ff;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #ecab6d;
+        }
+
+        #box4 {
+            width: 100px;
+            height: 100px;
+            background-color: #404bec;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+
+<script>
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+
+//  总结：就是点击子盒子，外面的父盒子也会触发同样的事件（运行下就知道了）
+
+
+
+    //给每个元素添加点击事件
+
+    //    box1.onclick = function () {
+    //        console.log("box1");
+    //    };
+    //
+    //    box2.ondblclick = function () {
+    //        console.log("box2");
+    //    };
+    //
+    //    box3.onclick = function () {
+    //        console.log("box3");
+    //    };
+
+    //事件捕获不会直接触发，因为默认传播方式是事件冒泡
+    //想要触发事件捕获需要使用addEventListener
+
+    //addEventListener 的第三个参数可以控制是冒泡触发还是捕获触发
+    //如果不传默认为false 表示冒泡
+    //传入true表示捕获
+    box1.addEventListener("click", function () {
+        console.log("box1");
+    }, true);
+
+    box2.addEventListener("click", function () {
+        console.log("box2");
+    }, true);
+
+    box3.addEventListener("click", function () {
+        console.log("box3");
+    }, true);
+
+    //事件捕获的执行顺序，由最不特定元素，触发到最特定元素
+    //从页面 - box1 - box2 - box3 点击的是box3
+
+    //事件捕获的要求，知道执行顺序即可。
+    //因为没用
+    //在ie低版本没有捕获
+
+
+</script>
+</body>
+</html>

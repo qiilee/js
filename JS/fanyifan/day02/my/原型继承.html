@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//11111111111111111111111111111111111111111111111111111111
+    //    function Person(){
+    //    }
+    //    Person.prototype.hehe= function () {
+    //        console.log("呵呵");
+    //    }
+    //    Person.prototype.haha= function () {
+    //        console.log("哈哈");
+    //    }
+    //    var person  = new Person();
+    //    person.hehe();
+    //    person.haha();
+
+//22222222222222222222222222222222222222222222222222222222
+    //      function Person(){
+    //
+    //      }
+    //    Person.prototype={
+    //        hehe: function () {
+    //            console.log("呵呵");
+    //        },
+    //        haha: function () {
+    //            console.log("哈哈");
+    //        }
+    //    }
+    //    var person =new Person();
+    //    person.haha();
+    //    person.hehe();
+
+//333333333333333333333333333333333333333333333333333
+    function mixin(obj1, obj2) {
+        for (var key in obj2) {
+            obj1[key] = obj2[key];
+        }
+    }
+    function Person() {
+
+    }
+    var xiao = {
+        hehe: function () {
+            console.log("呵呵");
+        },
+        haha: function () {
+            console.log("哈哈");
+        }
+    }
+    mixin(Person.prototype,xiao);
+    var person = new Person();
+    person.hehe();
+    person.haha();
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var undefined;//此时undefined这个变量的值是undefined
+    undefined == null; // true   null和其他数据都为false
+    1 == true;   // true    此时会把布尔类型的值转换为数字类型 true=1 false=0
+    2 == true;   // false
+    0 == false;  // true
+    0 == '';     // true
+    NaN == NaN;  // false isNaN   NaN和任何数据都为false
+    [] == false; // true   解释：会把[]和false都通过Number()转换为数字类型
+    [] == ![];   // true   解释：![]：false
+    []==[];//false
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>列表</h1>
+<table>
+
+<!--    <% for(var i=0;i<lists.length;i++){%>
+    <tr>
+        <td><%= list[i].name%></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <%}%>-->
+
+    {{each lists}}
+    <tr>
+        <td>{{$index}}</td>
+        <td>{{$value.name}}</td>
+        <td>{{$value.age}}</td>
+        <td>{{$value.sex}}</td>
+    </tr>
+    {{/each}}
+</table>
+</body>
+</html>

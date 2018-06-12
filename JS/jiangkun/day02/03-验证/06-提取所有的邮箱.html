@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+
+</body>
+<script>
+    var str = '今天天气很好, 我的邮箱是 12345678901@yahoo.com.cn, 你的邮箱是 23456789012@qq.com'
+    var r = /([0-9a-zA-Z\_\-\.]+)@([0-9a-zA-Z\_\-]+(?:\.[0-9a-zA-Z\_\-]+)+)/g;
+
+    var m;
+
+    while( m = r.exec( str ) ) {
+        // console.log( '邮箱为: ' + m[ 0 ] + ', 用户名: ' + m[ 1 ] + ', 主机名: ' + m[ 2 ] );
+
+        console.log( m );
+    }
+
+
+
+</script>
+</html>

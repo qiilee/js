@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // qilei:  for in 循环  主要用在对对象的遍历
+    // 循环  for 循环 do while     for in
+
+    // for 循环主要用在对有length属性的对象进行遍历
+   /* for(var i = 0;i<10;i++){
+        console.log(i)
+    }*/
+    // 依次输出0-9
+
+    // for in 循环  主要用在对对象的遍历
+
+    var obj  = {
+        name:'jack',
+        age:18
+    }
+
+    for(var key in obj){
+        console.log(obj[key])
+    }
+    // 输出 jack 18
+
+
+    // 问题：for 循环能否对对象进行遍历
+ /*   for(var i=0;i<obj.length)*/
+    var arr = [1,2,3]
+     for(var key in arr){
+        console.log(arr[key])
+     }
+
+     // do while 循环
+
+    var i = 0;
+    do{
+         console.log(i)
+        i++;
+    }while(i<10)
+
+
+
+
+</script>
+</body>
+</html>

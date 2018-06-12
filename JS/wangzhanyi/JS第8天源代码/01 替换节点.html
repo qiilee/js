@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li>这是第1个li标签</li>
+    <li id="li2">这是第2个li标签</li>
+    <li>这是第3个li标签</li>
+    <li>这是第4个li标签</li>
+    <li>这是第5个li标签</li>
+    <li>这是第6个li标签</li>
+</ul>
+<script>
+    var list = document.getElementById("list");
+    var li2 = document.getElementById("li2");
+    var lis = list.children;
+    list.replaceChild(li2,lis[4]); // 将第2个li标签剪切下来，放到第5个标签的位置，第5个标签就不存在
+</script>
+</body>
+</html>

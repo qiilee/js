@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*Function.prototype.bind= function(){
+        var that = this;
+        var outerArgs = Array.prototype.slice.call(arguments,1);
+        var obj = arguments[0];
+        return function() {
+            var innerArgs = arguments;
+            var finalArgs = outerArgs.concat(innerArgs)
+            that.apply(obj, finalArgs);
+        }
+    }
+
+
+    Function.prototype.uncurry=function(){
+        return this.call.bind(this)
+    }
+
+    var push = Array.prototype.push.uncurry();
+    var obj = {
+    }
+    push(obj,1)
+    console.log(obj)*/
+    /*var slice = Array.prototype.slice.uncurry();
+
+    function fn(name,age){
+        console.log(arguments);
+        console.log(slice(arguments,0))
+    }
+
+    fn('jack',18)*/
+
+    /*function fn(){
+    }
+    fn.bind(null)*/
+
+    Function.prototype.uncurry=function(){
+        //缓存下要拓展的函数
+        var self = this;
+        return function(){
+            // 获取下第一个参数，要指定的this
+            var obj = Array.prototype.shift.call(arguments);
+            return self.apply(obj,arguments)
+        }
+    }
+    //创建一个适用于更广场景的push方法
+    var push = Array.prototype.push.uncurry();
+    var obj = {x:1,y:2};
+    push(obj,{});
+    console.log(obj)
+    var slice = Array.prototype.slice.uncurry();
+    console.log(slice([1,2,3,4,5],1,2))
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest 对象的使用</title>
+</head>
+<body>
+
+<input type="button" value="xmlHttpRequest 发送请求">
+<script>
+
+        //绑定事件.
+        document.querySelector("input[type=button]").onclick=function(){
+            // 1：我要创建一个XMLHttpRequest 对象。
+               var xhr=new XMLHttpRequest();
+            // 2：我要发送请求，我要跟服务器建立一个连接。
+               xhr.open("get","01ajax.php?username=zhangsansan");
+            // 3：我要发送数据给服务器。
+               xhr.send(null);
+            // 4：接收服务器的数据。
+
+               //服务器返回数据了，就会调用这个函数.
+               //这个函数会被调用很多次.
+               //因为服务端的数据不是一下立马全部写过来.
+               //这个时候，服务端在返回数据的时候还会不断的给我们一些状态
+               //0,1,2,3,4
+               //每个状态都有特定的含义
+               //其中4 的这个状态代表服务端的数据已经响应完成了
+               //我现在就要向办法去获取到这个状态
+               //然后对这个状态进行一个判断
+               //如果状态等于4，代表响应完成，我就可以开始处理.
+               xhr.onreadystatechange=function(){
+
+
+                     //alert(xhr.readyState);
+                     //代表服务端已经响应完成了。
+                     if(xhr.readyState==4){
+
+                           //我跟服务进行交互，服务端还会给我们返回一些状态
+                            //200 代表成功， 404 代表资源没有找到。
+                            //alert("开始处理请求了");
+                            //我还需要对状态吗进行判断
+                            //因为响应完成了，不代表响应成功了.
+                            if(xhr.status==200){
+                                 //在这里进行处理.
+                                 //我开始接受服务端返回的数据了。
+
+                                 //我们通过responseText 去接收服务端返回的数据.
+
+                                 var data=xhr.responseText;
+
+                                 alert(data);
+
+
+
+                            }
+
+                     }
+
+               }
+
+        };
+</script>
+
+
+</body>
+</html>

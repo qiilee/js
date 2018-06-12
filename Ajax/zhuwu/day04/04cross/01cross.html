@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+
+<input type="button" value="发送跨域请求">
+
+    <script>
+        document.querySelector("input").onclick=function(){
+                //var xhr=new XMLHttpRequest();
+                //$.ajax() 也是去发送请求，它底层是用XMLHttpRequest 去发送请求.
+                //这个对象是发送不了跨域请求的.
+
+               $.ajax({
+                   url:"http://api.map.baidu.com/telematics/v3/weather?ak=6tYzTvGZSOpYB5Oc2YGGOKt8&location=天津&output=json",
+                   type:"get",
+                   dataType:"jsonp",
+                   success:function(data){
+                       console.log(data);
+                   }
+               })
+
+        };
+    </script>
+</body>
+</html>

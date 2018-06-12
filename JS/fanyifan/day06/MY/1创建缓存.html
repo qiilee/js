@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：cache对象是缓冲区
+    //     arr数组用来记录缓存的条数
+    //    注意删里面的return不要落下，负责会多输出一个带undefined的键值对
+    //    key是属性名，value是属性名
+    function createCache() {
+        var cache = {};
+        var arr = [];
+        return function (key, value) {
+            //查
+            if (arguments.length === 0) {
+                return cache;
+            }
+            //删
+            if (value === undefined) {
+                delete cache[key];
+                var index = arr.indexOf(key);
+                arr.splice(index, 1);
+                return;
+            }
+            //改
+            if (cache[key]) {
+                cache[key] = value;
+            }
+            //增
+            else {
+                if (arr.length >= 3) {
+                    var deleteArr = arr.shift();
+                    delete cache[deleteArr];
+                    cache[key] = value;
+                    arr.push(key);
+                } else {
+                    cache[key] = value;
+                    arr.push(key);
+                }
+            }
+        }
+    }
+
+    var personCache = createCache();
+    //增
+    personCache('name1', 'jack1')
+    personCache('name2', 'jack2')
+    personCache('name3', 'jack3')
+    personCache('name4', 'jack4')
+    personCache('name5', 'jack5')
+    //改
+    personCache('name4', 'rose4');
+
+    //删
+    personCache('name3')
+
+    //查
+    console.log(personCache());
+</script>
+</body>
+</html>

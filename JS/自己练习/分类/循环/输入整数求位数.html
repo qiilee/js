@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+       var num = Number(prompt("请输入一个整数"));
+       var count =1;
+        if(num){
+            num = parseInt(num);
+            while(parseInt(num/10) != 0){
+               num =parseInt(num/10);
+               count++;
+            }
+            console.log("此数有"+count+"位数");
+        }else if(num == 0){
+            console.log("此数有1位数");
+        }else{
+            console.log("不合法");
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

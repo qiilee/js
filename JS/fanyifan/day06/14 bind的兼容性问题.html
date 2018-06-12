@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //bind方法存在在函数的原型上  Function.prototype
+    //call 方法存在在函数的原型上  Function.prototype
+    //apply方法存在在函数的原型上  Function.prototype
+
+
+    // bind方法的作用
+    // 1 改变this指向
+    // 2 分批传入参数
+
+    function listToArray(arrayLike){
+        //利用方法借用把一个类数组转换为数组
+        return Array.prototype.slice.call(arrayLike,0)
+    };
+    /*var obj ={}
+    function fn(name,age){
+        console.log(name,age)
+        console.log(this)
+    }
+    var f = fn.bind(obj,'jack')
+    f(18);//*/
+
+
+    // 如何实现bind方法分批传入参数的功能？
+
+    //利用闭包的特性去做ｂｉｎｄ方法的兼容性处理　
+    Function.prototype.bind=function(obj){
+        // 第一次传入的参数会保留在bind的作用域当中。
+        //把类数组转换为数组
+        //调用bind方法的函数就是bind方法中的this
+        var self = this;//this就是调用bind方法的函数
+        var firstArg = Array.prototype.slice.call(listToArray(arguments),1);
+        return function(){
+            //这是经过bind方法处理之后的新函数
+            //获取第二次传入的参数
+            var secondArg = listToArray(arguments);
+            //组成一个完整的参数数组
+            var finalArg = firstArg.concat(secondArg);
+            //新函数执行的时候fn执行
+            return self.apply(obj,finalArg);
+        }
+    }
+
+    var obj ={}
+    function fn(name,age){
+        console.log(name,age)
+        console.log(this)
+    }
+    var f = fn.bind(obj,'jack')
+
+    f(18);//
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

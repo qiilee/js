@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="json 格式数据解析的方式" id="buttonId">
+<script>
+
+        document.querySelector("#buttonId").onclick=function(){
+
+                  var xhr=new XMLHttpRequest();
+
+                  xhr.open("get","01json.php");
+
+                  xhr.send(null);
+
+                  xhr.onreadystatechange=function(){
+
+                      if(xhr.readyState==4 && xhr.status==200){
+
+                            //先接收到json 格式
+                            //也是 responseText
+
+                            //这是一个字符串，这是一个有规则的字符串,json 规则
+                            //键值对.
+                            var data=xhr.responseText;
+                            console.log(data);
+
+                            //我们在JavaScript 里面学习过JavaScript的对象
+                            //javascript 对象跟json 的格式差不多.
+                            //也是键值对.
+                            /*var obj={
+                                "username":"袁帅"
+                            };*/
+
+                            /*
+                            * 假设我可以把json 格式的字符串转换成JavaScript 对象
+                            * 我就可以通过key 获取到对应的值.
+                            * */
+
+                            /*
+                            * javascript 给我们提供了两种方式的api
+                            * 去将json 格式的字符串转换成JavaScript 的对象.
+                            * */
+                            /*
+                            * 第一种方式转换
+                            * eval() 函数，是一个JavaScript提供的函数。
+                            * 使用这个方法有一个要求，拿括号把json 字符串包起来.
+                            * ({"username":"权向阳"})
+                            *
+                            * */
+                           var obj=eval("("+data+")");
+                           console.log(obj);;
+                           console.log(obj.username);
+
+                            /*
+                            * 第二种转换方式.
+                            * 提供了一个对象，JavaScript
+                            * JSON.parse(data);
+                            * */
+                            var obj=JSON.parse(data);
+                            console.log(obj);
+
+
+
+
+                      }
+
+                  }
+
+
+
+        }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+
+<div ng-controller="controller1">
+    <input type="text" ng-model="txt"><br />
+
+    <input type="text" ng-model="txt"><br />
+</div>
+
+<hr>
+
+<div ng-controller="controller2">
+    <input type="text" ng-model="txt"><br />
+
+    <input type="text" ng-model="txt"><br />
+</div>
+
+</body>
+<script>
+//总结：与不推荐的区别就是body使用了ng-app  div使用了ng-controller
+//
+//
+//
+//
+
+
+    // 推荐
+//    angular.module( 'mainApp.subApp1', [] )
+//            .controller( 'controller1', function ( $scope ) {
+//
+//            });
+//
+//    angular.module( 'mainApp.subApp2', [] )
+//            .controller( 'controller2', function ( $scope ) {
+//
+//            });
+//
+//    angular.module( 'mainApp', [ 'mainApp.subApp1', 'mainApp.subApp2' ] );
+
+//1
+//    angular.module('mainApp.subApp1',[])
+//            .controller('controller1',function($scope){
+//
+//            });
+//    angular.module('mainApp.subApp2',[])
+//            .controller('controller2',function($scope){
+//
+//            });
+//    angular.module('mainApp',['mainApp.subApp1','mainApp.subApp2']);
+
+//2
+    angular.module('mainApp',[])
+            .controller('controller1',function(){})
+            .controller('controller2',function(){})
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        //总结：
+        //1、错误的用法
+        //2、dom对象转换为jq对象
+        //3、jq对象转换为dom对象 2种方式  $("div").get(0).innerHTML / $("div")[2].innerHTML
+        //入口函数
+        $(document).ready(function () {
+            //获取jq对象
+//            $("#box").innerHTML = "今天天气不错"; 无法使用dom属性
+
+            //获取dom对象
+            //var box = document.getElementById("box");
+            //box.text("今天天气不错");
+
+
+            //---将dom对象转换为jq对象的方式---
+            var box = document.getElementById("box");
+            //将dom对象传入$()中，就会得到一个jq对象  - 用钱收买
+            $(box).text("今天天气不错");
+
+
+            //---将jq对象转换为dom对象---
+
+            //jq对象的命名
+            //var $box = $("#box");
+
+            //其实是将jq对象中的某一个dom对象取出
+            //取出的时候可以使用get方法,里面设置一个索引值
+            $("div").get(0).innerHTML = "今天天气不错";
+            $("div").get(1).innerHTML = "今天天气不错";
+
+            //第二种方式，传入一个索引值，可以取出对应的dom对象
+            $("div")[2].innerHTML = "今天天气不错";
+
+        });
+
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

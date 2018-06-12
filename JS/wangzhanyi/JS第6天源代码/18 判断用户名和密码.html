@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+用户名：<input type="text" value="" id="userName"/><span id="sp1"></span><br/>
+密码：<input type="text" value="" id="userPwd"/><span id="sp2"></span><br/>
+<input type="button" id="btnLogin" value="登陆"/>
+<script src="common.js"></script>
+<script>
+    // 检测用户名是否是3-6位，密码是否是6-8位，如果不满足要求高亮显示文本框
+    // 1. 先获得要操作的对象
+    var userName     = document.getElementById("userName");
+    var userPwd = document.getElementById("userPwd");
+    var btnLogin = document.getElementById("btnLogin");
+    var sp1 = document.getElementById("sp1");
+    var sp2 = document.getElementById("sp2");
+    // 2. 给事件源注册事件
+    btnLogin.onclick = function (){
+        // 字符串可以看成是字符的数组  所以可以使用length属性来获取字符串的长度或是个数
+           if(userName.value.length<3||userName.value.length>6){
+               setText(sp1,"你输入的用户名不正确，应该是在3--6位之间");
+               userName.style.backgroundColor = "red";
+           }else { // 如果到这里了，说明上面的用户名输入的是正确的
+               if(userPwd.value.length<6||userPwd.value.length>8){
+                   sp2.innerHTML = "你输入的密码不正确，密码应该是在6--8位之间";
+                   userPwd.style.backgroundColor = "red";
+                   sp1.innerHTML = "用户输入正确";
+                   userName.style.backgroundColor = "";
+               }else {
+                   setText(sp1,"用户名输入正确");
+                   setText(sp2,"密码输入正确");
+                   userName.style.backgroundColor = "";
+                   userPwd.style.backgroundColor = "";
+                   alert("登陆成功");
+               }
+           }
+    }
+</script>
+</body>
+</html>

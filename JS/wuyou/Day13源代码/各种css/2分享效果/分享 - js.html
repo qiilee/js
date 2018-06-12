@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #share {
+            position: fixed;
+            width: 100px;
+            height: 200px;
+            background-color: lightblue;
+            left: -100px;
+            top: 100px;
+        }
+
+        #share span {
+            width: 20px;
+            height: 60px;
+            line-height: 20px;
+            text-align: center;
+            left: 100px;
+            top: 70px;
+            position: absolute;
+            background-color: yellow;
+
+        }
+    </style>
+
+</head>
+<body>
+<div id="share">
+    <span>分享到</span>
+</div>
+
+<script src="../animate.js"></script>
+<script>
+    var share = document.getElementById("share");
+    var sp = share.children[0];
+
+    //如果使用sp进行触发，触发后发现share移动时会触发鼠标移出导致回退
+    share.onmouseover = function () {
+        animate(share,{"left":0});
+    };
+    share.onmouseout = function () {
+        animate(share,{"left":-100});
+    };
+
+
+
+
+</script>
+</body>
+</html>

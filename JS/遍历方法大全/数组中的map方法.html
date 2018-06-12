@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //    在数组中所有的遍历方法都有同一种调用形式
+    //    数组.XXX( callback );
+    //    并且回调函数的参数都是 v, i. 同时不能使用 this.
+
+
+
+
+    //    .map  ：返回新的数组
+//            var arr = [1,23,4];
+//            var newArr = arr.map( function ( v, i ) {
+//                return v*2;
+//            });
+//            console.log(newArr);
+    //    注意: 如果没有 return, 那么相当于 return 了 undefiend
+
+
+
+
+    //    var arr = [1, 2, 3].map(function (v, i) {
+    //        console.log(i + ', ' + v);
+    //    });
+
+
+
+    // map
+    //作用：对数组进行遍历
+    //返回值：新的数组
+    // 是否改变：否
+    var arr = [2,5,3,4];
+     var ret = arr.map(function(value){
+     return value+1;
+     })
+     console.log(ret);//[3,6,4,5]
+     console.log(arr)//[2,5,3,4]
+
+</script>
+</html>

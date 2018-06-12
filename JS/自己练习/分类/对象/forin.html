@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //    var o = {
+    //        name: "ql",//值
+    //        age: 18,
+    //        sex: "未知",
+    //        salary: 100,
+    //        sayHi: function () {
+    //            console.log("大家好，我是" + this.name);
+    //        }
+    //    };
+    //    for (var key in o) {
+    //        console.log(key);
+    //    }
+
+    //上面的可以输出对象的属性和方法
+//     有些系统提供的对象的属性和方法无法遍历
+//      原因是属性和方法被设置为不可遍历
+    var arr = new Array();
+    for (var key in arr) {
+        console.log(key);
+    }
+</script>
+</body>
+</html>

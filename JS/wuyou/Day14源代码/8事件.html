@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 400px;
+            height: 400px;
+            background-color: #a687ff;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #ecab6d;
+        }
+
+        #box4 {
+            width: 100px;
+            height: 100px;
+            background-color: #404bec;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+        <div id="box4"></div>
+    </div>
+</div>
+
+<script>
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+    var box4 = document.getElementById("box4");
+    //给每个元素添加点击事件
+
+    box1.onclick = function () {
+        console.log("box1");
+    };
+
+    box2.ondblclick = function () {
+        console.log("box2");
+    };
+
+    box3.onclick = function () {
+        console.log("box3");
+    };
+
+    box4.onclick = function () {
+        console.log("box4");
+    };
+
+
+    //产生这种效果的原因是事件冒泡
+    //事件冒泡是是传播的一个过程
+    //传播方式：由最特定元素（触发的那个元素），一直向父亲进行冒泡，冒泡到最不特定元素（文档）
+    //在传播的过程中，如果某一个父级元素具有了相同类型的事件，就会触发他。
+    //在传播过程中，不会因为某个父级元素没有相同类型事件而终止
+
+    //注意，传播的时候只会在父子之间进行传播，不会传播到同级元素上
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //模板是什么
+
+    var templateStr = "我的名字是:<%=name%>,我的女神是:<%=lovegirl%>,我最喜欢她(ta):<%=dzheiha%>";
+
+    var obj1 = {
+        name:"刑凯",
+        lovegirl:"楠楠",
+        dzheiha:"温柔的歌声"
+    }
+    // 使用 正则 获取 其中的 这两个地方
+    //  最开始 匹配的是 <%=
+    //  \s* 可以有 0-多个 空白符号
+    //  () 查找 满足 小括号中 条件的 文本
+    //  [^%>]+\S   ^%> 除了 %> 以外的 所有字符 至少一个
+    //  \s* 0-多个
+    //  以%> 作为结束
+    //  // 快速 创建 正则 验证对象
+    var reg = /<%=\s*([^%>]+\S)\s*%>/;
+
+    //exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null。
+    //第一次替换
+    var result = reg.exec(templateStr);
+    // console.log(result);
+    var resultString = result[0]; //<%=name%>
+    console.log(resultString);
+    var resultWord = result[1]; //name
+    console.log(resultWord);
+
+    templateStr = templateStr.replace(resultString,obj1[resultWord]);
+    //templateStr的值 现在是 ———————— "我的名字是:刑凯,我的女神是:<%=lovegirl%>"
+
+    //封装template函数
+
+    function template(templateStr,obj){
+
+        var reg = /<%=\s*([^%>]+\S)\s*%>/;
+
+        var result;
+        while(result = reg.exec(templateStr)){
+            result = reg.exec(templateStr);
+            // console.log(result);
+            var resultString = result[0]; //<%=name%>
+            var resultWord = result[1]; //name
+
+            templateStr = templateStr.replace(resultString,obj[resultWord]);
+
+        }
+        return templateStr;
+    }
+    console.log(template(templateStr, obj1));
+
+
+</script>
+</body>
+</html>

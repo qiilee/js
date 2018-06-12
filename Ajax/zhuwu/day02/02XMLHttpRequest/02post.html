@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XMLHttpRequest 对象的使用</title>
+</head>
+<body>
+
+<input type="button" value="xmlHttpRequest post 发送请求">
+<script>
+
+    //绑定事件.
+    document.querySelector("input[type=button]").onclick=function(){
+             var xhr=new XMLHttpRequest();
+
+             xhr.open("POST","02post.php");
+
+             //post 提交有一个特殊的请求头.
+             //Content-Type,如果发送了一个这样的头，
+             //发过去的数据，会自动编码.
+             xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+             xhr.send("desc=啊哈啊哈");
+             xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4 && xhr.status==200){
+                           var data=xhr.responseText;
+                           alert(data);
+                    }
+             }
+    };
+</script>
+
+</body>
+</html>

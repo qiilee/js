@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<script>
+    //    var arr= document.querySelectorAll("input[type=checkbox]");
+    //    console.log(arr);
+
+    var domList = document.getElementsByTagName('input');
+    var checkBoxList = [];
+    var len = domList.length;　　//缓存到局部变量
+    while (len--) {
+        if (domList[len].type =='checkbox')
+        {
+            checkBoxList.push(domList[len]);
+        }
+    }
+    console.log(checkBoxList);
+</script>
+</body>
+</html>

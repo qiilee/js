@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 默认是不是就是黑色实线
+    console.log( ctx.getLineDash() );
+
+    // 绘制一条虚线
+    ctx.moveTo( 100, 100 );
+    ctx.lineTo( 500, 100 );
+    ctx.setLineDash( [ 5 ] );
+    ctx.stroke();
+
+    // 绘制一条红色的虚线
+    ctx.beginPath();
+    ctx.moveTo( 100, 150 );
+    ctx.lineTo( 500, 150 );
+    ctx.setLineDash( [ 10 ] );
+    ctx.strokeStyle = 'red';
+    ctx.stroke();
+
+    // 绘制一条宽度为 4 的黑色直线
+    ctx.beginPath();
+    ctx.moveTo( 100, 200 );
+    ctx.lineTo( 500, 200 );
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#000';
+    ctx.setLineDash( [] );
+    ctx.stroke(); 
+
+    
+   
+
+</script>
+</html>

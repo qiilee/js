@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //为了实现更好的分离，我们推荐使用class操作去操作样式
+
+            //添加类名  addClass()
+            //添加单个类名
+            //$("#box").addClass("current");
+            //添加多个类名
+            //$("#box").addClass("current hehe");
+
+
+            //移除类名 removeClass()
+            //$("#box").removeClass("box");
+            //移除多个，移除时放置的顺序无所谓
+            //$("#box").removeClass("current box");
+
+
+            //切换类名   toggleClass()
+            //传入一个或多个类名，如果标签具有某个类名，就会去掉，如果没有就会进行添加
+            //点击box进行类名切换
+            //$("#box").click(function () {
+            //    $(this).toggleClass("box hehe");
+            //});
+
+            //检测是否具有某个类名  hasClass() 用于检测是否含有某个类名，返回bool值
+            //检测一个
+            //console.log($("#box").hasClass("box"));
+            //检测多个
+            //console.log($("#box").hasClass("box haha"));
+            //检测多个类名是否存在时，必须保证顺序相同（一般不使用）
+            //console.log($("#box").hasClass("haha box"));
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="box" class="box haha">我是一个box</div>
+</body>
+</html>

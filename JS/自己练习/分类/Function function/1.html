@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var foo01 = function() //or fun01 = function()
+    {
+        var temp = 100;
+        this.temp = 200;
+        return temp + this.temp;
+    }
+
+    alert(typeof(foo01));
+    alert(foo01());
+
+
+    /*   运行结果：
+     function
+     300    最普通的function使用方式，定一个JavaScript函数。
+     两种写法表现出来的运行效果完全相同，唯一的却别是后一种写法有较高的初始化优先级。
+     在大扩号内的变量作用域中，this指代foo01的所有者，即window对象。 */
+</script>
+</body>
+</html>

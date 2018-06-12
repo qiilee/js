@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+    <div ng-controller="MainController">
+        <my-directive></my-directive>
+        <my-directive></my-directive>
+        <my-directive></my-directive>
+        <my-directive></my-directive>
+        <my-directive></my-directive>
+    </div>
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        // 定义指令
+        .directive( 'myDirective', function () {
+           return {
+               restrict: 'E',
+               template: '<p>哈哈哈, 我是一个自定义的指令</p>' +
+                         '<p>很好用, 指令很强大. ng 之所以强大, 大部分原因就是指令</p>'
+           }
+        })
+        .controller( 'MainController', function ( $scope ) {
+            
+        });
+
+</script>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*
+    func();
+    // function func() {
+    //     console.log( 'hhh' );
+    // }
+    var func = function () {
+        console.log( '哈哈哈' );
+    }
+*/
+
+
+    var num = 123;
+    function num() {}
+    console.log( num );
+    // 分析代码
+    // 1, 预解析, 在此中需要对变量与函数进行提升
+    //     分析到第一句话, 看到 var num = 123;
+    //     提升 num, 也就是说在底层的数组中存储了 num 这个名字
+    //     分析到第二句话, 看到 function num () {}
+    //     要做两件事情, 1> 名字记录在数组中, 但是发现数组中已有该名字, 此时忽略该操作.
+    //     2> 将 名字与函数体绑定 , 那么也就是说在底层只有一个名字 num, 并且
+    //     该名字与函数体已绑定.
+    //     与解析结束
+    // 2, 执行代码
+    //     执行第一句话赋值, 给 num 重新赋值 123, 将函数覆盖
+    //     打印的结果为 123
+
+</script>
+</html>

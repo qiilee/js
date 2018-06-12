@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        console.log(getDay("20161115"));
+        function getDay(day) {
+            var year = parseInt(day.substring(0, 4));
+            var month = parseInt(day.substring(4, 6));
+            var date = parseInt(day.substring(6, 8));
+            var dateNo = date;//返回值默认为天数
+            switch (month - 1) {
+                case 12:
+                    dateNo += 31;
+                case 11:
+                    dateNo += 30;
+                case 10:
+                    dateNo += 31;
+                case 9:
+                    dateNo += 30;
+                case 8:
+                    dateNo += 31;
+                case 7:
+                    dateNo += 31;
+                case 6:
+                    dateNo += 30;
+                case 5:
+                    dateNo += 31;
+                case 4:
+                    dateNo += 30;
+                case 3:
+                    dateNo += 31;
+                case 2:
+                    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+                        dateNo += 29;
+                    } else {
+                        dateNo += 28;//注意  这个else不能省略 费老劲了
+                    }
+
+                case 1:
+                    dateNo += 31;
+                    break;
+
+            }
+            return dateNo;
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

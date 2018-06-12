@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 沙盒模式 命名空间的一个进阶版 单例模式 （作用：防止全局污染问题）
+    // 沙盒游戏：侠盗猎车5 沙盘演练
+    // 立即调用的函数表达式
+
+    //
+
+    /*var nameSpace=function(){
+
+
+        function listToArray(arrayLike){
+            //利用方法借用把一个类数组转换为数组
+            return Array.prototype.slice.call(arrayLike,0)
+        };
+        function isArray(obj){
+            return Object.prototype.toString.call(obj)==='[object Array]'
+        }
+        return {
+            listToArray:listToArray,
+            isArray:isArray
+        }
+    }()
+
+    console.log(nameSpace)*/
+
+
+    ~function(w){
+        function listToArray(arrayLike){
+            //利用方法借用把一个类数组转换为数组
+            return Array.prototype.slice.call(arrayLike,0)
+        };
+        function isArray(obj) {
+            return Object.prototype.toString.call(obj) === '[object Array]'
+        }
+        var nameSpace={
+            listToArray:listToArray,
+            isArray:isArray
+        }
+        w.nameSpace=nameSpace;
+        //变量搜索是需要花费时间的，因此把window传入自执行函数，可以减少变量搜索所带来的性能消耗。
+        //实际工作中，代码会进行压缩以及混淆
+        // 把window传入自执行函数，可以让window编程一个w单字节的变量，这样代码就能够被压缩了。
+    }(window)
+    console.log(nameSpace)
+</script>
+</body>
+</html>

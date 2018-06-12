@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>什么是cookie？</title>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<h3>cookie 是存储在客户端（浏览器）的一个数据，javascript是可以操作cookie的</h3>
+	<img src="./images/aa.jpg" alt="">
+	<button>发送</button>
+	<script src="./js/index.js"></script>
+	<script>
+		// 使用 document.cookie 可以设置cookie，也可读取 cookie
+		// console.log(document.cookie);
+
+		// 1、cookie 是一个字符串
+		// 2、满足key=val; key1=val1的格式
+		// 3、cookie 是有时效的，默认为关闭浏览器
+		// 4、可以跨页面读取（但是有域的限制）
+
+		var btn = document.querySelector('button');
+
+		btn.addEventListener('click', function () {
+			var xhr = new XMLHttpRequest;
+
+			xhr.open('get', './example.php');
+
+			xhr.send();
+		});
+
+	</script>
+
+</body>
+</html>

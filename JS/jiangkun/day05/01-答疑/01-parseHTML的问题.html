@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="dv"></div>
+</body>
+<script>
+    function parseHTML ( html ) {
+            
+        // 1, 准备容器
+        var  div = document.createElement( 'div' );
+        // 2, 设置 innerHTML
+        div.innerHTML = html;
+        // 3, 取出来( 数组 )
+        // return div.childNodes;
+
+        var res = [];
+        for ( var i= 0; i < div.childNodes.length; i++ ) {
+            res.push( div.childNodes[ i ] );
+        }
+        return {
+            childNodes: div.childNodes,
+            res: res
+        };
+    };
+
+    var obj = parseHTML( '<div>1</div><div>2</div><div>3</div><div>4</div>' );
+
+    // 循环的方式加到页面中
+    var dv = document.getElementById( 'dv' );
+    
+    // for ( var i = 0; i < list.length; i++ ) {
+    //     dv.appendChild( list[ i ] );
+    // }
+
+
+    // 每一个 DOM 元素只允许有一个父元素
+    // 而在 js 中 所有的 元素节点都是对象, 都是引用类型.
+
+    // 解决方案
+    // 1, 使用 while 循环
+    // while( list.length > 0 ) {
+    //     dv.appendChild( list[ 0 ] );
+    // }
+    // console.log( 'over' );
+
+
+    // 2, 使用数组来返回
+    for ( var i = 0; i < obj.res.length; i++ ) {
+        dv.appendChild( obj.res[ i ] );
+    }
+
+
+
+</script>
+</html>

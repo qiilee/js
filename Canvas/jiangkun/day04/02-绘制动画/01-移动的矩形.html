@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制移动的矩形</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+
+    var deltaX = 0;
+    var intervalId = setInterval(function ( ) {
+        ctx.clearRect( 0, 0, cas.width, cas.height ); // 擦除整个画布
+
+        ctx.fillRect( deltaX, 100, 100, 50 );
+
+        deltaX++;
+
+        // 让矩形到达右边的边框时就停下
+        if ( deltaX >= 500 ) clearInterval( intervalId );
+
+    }, 16.67 );
+</script>
+</html>

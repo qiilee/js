@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //使用到了正则的方法
+    //replace("要替换的字符串","替换成什么字符串")
+    //var str = "aaaaAAAaaa";
+    //console.log(str.replace("a", "!"));
+
+    //replace第一个参数可以传入正则表达式
+
+    //匹配模式 g 全局匹配 匹配所有可以匹配到的内容
+    //console.log(str.replace(/a/g, "!"));
+
+    //匹配模式 i 忽略大小写
+    //console.log(str.replace(/a/ig, "!"));
+
+    //trim方法  ie9以下不支持
+    //var str = "   a   a   ";
+    //console.log(str.trim());
+
+    //自己去封装一个函数模拟这个方法
+    //function myTrim(str) {
+    //    //匹配空格换行，\s 不可见字符
+    //    var reg = /^\s+|\s+$/g;
+    //    var strNew = str.replace(reg, "");
+    //    return strNew;
+    //}
+    //console.log(myTrim(str));
+
+    //去除所有空格
+    //console.log(str.replace(/^\s+$/g, ""));
+
+
+    var str = "今天天气不错，我得邮箱是xiaoming@qq.com呵呵呵";
+
+    //字符串方法match(正则)
+    console.log(str.match(/\w+@\w+\.\w+/));
+    //方法返回的结果，最后一个数组元素为原字符串  倒数第二个为第一次匹配到的位置
+    //前面的参数为匹配的结果，字符串形式
+
+
+</script>
+</body>
+</html>

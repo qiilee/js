@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script>
+    var datas = [
+        { name: 'jim1', age: 19, gender: '男' },
+        { name: 'jim2', age: 9, gender: '男' },
+        { name: 'jim3', age: 29, gender: '女' },
+        { name: 'jim4', age: 39, gender: '女' },
+        { name: 'jim5', age: 49, gender: '男' },
+        { name: 'jim6', age: 59, gender: '女' },
+        { name: 'jim7', age: 69, gender: '男' }
+    ];
+
+    // 重点是创建 html 标签
+    // 已经学习到的原生的代码
+    // 1> 标准 DOM 方法, document.createElement( ... )
+    // 2> 使用克隆 cloneNode()
+    // 3> innerHTML
+
+    // 1, 要有 body 标签, 还要有 thead, tbody
+    // 2, 每一条数据, 都是一个 tr 标签
+    // 3, 每一个对象中的数据 都是一个 td 标签
+
+    document.querySelector( '#container' ).innerHTML = 
+
+    '<table border="1" width="400">' + 
+
+        '<thead>' + Object.keys( datas[ 0 ] ).map(function ( v ) {
+            return '<th>' + v + '</th>';
+        }).join( '' ) + '</thead>' +
+    
+        '<tbody>' +
+        
+        datas.map( function ( item ) {
+
+            return '<tr>' + Object.values( item ).map(function ( v ) {
+                return '<td>' + v + '</td>'
+            }).join( '' ) + '</tr>'
+
+        }).join( '' ) +
+        
+        '</tbody></table>'
+    
+</script>
+</html>

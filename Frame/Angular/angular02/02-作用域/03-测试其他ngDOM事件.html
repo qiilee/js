@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/jquery-3.1.0.js"></script>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+    <div ng-mouseover="over()" ng-mouseleave="out()" ng-style="bk"></div>
+
+    
+</body>
+<script>
+
+    // console.log( angular.element );
+
+    // angular.module( 'mainApp', [] )
+    //     .controller( 'mainController', function ( $scope ) {
+    //         var div = document.querySelectorAll( 'div' )[ 0 ];
+    //         $scope.over = function () {
+    //             div.style.backgroundColor = 'red';
+    //         };
+    //         $scope.out = function () {
+    //             div.style.backgroundColor = '';
+    //         };
+    //     });
+
+    // 如果一定要用 DOM 操作, 可以使用 ng 内置的 jqlite, 使用 angular.element()
+
+
+    // angular.module( 'mainApp', [] )
+    //     .controller( 'mainController', function ( $scope ) {
+    //         $scope.over = function () {
+    //             $( 'div' ).css( 'backgroundColor', 'blue' );
+    //         };
+    //         $scope.out = function () {
+    //             $( 'div' ).css( 'backgroundColor', '' );
+    //         };
+    //     });
+
+
+    // ng 告诉我们少用 dom
+
+    // style="width:1px; height:2px; background-color:blue;...."
+
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+            $scope.bk = {
+                width: '200px',
+                height: '100px',
+                border: '1px dashed red'
+            };
+            $scope.over = function () {
+                $scope.bk.backgroundColor = 'green';
+            };
+            $scope.out = function () {
+                $scope.bk.backgroundColor = '';
+            };
+        });
+
+</script>
+</html>

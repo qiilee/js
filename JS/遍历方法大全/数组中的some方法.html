@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+//    .some
+//    判断数组中是否有符合数据要求的项, 如果含有就返回 true, 否则返回 false( 全部元素都不符合要求 )
+
+
+
+// some
+// 作用：判断数组中的每一项，如果有一项满足条件，就返回true
+// 返回值：布尔值
+// 是否改变：否
+var arr = [2,5,3,4]
+var ret = arr.some(function(value){
+    return value>4;
+})
+console.log(ret);//true
+console.log(arr)//[2,5,3,4]
+</script>
+</html>

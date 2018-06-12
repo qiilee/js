@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="点击按钮" id="btn">
+</body>
+<script>
+    function s(selector) {
+        return document.querySelectorAll(selector);
+    }
+
+
+    // 添加点击事件的办法
+    // 1, onclick = ...
+    // 2, addEventListener( 'click', ... )
+    // 3, attachEvent( 'onclick', ... )
+
+    // 需求
+    // 1> 事件的添加
+    // 2> 事件的追加
+    // 3> 调用顺序
+    // 4> this 的问题
+
+    // 1, 判断浏览器中的支持性
+    // var btn = s( '#btn')[ 0 ];
+
+    // if ( btn.addEventListener ) {
+    //     // 支持 addEventListener 方法
+
+    // } else {
+    //     // 支持 attachEvent
+    // }
+
+
+    // 2, 假设需要增加的事件为
+    var type = 'click';
+    // 假设 需要增加的处理函数为
+    function func() {
+        console.log(this);
+        this.value = '哈哈哈, 我呗调用了';
+    }
+
+
+    var btn = s('#btn')[0];
+
+    // if ( btn.addEventListener ) {
+    //     // 支持 addEventListener 方法
+    //     btn.addEventListener( type, func );
+    //     console.log( '非 IE' );
+    // } else {
+    //     // 支持 attachEvent
+    //     btn.attachEvent( 'on' + type, func );
+    //     console.log( 'IE' );
+    // }
+
+
+    // 3, 解决 this 的问题
+
+    if (btn.addEventListener) {
+        // 支持 addEventListener 方法
+        btn.addEventListener(type, func);
+        console.log('非 IE');
+    } else {
+        // 支持 attachEvent
+        btn.attachEvent('on' + type, function () {
+            func.call(btn);
+        });
+        console.log('IE');
+    }
+
+
+</script>
+</html>
+
+</script>
+</
+body >
+< / html >

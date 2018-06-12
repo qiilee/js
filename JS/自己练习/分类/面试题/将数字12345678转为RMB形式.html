@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //三个注意点
+    //  写一个将字符串反转的函数
+    //  for循环i从1开始
+    //  if判断条件
+    //
+    var str = '12345678';
+    function re(str){
+       return str.split("").reverse().join('');
+    }
+    var str1 =  re(str);
+    var tmp ='';
+    for (var i = 1; i <=str1.length; i++) {
+        tmp += str1[i-1];
+        if(i%3==0 && i!=str1.length){
+            tmp +=',';
+        }
+    }
+    console.log(re(tmp));//12,345,678
+</script>
+</body>
+</html>

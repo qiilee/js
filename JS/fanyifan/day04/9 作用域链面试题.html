@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 1
+    /*var oneColor = "red";
+    function outer(){
+        var oneColor = "blue";
+        function inner(){
+            console.log(oneColor);
+        }
+        inner();
+    }
+    outer();// 'blue'*/
+
+
+    // 2
+    /*var str;
+    var num;
+    function fn() {
+        var num;
+        console.log(str, num);// 'jack',undefined
+        num = 14;
+        str = "rose";
+        num = 20;
+        console.log(str, num);//'rose',20
+    }
+    console.log(str, num);//undefined,undefined
+    str = "jack";// 'jack'==>'rose'
+    num = 39;
+    fn();
+    console.log(str, num);// 'rose',39*/
+
+
+
+
+
+    var num = 123;
+    function f() {
+        function foo() {
+            var num = 999;
+            console.log(num)//输出999
+        }
+        num = 456;
+        foo();
+        console.log(num);//输出456
+    }
+    f()
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .nodeSmall1{
+            width: 50px;
+            height: 50px;
+            background: url(images/bgs.png) no-repeat -159px -51px;
+            position: fixed;
+            right: 10px;
+            top: 40%;
+        }
+        .erweima {
+            position: absolute;
+            top: 0;
+            left: -150px;
+        }
+        .nodeSmall1 a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            /*background-color: red;*/
+        }
+        .hide {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="nodeSmall1" id="node_small1">
+    <a href="#"></a>
+    <div class="erweima hide" id="er1">
+        <img src="images/456.png" alt="">
+    </div>
+</div>
+<script>
+    // 1. 先获得所有的要操作的对象
+    var box = document.getElementById("node_small1");
+    var er = document.getElementById("er1");
+    // 2. 给事件源注册事件
+    box.onmouseover = function (){
+           er.className = "erweima show";
+    }
+    // 3. 鼠标离开的时候，隐藏二维码
+    box.onmouseout = function (){
+           er.className = "erweima hide";
+    }
+</script>
+</body>
+</html>

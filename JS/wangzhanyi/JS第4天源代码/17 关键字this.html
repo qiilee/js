@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 在构造函数当中，this始终指代当前对象
+    // 在方法调用的时候，this始终指代当前对象
+    function Student(name,sex,age){  // 构造函数就相当于后台语言中的类的概念
+//        var o= new Object(); // 先创建了一个空对象
+        this.name = name;  // this 这个,当前的
+        this.age = age;
+        this.sex = sex;
+        this.sayHi = function(){
+            console.log("大家好：我叫"+ this.name+"，我是"+ this.sex+"生,我今年"+ this.age+"岁了;");
+        };
+//        return o;
+//        return this; // 将当前创建好的对象this，返回
+    }
+    var zs = new  Student("张三","男",25);
+    zs.sayHi();
+    var ls = new Student("李四","女",26);
+    ls.sayHi();  // this始终指代当前调用方法的对象 谁调用方法this就是谁  this始终指代当前对象
+
+
+
+    // dom中this始终指代触发事件的对象
+
+    var num = 123;
+    window.num = 123;
+    function f1(){
+        console.log(this);
+    }
+    f1();
+    window.f1();
+</script>
+</body>
+</html>

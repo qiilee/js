@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 变量名冲突的问题、全局污染的问题
+
+    // 利用命名空间来管理创建的众多函数
+
+    var nameSpace = {
+        getById:function(id){
+            return document.getElementById(id);
+        },
+        getByClassName:function(clsName){
+            return document.getElementsByClassName(clsName)
+        },
+        setClassName:function(ele,clsName){
+            for(var i=0;i<ele.length;i++){
+                ele[i].className=clsName;
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script>
+    function select( selector ) {
+        return document.querySelectorAll( selector );
+    }
+    function isArrayLike( obj ) {
+        if ( Object.prototype.toString.call( obj ) == '[object Array]' ) {
+            return true;
+        }
+        var length = 'length' in obj && obj.length;
+        return typeof length === 'number' && length >= 0;
+    }
+    function each( arr, callback ) {
+        if ( isArrayLike ( arr ) ) {
+            for ( var i = 0; i < arr.length; i++ ) {
+                if ( callback.call( arr[ i ], arr[ i ], i ) === false ) break;
+            }
+        } else {
+            for ( var k in arr ) {
+                if ( callback.call( arr[ k ], arr[ k ], k ) === false ) break;
+            }
+        }
+        return arr;
+    }
+    function map( arr, callback ) {
+        var newArr = [], tmp;
+        if ( isArrayLike ( arr ) ) {
+            for ( var i = 0; i < arr.length; i++ ) {
+                tmp = callback( arr[ i ], i );
+                if ( tmp != null ) {
+                    newArr.push( tmp );
+                }
+            }
+        } else {
+            for ( var k in arr ) {
+                tmp = callback( arr[ k ], k );
+                if ( tmp != null ) {
+                    newArr.push( tmp );
+                }
+            }
+        }
+        return newArr;
+    }
+
+    // 引入构造函数 F
+    function F( selector ) {
+        [].push.apply( this, select( selector ) );
+        console.log(this);
+    }
+    F.prototype.each = function ( callback ) {
+        // 遍历 this, 用 callback 处理 里面的每一个元素
+        console.log(this);
+        return each( this, callback );
+
+    }
+
+    // 要使用该构造函数, 创建 jq 对象, 因此需要调用的时候传入选择器, 以便创建对象.
+    // 此时 this 就应该是 jq 对象.
+    // 因此 this 应该也是伪数组, 将 select 检索到的元素 加到 this 中.
+
+
+    var obj = new F( 'p, div' );
+
+    obj.each(function () {
+        // this 是 obj 中每一个 dom 元素
+        this.style.border = '1px dashed red';
+    });
+
+
+
+
+</script>
+</html>

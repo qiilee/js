@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    (function(){
+//        console.log("这是第一个自执行函数。。。");
+//    })();
+//    (function(){
+//        console.log("这是第二个自执行的函数。。。");
+//    }());
+
+    var f1 = function (){
+    console.log(25+50);
+};                               //这里没有分号的话 会是另一种情况
+(function(){console.log("这是一个自执行函数执行了。。。");}());
+
+//    var f2 = function(){
+//        console.log(123);
+//    }
+//    f2();
+    // 回调函数，就是一个函数的名称，是把函数当参数进行传递
+</script>
+</body>
+</html>

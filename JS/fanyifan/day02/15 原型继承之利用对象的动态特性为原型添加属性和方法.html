@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 利用对象的动态特性为原型添加方法。
+
+    //对象的动态特性，可以不断地为对象添加属性和方法
+    /*var obj = {}
+    obj.name='jack';
+    obj.age=17;*/
+
+
+    function Person(){
+
+    }
+    Person.prototype.sayHello=function(){
+        console.log('我是原型上面的sayHello方法')
+    }
+    Person.prototype.study=function(){
+        console.log('我是原型上面的study方法')
+    }
+    var person = new Person();
+    person.sayHello()
+    person.study();
+
+
+
+
+</script>
+</body>
+</html>

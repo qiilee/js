@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            list-style: none
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 1150px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div li {
+            width: 240px;
+            height: 400px;
+            float: left;
+        }
+
+        div ul {
+            width: 1300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="../animate.js"></script>
+<script>
+    //获取元素
+    var box = document.getElementById("box");
+    var list = box.children[0];
+    var lis = list.children;
+
+    //操作li设置背景
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].style.backgroundImage = "url(images/" + (i + 1) + ".jpg)";
+        //移入的时候让当前这个人运动到800，其余人运动到100
+        lis[i].onmouseover = function () {
+            for (var i = 0; i < lis.length; i++) {
+                animate(lis[i], {"width": 100});
+            }
+            animate(this, {"width": 800});
+        };
+
+        //移出时，所有人回到240
+        lis[i].onmouseout = function () {
+            for (var i = 0; i < lis.length; i++) {
+                animate(lis[i], {"width": 240});
+            }
+        };
+
+
+    }
+
+
+</script>
+</body>
+</html>

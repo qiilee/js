@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+   <!-- 菜单的列表 -->
+   <ul>
+        <li ng-repeat="item in list"><a href="#">{{item}}</a></li>
+   </ul>
+</body>
+<script>
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+                var menul = '首页,新闻,产品,国际,关于我们'.split( ',' );
+
+                $scope.list = menul;
+            });
+</script>
+</html>
+
+<!--
+
+    菜单标签的结构
+    <ul>
+        <li>
+            <a>菜单名</a>
+            <ul>
+                <li>子菜单名</li>
+                <li>子菜单名</li>
+                <li>子菜单名</li>
+            </ul>
+        </li>
+    
+    </ul>
+
+-->

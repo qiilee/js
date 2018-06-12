@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button>暂停</button>
+<button>播放</button>
+<audio autoplay>
+    <source src="audio/yinyue.mp3"/>
+    <source src="audio/yinyue.ogg"/>
+</audio>
+<script>
+    // 1. 先获得标签对象
+    var btns = document.getElementsByTagName("button");// 对象数组的形式
+    var audio = document.getElementsByTagName("audio"); //对象数组的形式
+    // 2. 给事件源注册事件
+    btns[0].onclick = function (){
+           audio[0].pause();// 调用pause 暂停
+    }
+    btns[1].onclick = function (){
+           audio[0].play(); //play 播放的意思
+    }
+</script>
+</body>
+</html>

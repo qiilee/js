@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+
+</div>
+<script>
+    //原始box
+    var box = document.getElementById("box");
+    box.index = 670;
+    box.onclick = function () {
+        alert();
+    };
+
+    //console.log( typeof document.body.innerHTML);
+    document.body.innerHTML += "<div></div>";
+
+    console.log(document.body.children[0].index);
+
+
+    var reg = new RegExp("abc", "g");
+    var reg = /abc/g;
+
+
+    var arr = new Array();
+    var arr = [];
+</script>
+</body>
+</html>

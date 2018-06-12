@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var num;
+    function fun() {
+
+    }
+    var fun2;
+    //-------------------
+
+    //程序的执行方式:一行一行执行
+    //console.log(num);
+    //var num = 100; //100 undefined
+
+    //每个作用域内部都存在预解析
+    //预解析分为两步(两步不分先后)
+    //1 找到当前内部的var（变量声明），将变量的声明语句提升到当前作用域顶端，赋值语句保留在原地（变量提升）
+    //2 找函数声明语句，会将函数体进行整体提升(调用语句不提升) （函数提升）
+    //注意：函数表达式遵循的时变量提升的规则
+
+
+    console.log(num);//undefined
+    num = 100;
+    console.log(num);//100
+
+    //函数声明语句
+    fun();
+    //    function fun(){
+    //
+    //    }
+    fun();
+
+
+    //函数表达式
+    fun2 = function () {
+    };
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 转boolean  一个是隐式类型转换!!  一个是显式类型转换 Boolean()
+    // 其它数据类型转换成对应的boolean类型的时候，为false的情况有哪些
+    // ""  NaN  0  null  undefined  false
+    // 字符串只要不是空,转换成对应的布尔类型的话，都是true
+    // 数字类型中只要不是NaN 0 ，其它的转换对应的boolean类型的话，都是true
+    //对象只要不是null，转换成对应的boolean类型的话，都是true
+    var str = "abc";
+    str = !!str;
+    console.log(typeof str);
+    console.log(str);
+</script>
+</body>
+</html>

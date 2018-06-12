@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //为什么要学函数？
+    //函数的作用：重用。
+    //函数和for循环都可以重复执行n次代码
+    //区别在于for循环时写在哪就在哪执行多少次
+    //函数的执行时在哪里需要就在哪里调用，调用就执行（灵活）
+
+    function fun(n, m) {
+        var sum = 0;
+//        for (var i = 1; i <=100; i++) {
+//        for (var i = 50; i <=200; i++) {
+        for (var i = n; i <= m; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    //fun(100, 200);
+    //console.log("我执行了其他代码")
+    //fun(200, 300);
+
+    //参数的使用：当你书写了一个函数，这时函数内的某些值不确定或者某段功能不确定时，这时可以传入参数
+    //返回值的使用：当函数内的计算结果需要被外界使用时，这时可以设置返回值，return 值;
+    //接收返回值：通过函数调用语句
+    //var result = fun(1,2);
+    //console.log(fun(2, 6) + 7);
+
+    //arguments属于了解内容，不再复习了。
+
+
+
+</script>
+</body>
+</html>

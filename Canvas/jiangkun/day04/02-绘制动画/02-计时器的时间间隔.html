@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+    var base = +new Date;
+    setInterval(function () {
+        var current = +new Date;
+        var interval = current - base;
+        base = current;
+        console.log( interval );
+    } ,16.67);
+
+</script>
+</html>

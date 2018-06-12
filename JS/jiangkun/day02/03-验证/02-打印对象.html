@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var o1 = {
+        name: 'jim',
+        age: 19,
+        gender: '男',
+        toString: function() {
+            return '哈哈哈哈';
+        }
+    };
+    // o1 -> Object.prototype -> null
+
+    var o2 = [ 1, 2, 3, 4, 5 ];
+    // o2 -> Array.prototype -> Object.prototype -> null
+
+
+    var o3 = /.+/;
+    // o3 -> RegExp.prototype -> Object.prototype -> null
+
+
+    delete Array.prototype.toString;
+    delete RegExp.prototype.toString;
+
+    alert( o1 );
+    alert( o2 );
+    alert( o3 );
+
+    // Array.isArray( ... )
+
+    // 转换成字符串
+    // 因为在打印的时候, 默认的会调用 toString();
+    // 为什么每一个 toString 都不一样, 而我的 o1 没有提供 toString 也可以调用?
+
+    // Object.prototype 所提供的 toString 方法是以 [object 构造函数] 的形式打印出对象的类型.
+    // 而 内置对象所提供的 toString 方法都是改写了显示形式的. 因此应该使用 原型中的 toString.
+
+    // function Person () {}
+    // var Person = function () {};
+
+    // var p = new Person();
+    // alert( Object.prototype.toString.call( p ) ); // [object Object]
+
+    // 如果是自己定义的 构造函数, 有两种解决办法
+    // 1, 如果函数是声明式函数
+    // 函数有 一个 name 属性可以得到函数名
+    // function className ( obj ) {
+    //     return obj.constructor.name;
+    // }
+    // alert( className( p ) );
+
+
+
+    // 2, 函数表达式的形式
+    // 如果是匿名函数, 那么就没有办法.
+
+    // console.log( Person.toString() );
+
+    /*
+    // 因此在一些框架代码中, 函数常常会看到下面的写法
+    var Student = function Student12345678 () {
+        // ...
+    };
+
+    console.log( Student.toString() );
+    // 使用正则
+    var rFunc = /function(.+)\(/;
+    var m = rFunc.exec( Student + '' );
+    if ( m[ 1 ] ) {
+        console.log( m[ 1 ].trim() );
+    }
+    */
+
+
+</script>
+</html>

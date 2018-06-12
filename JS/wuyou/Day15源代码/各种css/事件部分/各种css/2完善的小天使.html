@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+        }
+
+        #box {
+            height: 10000px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+
+<script src="common.js"></script>
+<script>
+    var ts = document.getElementById("ts");
+    //让ts跟随鼠标位置移动
+    //1 获取鼠标位置
+    document.onmousemove = function (e) {
+        //2 兼容事件对象
+        var e = e || window.event;
+        //3 获取鼠标位置 分别赋值给left和top
+        //pageX和pageY获取的是鼠标针对页面的坐标
+        //但是具有兼容性问题。
+        //ts.style.left = e.pageX + "px";
+        //ts.style.top = e.pageY + "px";
+
+
+        //我们可以自己封装一个函数去计算pageX和pageY的值，以避免兼容性问题出现。
+        ts.style.left = getPageX(e) + "px";
+        ts.style.top = getPageY(e) + "px";
+    };
+
+    //    function getPageX(e) {
+    //        //先检测是否存在pageX
+    //        if (e.pageX) {
+    //            return e.pageX;
+    //        } else {
+    //            //pageX的值是可视区域横坐标+页面左侧的卷曲距离
+    //            return e.clientX + myScroll().left;
+    //        }
+    //    }
+
+    //    function getPageY(e) {
+    //        //先检测是否存在pageX
+    //        if (e.pageY) {
+    //            return e.pageY;
+    //        } else {
+    //            //pageX的值是可视区域横坐标+页面左侧的卷曲距离
+    //            return e.clientY + myScroll().top;
+    //        }
+    //    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./Itcast.js"></script>
+    <script>
+        // <div>123</div>
+        function parseHTML( html ) {
+            // 1, 准备容器
+            var  div = document.createElement( 'div' );
+            // 2, 设置 innerHTML
+            div.innerHTML = html;
+            // 3, 取出来( 数组 )
+            // return div.childNodes;
+            var arr = [];
+            for ( var i = 0; i < div.childNodes.length; i++ ) {
+                arr.push( div.childNodes[ i ] );
+            }
+            return arr;
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+<script>
+    // var divs = parseHTML( '<div style="width:400px;height:100px;border:1px dashed red;">div</div>' );
+    // document.body.appendChild( divs[ 0 ] );
+
+
+    // 
+    var divs = 
+    parseHTML( '<div style="width:400px;height:100px;border:1px dashed red; margin:10px 0;">div1</div>' +
+               '<div style="width:400px;height:100px;border:1px dashed red; margin:10px 0;">div2</div>' +
+               '<div style="width:400px;height:100px;border:1px dashed red; margin:10px 0;">div3</div>' +
+               '<div style="width:400px;height:100px;border:1px dashed red; margin:10px 0;">div4</div>' );
+    for ( var i = 0; i < divs.length; i++ ) {
+        document.body.appendChild( divs[ i ] );
+    }
+</script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+<div ng-repeat="item in list   track by $index">{{item}}</div>
+</body>
+<script>
+    //总结：这里如果不写track by $index,页面不会显示东西
+    //
+    //
+    angular.module( 'mainApp', [] )
+            .controller( 'mainController', function ( $scope, $filter ) {
+                var list = [ 1,1,1,1,1,1,1,1,1,1,1,1,1 ];
+
+                $scope.list = list;
+
+            });
+
+</script>
+</html>

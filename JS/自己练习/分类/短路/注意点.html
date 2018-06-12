@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // &&找到假后停止运算 返回第一个假  或者 最后一个真
+    console.log(3&&0&&8);//0
+    console.log(3&&5&&8);//8
+    console.log(0&&3); //0
+    console.log(0&&undefined); //0
+    // ||找到真后停止运算 返回第一个真 或者 最后一个假
+    console.log(3||5);//3
+    console.log(0||3||8); //3
+    console.log(0||undefined); //undefined
+
+</script>
+</body>
+</html>

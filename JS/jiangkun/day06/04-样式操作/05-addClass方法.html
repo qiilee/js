@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script>
+        // addClass
+        // 给 this 中的每一个 dom 元素都增加 class 值
+        // 有则 += 没有则 =
+        Itcast.fn.addClass = function ( className ) {
+            return this.each(function () {
+                if ( this.className ) {
+                    this.className += ' ' + className;
+                } else {
+                    this.className = className;
+                }
+            });
+        } 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：
+    //利用bind方法改变this向
+    //作用：对函数做预处理，改变this指向，并且传入部分参数。
+    //兼容性问题：低版本的ie浏览器不支持这个方法。
+
+    var obj = {
+        xxx:1
+    }
+    function fn(name,age){
+        console.log(name,age);//‘jack',18
+        console.log(this)// obj
+    }
+    //使用bind方法的时候函数并不会执行，只是会对这个函数做预处理，可以提前改变this指向，并且传入部分参数。
+    //bind方法返回一个新的函数。这个新的函数保存了this指向，并且保留了部分参数。
+    var f = fn.bind(obj,'jack');
+    //当返回的新的方法执行的时候，我们的旧函数fn才会去执行，在新函数执行的时候，可以给新函数传入剩余的参数。
+    f(18)// jack 18  obj
+    f()// jack undefined  obj
+</script>
+</body>
+</html>

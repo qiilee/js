@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    //1实例.hasOwnPrototype
+    function Person(){
+        this.name = "js";
+        this.age = 12;
+    }
+    Person.prototype.legs = 2;
+    var person = new Person();
+//for(var key in person){
+////    if(person.hasOwnProperty(key)){
+////        console.log(person[key]);
+////    }
+//    console.log(person[key]);
+//}
+
+   //2isPrototypeOf
+//    console.log(Person.prototype.isPrototypeOf(person));
+
+
+    //3propertyIsEnumerable
+//    console.log(person.propertyIsEnumerable("name"));//true
+//    console.log(person.propertyIsEnumerable("legs"));//false
+
+
+    //4Object.assign
+//var a = {num1:1}
+//var b = {num2:2}
+//    var o =Object.assign(a,b);
+//    console.log(o);
+
+    //5Object.defineProperty
+    var obj = {};
+Object.defineProperty(obj,'name',{
+    //属性值
+    value:'jack',
+    //true的话就是可枚举，false的话就是不可枚举
+    enumerable:true,
+    //如果把可写属性更改为false就没法修改这个属性的属性值
+    writable:false,
+    configurable:true
+})
+for(var key in obj){
+    console.log(obj[key])
+}
+//obj.name='rose';
+//console.log(obj.name)
+</script>
+</body>
+</html>

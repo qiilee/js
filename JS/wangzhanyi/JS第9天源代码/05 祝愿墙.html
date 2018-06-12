@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0px;
+            font-size: 12px;
+            background: url(images/bg.gif) repeat center 36px;
+
+            text-align: center;
+            background-color: #c30230;
+        }
+        #content {
+            margin: 0 auto;
+            width: 960px;
+            background: url(images/content_bg.jpg) no-repeat left top;
+            height: 627px;
+        }
+
+        #content .tip1, #content .tip2, #content .tip3, #content .tip4, #content .tip5, #content .tip6, #content .tip7, #content .tip8 {
+            position: absolute;
+            width: 227px;
+            left: 200px;
+            top: 100px;
+        }
+
+        #content .tip1 .tip_h {
+            background: url(images/tip1_h.gif) no-repeat left top;
+        }
+
+        #content .tip1 .tip_h, #content .tip2 .tip_h, #content .tip3 .tip_h, #content .tip4 .tip_h, #content .tip5 .tip_h, #content .tip6 .tip_h, #content .tip7 .tip_h, #content .tip8 .tip_h {
+            width: 227px;
+            padding-top: 45px;
+            height: 23px;
+            text-align: left;
+            cursor: move;
+        }
+        #content .tip1 .tip_c {
+            background: url(images/tip1_c.gif) repeat-y;
+        }
+
+        #content .tip1 .tip_c, #content .tip2 .tip_c, #content .tip3 .tip_c, #content .tip4 .tip_c, #content .tip5 .tip_c, #content .tip6 .tip_c, #content .tip7 .tip_c, #content .tip8 .tip_c {
+            width: 200px;
+            padding-left: 12px;
+            padding-right: 15px;
+            min-height: 40px;
+            text-align: left;
+            line-height: 20px;
+            max-height: 160px;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
+        #content .tip1 .tip_f {
+            background: url(images/tip1_f.gif) no-repeat left top;
+        }
+
+        #content .tip1 .tip_f, #content .tip2 .tip_f, #content .tip3 .tip_f, #content .tip4 .tip_f, #content .tip5 .tip_f, #content .tip6 .tip_f, #content .tip7 .tip_f, #content .tip8 .tip_f {
+            width: 227px;
+            height: 53px;
+            padding-top: 20px;
+        }
+        #content .close, #content .close2 {
+            float: left;
+            font-size: 12px;
+            cursor: pointer;
+            color: #000000;
+        }
+        .clr {
+            clear: both;
+            overflow: auto;
+            display: block;
+            height: 0px;
+        }
+        #content .icon {
+            float: left;
+            width: 35px;
+            padding-left: 15px;
+            height: 35px;
+            text-align: center;
+        }
+        #content .name {
+            float: right;
+            padding-right: 15px;
+            text-align: right;
+            font-size: 14px;
+            line-height: 35px;
+            color: #C0F;
+        }
+        #content .num {
+            float: left;
+            padding-left: 7px;
+            width: 195px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="content" >
+
+</div>
+<script src="common.js"></script>
+<script>
+    // 1. 模拟的从后台服务器获取到的数据内容
+    var messages = [    //数组里面的每一条数据都是一个json对象
+        {"id":1,"name":"mahu","content":"今天你拿苹果支付了么","time":"2016-02-17 00:00:00"},
+        {"id":2,"name":"haha","content":"今天天气不错，风和日丽的","time":"2016-02-18 12:40:00"},
+        {"id":3,"name":"jjjj","content":"常要说的事儿是乐生于苦","time":"2016-03-18 12:40:00"},
+        {"id":4,"name":"9.8的妹纸","content":"把朋友家厕所拉堵了 不敢出去 掏了半小时了都","time":"2016-03-18 12:40:00"},
+        {"id":5,"name":"雷锋ii.","content":"元宵节快乐","time":"2016-02-22 12:40:00"},
+        {"id":6,"name":"哎呦哥哥.","content":"据说今晚央视的元宵晚会导演和春晚导演是同一个人，真是躲得过初一，躲不过十五。","time":"2016-02-22 01:30:00"},
+        {"id":7,"name":"没猴哥，不春晚","content":"班主任:“小明，你都十二岁了，还是三年级，不觉得羞愧吗”？。小明:“一点也不觉得，老师你都四十多岁了，不也是年年在三年级混日子吗？羞愧的应该是你”。老师:……","time":"2016-02-22 01:30:00"},
+        {"id":8,"name":"哎呦杰杰.","content":"真搞不懂你们地球人，月亮有什么好看的，全是坑，还是对面那哥们好看，","time":"2016-02-22 01:30:00"},
+        {"id":9,"name":"虹虹.","content":"生活不止眼前的苟且，还有湿和远方。。。","time":"2016-03-22 02:30:00"},
+        {"id":10,"name":"别工.","content":"第一如果不相见，如此便可不相恋。。。","time":"2016-04-22 03:30:00"},
+        {"id":11,"name":"地为.","content":"第二如果不想知，如此便可不想思。。。","time":"2016-05-22 04:30:00"},
+        {"id":12,"name":"美人鱼.","content":"第三如果不想伴，如此便可不相欠。。。","time":"2016-06-22 01:30:00"},
+        {"id":13,"name":"来洒.","content":"世间安得双全法，不负如来不负卿。。。","time":"2016-07-22 05:30:00"},
+        {"id":14,"name":"虹桥地.","content":"世间安得双全法，不用节食不长肉。。。","time":"2016-08-22 06:30:00"}
+    ];
+
+    // 2. 先获得要操作的对象
+    var content = $$("content");
+
+    // 3. 动态的创建元素
+    var zIndex = 0;
+        for(var i=0;i<messages.length;i++){
+            var mes = messages[i];
+            var tipCC = document.createElement("div");
+            tipCC.className = "tip1";
+            content.appendChild(tipCC);
+
+            var str ='<div class="tip_h" title="双击关闭纸条">' +
+                    '<div class="num">第['+mes.id+']条 '+mes.time+'</div>' +
+                    '<div class="close" title="关闭纸条">×</div>' +
+                    '<div class="clr"></div>' +
+                    '</div>' +
+                    '<div class="tip_c">'+mes.content+'</div>' +
+                    '<div class="tip_f">' +
+                    '<div class="icon">' +
+                    '<img src="images/bpic_1.gif" alt="" title="">' +
+                    '</div>' +
+                    '<div class="name">'+mes.name+' </div>' +
+                    '<div class="clr"></div>' +
+                    '</div>';
+            tipCC.innerHTML = str;
+
+            // 4. 随机的生成位置
+            var x = Math.ceil(Math.random()*600+400);
+            var y = Math.ceil(Math.random()*500);
+            tipCC.style.left = x+'px';
+            tipCC.style.top = y+'px';
+            // 5. 单击当前纸条的时候 ，要让当前的层级最高
+            tipCC.onclick = function (){
+                   zIndex++;
+                this.style.zIndex = zIndex+'';
+            }
+
+            // 6. 双击第一个盒子的时候，要关闭整个纸
+            var closeTip = ele.getFirstElement(tipCC);
+            closeTip.ondblclick = function (){
+                   this.parentNode.parentNode.removeChild(this.parentNode);
+            }
+        }
+    //
+    // 因为每一个祝愿纸条都有一个随机生成的位置，用随机数给动态创建出来的DIV添加left  top
+    //<div class="tip1" id="cc">
+    //       <div class="tip_h" title="双击关闭纸条">
+    //               <div class="num">第[49568]条 2016-02-17 22:51:52</div>
+    //               <div class="close" title="关闭纸条">×</div>
+    //               <div class="clr"></div>
+    //        </div>
+    //        <div class="tip_c">
+    //               希望马上能怀个健康的猴宝宝 祈祷祈祷
+    //         </div>
+    //        <div class="tip_f">
+    //           <div class="icon">
+    //               <img src="images/bpic_1.gif" alt="" title="">
+    //           </div>
+    //           <div class="name">成真的人 </div>
+    //           <div class="clr"></div>
+    //        </div>
+    // </div>
+
+//    <div class="tip1" id="cc">
+//            <div class="tip_h" title="双击关闭纸条">
+//            <div class="num">第[49568]条 2016-02-17 22:51:52</div>
+//            <div class="close" title="关闭纸条">×</div>
+//        <div class="clr"></div>
+//            </div>
+//            <div class="tip_c">
+//            希望马上能怀个健康的猴宝宝 祈祷祈祷
+//        </div>
+//        <div class="tip_f">
+//            <div class="icon">
+//            <img src="images/bpic_1.gif" alt="" title="">
+//            </div>
+//            <div class="name">成真的人</div>
+//            <div class="clr"></div>
+//            </div>
+//    </div>
+
+</script>
+</body>
+</html>

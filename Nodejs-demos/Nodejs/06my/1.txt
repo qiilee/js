@@ -1,0 +1,8 @@
+cookie 和 session的联系：
+
+a 服务器可以设置cookie
+  当浏览器访问服务器时，服务会响应一个结果
+  通知浏览器要设置一个cookie
+
+
+b cookie不安全，是在本地的，session是在服务器

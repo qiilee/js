@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<users>
+        <user>
+                <username>王珊珊</username>
+                <age>21</age>
+                <sex>女</sex>
+                <desc>美女一枚，鉴定完毕</desc>
+        </user>
+        <user>
+            <username>赵恒</username>
+            <age>22</age>
+            <sex>弯</sex>
+            <desc>我开个玩笑</desc>
+        </user>
+</users>

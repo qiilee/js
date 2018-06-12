@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script>
+//    function select( selector ) {
+//        return document.querySelectorAll( selector ); // 伪数组
+//    }
+//    function each( arr, callback ) {
+//         for ( var i = 0; i < arr.length; i++ ) {
+//            callback( arr[ i ], i );
+//         }
+//    }
+//
+//
+//    //
+//    var nodes = select( 'div, p' );
+//    each( nodes, function ( v ) {
+//        v.style.border = v.nodeName == 'DIV'
+//                         ? '1px solid red'
+//                         : '1px solid blue';
+//    });
+
+
+
+
+//总结：出错点select（）函数调用时参数没用，分隔
+//v.nodeName   没有style   nodeName后没有（）
+
+//自己的1
+function select(selector){
+    return document.querySelectorAll(selector);
+}
+
+function each(arr,callback){
+    for (var i = 0; i < arr.length; i++) {
+        callback(arr[i],i);
+    }
+}
+var nodes = select('div ,span, p');
+    each(nodes,function(v,i){
+        v.style.border=(v.nodeName() == 'DIV')?'1px solid red':'1px dashed blue';
+    })
+
+
+</script>
+</html>

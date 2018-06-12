@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='template-native.js'></script>
+    <script type="text/template" id="code">
+        <table border='1' width='400'>
+            <thead>
+            <% for (var i = 0;i < title.length;i++ ){%>
+            <th><%= title[i]%></th>
+            <% }%>
+            </thead>
+            <tbody>
+            <% for (var i = 0;i<datas.length;i++) { %>
+                <tr>
+                    <td><%= datas[i]['name']%></td>
+                    <td><%= datas[i]['age']%></td>
+                    <td><%= datas[i]['gender']%></td>
+                </tr>
+            <% }%>
+            </tbody>
+         </table>
+    </script>
+</head>
+<body>
+
+<input type="text" id="txt"><input type="button" value="查询" id="btn">
+<div></div>
+</body>
+<script>
+    var obj = {
+        title: [ 'name', 'age', 'gender' ],
+        datas: [
+            { name: 'jim123', age: 19, gender: '男' },
+            { name: 'jim1', age: 19, gender: '男' },
+            { name: 'tom', age: 19, gender: '男' },
+            { name: 'jim1', age: 19, gender: '男' },
+            { name: 'jim1', age: 19, gender: '男' },
+            { name: 'jack', age: 19, gender: '男' },
+            { name: 'jim1', age: 19, gender: '男' },
+            { name: 'jim1', age: 19, gender: '男' },
+            { name: 'jim2', age: 19, gender: '男' },
+            { name: 'jim3', age: 19, gender: '男' },
+            { name: 'jim4', age: 19, gender: '男' },
+            { name: 'jim5', age: 19, gender: '男' }
+        ]
+    };
+    var html = template('code',obj);
+    document.querySelectorAll('div')[0].innerHTML = html;
+
+</script>
+</html>

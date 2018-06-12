@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //只能有一个a
+    //var reg = /^a$/;
+
+    //量词 {10}  a可以出现10次
+    //var reg = /^a{10}$/;
+    //console.log(reg.test("aaaaaaaaa"));
+    //console.log(reg.test("aaaaaaaaaa"));
+    //console.log(reg.test("aaaaaaaaaaa"));
+
+    //出现次数至少4次  a{4,};s
+    //var reg = /^a{4,}$/;
+    //console.log(reg.test("aaa"));
+    //console.log(reg.test("aaaa"));
+    //console.log(reg.test("aaaaa"));
+    //console.log(reg.test("aaaaaaaaa"));
+
+
+    //出现5-10次 a{5,10}
+    //var reg = /^a{5,10}$/;
+    //console.log(reg.test("aaaa"));
+    //console.log(reg.test("aaaaa"));
+    //console.log(reg.test("aaaaaaa"));
+    //console.log(reg.test("aaaaaaaaaa"));
+    //console.log(reg.test("aaaaaaaaaaa"));
+
+    //除了自定义的次数外，正则中还准备了定义好的次数匹配方式
+
+    //* 表示0次到多次
+//    var reg = /^a*$/;
+//    console.log(reg.test(""));
+//    console.log(reg.test("a"));
+//    console.log(reg.test("aaaa"));
+//    console.log(reg.test("aaaaaa"));
+//    console.log(reg.test("aaaaaaaaaa"));
+
+    //+ 表示一次到多次
+    //var reg = /^a+$/;
+    //console.log(reg.test(""));
+    //console.log(reg.test("a"));
+    //console.log(reg.test("aaaa"));
+    //console.log(reg.test("aaaaaa"));
+    //console.log(reg.test("aaaaaaaaaa"));
+
+    //? 0次或1次
+    var reg = /^a?$/;
+    console.log(reg.test(""));
+    console.log(reg.test("a"));
+    console.log(reg.test("aa"));
+
+</script>
+</body>
+</html>

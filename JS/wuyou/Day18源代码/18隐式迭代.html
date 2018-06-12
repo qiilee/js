@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+    <script src="jquery-2.2.4.js"></script>
+    <script>
+        //总结：掌握 隐式迭代 + 显式迭代
+
+
+        $(function () {
+            //使用css设置每个div的样式
+            //$("div").css("width","210px");
+
+            //有时不能进行隐式迭代
+            //1 获取操作不能，被动  只能获取到第一个元素的对应属性值
+
+            //2 如果要设置的样式不同，主动
+            //手动遍历  显示迭代
+            //for (var i = 0; i < $("div").length; i++) {
+            //    $("div").eq(i).css("opacity",0.1*i);
+            //}
+
+            //jq中提供了一种显示迭代的方式  each方法
+            $("div").each(function (i, el) {
+//                console.log(index);
+//                console.log(ele);
+                $(el).css("opacity", 0.1 * i);
+            });
+
+
+//            console.log($("div").eq(0));
+//            console.log($("div").get(0));
+//            console.log($("div")[0]);
+
+        })
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

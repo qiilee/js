@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+
+            $("#link").click(function () {
+                console.log("我是点击事件");
+            });
+
+
+            //简单事件触发方式  click()
+            //$("#btn").click();
+
+            //使用trigger方法触发
+            //$("#btn").trigger("click");
+
+            //想触发事件，又不想触发默认效果(跳转)
+            //triggerHandler方法
+            $("#link").triggerHandler("click");
+
+        });
+    </script>
+</head>
+<body>
+<!--<button id="btn">按钮</button>-->
+<a id="link" href="12事件解绑.html">跳转</a>
+</body>
+</html>

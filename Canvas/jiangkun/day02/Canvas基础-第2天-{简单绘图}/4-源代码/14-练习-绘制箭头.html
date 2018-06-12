@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+
+    // 绘制箭头, x 轴
+    // 给定上下左右的留白距离, 然后绘制在这个留白后区域的中心
+
+    // 定义留白使用的变量
+    var marginTop = 10,
+        marginLeft = 300,
+        marginBottom = 200,
+        marginRight = 10;
+
+    // 实际开发的时候, 可能会引入多个遍历, 一般将一类变量放在一起声明
+    // 定义箭头参数
+    var arrowHeight = 20,
+        arrowWidth = 10;
+
+    
+    // 绘制辅助线
+    ctx.beginPath();
+    ctx.setLineDash( [ 5 ] );
+    ctx.strokeStyle = 'red';
+    ctx.strokeRect( marginLeft,                             // 矩形左上角的 x 坐标
+                    marginTop,                              // 矩形左上角的 y 坐标
+                    cas.width - marginLeft - marginRight,   // 矩形的宽度
+                    cas.height - marginTop - marginBottom   // 矩形的高度
+    );
+    
+
+    // 开始绘制箭头
+    // x 坐标轴
+    // 1. 找到原点坐标
+    var x0 = marginLeft + ( cas.width - marginLeft - marginRight ) / 2,
+        y0 = marginTop + ( cas.height - marginTop - marginBottom ) / 2;
+    
+    // 原点坐标的意义
+    // 2. 绘制 x 轴的直线
+    ctx.beginPath();
+    // 恢复线的设置
+    ctx.strokeStyle = 'black';
+    ctx.setLineDash( [] );
+
+    ctx.moveTo( marginLeft, y0 );
+    ctx.lineTo( cas.width - marginRight, y0 );
+    ctx.stroke();
+
+    // 3. 绘制 x 轴 箭头部分
+    ctx.beginPath();
+    var xStart = cas.width - marginRight,
+        yStart = y0;
+
+    ctx.moveTo( xStart, yStart );
+    ctx.lineTo( xStart - arrowHeight, yStart - arrowWidth / 2 );
+    ctx.lineTo( xStart - arrowHeight / 2, yStart );
+    ctx.lineTo( xStart - arrowHeight, yStart + arrowWidth / 2 );
+    ctx.closePath();
+    ctx.fill();
+   
+
+</script>
+</html>

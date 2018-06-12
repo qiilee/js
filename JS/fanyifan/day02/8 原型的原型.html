@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型的原型是什么？
+    function Person(){
+
+    }
+    var person = new Person();
+
+    console.log(person.__proto__);//找到person的原型
+
+    // 原型的原型
+    console.log(person.__proto__.__proto__);// 原型的原型
+    //Object.prototype
+    // Object 是一个构造函数
+    // Object.prototype===person.__proto__.__proto__ 是原型
+    // person.__proto__===Person.prototype   是Object的一个实例
+
+    console.log(Object.prototype)
+    console.log(Object.prototype.__proto__)// null
+
+
+    // 原型链: 从对象出发，可以找到它的原型，对象也是一个原型，因此就能够找到原型的原型
+    //这样依次往复，最后就找到了Object.prototype
+
+
+
+    // 学习了原型链之后的属性搜索原则
+    // 首先，会在对象本身上去查找相关的属性，如果有的话，就返回这样一个值
+    // 如果没有，就到原型链上去查找，如果原型链上有这个值，就返回这个值
+    // 如果原型链上没有这个值，就返回一个undefined。
+
+
+    // 属性设置原则
+    // 当我们给一个对象添加一个属性的时候，只会在对象本身上面添加这个属性，并不会在
+    //对象的原型链上添加这些属性和方法
+    var obj = {}
+    obj.name = 'jack'
+
+    console.log(obj.__proto__);
+    console.log(Object.prototype);
+    console.log(obj.__proto__===Object.prototype)//true
+
+
+
+
+
+</script>
+</body>
+</html>

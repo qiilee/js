@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // 在学生数组中, 找出姓张的
+    var datas = [
+
+        { name: '张三丰', age: 100, gender: '男' },
+        { name: '李三丰', age: 100, gender: '男' },
+        { name: '王三丰', age: 100, gender: '男' },
+        { name: '赵三丰', age: 100, gender: '男' },
+        { name: '钱三丰', age: 100, gender: '男' },
+        { name: '孙三丰', age: 100, gender: '男' },
+        { name: '周三丰', age: 100, gender: '男' },
+        { name: '吴三丰', age: 100, gender: '男' },
+        { name: '三丰', age: 100, gender: '男' }
+
+    ];
+
+    var newArr = datas.filter( function ( v, i ) {
+        return v.name.charAt( 0 ) == '张';
+    });
+</script>
+</html>

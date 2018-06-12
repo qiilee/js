@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="移动" id="move"/>
+<div id="div"></div>
+<script>
+    //获得要操作的对象
+    var move = document.getElementById("move");
+    var div = document.getElementById("div");
+    //给事件源注册事件
+    move.onclick = function () {
+        div.style.top  ="100px";
+        div.style.left  ="100px";
+    }
+
+</script>
+</body>
+</html>

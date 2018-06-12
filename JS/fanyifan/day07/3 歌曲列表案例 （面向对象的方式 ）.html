@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .container {
+            margin: 0 auto;
+            width: 850px;
+            border: 1px solid #dad8d8;
+        }
+        .songslist-main, .songslist-header {
+            position: relative;
+            width: 100%;
+            text-align: center;
+        }
+        .songslist-header {
+            height: 30px;
+            border-bottom: 1px solid #dad8d8;
+            line-height: 30px;
+            background-color: #def;
+        }
+
+        .songslist-name {
+            position: absolute;
+            width: 40%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-singer {
+            position: absolute;
+            left: 40%;
+            width: 50%;
+            height: 100%;
+            border-right: 1px solid #dad8d8;
+        }
+        .songslist-option {
+            position: absolute;
+            left: 90%;
+            width: 10%;
+            height: 100%;
+        }
+
+        .songslist-main {
+            background-color: #fff;
+            height: 100%;
+        }
+        .songslist-main .songslist-name{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-main .songslist-singer{
+            height: 50px;
+            line-height: 50px;
+            border: 0;
+        }
+        .songslist-single {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="songslist-op">
+        <label for="txtAddSName">歌曲名:</label><input type="text" id="txtAddSName" />
+        <label for="txtAddSinger">歌手:</label><input type="text" id="txtAddSinger" />
+        <button id="btnAdd">添加</button>
+        <button id="btnRemove">删除</button>
+    </div>
+
+    <div class="songslist-header">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+        <div class="songslist-option">操作</div>
+    </div>
+
+    <div class="songslist-main" id="c">
+        <!-- <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div>
+
+        <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+        </div> -->
+    </div>
+</div>
+
+
+<script>
+    //实现案例的具体思路
+    /*
+    * 要有一个构造函数，
+    * 构造函数在被调用的时候，就初始化了一个实例。
+    * 实例本身上可以存储一些具体的信息，包括歌曲列表信息，还包括歌曲列表所在的div的信息。
+    * 可以让我们知道歌曲列表渲染到了页面中的什么地方 。。
+    *
+    * 实例的原型上面可以存储一些共有的方法，所有的实例就能够调用到同样的共有方法了。
+
+    * 当点击添加按钮的时候让实例去调用addSong方法，然后需要同步地对页面进行渲染
+    * 当歌手名和歌曲名都为空的时候，就不能给歌曲列表添加一首新的歌曲。
+    *
+    * 当点击删除按钮的时候，让实例去调用removeSong方法，然后需要同步地对页面进行渲染。
+    * */
+
+
+</script>
+
+<script type="text/javascript">
+
+    //1 创建一个构造函数
+    function SongManager(config){
+        //让实例本身保存歌曲列表信息
+        /*this.list  = config.list || [];
+        this.container = config.id;
+
+        //在实例被初始化的时候，就要对页面进行一次渲染
+        this.render();*/
+    }
+    SongManager.prototype={
+        //可加可不加，加了只是为了模仿下原有的原型中constructor指向了构造函数。
+        constructor:SongManager,
+        //把实例初始化的操作放到原型当中，让构造函数看起来更简洁一点
+        render:function(){
+            //获取到歌曲列表
+            var list = this.list;
+
+            var htmlStr = "";
+            for(var i=0;i<list.length;i++){
+                    htmlStr+= '<div class="songslist-single">';
+                    htmlStr+= '<div class="songslist-name">'+list[i].sName+'</div>'
+                    htmlStr+= '<div class="songslist-singer">'+list[i].sSinger+'</div>'
+                    htmlStr+='</div>'
+            }
+            document.getElementById(this.container).innerHTML = htmlStr;
+        },
+        addSong:function(song){
+            //把要添加的歌曲push到实例上面的歌曲列表当中。
+            this.list.push(song);
+            this.render()
+        },
+        removeSong:function(songName){
+
+            var list = this.list;
+            //对歌曲列表进行循环遍历
+            for(var i=0;i<list.length;i++){
+                //判断下要删除的歌是否在页面当中
+                if(songName===list[i].sName){
+                    //删除掉某一首歌。
+                    list.splice(i,1);
+                    //解决数组塌陷的问题
+                    i--;
+                }
+            }
+            this.render();
+        }
+    }
+
+    var args = {
+        list: [
+            {sName: "痴心绝对", sSinger: "李圣杰"},
+            {sName: "南山南",  sSinger: "马頔"}
+        ],
+        id: "c"
+    };
+    var s = new SongManager(args);
+
+
+
+    //给添加按钮注册点击事件
+    var addBtn = document.getElementById('btnAdd');
+    addBtn.onclick=function(){
+        //获取具体的歌曲名
+        var sName = document.getElementById('txtAddSName').value;
+        var sSinger = document.getElementById('txtAddSinger').value;
+
+        //判断两者是否全为空
+        if(sName===''&&sSinger===''){
+            return;
+        }
+        s.addSong({sName:sName,sSinger:sSinger});
+    }
+
+    //给删除按钮添加点击事件
+    var removeBtn = document.getElementById('btnRemove');
+
+    removeBtn.onclick=function(){
+        var sName = document.getElementById('txtAddSName').value;
+        if(sName!==''){
+            s.removeSong(sName);
+        }
+    }
+
+
+
+
+
+   /* var str = "<div>显式</div>"
+    document.body.innerHTML=str;*/
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

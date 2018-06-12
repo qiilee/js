@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //fade组  前三个运动时间可以不传，默认为400毫秒，也可以传字符串参数
+            //1 fadeIn()  渐入
+            $("#btn1").click(function () {
+                $("#box").fadeIn(1000, function () {
+                    console.log("我入了");
+                });
+            });
+
+            //2 fadeOut() 渐出
+            $("#btn2").click(function () {
+                $("#box").fadeOut(1000, function () {
+                    console.log("我渐出了");
+                });
+            });
+
+            //3 fadeToggle()  切换
+            $("#btn3").click(function () {
+                $("#box").fadeToggle(1000, function () {
+                    console.log("我切换了");
+                });
+            });
+
+            //4 fadeTo 渐到什么程度      一般不使用，有问题
+            //原因，会影响fade组的其他三个运动的效果
+            //前两个参数必须传，不然不知道怎么运动
+            $("#btn4").click(function () {
+                $("#box").fadeTo(1000, 0.4, function () {
+                    console.log("我渐到了0.4");
+                })
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+<button id="btn1">按钮渐入</button>
+<button id="btn2">按钮渐出</button>
+<button id="btn3">按钮切换</button>
+<button id="btn4">按钮渐到</button>
+<div id="box"></div>
+</body>
+</html>

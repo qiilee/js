@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./template-native.js"></script>
+    <script type="text/template" id="code">
+        <table border="1" width="400">
+            <thead>
+                <% for ( var i = 0; i < title.length; i++ ) { %>
+                    <th><%= title[ i ] %></td>
+                <% } %>
+            </thead>
+            <tbody>
+                <% for ( var i = 0; i < datas.length; i++ ) { %>
+                    <% if ( !datas[ i ].isShow ) continue; %>
+                    <tr>
+                        <td><%= datas[ i ][ 'name' ] %></td>    <!-- 名字 -->
+                        <td><%= datas[ i ].age %></td>
+                        <td><%= datas[ i ][ 'gender' ] %></td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </script>
+</head>
+<body>
+    <input type="text" id="txt"><input type="button" value="查询" id="btn">
+    <div></div>
+</body>
+<script>
+    //总结：第一次刷新时，Network中会有三个文件
+    //     但是搜索时，不会再请求数据
+    //     三个文件分别是第1,2,3次请求得到的
+    //
+    var div = document.querySelectorAll( 'div' )[ 0 ];
+    var txt = document.querySelectorAll( '#txt' )[ 0 ],
+        btn = document.querySelectorAll( '#btn' )[ 0 ];
+
+    function render ( obj ) {
+        div.innerHTML = template( 'code', obj );
+    }
+
+
+    onload = function () {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open( 'GET', './datas.json' );
+        xhr.onreadystatechange = function () {
+            if ( xhr.readyState == 4 && xhr.status == 200 ) {
+                var obj = JSON.parse( xhr.responseText );
+
+
+                // 调用模板
+                render( obj );
+
+
+                // 处理事件点击
+                btn.onclick = function () {
+                    // 根据用户的输入 处理数据
+                    var text = txt.value;
+                    if ( text.trim().length == 0 ) return;
+
+                    obj.datas.forEach(function ( v, i ) {
+                        v.isShow = v.name == text;
+                    });
+
+                    // 渲染
+                    render( obj );
+                };
+            }
+        };
+
+        xhr.send();
+
+    } 
+
+</script>
+</html>

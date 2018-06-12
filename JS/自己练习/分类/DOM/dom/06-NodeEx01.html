@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Node节点对象练习1</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  
+  <body>	   
+	   <form name="form1" action="test.html" method="post" >
+  	   	  <input type="text" name="tname" value="IT精英培训_1"  id="tid_1"  ><br>
+		  <input type="text" name="tname" value="IT精英培训_2"  id="tid_2"  ><br>
+		  <input type="text" name="tname" value="IT精英培训_3"  id="tid_3"  ><br>
+		  <input type="button" name="ok" value="保存1"/>
+  	   </form>
+	   
+	   
+	  <h1 id="h1">明天休息</h1>
+  </body>
+  
+<script type="text/javascript">
+  
+	//方法一 利用firstChild/lastChild  输出明天休息
+  	
+  	//测试nodeValue是一个读写属性
+  	
+  	//方法二childNodes表示父元素下的所有的子元素(数组)
+  	var h1 = document.getElementById("h1");
+  	var childs = h1.childNodes;
+  	alert(childs[0].nodeValue);
+
+ </script> 
+</html>

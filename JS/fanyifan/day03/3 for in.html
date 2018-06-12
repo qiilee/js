@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // for in 循环的作用
+    // 遍历对象以及对象原型链上的可枚举属性
+
+    function Person(){
+        this.name='jack';
+        this.age=18
+    }
+    Person.prototype.legs=2;
+    var person = new Person();
+
+    // 利用for in循环对对象进行遍历
+    for(var key in person){
+        console.log(person[key]);
+    }
+    // for in 能否遍历到原型上面的属性
+    console.log(Person.prototype)
+
+
+    // 可枚举属性
+    // 能够被for in循环遍历到的属性就是可枚举属性，
+    // 不能够被for in循环遍历到的属性就是不可枚举属性
+
+    //除非你在设置一个属性的时候，把这个属性设置为不可枚举，否则这个属性就是可枚举的
+
+
+</script>
+</body>
+</html>

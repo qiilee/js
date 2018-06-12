@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //字符串的属性
+    //length可以得到字符串的长度
+    //var str = "abcdef";
+    //console.log(str.length);
+
+    //为什么字符串具有属性呢？
+    //字符串是基本类型   只有对象具有属性方法  这两句话冲突了
+
+    //想字符串这种使用方式比较特殊
+    //在你使用字符串的属性或方法时，由于字符串是一个基本类型，所以不具有属性和方法。
+    //但是js为了方便我们使用字符串这种基本类型值，会在我们使用字符串的属性或方法时给我们创建一个对象
+    //这个对象我们成为基本包装类型对象。
+    var str = "abcdef";
+    //str.length
+    var temp = new String("abcdef");
+    //使用的实际上时这个对象的属性或方法
+    console.log(temp.length);
+    //当这个属性或方法使用完毕后，这个对象会被清空
+    temp = null;
+
+    //基本包装类型对象是由js帮我们创建的，我们自己不要写。
+    //自己使用的时候会产生歧义
+    //当我们使用的时候，由于这是一个对象形式的值，会被隐士转换为true
+    //var bool = new Boolean(false);
+
+
+
+</script>
+</body>
+</html>

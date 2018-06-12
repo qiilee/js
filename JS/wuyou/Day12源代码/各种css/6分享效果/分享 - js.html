@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #share {
+            position: fixed;
+            width: 100px;
+            height: 200px;
+            background-color: lightblue;
+            left: -100px;
+            top: 100px;
+        }
+
+        #share span {
+            width: 20px;
+            height: 60px;
+            line-height: 20px;
+            text-align: center;
+            left: 100px;
+            top: 70px;
+            position: absolute;
+            background-color: yellow;
+
+        }
+    </style>
+
+</head>
+<body>
+<div id="share">
+    <span>分享到</span>
+</div>
+
+
+<script>
+    //获取元素
+    var share = document.getElementById("share");
+    //给share添加移入事件
+    share.onmouseover = function () {
+        animate(this, "left", 0);
+    };
+
+    //给share加移出事件
+    share.onmouseout = function () {
+        animate(this, "left", -100);
+    };
+
+
+    function animate(tag, attr, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //获取任意的样式属性
+            //如果未设置某个属性。取出了auto，转换为NaN，这时为了程序可以执行。使用短路操作
+            var leader = parseInt(getStyle(tag, attr)) || 0;
+            var step = ( target - leader ) / 10;
+            step = target > leader ? Math.ceil(step) : Math.floor(step);
+            leader = leader + step;
+            //设置的时候，设置给对应样式
+            tag.style[attr] = leader + "px";
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+
+    //获取计算后的样式
+    function getStyle(tag, attr) {
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+    }
+</script>
+</body>
+</html>

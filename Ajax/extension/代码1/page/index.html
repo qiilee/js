@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        //函数封装，实现ajax获取分页信息
+        function showpage(url){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    document.getElementById('result').innerHTML = xhr.responseText;
+                }
+            }
+            xhr.open('get',url);
+            xhr.send(null);
+        }
+        window.onload = function(){
+            showpage('./data.php');
+        }
+        </script>
+        <style type="text/css">
+        h2,div {width:700px; margin:auto;}
+        h2 {text-align:center;}
+        </style>
+    </head>
+    <body>
+        <h2>ajax无刷新分页</h2>
+        <div id="result"></div>
+    </body>
+</html>
+<script type="text/javascript">
+<!--
+    document.write(new Date()+"<br />");
+    document.write(new Date()+"<br />");
+    document.write(new Date()+"<br />");
+    document.write(new Date()+"<br />");
+//-->
+</script>

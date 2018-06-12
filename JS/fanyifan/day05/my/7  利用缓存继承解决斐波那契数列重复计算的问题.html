@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   //总结：用count来计算调用的次数，count变量时是全局的
+   //     var cache = [];就是一个缓存
+   //      cache[n]=1; 忘记写
+    var count=0;
+    function fib() {
+        var cache = [];
+        return function (n) {
+            count++;
+            if (cache[n]) {
+                return cache[n];
+            }
+            if (n === 1 || n === 2) {
+                cache[n]=1;
+                return 1;
+            }
+            var ret = arguments.callee(n-1)+arguments.callee(n-2);
+            cache[n]=ret;
+            return ret;
+        }
+    }
+    var a=  fib();
+    console.log(a(12));
+//    console.log(count);//
+</script>
+</body>
+</html>

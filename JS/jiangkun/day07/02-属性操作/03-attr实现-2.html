@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script src="./src/Itcast.style.js"></script>
+    <script>
+        // 在演示的时候使用 checked, selected, readonly, disabled
+        var mark = 'checked, selected, readonly, disabled'.split( ', ' );
+
+        Itcast.fn.attr = function ( attrName, attrValue ) {
+            if ( typeof attrName == 'string' ) {
+                // 单个属性
+                if ( attrValue === undefined ) {
+                    // 返回数据
+                    if ( mark.indexOf( attrName ) != -1 ) {
+                        return this[ 0 ][ attrName ];
+                    } else {
+                        return this[ 0 ].getAttribute( attrName );
+                    }
+
+                } else if ( typeof attrValue  === 'function' ) {
+                    // 取值有回调函数决定
+                    // 回调函数含有一个 index 属性, 用于描述是哪一个 元素使用该对象函数( 简化后不考虑第二个参数 )
+                    return this.each( function ( i ) {
+                        if ( mark.indexOf( attrName ) != -1 ) {
+                            this[ attrName ] = attrValue( i );
+                        } else {
+                            this.setAttribute( attrName, attrValue( i ) );
+                        }
+
+                    });
+
+                } else {
+                    // 设置单个值
+                    // 也是设置 每一个 DOM 元素
+                    return this.each( function () {
+                        if ( mark.indexOf( attrName ) != -1 ) {
+                            this[ attrName ] = attrValue;
+                        } else {
+                            this.setAttribute( attrName, attrValue );
+                        }
+
+                    });
+                }
+
+            } else if ( Object.prototype.toString.call( attrName ) === '[object Object]' ) {
+                // 对象, 设置多个属性
+                // 给 this 中的 每一个 DOM 元素都设置 attrName 中的每一个属性
+                return this.each(function () {
+                    var that = this;
+                    Itcast.each( attrName, function ( k, v ) {
+                        if ( mark.indexOf( k ) != -1 ) {
+                            that[ k ] = v;
+                        } else {
+                            that.setAttribute( k, v );
+                        }
+                    });
+                });
+
+            }
+
+
+        } 
+    </script>
+</head>
+<body>
+    <br>
+    <a href=""></a>
+    <input type="checkbox"><br>
+    <img src="" alt="">
+</body>
+<script>
+    I( 'img' ).attr( 'src', 'http://pic38.nipic.com/20140228/3822951_135521683000_2.jpg' );
+
+    I( 'a' ).attr( 'href', 'http://www.itcast.cn').each(function () {
+        this.innerHTML = '哇哈哈';
+    });
+
+    I( 'input' ).attr( 'checked', true );
+    // I( 'input' ).attr( 'checked', false );
+
+
+    console.log( 'src = ' + I( 'img' ).attr( 'src' ) );
+    console.log( 'href = ' + I( 'a' ).attr( 'href' ) );
+    console.log( 'checked = ' + I( 'input' ).attr( 'checked' ) );
+
+    I( 'input' ).attr( 'checked', false );
+
+    console.log( 'checked = ' + I( 'input' ).attr( 'checked' ) );
+
+
+    I( 'img' ).attr( 'title', true );
+
+</script>
+</html>

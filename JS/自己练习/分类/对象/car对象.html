@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Car(brand,price,color,speed){
+        this.brand =brand;
+        this.price =price;
+        this.color =color;
+        this.speed =speed;
+        this.drive =function(){
+           return (this.brand+"开着挺好");
+        };
+    }
+     var car1 = new Car("宝马",100, "red",101);
+    console.log(car1);
+   console.log( car1.drive());
+     var car2 =new Car("长城",1000,"green",1001);
+    console.log(car2);
+    console.log( car2.drive());
+</script>
+</body>
+</html>

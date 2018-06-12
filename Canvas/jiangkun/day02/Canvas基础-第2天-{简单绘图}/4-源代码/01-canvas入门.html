@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+</body>
+<script>
+
+//    var vas = document.querySelector("canvas");
+//    var ctx = vas.getContext("2d");
+//    ctx.fillRect(10,10,100,100)
+
+
+
+    var cas = document.querySelector( 'canvas' );
+    // console.log( cas );
+    var ctx = cas.getContext( '2d' );  // 获得绘图工具
+    // 绘制矩形
+    ctx.strokeRect( 150, 10, 100, 50 ); 
+
+</script>
+</html>

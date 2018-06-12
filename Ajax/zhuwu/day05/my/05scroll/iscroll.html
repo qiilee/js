@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动加载.</title>
+    <style>
+        #wraper {
+            border: 1px solid #ccc;
+            height: 500px;
+            width: 400px;
+            overflow: hidden;
+            list-style: none;
+            position: relative;
+            padding: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="wraper">
+    <ul>
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+        <p>李楠</p>
+
+
+    </ul>
+</div>
+
+<script src="iscroll.js"></script>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    var wrap = document.getElementById("wraper");
+
+    //创建对象
+    var myScroll = new IScroll(wrap, {
+        mouseWheel: true,
+        scrollbars: true
+    });
+    myScroll.on("scrollEnd", function () {
+        //可以判断滚动条的位置
+//       console.log(this.y);
+        var y = this.y ;
+        console.log(y);
+        $.ajax({
+            type:"post",
+            url:"iscroll.php",
+            data:{
+                translateY:y
+            },
+            success: function (data) {
+              console.log(data);
+            }
+        })
+    })
+</script>
+</body>
+</html>

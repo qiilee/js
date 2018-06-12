@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        window.onload = function (){
+            // 当页面中所有的资源都加载完毕 之后，才会来执行这里面的代码
+            // DOM树也就是所有的标签渲染完毕，请求的图片文件显示完毕，外部加载的文件
+            var box = document.getElementById("box");
+            console.log(box);
+            // 凡是涉及到图片操作的时候，最好是放到onload事件里面来执行
+            var img = document.getElementById("img");
+            console.log(img.width);
+            console.log(img.height);
+        }
+
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<img src="yuanyuan.jpg" alt="" id="img" />
+
+</body>
+</html>

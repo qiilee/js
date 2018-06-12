@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+            $("#text").focus(function () {
+                if($(this).val() == "123123"){
+                    $(this).val("");
+                }
+            });
+            $("#text").blur(function () {
+                if($(this).val() == ""){
+                    $(this).val("123123");
+                }
+            });
+//            console.log($("#box").html());
+//   text!!
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="text" value="123123"/>
+<div id="box">ahahahah</div>
+</body>
+</html>

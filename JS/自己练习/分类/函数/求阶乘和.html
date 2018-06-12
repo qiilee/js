@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function getJS(n){
+            var num =1;
+            for(var i = 2;i<=n;i++){
+               num*=i;
+            }
+            return num;
+        }
+        function getSum(n){
+            var sum =0;
+            for(var j=1;j<=n;j++){
+                sum+=getJS(j);
+            }
+            return sum;
+        }
+        console.log(getSum(4));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

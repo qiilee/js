@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+
+<script>
+    //1 鼠标移动的时候去获取鼠标位置，在鼠标的位置上生成一些小盒子
+    document.onmousemove = function (e) {
+        var e = e || event;
+        //2 获取鼠标位置
+        var x = e.clientX;
+        var y = e.clientY;
+
+        //3 创建一个div
+        var div = document.createElement("div");
+        var temp = Math.random() * 20;
+        div.style.width = temp + "px";
+        div.style.height = temp + "px";
+        div.style.borderRadius = "50%";
+        document.body.appendChild(div);
+        //设置随机背景色  rgb不能写小数
+        div.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")"
+        //设置定位
+        div.style.position = "absolute";
+        //让div跟随鼠标  0 ~ 20   -10 ~ 10
+        div.style.left = x + Math.random() * 30 - 15 + "px";
+        div.style.top = y + Math.random() * 30 - 15 + "px";
+
+        //给每个生成的div设置运动
+        animate(div, {
+            "width": 0,
+            "height": 0,
+            "opacity": 0
+        }, function () {
+            //因为每次运动都会在页面中创建一个小盒子，时间长了导致页面中多了许多小元素，但是也不显示
+            //我们需要在运动完毕后进行删除
+            document.body.removeChild(div)
+        });
+
+
+    };
+
+
+    function animate(tag, obj, fn) {
+        //第一步是在函数内分析参数传递过程
+        //tag = box'
+        //obj = {"width": 400,"height": 450,"opacity": 0.3,"zIndex": 6,"top": 220,"left": 220}
+        //fn = function () {alert("今天天气不错");}  函数表达式
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //假设成立法:假设当前这次定时器可以清除
+            var flag = true;
+
+            //需要同时修改多个属性
+            //对对象中的每一个属性进行操作
+            for (var k in obj) {
+                if (k == "opacity") {
+                    //k - 属性名 - 字符串形式 - attr
+                    //obj[k] - 属性值 - target
+                    var target = obj[k] * 100;
+                    //获取结果可能是一个小数
+                    var leader = getStyle(tag, k) * 100 || 0;
+                    //缓动运动公式
+                    var step = (target - leader) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    //设置的时候
+                    tag.style[k] = leader / 100;
+                } else if (k == "zIndex") {
+                    //直接设置层级，不需要渐变
+                    tag.style.zIndex = obj[k];
+                } else {
+                    //普通的，带单位的样式
+                    //k - 属性名 - 字符串形式 - attr
+                    //obj[k] - 属性值 - target
+                    var target = obj[k];
+                    var leader = parseInt(getStyle(tag, k)) || 0;
+                    //缓动运动公式
+                    var step = (target - leader) / 10;
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    //设置的时候
+                    tag.style[k] = leader + "px";
+                }
+
+                //检测，当前这个属性是否到达了指定位置
+                if (leader != target) {
+                    //阻止清除定时器
+                    flag = false;
+                }
+            }
+
+            //我们需要保证obj中每一个obj都运动到位置
+            if (flag) {
+                clearInterval(tag.timer);
+
+                if (typeof fn == "function") {
+                    //调用
+                    fn();
+                }
+
+            }
+        }, 40);
+    }
+
+    function getStyle(tag, attr) {
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+
+
+    }
+
+</script>
+
+
+</body>
+</html>

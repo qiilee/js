@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("input").bind("click",function(){
+                    //load 方式提交.
+                    //怎么发送请求。我们可以把jQuery 的函数分为两种类型的函数.
+                    //一种全局的，一种是局部的
+                    //一种是局部的   $("div").css({})
+                    //全局方法 跟dom 操作无关  $.ajax() $.get() $.post()
+                    /*
+                    * 发送一个请求给04load.php
+                    * 04load.php 响应数据，响应的数据
+                    * 直接被放在当前元素的里面.
+                    * 想向某个区域（盒子）载入数据，可以直接使用load
+                    * 想知道提交方式，$("div").load();
+                    * 默认是get 方式提交.
+                    * 如果给服务端发送了数据，就使用post 方式提交.
+                    * */
+                   // $("div").load("04load.php",{"username":"小楠"});
+
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<div></div>
+<input type="button" value="load 方式提交">
+</body>
+</html>

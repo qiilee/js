@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    delete
+//
+//    作用：删除一个对象的属性。
+//    语法：delete 属性名
+//    返回值： true 或 false
+//
+//    用法:
+//    1 删除数组中的元素
+//    2 删除对象的属性或方法
+//    3 删除没有用 var 声明 变量
+    var obj = {
+        name:'范一帆',
+        age:18
+    }
+    console.log(obj)
+    // 使用delete来删除某一个属性
+    delete obj.name;
+    console.log(delete obj.name);//返回的是true，说明删除成功
+    console.log(obj)
+
+    // 问题： delete能否删除某个变量
+    delete obj;
+    console.log(obj)//
+
+
+
+
+
+</script>
+</body>
+</html>

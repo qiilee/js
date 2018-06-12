@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //练习3:不断要求用户输入学生姓名,输入q结束.
+//    var str = prompt("请输入学生的姓名");
+//    while(str!="q"){
+//        str = prompt("请输入学生的姓名");
+//    }
+
+//    while(true){
+//        var str = prompt("请输入学生的姓名");
+//        if(str=="q"){
+//            break;//跳出循环
+//        }
+//    }
+
+    //不断要求用户输入一个数字（假定用户输入的都是正整数），当用户输入end的时候显示刚才输入的数字中的最大值
+    var num = prompt("请输入一个数字");
+    var max = 0;
+    while(num!="end"){
+        if(max<+num){
+            max = +num;
+        }else {
+            max = max; // 将自己当前的值重新赋值给自己，也就是不变
+        }
+        num = prompt("请输入一个数字");
+    }
+    console.log("最大值是"+max);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+<canvas width="800" height="400"></canvas>
+<script>
+    var cas = document.querySelector("canvas");
+    var ctx = cas.getContext("2d");
+    var x = 0;
+    var intervalId = setInterval(function () {
+       ctx.clearRect(0,0,cas.width,cas.height);
+        ctx.fillRect(x,100,100,100);
+        x+=3;
+        if(x>=700){
+            clearInterval(intervalId);
+        }
+    },16.67)
+</script>
+</body>
+</html>

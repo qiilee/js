@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //pop():  删除并返回数组的最后一个元素
+    //shift():删除并返回数组的第一个元素
+
+
+    var arr = [3,"z",1,"java",'js',true,4];
+    console.log(arr.pop());//4  注意括号里面无参数
+    console.log(arr);//[3, "z", 1, "java", "js", true]
+
+
+
+    var arr = ["a","b","c","d","a","m","n"];
+    var a =  arr.shift();
+    console.log(a);//a
+    console.log(arr);//["b", "c", "d", "a", "m", "n"]
+</script>
+</body>
+</html>

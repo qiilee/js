@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单注册</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F7F7F7;
+        }
+
+        ul {
+            margin: 0;
+            padding: 50px;
+            list-style: none;
+        }
+
+        .register {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #FFF;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+        }
+
+        li {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        label, input {
+            display: block;
+            float: left;
+            height: 46px;
+            font-size: 24px;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        label {
+            width: 200px;
+            line-height: 46px;
+            margin-right: 30px;
+            text-align: right;
+        }
+
+        input {
+            width: 320px;
+            padding: 8px;
+            line-height: 1;
+            outline: none;
+            position: relative;
+        }
+
+        input.code {
+            width: 120px;
+        }
+
+        input.verify {
+            width: 190px;
+            margin-left: 10px;
+        }
+
+        input.disabled {
+            background-color: #CCC !important;
+        }
+
+        input[type=button] {
+            border: none;
+            color: #FFF;
+            background-color: #E64145;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .tips {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+        }
+        .tips p {
+            min-width: 300px;
+            max-width: 400px;
+            line-height: 40px;
+            margin: 0 auto;
+            color: #FFF;
+            display: none;
+            background-color: #C91623;
+        }
+    </style>
+
+</head>
+<body>
+<div class="register">
+    <form id="ajaxForm" >
+        <ul>
+            <li>
+                <label for="">用户名</label>
+                <input type="text" name="name" class="name">
+            </li>
+            <li>
+                <label for="">请设置密码</label>
+                <input type="password" name="pass" class="pass">
+            </li>
+            <li>
+                <label for="">请确认密码</label>
+                <input type="password" name="repass" class="repass">
+            </li>
+            <li>
+                <label for="">验证手机</label>
+                <input type="text" name="mobile" class="mobile" value="13800000001">
+            </li>
+            <li>
+                <label for="">短信验证码</label>
+                <input type="text" name="code" class="code">
+                <input type="button" value="获取验证码" class="verify ">
+            </li>
+            <li>
+                <label for=""></label>
+                <input type="button" class="submit" value="立即注册">
+            </li>
+        </ul>
+    </form>
+</div>
+<!-- 提示信息 -->
+<div class="tips">
+    <p>用户名不能为空</p>
+</div>
+<!-- 引入jQuery -->
+<script src="js/jquery.min.js"></script>
+<script>
+    /*
+        js效果
+            1:页面结构出来
+            2：根据功能分析事件
+            3：根据事件出来方法
+            4：在方法里面写对应的业务逻辑
+               一般情况下都是调用js 或者jQuery 提供的api
+            5：最后调试.
+    * 1：获取验证码
+    *     1：获取到输入的手机号
+     *    2：对手机号进行判断
+     *       1：验证成功
+     *           发送ajax 请求到后台。调用接口
+     *       服务端响应成功，
+     *       我要动态改变按钮里面的值
+     *       59,58 s 之后再去获取，这个时候这个按钮点击之后不会去发送请求。
+     *       而且这个按钮的颜色变成灰色。
+     *       当等于1s 之后，这个按钮又变红，这个按钮又可以点击了。
+     *       2：验证失败
+     *           给用户提示信息
+    * 2：提交表单数据
+    *        1:获取用户输入的信息
+    *        2：通过ajax 提交表单.
+    * */
+
+    $(function(){
+
+
+            //给获取验证码添加点击事件.
+            $(".verify").on("click",function(){
+
+
+
+                    var $btn=$(this);
+
+                    //可以在这个地方对这个按钮进行一个判断，
+                    //如果包含disable 样式，说明该按钮不能点击.
+
+                    if($btn.hasClass("disabled")){
+                        return;
+                    }
+                    //获取到手机号.
+                    var telephone=$(".mobile").val();
+                    $.ajax({
+                         url:"01getCode.php",
+                         type:"get",
+                         beforeSend:function(){
+                             //对手机号进行验证
+                             if(telephone.length!=11){
+                                 //给用户提示信息.
+                                /* $(".tips>p").text("请输入正确的手机号").fadeIn(1000);
+
+                                 //过几秒消失，提示信息.
+                                 setTimeout(function(){
+                                     $(".tips>p").text("请输入正确的手机号").fadeOut(1000);
+                                 },1500);*/
+
+                                 $(".tips>p").text("请输入正确的手机号").fadeIn(1000)
+                                         .delay(1500).fadeOut(1500);
+                                 return false;
+                             }
+
+                         },
+                         data:{
+                              telephone:telephone
+                         },
+                         success:function(data){
+                             //一定成功
+                             var obj=JSON.parse(data);
+                             if(obj.status){ ///发送成功
+                                 //按钮变成灰色.
+                                 $btn.addClass("disabled");
+                                 var timer=10;
+                                 var ids=setInterval(function(){
+                                     timer--;
+                                     if(timer==0){
+                                         $btn.val("立即获取");
+                                         $btn.removeClass("disabled");
+                                         clearInterval(ids);
+                                         return;
+                                     }
+                                     $btn.val(timer+"s之后获取");
+                                 },1000);
+                             }
+                         }
+                    });
+            });
+
+            //提交用户信息添加点击事件.
+          $(".submit").on("click",function(){
+                   //获取表单里面用户输入的信息。
+                   //ajax 提交.
+                  var data=$("#ajaxForm").serialize();
+
+                  $.ajax({
+                       url:"01form.php",
+                       type:"post",
+                       data:data,
+                       success:function(data){
+                            var obj=JSON.parse(data);
+                            if(obj.status){
+                                 //我现在要跳转页面
+                                 //你要跳转那个页面.
+                                 window.location.href="";
+                            }
+                       }
+                  })
+          })
+
+    });
+
+
+
+</script>
+</body>
+</html>

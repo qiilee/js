@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //var num;
+    //var num;
+    //
+    ////--------
+    //
+    // num = 100;
+    ////被动的，由于用户可能没设置值。系统会给你undefined
+    ////主动地，表示在num中保存一个值，为undefined
+    //num = undefined;
+    //console.log(num);//100 undefined
+
+    //--------------------------------题1
+    //    function fun() {
+    ////        var a;
+    //
+    //        //-----------------
+    //        console.log(a);//undefined 你们答的
+    //        var a = 100;
+    //        console.log(a);//100 你们答的
+    //        function a() {
+    //
+    //        }
+    //    }
+    //    fun();
+
+    //    var a = 1;
+    //    function fun(a) {
+    //        //这个题多了一个传参的过程
+    //        //a=1;
+    //        //----------
+    //        var a;
+    //        function a() {
+    //        }
+    //        //----------
+    //        console.log(a);//函数
+    //        var a = 100;
+    //        console.log(a);//100
+    //        function a() {
+    //        }
+    //    }
+    //    fun(1);
+
+    //怪异的变量声明方式
+    //var a = 100;
+    //这个a在某些情况下相当于全局变量
+    //    function fun() {
+    //        //相当于全局变量
+    //        //a = 100;
+    //        var a = 100;
+    //
+    //        //有些情况比较特殊
+    //        function funIn() {
+    //            //变量使用的查找方式，当前作用域内使用一个变量a
+    //            //当前作用于内没有声明，向父级作用于查找，如果还没有，一直向上查找
+    //            //一直找到全局作用于，如果还没有，声明一个全局变量.
+    //
+    //            //在半路上如果遇到了a，这时修改某个父级中的a的值。
+    //            a = 200;
+    //        }
+    //        funIn();
+    //        console.log(a);
+    //    }
+    //    fun();
+
+    //正常声明多个变量
+    //var a,b=3,c,d;
+    //怪异的声明多个变量
+    //function fun() {
+    //    //a是局部变量
+    //    //bcd相当于没有var的声明方式
+    //    var a = b = c = d = 6;
+    //    //var a = 6;
+    //    //b = c = d = 6;
+    //}
+
+
+    function fun() {
+        var a = b = c = 6;
+        console.log(a);
+        console.log(b);
+        console.log(c);
+    }
+    fun();
+    console.log(b);
+    console.log(c);
+    console.log(a);
+
+
+</script>
+</body>
+</html>

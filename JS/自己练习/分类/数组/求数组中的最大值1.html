@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var arr = [100, 12, 42, 76, 32];
+        var max = arr[0];
+        var min = arr[0];
+        var maxIndex = 0;
+        var minIndex = 0;
+        for (var i = 1; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+                maxIndex = i;
+            }
+            if (min > arr[i]) {
+                min = arr[i];
+                minIndex = i;
+            }
+        }
+        console.log("最大的数是：" + max);
+        console.log("最小的数是：" + min);
+        console.log("最大索引是：" + maxIndex);
+        console.log("最小索引是：" + minIndex);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

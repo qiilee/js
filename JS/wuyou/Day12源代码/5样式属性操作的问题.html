@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 150px;
+            background-color: red;
+            position: absolute;
+            /*left: 10.4px;*/
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    console.log(getStyle(box,"left"));
+    //设置样式.style.样式名
+    //box.style.width = "100px";
+    //使用.style设置的样式是显示在行内的
+
+
+    //使用style的获取样式方式只能获取行内的样式属性
+    //console.log(box.style.width);
+
+    //getComputedStyle  获取计算后的样式（获取各种形式设置的样式）
+    //第一个参数是要获取的标签，第二个参数传null或者false
+    //获取结果是一个样式的集合（对象）
+
+    //getComputedStyle是一个标准方法，但是ie低版本不支持
+    //console.log(getComputedStyle(box, null).width);
+    //console.log(getComputedStyle(box, null).height);
+
+    //ie低版本支持 标签.currentStyle 属性，获取的结果同样是一个样式的集合(对象)
+    //console.log(box.currentStyle.width);
+    //console.log(box.currentStyle["width"]);
+
+    //获取样式值的时候出现了两种方式，封装一个兼容性函数
+
+    /**
+     *
+     * @param tag 要获取样式的元素
+     * @param attr  要获取的样式名
+     */
+    function getStyle(tag, attr) {
+        //检测支持哪一个
+        //box.currentStyle//如果不存在值为undefined
+        //getComputedStyle如果浏览器不支持。相当于变量未声明，报错
+        if (tag.currentStyle) {
+            //ie支持
+            return tag.currentStyle[attr];
+        } else {
+            //标准方法
+            return getComputedStyle(tag, null)[attr];
+        }
+    }
+
+    //    getStyle(box, "width");
+
+    //没有设置样式的默认值时，如果使用getStyle获取样式值
+    //因为我得浏览器版本高 "auto"
+    console.log(getStyle(box, "left"));
+
+
+</script>
+</body>
+</html>

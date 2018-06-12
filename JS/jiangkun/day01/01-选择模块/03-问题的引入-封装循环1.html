@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script>
+    //总结：
+    // new Function() 与 eval() 可以使字符串变成可执行代码
+
+
+
+
+//teacher：：：：
+    function each (arr, statement ) {
+        for ( var i = 0; i < arr.length; i++ ) {
+            // statement 执行
+            // new Function( '...' )
+            // eval( ... )
+
+
+//      以下两个式子等价：：
+             (new Function( 'index', statement ))( i );
+//
+//             (function ( index ) {
+//                 if ( max < arr[ index ] ) { max = arr[ index ]; }
+//             })( i );
+
+
+            // 可以执行的函数
+        }
+    }
+
+    var arr = [ 1, 3, 5, 2, 8, 7, 6, 9 ];
+    // 求最大值
+    var max = arr[ 0 ];
+    each( arr, 'if ( max < arr[ index ] ) { max = arr[ index ]; }' );
+
+    console.log( max );
+    // 这么写有一些问题:
+    // 1, 应该在字符串中写什么变量? 那些变量可以用, 那些不能用? 不清楚的.
+    // 2, 如果方法体很长, 这样写会无法维护
+    // 需要重新考虑封装
+
+
+
+//    自己的1
+//    function each(arr,statement){
+//        for (var i = 0; i < arr.length; i++) {
+//            (new Function('index',statement))(i);
+//        }
+//    }
+//    var arr = [1,2,3,12,3,1231,23];
+//    var max = arr[0];
+//    each(arr,'if(max<arr[index]){ max = arr[index]}')
+//
+//    console.log(max);
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        function f1(){
+            //ajax请求xml信息回来
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    //alert(xhr.responseText); //以字符串格式返回xml信息
+                    //alert(xhr.responseXML); //[object XMLDocument]以xmldocument对象格式返回xml信息
+                    var xmldom = xhr.responseXML;
+                    //console.log(xmldom.firstChild);//<students>
+                    //console.log(xmldom.firstChild.childNodes);//NodeList[<TextNode textContent="\n ">, student, <TextNode textContent="\n ">, student, <TextNode textContent="\n ">, student, <TextNode textContent="\n">]
+
+                    //文档对象.getElementsByTagName(tag名称);
+                    //元素节点.getElementsByTagName(tag名称);
+                    var std = xmldom.getElementsByTagName('student');
+                    //console.log(std);//HTMLCollection[student, student, student]
+                    //console.log(std[0]);//<student>元素节点对象
+                    //for(var k in std[0]){
+                    //    console.log(k);
+                    //}
+
+                    var s = "";
+                    for(var i=0; i<std.length; i++){
+                        var nm = std[i].getElementsByTagName('name')[0].innerHTML;
+                        var age = std[i].getElementsByTagName('age')[0].firstChild.wholeText;
+                        var addr = std[i].getElementsByTagName('addr')[0].innerHTML;
+                        
+                        s += "名称："+nm+"--年龄："+age+"--地址："+addr+"<br />";
+                    }
+                    document.body.innerHTML += s;
+                }
+            }
+            xhr.open('get','./08.xml');
+            xhr.send(null);
+        }
+        </script>
+    </head>
+    <body>
+        <h2>ajax+javascript实现对xml处理</h2>
+        <input type="button" value="处理" onclick="f1()" />
+    </body>
+</html>

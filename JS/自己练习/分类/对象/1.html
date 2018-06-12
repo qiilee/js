@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var hero = new Object();
+    hero.name = "张三疯";
+    hero.sex = "男";
+    hero.move = function () {
+        console.log("谁能挡我");
+    };
+    hero.attack = function (name) {
+        console.log(this.name + "：不服你来啊 " + name);
+    };
+
+
+    console.log(hero.name);
+    console.log(hero.sex);
+    hero.attack("谢逊");
+</script>
+</body>
+</html>

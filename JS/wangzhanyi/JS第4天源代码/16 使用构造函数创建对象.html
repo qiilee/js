@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 构造函数其实就是一个普通 的函数，他的功能就是可以用来创建对象 构造函数的函数名第一个字是大写，是一个名词
+
+    function Student(name,sex,age){  // 构造函数就相当于后台语言中的类的概念
+//        var o= new Object(); // 先创建了一个空对象
+        this.name = name;  // this 这个,当前的
+        this.age = age;
+        this.sex = sex;
+        this.sayHi = function(){
+            console.log("大家好：我叫"+ this.name+"，我是"+ this.sex+"生,我今年"+ this.age+"岁了;");
+        };
+//        return o;
+//        return this; // 将当前创建好的对象this，返回
+    }
+  var zs = new  Student("张三","男",25);
+    zs.sayHi();
+    console.log(zs.name);
+    // new 帮助我们做了什么事情
+    // 1. 创建一个空对象
+    // 2. 将this指向这个空对象e
+    // 3. 执行构造函数里面的代码，给属性和方法赋值
+    // 4. 将this返回
+
+    var ls = new Student("李四","女",26);
+    ls.sayHi();
+
+    // 汽车的构造函数   宝马   长城      品牌  价格    颜色   speed  方法：驾驶
+    // 手机    品牌  价格   颜色   call
+</script>
+</body>
+</html>

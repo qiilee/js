@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    //1 添加事件
+    document.onmousemove = function (e) {
+        //2 兼容事件对象
+        var e = e || event;
+        //3 鼠标跟随
+        //想要居中跟随，需要用鼠标坐标减去盒子宽或高的一半
+        box.style.left = e.clientX - box.offsetWidth / 2 + "px";
+        box.style.top = e.clientY - box.offsetHeight / 2 + "px";
+
+    };
+</script>
+</body>
+</html>

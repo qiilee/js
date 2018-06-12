@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var str = 'ab123cd1234567efg12hij';
+
+    var r = /\d+/g;  // 使用 g 才可以将全部的数据提取出来
+
+    /*
+    r.exec( str ); // 返回一个数组( 第0项就是匹配到的结果, 第 i 项就是组 )
+    // 123
+    r.exec( str );
+    // 1234567
+    r.exec( str );
+    // 12
+    r.exec( str );
+    // null
+    r.exec( str ); 
+    // 123
+    */
+
+    var match;
+
+    while( match = r.exec( str ) ) {
+        // 进来了就表明一定找到了数字
+        console.log( match[ 0 ] );
+    }
+
+
+
+
+
+</script>
+</html>

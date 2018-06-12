@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+    <style>
+        .odd {
+            background-color: pink;
+        }
+        .even {
+            background-color: #ccc
+        }
+    </style>
+</head>
+<body ng-app="app" >
+    <div ng-controller="mainController">
+        <table border="1" width="400">
+            <tr ng-repeat="item in list" ng-class="{ even: $even, odd: $odd }">
+                <td>{{ $index }}</td>
+                
+                <td ng-repeat="( k, v ) in item" >{{ k }}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    angular.module( 'app', [] )
+        .controller( 'mainController', function ( $scope ) {
+            $scope.list = [
+                { name: 'jim1', age: 19, gender: '男' },
+                { name: 'jim2', age: 19, gender: '男' },
+                { name: 'jim3', age: 19, gender: '男' },
+                { name: 'jim4', age: 19, gender: '男' },
+                { name: 'jim5', age: 19, gender: '男' },
+                { name: 'jim7', age: 19, gender: '男' },
+                { name: 'jim6', age: 19, gender: '男' }
+            ];
+        });
+
+</script>
+</html>

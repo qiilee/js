@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //使用jq创建元素
+            var $div = $("<div></div>");
+            console.log($div[0]);
+
+            //使用上面的方式创建的元素在页面中不存在，我们需要使用某个方法将其放入到页面中的某个位置
+
+            //append的添加位置为子元素的最后
+            //1 append()  第一种使用方式 添加一个已经存在的标签
+            //$("#box").append($div);
+            //$div.text("我是新创建的div");
+
+            //2 append可以直接创建标签并添加到页面中
+            //$("#box").append("<p>我是新创建的标签</p>");
+
+            //prepend() 添加到子元素的前面
+            //$("#box").prepend($div);
+            //创建一个新标签并添加到指定位置
+            //$("#box").prepend("<div>我是用prepend创建的元素</div>");
+
+            //after()  添加到同级元素的后面
+            //$("#box").after($div);
+
+            //before() 添加到同级元素的前面
+            //$("#box").before($div);
+            //$("#box").before("<p></p>");
+
+        });
+    </script>
+</head>
+<body>
+<div id="box">
+    <span>我是span</span>
+    <span>我是span</span>
+    <span>我是span</span>
+    <span>我是span</span>
+    <span>我是span</span>
+</div>
+</body>
+</html>

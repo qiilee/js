@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            height: 10000px;
+        }
+        img {
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+<script>
+    //1 获取元素
+    var ts = document.getElementById("ts");
+    //2 鼠标在页面移动的时候
+    document.onmousemove = function (e) {
+        //3 兼容事件对象
+        var e = e || window.event;
+        //4 将鼠标坐标设置给天使
+        ts.style.left = e.clientX + "px";
+        ts.style.top = e.clientY + "px";
+
+    };
+
+
+</script>
+</body>
+</html>

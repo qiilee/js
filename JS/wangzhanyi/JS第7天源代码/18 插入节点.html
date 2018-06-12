@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li id="li1">这是第1个li标签</li>
+    <li>这是第2个li标签</li>
+    <li>这是第3个li标签</li>
+    <li>这是第4个li标签</li>
+</ul>
+<script src="common.js"></script>
+<script>
+    // 1. 获得要操作的对象
+    var list = document.getElementById("list");
+    var lis = list.children; //所有的浏览器都支持的方式，只会获得标签节点  是一组数组，是一个标签数组的方式
+    var node = ele.getLastElement(list);
+    var newNode = node.cloneNode(true);
+//    list.insertBefore(node,lis[0]); // 将现有的标签节点，剪切下来之后，插入到对应的位置
+    list.insertBefore(newNode,lis[0]);
+//    console.log(node);
+</script>
+</body>
+</html>

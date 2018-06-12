@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+              width: 200px;
+              height: 200px;
+              background-color: red;
+              /*display : none;*/
+          }
+        .hide {
+            display : none;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<input type="button" value="按钮2" id="btn2"/>
+<input type="button" value="显示" id="btn3"/>
+<div id="box" ></div>
+<script>
+    // 1. 先获得要操作的对象  按钮   box
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    var btn2 = document.getElementById("btn2");
+    // 2. 注册事件
+    btn.onclick = function(){
+        // 设置样式的时候，原来CSS怎么写，在JS中设置的时候，几乎是一样的
+        box.style.display = "none";
+    }
+    // 样式的优先级
+    // 通配符   标签    类    id    行内     important
+
+    btn2.onclick = function (){
+        // 添加类样式
+        box.className = "hide";
+    }
+    document.getElementById("btn3").onclick = function (){
+           box.className="show";
+    };
+    // 1. 一个按钮按钮6个盒子隐藏  另一个按钮按钮6个盒子的显示
+    // 2. 一个按钮控制所有盒子的显示和隐藏
+</script>
+</body>
+</html>

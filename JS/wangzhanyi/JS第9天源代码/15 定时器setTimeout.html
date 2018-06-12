@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="开启定时器" id="btnOpen"/>
+<input type="button" value="关闭定时器" id="btnClose"/>
+<script>
+    // 第一个定时器
+    var num;
+    document.getElementById("btnOpen").onclick = function (){
+       num = setTimeout(function(){   // 延迟多少毫秒之后才会执行的定时器，只执行一次
+            alert("爆炸了。。。")
+        },1000);//毫秒数，指的是延迟多少时间之后执行
+    };
+    btnClose.onclick = function (){
+        clearTimeout(num);
+    }
+//    console.log(num); // 定时器的标识
+</script>
+</body>
+</html>

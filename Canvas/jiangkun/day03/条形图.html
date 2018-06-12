@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border: 1px dashed blue;
+        }
+    </style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+<script>
+    var cas = document.querySelector("canvas");
+    var ctx = cas.getContext("2d");
+    // 1) 准备变量
+    var w = cas.width,
+            h = cas.height;
+
+    var marginLeft = 10,
+            marginTop = 10,
+            marginRight = 10,
+            marginBottom = 10;
+
+    var arrowHeight = 20,
+            arrowWidth = 10;
+
+
+    // 2) 开始准备绘制坐标轴线
+    ctx.beginPath();
+    var x = marginLeft,
+            y = h - marginBottom;
+
+    ctx.moveTo(marginLeft, marginTop);
+    ctx.lineTo(x, y);
+    ctx.lineTo(w - marginRight, y);
+
+    ctx.stroke();
+
+
+    // 3) 开始绘制箭头
+    ctx.beginPath();
+
+    // 3.1 绘制 y 轴的箭头
+    ctx.moveTo(marginLeft, marginTop);
+    ctx.lineTo(marginLeft - arrowWidth / 2, marginTop + arrowHeight);
+    ctx.lineTo(marginLeft, marginTop + arrowHeight / 2);
+    ctx.lineTo(marginLeft + arrowWidth / 2, marginTop + arrowHeight);
+    ctx.closePath();
+
+    // 3.2 绘制 x 轴的箭头
+    ctx.moveTo(w - marginRight, y);
+    ctx.lineTo(w - marginRight - arrowHeight, y - arrowWidth / 2);
+    ctx.lineTo(w - marginRight - arrowHeight / 2, y);
+    ctx.lineTo(w - marginRight - arrowHeight, y + arrowWidth / 2);
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    function random(min, max) {
+        return parseInt((max - min) * Math.random() + min)
+    }
+
+    var datas = [];
+    //柱子的数量
+    var count = random(2, 20);
+    //每个柱子的高度
+    for (var i = 0; i < count; i++) {
+        datas.push(random(100, 300));
+    }
+    console.log(datas);
+    //柱子的宽度
+    var zhukuan = (w - marginLeft - marginRight - arrowHeight) / (count + 1);
+    //最大值
+    var max = Math.max.apply(null, datas);
+    // 求出最大值与坐标系最大高度的比例
+    var bili = max / (h - marginTop - marginBottom - arrowHeight);
+    // 求出新的数组（元素为对象）
+    var newArr = datas.map(function (v, i) {
+        var o = [];
+        o.start ={x:zhukuan*(i+1),y:y};
+        o.end = {x:zhukuan*(i+1),y:y-v/bili};
+        return o;
+    });
+
+    //划线
+    ctx.beginPath();
+    newArr.forEach(function (v,i) {
+        ctx.moveTo(v.start.x, v.start.y);
+        ctx.lineTo(v.end.x, v.end.y);
+    })
+
+    ctx.lineWidth = zhukuan/3;
+    ctx.strokeStyle = "red";
+    ctx.stroke();
+
+
+</script>
+</body>
+</html>

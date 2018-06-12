@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            width:100px;
+            height:20px;
+            background: #D5D5D5;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background: red;
+            font-size: 100px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .changeTo{
+            border-radius: 50%;
+            background: darksalmon;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">1</button>
+<button id="btn2">2</button>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div class="change">4</div>
+<div class="change">5</div>
+<script>
+    // 为什么要进行函数封装？
+    //  利用函数的特性对代码进行复用，减少冗余的代码量
+
+
+
+    // /**+ctrl+shift+enter给函数添加注释
+    /**
+     * 获取相应id值的一个DOM元素
+     * @param id id值
+     */
+    function getById(id){
+        return document.getElementById(id);
+    }
+
+    /**
+     * 获取相应类名的函数
+     * @param clsName 类名
+     */
+    function getByClassName(clsName){
+        return document.getElementsByClassName(clsName);
+    }
+
+    /**
+     * 为类数组中的每一项DOM元素设置className
+     * @param ele 类数组
+     * @param clsName 类名
+     */
+    function setClassName(ele,clsName){
+        for(var i = 0;i<ele.length;i++){
+            ele[i].className=clsName;
+        }
+    }
+
+    function getById(){
+        console.log('我是新的getById函数')
+    }
+
+
+
+
+
+
+
+    var btn1 = getById('btn1');
+    var btn2 = getById('btn2');
+    var oDiv = getByClassName('change');
+    btn1.onclick=function(){
+        setClassName(oDiv,'change changeTo')
+    }
+    btn2.onclick=function() {
+        setClassName(oDiv, 'change')
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

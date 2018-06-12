@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 需求： 动态地创建一个红色的div，100px,然后把它添加到页面当中。
+
+    /*
+    * 1 创建一个节点
+    * 2 设置样式
+    * 3 添加到页面当中
+    * */
+
+
+    // 1创建一个节点
+    var oDiv = document.createElement('div');
+/*    console.log(oDiv)*/
+    //2 设置样式
+    oDiv.style.background='red';
+    oDiv.style.width= '100px';
+    oDiv.style.height= '100px';
+    console.log(oDiv)    //<div style="background: red; width: 100px; height: 100px;"></div>
+    // 3 添加到页面当中。
+    document.body.appendChild(oDiv);
+
+</script>
+</body>
+</html>

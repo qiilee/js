@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+    
+
+        <script type="text/javascript">
+        //函数封装，实现ajax获取分页信息
+        function showpage(url){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    //json字符串变为对象处理
+                    eval("var info="+xhr.responseText);
+                    var s = "<table><tr style='font-weight:bold'><td>序号</td><td>名称</td><td>价格</td><td>数量</td><td>重量</td></tr>";
+                    for(var i=0; i<info.length-1; i++){
+                        s += "<tr>";
+                        s += "<td>"+info[i].number+"</td>";
+                        s += "<td>"+info[i].goods_name+"</td>";
+                        s += "<td>"+info[i].goods_price+"</td>";
+                        s += "<td>"+info[i].goods_number+"</td>";
+                        s += "<td>"+info[i].goods_weight+"</td>";
+                        s += "</tr>";
+                    }
+                    s += "<tr><td colspan='5'>"+info[info.length-1]+"</td></tr>";
+                    s += "</table>";
+                    document.getElementById('result').innerHTML = s;
+                }
+            }
+            xhr.open('get',url);
+            xhr.send(null);
+        }
+        window.onload = function(){
+            showpage('./data.php');
+        }
+        </script>
+        <style type="text/css">
+            h2,div {width:700px; margin:auto;}
+            h2 {text-align:center;}
+            
+            table {width:700px; border:1px solid black; margin:auto; border-collapse:collapse;}
+            td {border:1px solid black; }
+        </style>
+    </head>
+    <body>
+        <h2>ajax无刷新分页</h2>
+        <div id="result"></div>
+    </body>
+</html>
+<script type="text/javascript">
+<!--
+    document.write(new Date()+"<br />");
+    document.write(new Date()+"<br />");
+    document.write(new Date()+"<br />");
+    document.write(new Date()+"<br />");
+//-->
+</script>

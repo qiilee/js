@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<input type="text" value="呵呵" id="txt" />
+
+<script>
+    // 1. 先获取标签对象
+    var btn = document.getElementById("btn");
+    // 2. 修改属性，？？？？查看Elements中 默认的值  未改变
+
+    //input中type="text"时，value =  。。，赋值后，查看源码不会修改原内容
+
+    btn.value="修改了这个按钮";
+
+    var txt = document.getElementById("txt");
+    txt.value="这是JS修改的内容";
+
+</script>
+</body>
+</html>

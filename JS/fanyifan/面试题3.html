@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //   面试题1
+        var num = 123;
+        function f1() {
+            console.log(num);
+        }
+        function f2() {
+            var num = 456;
+            f1();
+        }
+        f2(); // ? 123
+
+
+    //面试题1 变式
+    //    var num = 123;
+    //    function f1(num) {
+    //        console.log(num); // 456
+    //    }
+    //    function f2() {
+    //        var num = 456;
+    //        f1(num);
+    //    }
+    //    f2();
+
+    //面试题1  变式
+    var num = 123;
+    function f1() {
+        console.log(num); // 456
+    }
+    f2();
+    function f2() {
+        num = 456;//这里是全局变量
+        f1();
+    }
+    console.log(num); // 456
+</script>
+</body>
+</html>

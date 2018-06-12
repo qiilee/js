@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    (function (a) {
+     console.log(a);
+     function a(){}
+     console.log(a);
+     })( 100 );
+
+    // 第一步，把立即执行的函数表达式转换为函数声明，然后对它进行调用
+   /* function fn(a){
+        //传入参数的声明和赋值
+        var a;
+        a=100;
+        //对之前的代码进行变量提升
+        a = function a(){};
+        console.log(a);
+        console.log(a)
+    }
+    fn(100);*/
+
+   /* var a = function(){
+       console.log(1)
+    }
+    a()*/
+  /* var a = function a(){
+       console.log(1)
+   }
+   a()*/
+
+
+
+
+</script>
+</body>
+</html>

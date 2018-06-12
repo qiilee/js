@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            border: 10px solid #000;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="更改" id="btn"/>
+<input type="button" value="更改" id="btn2"/>
+<div id="box" ></div>
+<div id="box2"></div>
+<script>
+    // 1. 获取要操作的对象
+    var box =document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var btn2 = document.getElementById("btn2");
+    var box2 =document.getElementById("box2");
+    // 2. 给事件源注册单击事件
+    btn.onclick = function (){
+        box.style.width ="500px";
+        box.style.height = "500px";
+        box.style.backgroundColor = "blue"; // -在JS中是不解析的，backgroundColor
+    }
+    btn2.onclick = function (){
+        box2.className = "box2";
+    }
+</script>
+</body>
+</html>

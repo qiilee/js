@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var numberArray = [3,6,2,4,1,5];
+    var fanzhuan = numberArray.reverse();
+    console.log(fanzhuan);//[5, 1, 4, 2, 6, 3]
+    for (var i = 0; i < numberArray.length-1; i++) {
+        var isSorted = true;
+       for (var j = 0; j < numberArray.length-1-i; j++) {
+          if(numberArray[j]<numberArray[j+1]){
+              isSorted = false;
+              var temp = numberArray[j];
+              numberArray[j] = numberArray[j+1];
+              numberArray[j+1] = temp;
+          }
+       }
+        if(isSorted){
+            break;
+        }
+    }
+    console.log(numberArray);
+</script>
+</body>
+</html>

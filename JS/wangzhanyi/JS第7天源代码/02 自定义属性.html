@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="txt" class="txt2" aaa="bbb" ccc="ddd" data-haha="haha"
+       data-haha-xixi="haxi"/>
+<p mmm="nnnn"></p>
+<script>
+    //1 点的方式可以获取到标签对象的原有属性值
+    //2 点的方式无法获取到自定义的属性值的（将返回undefined）
+    //3 使用点的方式设置的属性,只能使用点的方式来获取（getAttribute会获得null）
+    //4 使用点的方式设置的属性不会显示在Elements代码中
+
+    //1 使用setAttribute设置的属性，只能使用getAttribute来获取（点的方式获得undefined）
+    //2 使用setAttribute设置的属性会显示在Elements代码中
+    //2 getAttribute可以获取到自定义的属性值的
+
+    //1 removeAttribute()可以删除标签对象的原有属性和自定义的属性
+
+    //学了h5加的：1、用getAttribute可以获得data-haha属性
+    //           2、使用dataset时 注意使用驼峰命名，X为小写是不可以的
+
+
+    var txt  = document.getElementById("txt");
+    console.log(txt.getAttribute("data-haha"));
+    console.log(txt.dataset["haha"]);
+    console.log(txt.dataset["hahaXixi"]);
+
+
+
+
+
+
+    //myself  once
+    //    var txt  = document.getElementById("txt");
+    //    console.log(txt.type);
+    //    console.log(txt.className);
+    //    console.log(txt.id);
+    //    console.log(txt.aaa);
+    //    console.log(txt.ccc);//undefined
+    //    txt.xx ="yy";
+    //    console.log(txt.xx);//yy
+    //    console.log(txt.getAttribute("xx"));//null
+    //      txt.setAttribute("zzz","vvv");
+    //      console.log(txt.getAttribute("zzz"));
+    //      console.log(txt.getAttribute("aaa"));
+    //      console.log(txt.zzz);
+
+
+
+
+
+
+
+
+    /*  teacher::::::::::::::::::::::::
+     //点的方式
+     var txt = document.getElementById("txt");
+     console.log(txt.type);
+     console.log(txt.id);
+     console.log(txt.className);
+     console.log(txt.aaa);  //undefined
+     console.log(txt.ccc); //undefined
+
+
+     //setAttribute()与getAttribute()的方式
+     console.log(txt.getAttribute("aaa"));//bbb
+     console.log(txt.getAttribute("ccc"));//ddd
+
+     //    txt.setAttribute("eee","fff");
+     //    txt.removeAttribute("class");
+     //    txt.removeAttribute("aaa");
+
+     txt.hh = "kk";
+     console.log(txt.hh);//kk
+     console.log(txt.eee);//undefined
+     console.log(txt.getAttribute("hh"));//null
+     console.log(txt.getAttribute("ccc"));//ddd
+     */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*  Teacher:::::
+    var txt = document.getElementById("txt");
+    console.log(txt.type);
+    console.log(txt.id);
+    console.log(txt.className);
+    console.log(txt.aaa);
+    console.log(txt.ccc); // 无法通过对象.的方式获取到自定义的属性值的   undefined
+
+
+    // 根本原因，就是函数的封装还不是太明白
+    console.log(txt.getAttribute("aaa"));
+    console.log(txt.getAttribute("ccc"));
+
+    txt.setAttribute("mm","nn");
+    txt.removeAttribute("class");
+    txt.removeAttribute("aaa");
+
+    txt.hh = "kk";
+    console.log(txt.hh);
+    console.log(txt.mm);
+
+    // 使用setAttribute设置的属性，只能使用getAttribute来获取
+
+    // 为什么要学习新的知识点：
+    // 1. 旧有的知识点无法满足我们新的业务需要
+    // 2. 旧有的知识点，效率太低，比较麻烦
+
+    */
+</script>
+</body>
+</html>

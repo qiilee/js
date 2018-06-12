@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            //什么是dom对象？
+            //通过dom中的属性和方法获取的标签
+
+            //什么是jq对象？
+            //通过jquery方法获取的标签
+
+            //dom对象无法使用jquery中的属性和方法
+            //jquery对象无法使用dom中的属性和方法
+
+            //jquery对象是dom对象的包装集
+
+
+
+
+            //dom对象相当于衣服，需要一个一个操作，比較麻烦
+            //jq对象相当于是洗衣机，可以在操作的时候操作内部的所有dom对象。比較简单
+
+            //js操作元素
+//            var divs = document.getElementsByTagName("div");
+//            for (var i = 0; i < divs.length; i++) {
+//                console.log(divs[i]);
+//            }
+
+            //jq对象操作,内部会进行隐式迭代，帮你去遍历
+           // $("div").text()
+            console.log($("div"));
+
+        });
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+</body>
+</html>

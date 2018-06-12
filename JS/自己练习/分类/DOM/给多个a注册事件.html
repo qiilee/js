@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a id="link1" href="http://www.baidu.com">baidu</a>
+<a id="link2" href="http://www.baidu.com">baidu</a>
+<a id="link3" href="http://www.baidu.com">baidu</a>
+<a id="link4" href="http://www.baidu.com">baidu</a>
+<a id="link5" href="http://www.baidu.com">baidu</a>
+<script>
+    var links = document.getElementsByTagName("a");
+    for (var i = 0; i < links.length; i++) {
+
+        links[i].onclick = function () {
+            alert("haha");
+            return false;
+        };
+    }
+</script>
+</body>
+</html>

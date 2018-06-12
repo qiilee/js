@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var sum =0;
+        for(var i = 0;i<5;i++){
+           var age = Number(prompt("输入年龄"));
+            if(age<0 || age>100){
+              alert("出错");
+                break;
+            }
+            sum+=age;
+
+        }
+        console.log(sum/5);
+
+    </script>
+</head>
+<body>
+练习1:循环录入5个人的年龄并计算平均年龄
+,如果录入的数据出现负数或大于100的数,
+立即停止输入并报错.
+</body>
+</html>

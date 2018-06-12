@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .parentWrap {
+            width: 200px;
+            text-align: center;
+
+        }
+
+        .menuGroup {
+            border: 1px solid #999;
+            background-color: #e0ecff;
+        }
+
+        .groupTitle {
+            display: block;
+            height: 20px;
+            line-height: 20px;
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .menuGroup > div {
+            height: 200px;
+            background-color: #fff;
+            display: none;
+        }
+
+    </style>
+    <script src="../jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //下一个同级元素的访问方式  next();
+            //上一个统计元素的访问方式  prev();
+
+            //操作的是span，点击
+            $(".parentWrap .groupTitle").click(function () {
+//                //让下一个同级的div显示
+//                //当前span的下一个div显示，然后父元素li的所有兄弟的子元素中的div隐藏
+                $(this).next().show().parent().siblings().children("div").hide();
+            });
+
+
+            //操作li，也可以，但是多了一步。
+            $(".parentWrap .menuGroup").click(function () {
+                $(this).children("div").show().parent().siblings().children("div").hide();
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+<ul class="parentWrap">
+    <li class="menuGroup">
+        <span class="groupTitle">标题1</span>
+
+        <div>我是弹出来的div1</div>
+    </li>
+    <li class="menuGroup">
+        <span class="groupTitle">标题2</span>
+
+        <div>我是弹出来的div2</div>
+    </li>
+    <li class="menuGroup">
+        <span class="groupTitle">标题3</span>
+
+        <div>我是弹出来的div3</div>
+    </li>
+    <li class="menuGroup">
+        <span class="groupTitle">标题4</span>
+
+        <div>我是弹出来的div4</div>
+    </li>
+</ul>
+</body>
+</html>

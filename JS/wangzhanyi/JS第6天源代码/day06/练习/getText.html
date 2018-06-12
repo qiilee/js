@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div">
+    <p>11111111</p>
+    <p>22222222</p>
+    <p>33333333</p>
+    <p>44444444</p>
+</div>
+<script>
+    //获取要操作的对象
+    var div = document.getElementById("div");
+    getText(div);
+    function getText(element){
+        if(typeof element.innerText =="string"){
+              return element.innerText;
+        }else{
+            return element.textContent;
+        }
+    }
+</script>
+</body>
+</html>

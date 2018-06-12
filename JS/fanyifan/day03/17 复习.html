@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+
+    // 可枚举属性： 能够被for in循环遍历出来的属性
+    // 不可枚举属性： 不能够被for in循环遍历出来的属性
+
+    //3 isPrototypeOf
+
+    function Person(){
+
+    }
+    Person.prototype.legs = 2;
+    var person = new Person();
+   /* console.log(Person.prototype.isPrototypeOf(person))//true*/
+
+
+    // 4 propertyIsEnumerable  属性 是否 可枚举性
+
+   /* console.log(Person.prototype.propertyIsEnumerable('constructor'));//false
+    console.log(Person.prototype.propertyIsEnumerable('legs'));//true*/
+
+    // 当复杂数据类型转换为字符串的 过程中会调用valueOf 和 toString
+
+
+
+    // Object.assign
+    var obj1 = {
+        num1:1
+    }
+    var obj2 = {
+        num2:2
+    }
+   /* var o = Object.assign(obj1,obj2)
+    console.log(o)*/
+
+
+    // 设置原型的方法 Object.setPrototypeOf
+    Object.setPrototypeOf(obj1,obj2);
+    console.log(obj1.__proto__===obj2)//true
+
+    // 获取原型的方法
+    var oooo = Object.getPrototypeOf(obj1);
+    console.log(oooo===obj2)// true
+    //因为我们把obj2设置为obj1的原型
+
+    // 实例成员 实例能够访问到但是构造函数访问不到的属性
+    // 静态成员 构造函数能够访问到但是实例访问不到的属性
+
+
+    // A instanceof B
+    // 判断B的prototype属性的值在不在A的原型链
+
+
+    //函数形参与实参的个数
+
+    
+
+
+
+
+
+
+</script>
+</body>
+</html>

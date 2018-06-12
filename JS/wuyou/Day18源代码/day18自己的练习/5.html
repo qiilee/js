@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="jquery-1.12.4.min.js"></script>
+
+<input type="text" id="ipt" value="asd"/>
+<script>
+    //
+//    console.log($("#ipt").val());
+     $("#ipt").focus(function () {
+         if($(this).val()=="asd"){
+             $(this).val('');
+         }
+     });
+    $("#ipt").blur(function () {
+        if($(this).val()==""){
+            $(this).val('asd');
+        }
+    });
+</script>
+</body>
+</html>

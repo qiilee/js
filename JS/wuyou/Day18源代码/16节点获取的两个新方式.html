@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //总结：nextAll()与prevAll()
+
+
+        $(function () {
+            //nextAll后面的所有同级元素
+            $("#me").nextAll().text("我是后面的");
+            //prevAll前面所有同级元素
+            $("#me").prevAll().text("我是前面的");
+
+        });
+    </script>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li id="me"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>

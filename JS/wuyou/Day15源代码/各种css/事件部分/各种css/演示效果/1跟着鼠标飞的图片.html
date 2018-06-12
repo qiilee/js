@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+        }
+
+    </style>
+    <script src="common.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+<script>
+    var ts = document.getElementById("ts");
+
+    //当鼠标一移动，图片就跟着跑
+    document.onmousemove = function (e) {
+        ts.style.left = e.clientX + "px";
+        ts.style.top = e.clientY + "px";
+    };
+
+
+</script>
+</body>
+</html>

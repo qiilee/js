@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 函数声明
+    function foo() {}
+
+    // 函数表达式
+    var foo = function foo() {};
+
+    if(true) {
+        // 不推荐
+        function f() {
+            console.log(true);
+        }
+    }
+
+    f();//这里能够输出true
+</script>
+</body>
+</html>

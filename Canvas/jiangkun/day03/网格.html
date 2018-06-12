@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style>
+       canvas {
+       	border:1px solid red;
+       }
+    </style>
+</head>
+<body>
+	<canvas width="600" height="400"></canvas>
+	<script>
+	//总结：1.确定线与线之间的间隔
+	      //2.确定线的条数
+	      //3.进行for循环
+		var cas = document.querySelector("canvas");
+		var ctx = cas.getContext("2d");
+        
+        var distance = 10;
+
+        var rows = parseInt(cas.width/distance);
+        ctx.lineWidth = 2;
+        for(var i = 0;i < rows;i++){
+            ctx.moveTo(0,(i+1)*distance);
+            ctx.lineTo(cas.width,(i+1)*distance);
+        }
+        for(var i = 0;i < rows;i++){
+            ctx.moveTo((i+1)*distance,0);
+            ctx.lineTo((i+1)*distance,cas.width);
+        }
+		ctx.stroke();
+
+
+
+
+
+        /*    teacher  版本
+         var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+         var ctx = cas.getContext( '2d' );
+
+         // 1, 确定表格中的间距
+         var distance = 10;
+         var width = cas.width,
+         height = cas.height;
+
+         // 2, 绘制水平的横线
+         var rows = parseInt( cas.height / distance );
+         for ( var i = 0; i < rows; i++ ) {
+         // 绘制横线
+         ctx.moveTo( 0, (i + 1) * distance );
+         ctx.lineTo( width, (i + 1) * distance );
+         }
+
+         // 3, 绘制竖线
+         var columns = parseInt( cas.width / distance );
+         for ( var i = 0; i < columns; i++ ) {
+         ctx.moveTo( (i + 1) * distance, 0 );
+         ctx.lineTo( (i + 1) * distance, height );
+         }
+
+         ctx.stroke();*/
+	</script>
+</body>
+</html>

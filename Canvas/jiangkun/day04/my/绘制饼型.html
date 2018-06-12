@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	   canvas {
+	   	 border:1px solid red;
+	   }
+	</style>
+</head>
+<body>
+<canvas width="600" height="400"></canvas>
+	<script>
+		var cas = document.querySelector("canvas");
+		var ctx = cas.getContext('2d');
+
+        function random(min,max){
+            return parseInt((max-min)*Math.random()+min);
+        }
+
+        var datas = [];
+        //分为几块
+        var count = random(2,8);
+        //随机数值
+        for (var i = 0; i < count; i++) {
+        	datas.push(random(1,100));
+        }
+        var sum = 0;
+        datas.forEach(function(v,i){
+             sum+=v;
+        })
+        // 求出datas中的数据对应的弧长
+        var newArr =datas.map(function (v,i) {
+            var o = {};
+            o.radian =Math.PI*2 * v/sum;
+            return  o;
+        });
+
+
+        //准备颜色
+        var colors =
+                ( "lightskyblue,lightslategray,lightslategrey,lightsteelblue,lightyellow," +
+                "lime,limegreen,linen,magenta,maroon,mediumaquamarine,mediumblue,mediumorchid,mediumpurple," +
+                "mediumseagreen,mediumslateblue,mediumspringgreen,mediumturquoise,mediumvioletred,midnightblue," +
+                "mintcream,mistyrose,moccasin,navajowhite,navy,oldlace,olive,olivedrab,orange,orangered,orchid," +
+                "palegoldenrod,palegreen,paleturquoise,palevioletred,papayawhip,peachpuff,peru,pink,plum,powderblue," +
+                "purple,rebeccapurple,red,rosybrown,royalblue,saddlebrown,salmon,sandybrown,seagreen,seashell,sienna," +
+                "silver,skyblue,slateblue,slategray,slategrey,snow,springgreen,steelblue,tan,teal,thistle,transparent," +
+                "tomato,turquoise,violet,wheat,white,whitesmoke,yellow,yellowgreen" ).split( ',' );
+
+        //开始画
+        var start  = -Math.PI/2;
+        for (var i = 0; i < newArr.length; i++) {
+            ctx.beginPath();
+            ctx.moveTo(300,200);
+            ctx.arc(300,200,100,start,start+=newArr[i].radian);
+            ctx.fillStyle = colors[i*5];
+            ctx.fill();
+        }
+	</script>
+</body>
+</html>

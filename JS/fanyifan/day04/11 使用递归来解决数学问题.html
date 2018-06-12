@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 使用递归来解决斐波那契数列问题
+    // 1 1 2 3 5 8 13 21 34 55
+
+    // 需求：求解斐波那契数列某一位具体是什么值 ？
+
+    // 总结规律：
+    /*
+    * 1 fib(1)     1
+    * 2 fib(2)     1
+    * 3 fib(3)     2=fib(1)+fib(2)
+    * 4 fib(4)     3=fib(2)+fib(3)
+    * 5 fib(5)     5=fib(3)+fib(4)
+    *
+    * ...
+    *
+    * n fib(n)     fib(n-1)+fib(n-2)
+    * */
+
+
+
+    function fib(n){
+        //边界条件:如果n===1或者n===2,直接返回1
+        if(n===1||n===2){
+            return 1;
+        }
+        return fib(n-1)+fib(n-2)
+    }
+
+    //验证fib函数是否能满足需求
+    /*console.log(fib(1))//1
+    console.log(fib(5))//5
+    console.log(fib(7))//13
+    console.log(fib(9))//34
+    console.log(fib(10))//55
+    console.log(fib(15))//610
+    console.log(fib(20))//6765
+    console.log(fib(50))//如果计算量比较大的话，会产生浏览器崩溃的问题，
+    //我们留个悬念，明天解决。
+*/
+
+    // 问题 求解n的阶乘
+    /*
+    * n!
+    * 1!  1   jc(1)=1
+    * 2!  1*2   jc(2)=jc(1)*2
+    * 3!  1*2*3   jc(3)= jc(2)*3
+    *
+    * n!          jc(n)=jc(n-1)*n
+    * */
+
+
+    /*function jc(n){
+        // 边界条件
+        if(n===1){
+            return 1;
+        }
+        return jc(n-1)*n
+    }
+
+    console.log(jc(5))//120
+    console.log(jc(10))//120*/
+
+
+    //求解n的m次方
+    /*
+
+    * 2 1  2  getM(2,1) 2
+    * 2 2  4  getM(2,2) getM(2,1)*2
+    * 2 3  8  getM(2,3)  getM(2,2)*2
+    *
+    *
+    * getM(n,m)  getM(n,m-1)*n
+    *
+    * */
+
+    function getM(n,m){
+        if(m===0){
+            return 1;
+        }
+        return getM(n,m-1)*n
+    }
+
+    console.log(getM(2,10));
+
+
+
+
+
+
+</script>
+</body>
+</html>

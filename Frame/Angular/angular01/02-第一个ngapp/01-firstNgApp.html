@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+    <style>
+        .c {
+            width: 200px;
+            height: 50px;
+            border: 1px dashed blue;
+        }
+    </style>
+</head>
+<!-- 这里使用 ng-app 表明让 ng 处理整个 body 标签 -->
+<body ng-app>
+    <!-- 在文本框中输入数据, 在另一个 文本标签中显示该数据 -->
+    <input type="text" ng-model="txt"><br>
+    <!--
+        在 页面中 有一个 input 标签
+        页面中一旦有了一个 ng-app 那么表明这就是一个 View, 这个被 ng-app 描述的标签就是 View
+        即在背后就会创建一个 对象. 这个对象在 ng 中记为 $rootScope. 这个对象就是 ViewModel
+
+        现在 界面中有一个 input 文本框. 如果希望这个文本框中的数据由 ViewModel 维护的话.
+        就需要在文本框中提供 ng-model 的属性, 同时命名. 
+        此时就表明 在背后的 ViewModel 中有一个同名的属性. 即 $rootScope 中有一个 txt 属性.
+
+        一旦界面中的数据发生变化, $rootScope 中的 txt 的值也会随之变化.
+    -->
+
+    
+    <div class="c">{{ txt }}</div>
+    <!--
+        首先使用了 语法 {{  }} , 该语法称为 插值语法. 是 ng 中的 独有语法. 相当于模板求值.
+        该 语法中应该放置 ng 表达式, 会将表达式的值 显示在 该区域.
+
+        如果该区域使用了 "名字"
+        1> 需要了解 该标签输入哪一个 ViewModel
+        2> 根据名字, 在显示的时候 就会到 对应的 ViewModel 中取该名字的数据( 如果数据不存在则不显示也不报错 )
+
+        此时又构成一次双向数据绑定.
+        
+    -->
+</body>
+<script>
+
+
+</script>
+</html>

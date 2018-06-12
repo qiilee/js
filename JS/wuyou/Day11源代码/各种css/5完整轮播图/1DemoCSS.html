@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen">
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+        </ul>
+        <ol>
+            <!-- 动态创建的小方块，添加在这里，样式已经给写好了-->
+        </ol>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+
+<script>
+    //1 根据图片的张数设置下面用于点击切换的小方块
+    //2 点击按钮设置按钮变色并且让图片进行切换(简单轮播图效果)
+    //3 移入移出显示隐藏盒子
+    //4 点击左右按钮进行运动
+    //5 无缝的滚动，需要克隆第一张图片放到最后
+    //6 自动播放
+
+
+    //1 获取元素
+    var box = document.getElementById("box");
+    //伪数组和数组的区别，就是伪数组没有数组方法
+    var screen = box.children[0];
+    var ul = screen.children[0];
+    var ol = screen.children[1];
+    var lisUl = ul.children;
+    //获取图片宽度
+    var imgWid = screen.offsetWidth;
+    //获取左右按钮
+    var arr = box.children[1];
+    var arrLeft = arr.children[0];
+    var arrRight = arr.children[1];
+
+    //2 根据lisUl中元素的个数设置ol中的li（创建）
+    for (var i = 0; i < lisUl.length; i++) {
+        //3 创建一个li
+        var li = document.createElement("li");
+        //4放入到ol中
+        ol.appendChild(li);
+        //5 设置li的内容
+        li.innerHTML = i + 1;
+    }
+
+    //6 设置点击按钮的效果
+    //先设置第一个ol中的li突出显示
+    var lisOl = ol.children;
+    lisOl[0].className = "current";
+
+    //7 点击事件
+    for (var i = 0; i < lisOl.length; i++) {
+        //11 设置索引值
+        lisOl[i].index = i;
+        lisOl[i].onclick = function () {
+            //20 如果当前显示的是假的第一张时，再次点击方块，先进行抽回
+            if (pic == lisUl.length - 1) {
+                ul.style.left = 0 + "px";
+            }
+
+
+            //8 点击按钮变色
+            for (var j = 0; j < lisOl.length; j++) {
+                lisOl[j].className = "";
+            }
+            //9 设置自己
+            this.className = "current";
+
+            //10 让ul根据点击的按钮进行运动
+            //根据当前按钮的索引
+            animate(ul, -this.index * imgWid);
+
+            //14 让左右按钮的pic值跟当前点击的小方块的索引同步
+            pic = this.index;
+        };
+    }
+
+    //11 点击左右按钮
+    //为了点击作用的时候出现无缝效果，需要先克隆第一张图片
+    //克隆节点无法克隆事件
+    var firstPic = lisUl[0].cloneNode(true);
+    ul.appendChild(firstPic);
+
+    //声明一个变量去控制滚过的图片张数
+    var pic = 0;
+    //12 点击右按钮
+    arrRight.onclick = function () {
+        //如果当前显示的是假的第一张，这时不能直接进行滚动了
+        //先抽回，然后在进行一次滚动
+        if (pic == lisUl.length - 1) {
+            ul.style.left = 0 + "px";
+            //设置pic的值归位
+            pic = 0;
+        }
+        //让pic的值改变
+        pic++;
+        //根据pic的值让ul滚动
+        animate(ul, -pic * imgWid);
+
+        //15 点击左右时，让下面的对应小方块进行变色
+        for (var i = 0; i < lisOl.length; i++) {
+            lisOl[i].className = "";
+        }
+        //当我们使用pic作为索引值的时候，pic的值会比索引值多一个
+        //当页面上显示假的第一张时，应该让lisOl[0]设置类名
+        //使用pic作为索引，让对应的小方块显示
+        if (pic == lisUl.length - 1) {
+            lisOl[0].className = "current";
+        } else {
+            lisOl[pic].className = "current";
+        }
+
+    };
+
+
+    //13 左按钮
+    arrLeft.onclick = function () {
+        //如果pic为0,就是显示着第一张的时候，如果再次点击左按钮。需要将ul抽回到假的第一张显示的位置
+        if (pic == 0) {
+            ul.style.left = -(ul.offsetWidth - imgWid) + "px";
+            pic = lisUl.length - 1;
+        }
+        //pic的值减小
+        pic--;
+        animate(ul, -pic * imgWid);
+
+        //设置变色
+        for (var i = 0; i < lisOl.length; i++) {
+            lisOl[i].className = "";
+        }
+        //不会真正的看着假的第一张
+//        console.log(pic);
+        lisOl[pic].className = "current";
+    };
+
+
+    //20无兼容性问题的防回流函数 自动滚动
+    var timer = null;
+    timer = setInterval(function () {
+        //触发了右按钮的点击事件
+        //click()
+        arrRight.click();
+        //注意，不要让运行的事件太短，不然会很happy的，哈哈;
+    }, 1500);
+
+    //移入移出效果
+    box.onmouseover = function () {
+        arr.style.display = "block";
+        //停止自动播放
+        clearInterval(timer);
+    };
+
+    box.onmouseout = function () {
+        arr.style.display = "none";
+        //将新开启的定时器id保存在timer内部
+        timer = setInterval(function () {
+            arrRight.click();
+        }, 1500);
+    };
+
+
+    function animate(tag, target) {
+        //将定时器设置在tag的自定义属性上
+        clearInterval(tag.timer);
+        //设置定时器，进行运动
+        tag.timer = setInterval(function () {
+            //获取初始位置
+            var leader = tag.offsetLeft;
+            //设置步长
+            var step = 9;
+            //根据leader和target的大小关系去设置step的正负
+            step = leader > target ? -step : step;
+            //检测什么时候可以进行运动
+            //有时候，不能正好运动到指定位置
+            //我们需要检测，当前位置距离目标位置的长度是否够一步
+            //如果足够走一步，随便走，
+            //如果不够，直接走到指定位置
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //套用公式，计算要运动到的新位置
+                leader = leader + step;
+                //将新位置设置给元素，进行运动
+                tag.style.left = leader + "px";
+            } else {
+                //直接走到指定位置
+                tag.style.left = target + "px";
+                //到达指定位置，清除定时器
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>删除节点</title>
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+  </head>
+  <body>
+       <ul id="city">
+	   	 <li id="bj" name="beijing">北京</li>
+		 <li id="sh" name="shanghai">上海</li>
+		 <li id="cq" name="chongqing">重庆</li>
+	   </ul>
+  </body>
+  
+  <script type="text/javascript">
+  
+     //删除<ul id="city"> 下<li id="bj" name="beijing">北京</li>这个节点</ul>
+	 var city = document.getElementById("city");
+	 var bj = document.getElementById("bj");
+	 city.removeChild(bj);
+	 
+  </script>
+</html>

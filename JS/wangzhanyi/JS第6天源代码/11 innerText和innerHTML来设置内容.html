@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    // 1. 先获得要操作的对象
+    var box = document.getElementById("box");
+//    box.innerText = "这是用JS的方式设置的内容";// 浏览器支持这种方式，但是，不推荐使用
+    // 设置内容的时候， 低版本的火狐浏览器 不支持innerText,
+//    box.textContent = "这是低版本的火狐支持的方式"; // 低版本的火狐浏览器支持，而IE8及之前的浏览器不支持
+//    box.innerHTML = "这是JS的方式设置的innerHTML"; // 是所有的浏览器都支持的方式
+//    box.innerHTML = "<ul><li>这是第1个li标签</li><li>这是第2个li标签</li><li>这是第3个li标签</li><li>这是第4个li标签</li></ul>";
+    box.innerText = "<ul><li>这是第1个li标签</li><li>这是第2个li标签</li><li>这是第3个li标签</li><li>这是第4个li标签</li></ul>"; // 如果内容里面有标签 的话，会将标签进行转义
+    //
+</script>
+</body>
+</html>

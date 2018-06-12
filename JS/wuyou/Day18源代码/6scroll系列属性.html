@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 5000px;
+            width: 2000px;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //jq中提供了scroll() 方法，解决了兼容性问题
+            //滚动事件  scroll
+            $(window).scroll(function () {
+                //获取页面卷曲的高度和宽度
+                console.log($(this).scrollLeft());
+                console.log($(this).scrollTop());
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

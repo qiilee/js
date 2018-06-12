@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数的四种调用模式
+
+    //1 普通函数调用模式（函数调用模式）
+    //在函数调用模式的情况下，函数内部的this指向是window
+    /*function fn(){
+        console.log(this)
+    }
+    fn();//window  */
+
+    //2 对象方法调用模式
+    // 对象方法调用模式内部的this就是.之前调用它的那个对象。
+/*    var obj = {
+        fn:function(){
+            console.log(this)
+            console.log(this===obj);
+        }
+    }
+    obj.fn();// obj*/
+
+
+    // 构造函数调用模式
+    // 构造函数内部的this就是新创建的那个实例
+    function Person(){
+//        debugger;
+        console.log(this);
+        this.name='jack';
+        console.log(this)
+        this.age=18
+        console.log(this)
+    }
+    var person = new Person();
+//    Person();
+    //通过new关键字的形式去调用的时候，构造函数内部的this是实例，
+    //如果函数不加new关键字进行调用，则内部的this指向window(普通函数调用模式)
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

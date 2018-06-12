@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<script>
+    // 1. 先获得要操作的对象
+    var inputs = document.getElementsByTagName("input"); // 伪数组
+    // 2. 给事件源注册事件
+
+    //    inputs[0].onclick = function (){
+    //        // 在自己变色之前先把所有的清一遍
+    ////            inputs[0].style.backgroundColor="";
+    ////            inputs[1].style.backgroundColor="";
+    ////            inputs[2].style.backgroundColor="";
+    //        for(var i=0;i<inputs.length;i++){ // 重复的做同一件事情
+    //            inputs[i].style.backgroundColor="";
+    //        }
+    //           this.style.backgroundColor = "red";
+    //    };
+    //    inputs[1].onclick = function (){
+    //        for(var i=0;i<inputs.length;i++){ // 重复的做同一件事情
+    //            inputs[i].style.backgroundColor="";
+    //        }
+    //        this.style.backgroundColor = "red";
+    //    };
+    //    inputs[2].onclick = function (){
+    //        for(var i=0;i<inputs.length;i++){ // 重复的做同一件事情
+    //            inputs[i].style.backgroundColor="";
+    //        }
+    //        this.style.backgroundColor = "red";
+    //    };
+    //    inputs[3].onclick = function (){
+    //        for(var i=0;i<inputs.length;i++){ // 重复的做同一件事情
+    //            inputs[i].style.backgroundColor="";
+    //        }
+    //        this.style.backgroundColor = "red";
+    //    }
+
+    for (var i = 0; i < inputs.length; i++) { // 这一个循环仅仅是用来给每一个input标签注册事件的
+        inputs[i].onclick = function () {
+            for (var i = 0; i < inputs.length; i++) { // 重复的做同一件事情 是用来清空每一个样式的
+                inputs[i].style.backgroundColor = "";
+            }
+            this.style.backgroundColor = "red"; // 设置当前自己标签的背景颜色
+        }
+    }
+</script>
+</body>
+</html>

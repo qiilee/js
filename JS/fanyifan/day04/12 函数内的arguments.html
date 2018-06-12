@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数内部的arguments
+
+    function fn(name,age){
+        console.log(arguments);//类数组
+    }
+    fn('jack',18)//会输出一个类数组：实参集合
+
+
+    // arguments.length 代表了实参的长度
+    // arguments.callee 代表了函数自身  帮助我们来实现递归
+    // arguments.callee 方法的适用场景：在有些匿名函数内部需要去调用匿名函数
+
+
+    function getM(n,m){
+        if(m===0){
+            return 1;
+        }
+        return arguments.callee(n,m-1)*n
+    }
+
+    console.log(getM(2,10));
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 111先创建日期对象的实例
+    var date = new Date();
+    console.log(date); // 其实内部也是调用了toString()方法，任何对象都有toString() 但null undefined没有toString()方法
+    console.log(date.toString()); //
+    console.log(date.toDateString());//Tue Nov 29 2016
+    console.log(date.toLocaleDateString());//2016/11/29
+    console.log(date.toTimeString());//14:45:44 GMT+0800 (中国标准时间)
+    console.log(date.toLocaleTimeString());//下午2:45:44
+
+
+    // 222日期转换
+    var date = new Date(2016,10,1);
+    console.log(date);
+    var date = new Date("2016-10-1");
+    console.log(date);
+    var date = new Date(1128096000000);
+    console.log(date);
+    var date = Date.parse("2005-10-32"); // 超出转换的范围或是传入的数据不对的话，是返回NaN
+//    // NaN是属于number类型,代表数字的一种不正常的状态，也就是说待转换的数据无法转换成对应的数字
+    console.log(date);
+
+
+    // 333获取时间的毫秒形式
+    var date = Date.now();// HTML5里面的方式
+    console.log(date);
+    var date = +new Date(); // 13位的毫秒数字，是从1970 1 1 0：00：00 000 到现在的时间
+    console.log(date);
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+    <div ng-controller="controllerA">
+        <input type="text" ng-model="txt"><br>
+        <input type="text" ng-model="txt">
+    </div>
+    <div ng-controller="controllerB">
+        <input type="text" ng-model="txt"><br>
+        <input type="text" ng-model="txt">
+    </div>
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        .controller( 'controllerA', function () {})
+        .controller( 'controllerB', function () {});
+    // 类比:
+    // 有一个对象 mainApp
+    // 该对象有两个属性: 
+    //  controllerA
+    //  controllerB
+    
+</script>
+</html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            border:1px solid #D9D9D9 ;
+            margin:100px auto;
+            position: relative;
+            width: 107px;
+        }
+        #x{
+            border:1px solid #D9D9D9 ;
+            width:14px;
+            height:14px;
+            float: right;
+            line-height: 14px;
+            color: #D6D6D6;
+            cursor:pointer;
+            position: absolute;
+            top:0;
+            left: -15px;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <img src="images/taobao.jpg" alt=""/>
+    <span id="x">×</span>
+</div>
+<script>
+    //考察：获得父节点
+
+    //thrice  myself::::
+    //var x= document.getElementById("x");
+    //var div = x.parentNode;
+    //x.onclick = function () {
+    //    div.style.display="none";
+    //}
+
+    //2bain
+    //var x= document.getElementById("x");
+    //var div = x.parentNode;
+    //x.onclick = function () {
+    //    div.style.display="none";
+    //}
+
+
+    //    //1遍
+    //    //获取要操作的对象
+    //    var x = document.getElementById("x");
+    //    var y = x.parentNode;
+    //    //
+    //    x.onclick = function () {
+    //        y.style.display = "none";
+    //    }
+
+
+
+
+ /*  teacher
+    // 1. 先获得操作的对象
+    var close = document.getElementById("x");
+    // 2. 给事件源注册事件
+    close.onclick = function (){
+        // 先得到当前对象的父标签节点
+        var box = close.parentNode;
+        box.style.display = "none";
+    }
+    */
+</script>
+</body>
+</html>

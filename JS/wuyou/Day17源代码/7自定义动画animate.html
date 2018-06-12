@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #fa {
+            width: 600px;
+            height: 400px;
+            border: 1px solid #000;
+            position: relative;
+
+        }
+
+        #box {
+            width: 10px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //animate() 可以自定义任意样式属性的值   颜色不能运动
+            //点击box，进行自定义运动
+            $("#box").click(function () {
+                //参数3 运动 匀速 "linear"  缓动 "swing" 默认是swing
+                $(this).animate({
+                    "width": "300px"
+                }, 1000, "swing", function () {
+                    console.log("我执行完毕了，呵呵");
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="fa">
+    <div id="box"></div>
+</div>
+</body>
+</html>

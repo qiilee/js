@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [];
+
+    // 1数组检测
+    //Array.isArray(arr);
+
+    function CreateChe(paizi, color) {
+        this.paizi = paizi;
+        this.color = color;
+    }
+
+
+    //var qq = new CreateChe("qq", "red");
+
+    //2 检测前一个操作数是否是后一个操作数的实例
+    //实例：通过某一个构造函数create创建的对象obj，我们称这个对象就是这个构造函数的实例
+    //console.log(qq instanceof CreateChe);
+    //console.log([] instanceof Array);
+    //
+    //console.log(typeof arr);
+
+
+    //3    最强大的检测方式，但是太长
+    var arr = [];
+    //    保存arr的类型检测结果
+    var result = Object.prototype.toString.call(arr);
+    console.log("呵呵"+result+"哈哈");
+
+</script>
+</body>
+</html>

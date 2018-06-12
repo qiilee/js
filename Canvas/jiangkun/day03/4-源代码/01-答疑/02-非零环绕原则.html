@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>答疑</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+
+
+    // 第一个矩形, 顺时针
+    ctx.moveTo( 50, 50 );
+    ctx.lineTo( 550, 50 );
+    ctx.lineTo( 550, 350 );
+    ctx.lineTo( 50, 350 );
+    ctx.closePath();
+
+
+    // 第二个矩形框, 顺时针
+    ctx.moveTo( 150, 150 );
+    ctx.lineTo( 450, 150 );
+    ctx.lineTo( 450, 250 );
+    ctx.lineTo( 150, 250 );
+    ctx.closePath();
+
+
+    // 第三个矩形, 逆时针
+
+    ctx.moveTo( 175, 175 );
+    ctx.lineTo( 175, 225 );
+    ctx.lineTo( 425, 225 );
+    ctx.lineTo( 425, 175 );
+    ctx.closePath();
+
+
+
+
+    // ctx.stroke();
+    ctx.fill();
+
+</script>
+</html>

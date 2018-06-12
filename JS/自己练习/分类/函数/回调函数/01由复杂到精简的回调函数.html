@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //    var a = 10;
+    //    var fun = function (a) {
+    //        return a + 10;
+    //    }
+    function f2(a, ff) {
+//       var b =  ff(a); //因为这是函数的调用，所以a是实参
+//        return b;
+        return ff(a);
+    }
+
+    //   var m =  f2(a,fun);
+    console.log(f2(10, function (a) {
+        return a + 10;
+    })); //将函数作为参数进行的传递
+</script>
+</body>
+</html>

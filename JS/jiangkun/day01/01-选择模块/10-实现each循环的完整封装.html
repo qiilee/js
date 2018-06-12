@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //判断对象是否为伪数组
+    function isArrayLike(obj) {
+        //判断是否是数组
+        if (Object.prototype.toString.call(obj) == '[object Array]') {
+            return true;
+        }
+//        判断是否为伪数组
+        var length = 'length' in obj && obj.length;
+        return typeof length === 'number' && length >= 0;
+    }
+
+
+    function each(arr, callback) {
+        if (isArrayLike(arr)) {
+            for (var i = 0; i < arr.length; i++) {
+                if (callback.call(arr[i], arr[i], i) === false) break;
+            }
+        } else {
+            for (var k in arr) {
+                if (callback.call(arr[k], arr[k], k) === false) break;
+            }
+        }
+        return arr;
+    }
+
+
+
+
+     each( [ 'a', 'b', 'c' ], function ( v, i ){
+         console.log( this ); //????疑问
+         console.log( i + ', ' + v );
+     });
+
+
+//    var o = {
+//        name: 'jim',
+//        age: 19,
+//        gender: '男'
+//    };
+//
+//    each(o, function (v, i) {
+//        console.log(this);
+//        console.log(i + ', ' + v);
+//    });
+
+
+
+
+
+
+
+    //jizi 1
+    //    function isArrayLike(obj) {
+    //        if (Object.prototype.toString.call(obj) == '[object Array]') {
+    //            return true;
+    //        }
+    //        var length = 'length' in obj && obj.length;
+    //        return typeof length === 'number' && length >= 0;
+    //    }
+
+    //ziji1
+    //    function each(arr,callback){
+    //        if(isArrayLike(arr)){
+    //            for (var i = 0; i < arr.length; i++) {
+    //               if(callback.call(arr[i],arr[i],i)===false)break;;
+    //            }
+    //        }else {
+    //            for(var k in arr){
+    //                if(callback.call(arr[k],arr[k],k)===false)break;
+    //            }
+    //        }
+    //        return arr;
+    //    }
+</script>
+</html>

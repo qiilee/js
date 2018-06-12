@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../angular-1.5.8/angular.js"></script>
+</head>
+<body>
+
+<div>
+    <input type="text" ng-model="txt"><br />
+
+    <input type="text" ng-model="txt"><br />
+</div>
+
+<hr>
+
+<div>
+    <input type="text" ng-model="txt"><br />
+
+    <input type="text" ng-model="txt"><br />
+</div>
+
+</body>
+<script>
+//总结：这种不推荐的方式，
+//      body不加ng-app
+//      div不加ng-controller
+//      但是input一定要加ng-model
+//      出现的错误  div[0]加了‘’
+
+
+
+//    angular.module( 'app1', [] );
+//
+//    angular.module( 'app2', [] );
+//
+//    // 就是开机绑定, ng 运行起来的时候 手动绑定模块
+//    var divs = document.querySelectorAll( 'div' );
+//
+//
+//    angular.bootstrap( divs[ 0 ], [ 'app1' ] );
+//
+//    angular.bootstrap( divs[ 1 ], [ 'app2' ] );
+
+
+//1
+//    angular.module('app1',[]);
+//    angular.module('app2',[]);
+//    var divs = document.querySelectorAll('div');
+//    angular.bootstrap(divs[0],['app1']);
+//    angular.bootstrap(divs[1],['app2']);
+
+
+
+
+//2
+      angular.module('app1',[]);
+      angular.module('app2',[]);
+    var divs = document.querySelectorAll('div');
+    angular.bootstrap(divs[0],['app1']);
+    angular.bootstrap(divs[1],['app2']);
+</script>
+</html>

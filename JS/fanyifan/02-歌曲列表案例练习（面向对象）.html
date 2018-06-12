@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.container {
+			margin: 0 auto;
+			width: 850px;
+			border: 1px solid #dad8d8;
+
+			/*height: 100%;*/
+		}
+		.songslist-main, .songslist-header {
+			position: relative;
+			width: 100%;
+			text-align: center;
+		}
+		.songslist-header {
+			height: 30px;
+			border-bottom: 1px solid #dad8d8;
+			line-height: 30px;
+			background-color: #def;
+		}
+
+		.songslist-name {
+			position: absolute;
+			width: 40%;
+			height: 100%;
+			border-right: 1px solid #dad8d8;
+		}
+		.songslist-singer {
+			position: absolute;
+			left: 40%;
+			width: 50%;
+			height: 100%;
+			border-right: 1px solid #dad8d8;
+		}
+		.songslist-option {
+			position: absolute;
+			left: 90%;
+			width: 10%;
+			height: 100%;
+		}
+
+		.songslist-main {
+			background-color: #fff;
+			height: 100%;
+		}
+		.songslist-main .songslist-name{
+			height: 50px;
+			line-height: 50px;
+			border: 0;
+		}
+		.songslist-main .songslist-singer{
+			height: 50px;
+			line-height: 50px;
+			border: 0;
+		}
+		.songslist-single {
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="songslist-op">
+			<label for="txtAddSName">歌曲名:</label><input type="text" id="txtAddSName" />
+			<label for="txtAddSinger">歌手:</label><input type="text" id="txtAddSinger" />
+			<button id="btnAdd">添加</button>
+			<button id="btnRemove">删除</button>
+		</div>
+
+		<div class="songslist-header">
+			<div class="songslist-name">歌曲名称</div>
+			<div class="songslist-singer">歌手</div>
+			<div class="songslist-option">操作</div>
+		</div>
+
+		<div class="songslist-main" id="c">
+			<!-- <div class="songslist-single">
+				<div class="songslist-name">歌曲名称</div>
+				<div class="songslist-singer">歌手</div>
+			</div>
+			
+			<div class="songslist-single">
+				<div class="songslist-name">歌曲名称</div>
+				<div class="songslist-singer">歌手</div>
+			</div>
+			
+			<div class="songslist-single">
+				<div class="songslist-name">歌曲名称</div>
+				<div class="songslist-singer">歌手</div>
+			</div>
+			
+			<div class="songslist-single">
+				<div class="songslist-name">歌曲名称</div>
+				<div class="songslist-singer">歌手</div>
+			</div> -->
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		// 使用面向对象的方式来组织代码，是怎么组织的？
+		// 1 提供一个构造函数，创建对象并初始
+		// 2 把一些公用的方法放到原型中去
+
+		// function SongsManager() {
+
+		// }
+		// SongsManager.prototype = {};
+
+
+		// 最终使用创建对象的时候可以传入参数,也可以不传入参数
+		// 1 如果传入了参数,需要把当前参数中的内容添加到对象
+		// 		放到对象中的list属性中去, 作用: 存储数据(数据源)
+		// 2 
+
+
+		// 使用
+		// var s = new SongsManager();
+		// 添加数据
+		// s.addSong()
+
+		// 查询数据
+		// s.getSong();
+
+		// 删除数据
+		// s.removeSong();
+	</script>
+
+	<script type="text/javascript">
+		// 创建歌曲列表管理的构造函数
+		/*function SongsManager(config) {
+			// 构造函数中有可能具有很多的属性, 此时,如果把
+			// 所有的初始化操作都放到 构造函数中, 此时,会导致构造函数中的结构很
+			// 乱. 就可以给原型中提供一个 初始化的方法( _init, 下划线的意思是说明这个方法是私有的 )
+			// init中: 包括所有的属性的初始化(赋值), 最基本的调用(渲染数据)
+
+
+			// 将传入的歌曲列表 储存起来
+			// this.list = config.list || [];
+
+			// 提供一个容器(DOM对象), 目的是在创建对象的时候,
+			// 将传入的数据,直接展示给用户
+			// this.container = document.getElementById( config.id );
+
+			// this.render();
+
+			// init 初始化
+			this.init(config);
+		}*/
+
+		function SongsManager(config) {
+			this._init(config);
+		}
+
+		SongsManager.prototype = {
+			// 处理 constructor
+			constructor: SongsManager,
+
+			// 维护一个对象,这个对象中提供一些操作配置
+			op: {
+				add: 0,
+				remove: 1
+			},
+
+			_init: function(config) {
+				// 初始化两个属性
+				this.list = config.list || [];
+				this.container = document.getElementById( config.id );
+
+				// 初始化渲染数据
+				this.render();
+			},
+
+			// 1 添加歌曲的方法
+			// 添加歌曲的时候有两种思路:
+			// 1 获取到数据, 直接appendChild到 容器中
+			// 2 将获取到的数据添加到list中, 然后再调用render方法
+ 			addSong: function addSong(name, singer) {
+				this.list.push({ sName: name, sSinger: singer });
+
+				this.render( this.op["add"] );
+			},
+			// 2 查询歌手的方法
+			getSinger: function(name) {
+				var singer = "找不到该歌曲信息！",
+					list = this.list;
+
+				for(var i = 0; i < list.length; i++) {
+					if(list[i].sName === name) {
+						singer = list[i].sSinger;
+						break;
+					}
+				}
+
+				return singer;
+			},
+			// 3 删除歌曲的方法
+			removeSong: function(name) {
+				var list = this.list;
+
+				for(var i = 0; i < list.length; i++) {
+					if(list[i].sName === name) {
+						list.splice(i, 1);
+						break;
+					}
+				}
+
+				this.render( this.op["remove"]);
+			},
+
+			// 这个函数的作用: 将list中的数据 渲染到页面中去( 放到页面中展示出来 )
+			render: function(mark) {
+				/*// 如果是为了提高效率, 就每次单独处理某一个数据
+				if(mark === 0) {
+					// 添加
+					// 通过appendChild 来渲染数据
+					// this.container.appendChild();
+				} else if(mark === 1) {
+					// 删除
+					// 只需要将页面中对象的元素隐藏掉或者删除该元素就可以
+				}*/
+
+				// 拿到list
+				// this.list
+				var list = this.list,
+					listLen = list.length,
+					i = 0;
+
+				// <div class="songslist-single">
+				// 	<div class="songslist-name">歌曲名称</div>
+				// 	<div class="songslist-singer">歌手</div>
+				// </div>
+				// 
+				// 字符串拼接:
+				// 1 += 拼接字符串 (字符串不可变)
+				// 2 arr.push  -> arr.join("");
+				var htmlArr = [];
+				for(; i < listLen; i++) {
+					// 将数据源list中的每一项数据 展示到页面中
+					// 1 拼接展示数据的html结构
+					// 2 将拼接好的数据放到 container 容器中去
+					htmlArr.push('<div class="songslist-single">');
+					htmlArr.push('<div class="songslist-name">'+ list[i].sName +'</div>');
+					htmlArr.push('<div class="songslist-singer">'+ list[i].sSinger +'</div>');
+					htmlArr.push('</div>');
+				}
+
+				// 将数组转化为字符串
+				this.container.innerHTML = htmlArr.join("");
+			}
+		};
+
+
+		var args = {
+			list: [
+				{ id: 0, sName: "痴心绝对", sSinger: "李圣杰"},
+				{ id: 1, sName: "南山南",  sSinger: "马頔"}
+			],
+			id: "c"
+		};
+		var s = new SongsManager(args);
+
+		// 添加歌曲
+		document.querySelector("#btnAdd").onclick = function() {
+			var sName = document.querySelector("#txtAddSName").value;
+			var singer = document.querySelector("#txtAddSinger").value;
+
+			if(sName === "" || singer === "") {
+				return;
+			}
+			s.addSong(sName, singer);
+		};
+
+		// 删除歌曲
+		document.querySelector("#btnRemove").onclick = function() {
+			var sName = document.querySelector("#txtAddSName").value;
+
+			if(sName === "") {
+				return;
+			}
+			s.removeSong(sName);
+		};
+
+		// 添加歌曲
+		// s.addSong("如果没有你", "莫文蔚");
+		// 查询歌手
+		// var singer = s.getSinger("bjbj");
+		// console.log(singer);
+		// 删除歌曲
+		// s.removeSong("痴心绝对");
+		// console.log(s.list);
+	</script>
+</body>
+</html>

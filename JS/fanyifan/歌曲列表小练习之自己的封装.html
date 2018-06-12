@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 创建一个歌曲列表，要有这个歌曲列表里有一些歌曲的信息，音乐的歌曲名，
+    //音乐的歌手名字
+
+    var songs = [
+        {
+            sName:'最炫民族风',
+            sSinger:'凤凰传奇'
+        },
+        {
+            sName:'捉泥鳅',
+            sSinger:'滑树森'
+       },
+        {
+            sName:'捉泥鳅',
+            sSinger:'卓依婷'
+        }
+    ]
+
+    // 歌曲列表要能够实现一些功能
+    // 1 根据歌曲名获取歌手信息
+    // 2 根据歌名删除相关的歌曲
+    // 3 为歌曲列表添加歌曲
+
+
+    // 1 根据歌曲名获取歌手信息
+    /*
+    * 思路分析
+    * 1 循环遍历歌曲列表
+    * 2 判断一下要查询的歌曲是否存在
+    * 3 如果有这首歌，就把这首歌的歌手信息存储在一个数组当中。
+    * */
+// var singer= []
+    //    for(var i = 0;i<songs.length;i++){
+    //        //* 2 判断一下要查询的歌曲是否存在
+    //        if('捉泥鳅'===songs[i].sName){
+    //            singer.push(songs[i].sSinger)
+    //        }
+    //    }
+//封装的查询方法
+//    function query(tar,obj){
+//        var arr= [];
+//        for(var i = 0;i<obj.length;i++){
+//            //* 2 判断一下要查询的歌曲是否存在
+//            if(tar===obj[i].sName){
+//                arr.push(songs[i].sSinger);
+//            }
+//        }
+//        return arr;
+//    }
+//    console.log(query("捉泥鳅",songs));
+
+/*    console.log(singer)*/
+
+
+    // 2 根据歌名删除相关的歌曲
+//    for(var i= 0;i<songs.length;i++){
+//        //* 2 判断一下要查询的歌曲是否存在
+//        if('捉泥鳅'===songs[i].sName){
+//            songs.splice(i,1);
+//            i--;
+//      /*      delete songs[i];*/
+//        }
+//    }
+//    console.log(songs)
+
+   //封装的删除方法
+function dele(tar,songs){
+    for(var i= 0;i<songs.length;i++){
+        if(tar===songs[i].sName){
+            songs.splice(i,1);
+            i--;
+        }
+    }
+}
+    dele("捉泥鳅",songs);
+    console.log(songs);
+    //3 为歌曲列表添加歌曲
+
+
+//    songs.push({
+//        sName:'十面埋伏',
+//        sSinger:'周杰伦'
+//    })
+//    console.log(songs)
+
+
+ //封装的添加功能
+//    function add(songs,obj){
+//        songs.push(obj)
+//    }
+
+
+
+</script>
+</body>
+</html>

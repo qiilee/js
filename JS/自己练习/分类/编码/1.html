@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+
+    var url = "http://www.baidu.com?name=张&password=12//3";
+
+    console.log(encodeURI(url));
+    //http://www.baidu.com?name=%E5%BC%A0&password=123
+    console.log(encodeURIComponent(url));
+    //http%3A%2F%2Fwww.baidu.com%3Fname%3Dzhangsan%26password%3D123
+    console.log(escape(url));
+    //http%3A//www.baidu.com%3Fname%3Dzhangsan%26password%3D123
+
+
+</script>
+</body>
+</html>

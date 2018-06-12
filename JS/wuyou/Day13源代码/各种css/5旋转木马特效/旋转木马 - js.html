@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+    <script type="text/javascript" src="js/animate.js"></script>
+    <!--<script type="text/javascript" src="js/my.js"></script>-->
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+        <ul>
+            <li><a href="#"><img src="images/slidepic1.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic2.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic3.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic4.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slidepic5.jpg" alt=""/></a></li>
+        </ul>
+        <div class="arrow" id="arrow">
+            <a href="javascript:;" class="prev" id="arrLeft"></a>
+            <a href="javascript:;" class="next" id="arrRight"></a>
+        </div>
+    </div>
+</div>
+
+<script src="../animate.js"></script>
+<script>
+    var config = [
+        {
+            width: 400,
+            top: 20,
+            left: 50,
+            opacity: 0.2,
+            zIndex: 2
+        },//0
+        {
+            width: 600,
+            top: 70,
+            left: 0,
+            opacity: 0.8,
+            zIndex: 3
+        },//1
+        {
+            width: 800,
+            top: 100,
+            left: 200,
+            opacity: 1,
+            zIndex: 4
+        },//2
+        {
+            width: 600,
+            top: 70,
+            left: 600,
+            opacity: 0.8,
+            zIndex: 3
+        },//3
+        {
+            width: 400,
+            top: 20,
+            left: 750,
+            opacity: 0.2,
+            zIndex: 2
+        }//4
+    ];//其实就是一个配置单 规定了每张图片的大小位置层级透明度
+
+    var slide = document.getElementById("slide");
+    var ul = slide.children[0];
+    var lis = ul.children;
+    var arrow = document.getElementById("arrow");
+    var arrRight = arrow.children[1];
+    var arrLeft = arrow.children[0];
+    var wrap = document.getElementById("wrap");
+
+    //移入移出盒子显示arrow
+    wrap.onmouseover = function () {
+        animate(arrow, {"opacity": 1});
+    };
+
+    wrap.onmouseout = function () {
+        animate(arrow, {"opacity": 0});
+    };
+
+    change();
+
+    //通过变量去控制当前点击是否可以执行
+    var flag = true;
+
+    //点击右按钮
+    arrRight.onclick = function () {
+        if (flag) {
+            //点击以后首先设置不能再点了
+            flag = false;
+            //从config前面删除一个元素
+            var temp = config.shift();
+            //将删除的第一项放到最后
+            config.push(temp);
+            //配置单改变，我们需要让所有的li走到新的位置上
+            change();
+        }
+    };
+
+    //点击左侧
+    arrLeft.onclick = function () {
+        if (flag) {
+            flag = false;
+            var temp = config.pop();
+            config.unshift(temp);
+            //根据新的配置单让图片归位
+            change();
+        }
+    };
+
+
+    //这个函数是让每一个li运动到config中对应的位置
+    function change() {
+        //让每一个li运动到指定位置
+        for (var i = 0; i < lis.length; i++) {
+            //运动到哪
+            animate(lis[i], config[i], function () {
+                //是在运动完毕后触发
+                flag = true;
+            });
+        }
+    }
+</script>
+</body>
+</html>

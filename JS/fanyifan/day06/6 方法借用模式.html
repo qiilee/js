@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //方法借用模式
+    // 我们说this是谁，那么这个函数内部的this就是谁。
+
+    /*var obj1 = {
+        name:'xxx'
+    }
+    var obj2 = {
+        name:'yyy'
+    }
+    function fn(name,age){
+        console.log(this)
+        console.log(obj1===this)
+        console.log(obj2===this)
+        console.log(name,age)
+    }*/
+
+    // call方法的第一个参数是我们指定的this指向，之后的参数一个一个的传入call方法
+  /*  fn.call(obj1,'jack',18);// obj1  'jack' 18
+    fn.call(obj2,'jack',18);// obj2  'jack' 18*/
+    // call方法会手动的制定一个this指向。
+
+
+
+
+    /*var arr = [1,2,3];
+    console.log(arr+'');
+    delete Array.prototype.toString;
+    //删除掉数组原型上面的方法是为了让arr能够调用到Object.prototype
+    //上面的toString方法。
+    console.log(arr+'')*/
+
+    // 利用方法借用模式把Object.prototype.toString内部的this指向为一个数组 。
+    var arr = [1,2,3];
+    var ret = Object.prototype.toString.call(arr);
+    /*console.log(ret);// '[object Array]'*/
+
+    //可以通过方法借用来判断一个数据的数据类型。
+    function isArray(obj){
+        return Object.prototype.toString.call(obj)==='[object Array]'
+    }
+
+    /*console.log(isArray(arr));*/
+
+    //判断一个值是否是Date数据类型
+    function isDate(obj){
+        return Object.prototype.toString.call(obj)==='[object Date]'
+    }
+    var date = new Date();
+    /*console.log(isDate(arr));//false
+    console.log(isDate(date));//true*/
+    // 判断一个值是否是布尔数据类型
+    var tr = new Boolean();
+    function isBoolean(obj){
+        return Object.prototype.toString.call(obj)==='[object Boolean]'
+    }
+    /*console.log(isBoolean(tr))//true*/
+
+
+
+
+    // 2.apply方法也可被用作方法借用
+    // 也是改变this指向，只不过传参的形式转换为用数组进行传参
+    // call方法和apply方法的作用都是改变this指向，只不过是传递参数的方式有所不同。
+    /*var obj = {
+        xxx:1
+    }
+    function fn(name,age){
+        console.log(name,age);//‘jack',18
+        console.log(this)// obj
+    }
+    fn.apply(obj,['jack',18]);*/
+
+
+
+    //利用bind方法改变this向
+    //作用：对函数做预处理，改变this指向，并且传入部分参数。
+    //兼容性问题：低版本的ie浏览器不支持这个方法。
+
+    var obj = {
+        xxx:1
+    }
+    function fn(name,age){
+        console.log(name,age);//‘jack',18
+        console.log(this)// obj
+    }
+    //使用bind方法的时候函数并不会执行，只是会对这个函数做预处理，可以提前改变this指向，并且传入部分参数。
+    //bind方法返回一个新的函数。这个新的函数保存了this指向，并且保留了部分参数。
+    var f = fn.bind(obj,'jack');
+    //当返回的新的方法执行的时候，我们的旧函数fn才会去执行，在新函数执行的时候，可以给新函数传入剩余的参数。
+    f(18)// jack 18  obj
+    f()// jack undefined  obj
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

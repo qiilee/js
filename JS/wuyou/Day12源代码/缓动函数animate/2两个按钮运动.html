@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">点击跑到400</button>
+<button id="btn2">点击跑到600</button>
+<div id="box"></div>
+
+<script>
+    //获取元素
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box = document.getElementById("box");
+    var timer = null;
+    //添加点击事件
+    btn1.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //取出盒子的当前位置
+            //offsetLeft属性在取值的时候会四舍五入
+            var leader = box.offsetLeft;
+            //缓动公式的一部分是更改step的值
+            var step = (400 - leader ) / 10;
+            //由于offsetLeft在取值的时候会四舍五入，我们的step如果比较小，会造成无法运动的问题
+            //根据步数的正负，更改取整方式
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //缓动公式
+            leader = leader + step;
+            //设置给box的left值
+            box.style.left = leader + "px";
+            //检测是否走到了指定位置
+            if (leader == 400) {
+                clearInterval(timer);
+            }
+        }, 17);
+    };
+
+
+    //添加点击事件
+    btn2.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //offsetLeft属性在取值的时候会四舍五入
+            //取出盒子的当前位置
+            var leader = box.offsetLeft;
+            //缓动公式的一部分是更改step的值
+            var step = (600 - leader ) / 10;
+            //由于offsetLeft在取值的时候会四舍五入，我们的step如果比较小，会造成无法运动的问题
+            //我们采取取整的方式
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //匀速运动公式
+            //leader = leader + step;
+            //缓动公式
+            leader = leader + step;
+            //设置给box的left值
+            box.style.left = leader + "px";
+            //检测是否走到了指定位置
+            if (leader == 600) {
+                clearInterval(timer);
+            }
+        }, 17);
+    };
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            /*border: 1px dashed red;*/
+        }
+    </style>
+</head>
+<body>
+    <canvas></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+
+    // 绘制一个小的矩形在 ( 0, 0 )
+    ctx.strokeRect( 0, 0, 10, 10 );
+
+    // 在 紧贴 x 轴的位置, 绘制 50, 100, 150 的矩形
+    ctx.strokeRect( 50, 0, 10, 10 );
+    ctx.strokeRect( 100, 0, 10, 10 );
+    ctx.strokeRect( 150, 0, 10, 10 );
+
+    // 绘制 200, 250, 300
+    ctx.strokeRect( 200, 0, 10, 10 );
+    ctx.strokeRect( 250, 0, 10, 10 );
+    ctx.strokeRect( 300, 0, 10, 10 );
+
+
+    // 紧贴 y 轴是否也可以绘制这些矩形呢?
+    
+</script>
+</html>

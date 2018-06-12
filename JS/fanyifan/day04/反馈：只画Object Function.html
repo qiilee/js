@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+/*    Object
+    Function */
+
+  console.log(typeof Function.prototype)
+
+
+    // Function.prototype 是一个比较特殊的类型，它的类型是函数，但是它的原型对象
+    // 是Object.prototype
+
+    Function.prototype();
+    // Function.prototype
+    // 所有的原型对象都是对象，他们都是对象类型的，因此都能够找到自己的原型对象
+    // Object.prototype
+
+    console.log(Function.prototype.__proto__===Object.prototype);//true
+
+
+</script>
+</body>
+</html>

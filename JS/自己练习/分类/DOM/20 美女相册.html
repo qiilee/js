@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<a href="images/1.jpg" id="a1" onclick="turn(this);return false;"><img src="images/1-small.jpg" alt=""/></a>
+<a href="images/2.jpg" id="a2" onclick="turn(this);return false;"><img src="images/2-small.jpg" alt=""/></a>
+<br/>
+<img src="images/placeholder.png" alt="" width="400" id="img"/>
+<br/>
+<script>
+
+    //return false用来阻止a标签的默认跳转行为
+
+    // 要求，就是当我们单击a标签的时候，要让a标签的href里面的图片路径，添加到下面的image的src属性里面
+    // 1. 获得要操作的对象
+//    var img = document.getElementById("img");
+//        function turn1(){
+//            img.src= a1.href;
+//        }
+//        function turn2(){
+//            img.src = a2.href;
+//        }
+//    下面的是精简的写法
+    function turn(link) {
+        img.src = link.href;
+    }
+</script>
+</body>
+</html>

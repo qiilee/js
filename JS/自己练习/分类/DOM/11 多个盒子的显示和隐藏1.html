@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="隐藏" id="but1"/>
+<input type="button" value="显示" id="but2"/>
+<p style="clear: both"></p>
+<div>111</div>
+<div>222</div>
+<div>333</div>
+<div>444</div>
+<div>555</div>
+<div>666</div>
+
+
+<script>
+    // 1.一个按钮按钮6个盒子隐藏  另一个按钮按钮6个盒子的显示
+    // 2. 一个按钮控制所有盒子的显示和隐藏
+
+    var but1 = document.getElementById("but1");
+    var but2 = document.getElementById("but2");
+    var divs = document.getElementsByTagName("div");
+
+
+    but1.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].className = "hidden";
+        }
+    };
+    but2.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].className = "show";
+        }
+    };
+
+
+</script>
+</body>
+</html>

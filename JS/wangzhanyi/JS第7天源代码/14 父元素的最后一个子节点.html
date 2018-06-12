@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li>这是第1个li标签节点</li>
+    <li>这是第2个li标签节点</li>
+    <li id="li3">这是第3个li标签节点</li>
+    <li>这是第4个li标签节点</li>
+</ul>
+<script>
+    // 1. 先获得要操作的对象
+    var list = document.getElementById("list");
+//    var node = list.lastChild;
+//    console.log(node.nodeType);
+//    console.log(node);
+
+//    var node = list.lastElementChild;
+//    console.log(node.nodeType);
+//    console.log(node);
+
+
+
+    var node = getLastElement(list);
+    console.log(node);
+    console.log(node.nodeType);
+
+    /**
+     * 封装了一个兼容版本的获取父元素的最后一个子标签节点函数
+     * @param element
+     * @returns {*}
+     */
+    function getLastElement(element){
+        // 能力检测
+        if(element.lastElementChild){
+            return element.lastElementChild;
+        }else {
+            var ele = element.lastChild;
+            while(ele&&ele.nodeType!=1){
+               ele= ele.previousSibling;
+            }
+            return ele;
+        }
+    }
+</script>
+</body>
+</html>

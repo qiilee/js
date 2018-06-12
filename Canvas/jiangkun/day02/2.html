@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+<canvas width="400" height="400"></canvas>
+<script>
+    var cas = document.querySelector("canvas");
+    //    console.log(cas);
+    var ctx = cas.getContext("2d");
+//    ctx.strokeStyle = "white";
+//    ctx.lineWidth = 5;
+    //第一个矩形  顺时针
+    ctx.moveTo(100,100);
+    ctx.lineTo(300,100);
+    ctx.lineTo(300,300);
+    ctx.lineTo(100,300);
+    ctx.closePath();
+
+    //第二个矩形  顺时针
+    ctx.moveTo(110,110);
+    ctx.lineTo(290,110);
+    ctx.lineTo(290,290);
+    ctx.lineTo(110,290);
+    ctx.closePath();
+
+    //第三个矩形  逆时针
+    ctx.moveTo(120,120);
+    ctx.lineTo(120,280);
+    ctx.lineTo(280,280);
+    ctx.lineTo(280,120);
+    ctx.closePath();
+
+    //第四个矩形  逆时针
+    ctx.moveTo(130,130);
+    ctx.lineTo(130,270);
+    ctx.lineTo(270,270);
+    ctx.lineTo(270,130);
+    ctx.closePath();
+    ctx.fill();
+</script>
+</body>
+</html>

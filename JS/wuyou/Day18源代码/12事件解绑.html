@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+
+            //事件委托:  参数1 事件类型   参数2 选择器  参数3 事件处理程序
+            //事件委托的原理：事件冒泡;
+            $("#box").on("click", "p,span", function () {
+                console.log("我是由box内部的p标签执行的事件");
+            });
+
+            $("#box").on("click", function () {
+                console.log("我是自己的事件内容");
+            });
+            $("#box").on("mouseenter", function () {
+                console.log("我是自己的事件内容");
+            });
+
+            //解绑事件使用off方法
+            $("#btn").click(function () {
+                //解绑具体的某一个事件
+//                $("#box").off("mouseenter");
+                //解绑多个事件
+                //$("#box").off("mouseenter click");
+                //解绑委托事件
+//                $("#box").off("click","**");
+                //解绑所有事件,各种各样
+                $("#box").off();
+
+            });
+
+        });
+    </script>
+</head>
+<body>
+<button id="btn">解绑事件</button>
+<div id="box">
+    <p>我是一段文本</p>
+</div>
+</body>
+</html>

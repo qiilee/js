@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+   <canvas width="400" height="400"></canvas>
+</body>
+<script>
+ //  总结：平移-坐标轴-画矩形-旋转-坐标轴-画矩形
+ // 目标：中间的矩形旋转45度
+    // 开始的坐标轴先平移再描线
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    ctx.setLineDash([5]);
+    ctx.beginPath();
+    ctx.strokeStyle = "green";
+    // 平移
+    ctx.translate(200,200);
+// 坐标轴
+    ctx.moveTo(0,0);
+    ctx.lineTo(400,0);
+    ctx.moveTo(0,0);
+    ctx.lineTo( 0, 400 );
+    ctx.stroke();
+
+// 画矩形
+    ctx.beginPath();
+    ctx.setLineDash([10,5]);
+    ctx.strokeRect(-50,-50,100,100);
+
+// 旋转
+    ctx.beginPath();
+    ctx.setLineDash([]);
+    ctx.rotate(Math.PI/4);
+
+    // 坐标轴
+    ctx.strokeStyle = "red";
+    ctx.moveTo(0,0);
+    ctx.lineTo(400,0);
+    ctx.moveTo(0,0);
+    ctx.lineTo( 0, 400 );
+    ctx.stroke();
+
+// 画矩形
+    ctx.beginPath();
+    ctx.setLineDash([]);
+    ctx.strokeRect(-50,-50,100,100);
+</script>
+</html>

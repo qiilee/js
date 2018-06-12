@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 绘制红色矩形
+    ctx.fillStyle = 'red';
+    ctx.fillRect( 100, 100, 200, 100 );
+
+    ctx.beginPath();
+    ctx.fillStyle = 'blue';
+    ctx.fillRect( 200, 150, 200, 200 );
+
+    ctx.beginPath();
+    ctx.fillStyle = 'lightgreen';
+    ctx.fillRect( 225, 125, 100, 80 );
+
+
+    // 擦除
+    // ( 210, 120 )
+    // 擦除细条状
+    // width 50
+    // height 150
+    ctx.clearRect( 210, 120, 50, 150 );
+
+</script>
+</html>

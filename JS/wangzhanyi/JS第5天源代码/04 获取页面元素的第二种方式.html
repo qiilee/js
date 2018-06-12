@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>这是第1个li标签</li>
+    <li>这是第2个li标签</li>
+    <li>这是第3个li标签</li>
+    <li>这是第4个li标签</li>
+    <li>这是第5个li标签</li>
+    <li>这是第6个li标签</li>
+</ul>
+<p class="p1">这是一个p标签</p>
+<script>
+    //如果页面中有多个标签元素，想一次性全部获取的话，再使用id就比较麻烦了
+//   var lis =  document.getElementsByTagName("li");//tag是标签的意思
+//    console.log(lis); // 获取的是一组数据，是一个数据的数组形式
+
+   var p= document.getElementsByTagName("p");//页面中即使只有一个标签，但是你只要是使用document.getElementsByTagName的方式获得的页面元素，仍然是一个标签数组的形式
+    console.log(p);
+//    console.log(p.className);
+    console.log(p[0].className);
+</script>
+</body>
+</html>

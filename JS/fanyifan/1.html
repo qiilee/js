@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1、
+//    var obj1 = {
+//        fn:function(){}
+//    };
+//    var obj2 = {
+//        fn:function(){}
+//    }
+//    console.log(obj1.fn===obj2.fn)//false
+//    obj1.fn=obj2.fn
+//    console.log(obj1.fn===obj2.fn)//true
+
+
+
+//2、
+    function Fn(){};
+    var f1 = new Fn();
+    console.log(f1 instanceof Fn);//true
+    //把Fn的原型改变，就为false
+    Fn.prototype={};
+    console.log(f1 instanceof Fn);//false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

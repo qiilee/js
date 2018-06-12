@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 400px;
+            height: 400px;
+            background-color: #a687ff;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #ecab6d;
+        }
+
+        #box4 {
+            width: 100px;
+            height: 100px;
+            background-color: #404bec;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+
+<script>
+    //总结：想得到哪个元素真正触发的事件
+    //    e.target-----------------不支持ie低版本浏览器
+    //    window.event.srcElement---ie自己支持
+    //    this是不可以的！！
+
+
+
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+    //给每个元素添加点击事件
+
+    box1.onclick = function (e) {
+        //在事件内部this代表了事件源
+        //this只能表示当前这个事件是注册给了哪一个元素
+//        console.log(this);
+
+        //想要获取是哪个元素真正触发的事件
+        //target属性不支持ie低版本浏览器
+//        console.log(e.target);
+
+        //ie自己提供了一个属性
+        //console.log(window.event.srcElement);
+
+    };
+//
+//    box2.onclick = function () {
+//        console.log(this);
+//        console.log("box2");
+//    };
+//
+//    box3.onclick = function () {
+////        console.log(this);
+////        console.log("box3");
+//    };
+
+
+</script>
+</body>
+</html>

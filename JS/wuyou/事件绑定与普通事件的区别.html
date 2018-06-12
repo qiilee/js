@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var btn = document.getElementById("box");
+    // 普通事件不支持添加多个事件，最下面的事件会覆盖上面的，只会alert（2）
+    //    btn.onclick = function () {
+    //        alert(1);
+    //    }
+    //    btn.onclick = function () {
+    //        alert(2);
+    //    }
+
+    // 事件绑定支持添加多个事件
+    btn.addEventListener("click", function () {
+        alert(1);
+    });
+    btn.addEventListener("click", function () {
+        alert(2);
+    });
+</script>
+</body>
+</html>

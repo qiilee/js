@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xml 的数据交互</title>
+    <style>
+        table {
+            width: 600px;
+            border-collapse: collapse;
+        }
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+
+</head>
+<body>
+<input type="button" value="查询书籍">
+<table>
+        <tr>
+            <td>书名</td>
+            <td>作者</td>
+            <td>价格</td>
+            <td>出版社</td>
+        </tr>
+
+
+</table>
+<script>
+        document.querySelector("input").onclick=function(){
+            var xhr=new XMLHttpRequest();
+            xhr.open("POST","02xml.php");
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send(null);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                      //var data=xhr.responseText;
+                      //alert(data);
+                        //xml 跟html 长得有点像
+                        //解析html 是怎么来解析，我要得到html 里面的某个元素里面的内容怎么解析
+                        //dom 解析.
+                        var data=xhr.responseXML;
+//                       console.log(data);
+
+                        // console.log(data);
+                        var books=data.getElementsByTagName("book");
+
+                        for(var i=0;i<books.length;i++){
+                            //console.log("======");
+                           /* <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>*/
+                              var tr=document.createElement("tr");
+                              var td1=document.createElement("td");
+                              var td2=document.createElement("td");
+                              var td3=document.createElement("td");
+                              var td4=document.createElement("td");
+
+                              td1.innerHTML=books[i].getElementsByTagName("bookName")[0].innerHTML;
+                              td2.innerHTML=books[i].getElementsByTagName("author")[0].innerHTML;
+                              td3.innerHTML=books[i].getElementsByTagName("price")[0].innerHTML;
+                              td4.innerHTML=books[i].getElementsByTagName("cbs")[0].innerHTML;
+
+                                tr.appendChild(td1);
+                                tr.appendChild(td2);
+                                tr.appendChild(td3);
+                                tr.appendChild(td4);
+
+                               document.querySelector("table").appendChild(tr);
+                        }
+
+
+                }
+            }
+
+        }
+</script>
+</body>
+</html>

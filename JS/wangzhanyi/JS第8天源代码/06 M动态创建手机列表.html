@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .cls {
+            list-style-type: none;
+            width: 150px;
+            margin: 0;
+            padding: 0;
+            background-color: #0099cc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="动态生成手机列表"/>
+
+<div id="demo">
+
+</div>
+<script>
+    //       var ul = document.getElementById("list");
+    //        if(ul){
+    //            return;
+    //        }//   用于防止多创建ul标签
+
+    //ul标签在点击事件内！！！！
+
+
+
+
+    // 模拟从后台获取到的数据
+    var phones = ["华为", "小米", "魅族", "苹果", "联想", "三星", "锤子", "诺基亚", "黑莓", "oppo", "vivo", "小辣椒", "一加"];
+    var demo = document.getElementById("demo");
+    var  btn = document.getElementById("btn");
+
+
+// myself     four::::::::
+//    btn.onclick  = function () {
+//        var ul = document.getElementById("list");
+//        if(ul){
+//            return;
+//        }
+//        ul = document.createElement("ul");
+//
+//        demo.appendChild(ul);
+//        ul.className = "cls";
+//        ul.id="list";
+//        for (var i = 0; i < phones.length; i++) {
+//            var li = document.createElement("li");
+//            ul.appendChild(li);
+//            li.innerText = phones[i];
+//            if(i%2==0){
+//                li.style.backgroundColor ="#c0c0c0";
+//            }else{
+//                li.style.backgroundColor ="#d0d0d0";
+//            }
+//            var bgc;
+//            li.onmouseover = function () {
+//                bgc = this.style.backgroundColor;
+//                this.style.backgroundColor ="white";
+//            }
+//            li.onmouseout  = function () {
+//                this.style.backgroundColor = bgc;
+//            }
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// myself  twice
+//    btn.onclick = function () {
+//        var ul = document.getElementById("list");
+//        if(ul){
+//            return;
+//        }
+//        ul =  document.createElement("ul");
+//        demo.appendChild(ul);
+//        ul.className="cls";
+//        ul.id= "list";
+//        for (var i = 0; i < phones.length; i++) {
+//            var li = document.createElement("li");
+//            ul.appendChild(li);
+//            li.innerText = phones[i];
+//            if(i%2==0){
+//                li.style.backgroundColor = "#c0c0c0";
+//            }else{
+//                li.style.backgroundColor = "#d0d0d0";
+//            }
+//            var bgc;
+//            li.onmouseover = function () {
+//                bgc =  this.style.backgroundColor;
+//                this.style.backgroundColor="white";
+//            }
+//            li.onmouseout = function () {
+//                this.style.backgroundColor=bgc;
+//            }
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//myself twice
+//   btn.onclick = function () {
+//       var ul =document.getElementById("list");
+//       if(ul){
+//           return;
+//       }
+//       ul = document.createElement("ul");
+//       ul.className = "cls";
+//       ul.id ="list";
+//       demo.appendChild(ul);
+//       for (var i = 0; i < phones.length; i++) {
+//       var li = document.createElement("li");
+//           ul.appendChild(li);
+//           li.innerText = phones[i];
+//           //隔行变色
+//           if(i%2==0){
+//               li.style.backgroundColor = "#c0c0c0";
+//           }else{
+//               li.style.backgroundColor = "#d0d0d0";
+//           }
+//           var bgc;
+//           li.onmouseover = function () {
+//               bgc =this.style.backgroundColor;
+//               this.style.backgroundColor = "white";
+//           }
+//           li.onmouseout = function () {
+//               this.style.backgroundColor = bgc;
+//           }
+//       }
+//   }
+
+
+
+
+
+
+
+
+
+
+    //myself   once
+//    var f1= function() {
+//        var ul = document.getElementById("list");
+//
+//        if(ul){
+//            return;
+//        }
+//        ul = document.createElement("ul");
+//        ul.className = "cls";
+//        ul.id = "list";
+//            demo.appendChild(ul);
+//
+//            for (var i = 0; i < phones.length; i++) {
+//                var li = document.createElement("li");
+//                ul.appendChild(li);
+//                li.innerText = phones[i];
+//                if (i % 2 == 0) {
+//                    li.style.backgroundColor = "#c0c0c0";
+//                } else {
+//                    li.style.backgroundColor = "#d0d0d0";
+//                }
+//                var bgc;
+//                li.onmouseover = function () {
+//                    bgc = this.style.backgroundColor;
+//                    this.style.backgroundColor = "#fff";
+//                }
+//                li.onmouseout = function () {
+//                    this.style.backgroundColor = bgc;
+//                }
+//            }
+//
+//    }
+
+</script>
+</body>
+</html>

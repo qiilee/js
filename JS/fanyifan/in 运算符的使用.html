@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    作用：判断指定属性是否存在于指定的对象中。
+//
+//    如果被检测的属性存在于指定的对象中，则 返回 true。
+//    如果一个属性是从原型链上继承来的，in 运算符也会返回 true。
+//
+//    语法：
+//    属性 in 对象
+//
+//    返回值：true 或者 false
+//
+//    示例：
+    var obj = {
+        age: 18
+    };
+    var hasAge = "age" in obj;
+    console.log(hasAge); // true
+</script>
+</body>
+</html>

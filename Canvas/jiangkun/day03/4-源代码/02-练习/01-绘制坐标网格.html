@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习-绘制表格</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 1, 确定表格中的间距
+    var distance = 10;
+    var width = cas.width,
+        height = cas.height;
+
+    // 2, 绘制水平的横线
+    var rows = parseInt( cas.height / distance );
+    for ( var i = 0; i < rows; i++ ) {
+        // 绘制横线
+        ctx.moveTo( 0, (i + 1) * distance );
+        ctx.lineTo( width, (i + 1) * distance );
+    }
+
+    // 3, 绘制竖线
+    var columns = parseInt( cas.width / distance );
+    for ( var i = 0; i < columns; i++ ) {
+        ctx.moveTo( (i + 1) * distance, 0 );
+        ctx.lineTo( (i + 1) * distance, height );
+    }
+
+    ctx.stroke();
+
+
+    
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+

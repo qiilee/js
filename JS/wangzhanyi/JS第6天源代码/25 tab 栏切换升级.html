@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tab栏切换</title>
+    <style>
+        .Box{
+            width: 240px;
+            border: 1px solid #000;
+            margin:100px auto;
+            padding:20px;
+        }
+        .con{
+            width: 100%;
+            height: 200px;
+            background-color: #cccccc;
+            border: 1px solid #000;
+            margin-top:10px;
+            display:none;
+        }
+        .current{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="Box" id="box">
+    <button class="current" >按钮1</button>
+    <button >按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <div class="con" style="display:block">内容1</div>
+    <div class="con">内容2</div>
+    <div class="con">内容3</div>
+    <div class="con">内容4</div>
+</div>
+<script>
+// 添加自定义属性
+    // 要求，当单击上面按钮的时候，当前的颜色要变成粉色，与按钮的索引对应的那个div要显示出来
+
+    // 1. 获得要操作的对象
+//    var btn =document.getElementsByTagName("button");
+    var box = document.getElementById("box");
+    var btns = box.getElementsByTagName("button");
+    var divs = box.getElementsByTagName("div");
+    // 2. 给事件源注册事件
+    for(var i=0;i<btns.length;i++){
+        btns[i].aa = i;//给每一个按钮添加一个索引
+        btns[i].onclick =function (){
+            // JS是动态的弱类型的语言  可以随时给对象动态的添加属性和方法
+            for(var j=0;j<btns.length;j++){
+                btns[j].className = "";//先清掉所有的类样式
+                divs[j].style.display = "none";
+            }
+              this.className = "current";//设置当前对象的className
+            // 让和点击的按钮的索引对应的那个div显示出来
+//             var index =    this.aa; //得到当前点击对象的索引 值
+//            divs[index].style.display = "block";
+            divs[this.aa].style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>

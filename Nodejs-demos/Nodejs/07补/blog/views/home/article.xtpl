@@ -1,0 +1,43 @@
+{{extend ('./layout')}}
+
+{{#block ('section')}}
+    <section class="main">
+        <div class="article">
+            <h2 class="title">{{title}}</h2>
+            {{{content}}}
+        </div>
+        <!-- 作者 -->
+        <div class="author">
+            <div class="avatar">
+                <a href="./center.html">
+                    <img src="/home/uploads/avatar/monkey.png" alt="">
+                </a>
+            </div>
+            <div class="wrap-box">
+                <!-- 个人资料 -->
+                <div class="meta">
+                    <h4 class="name">
+                        <a href="./center.html">老布头儿</a>
+                    </h4>
+                    <p class="intro">爱好前端设计与开发，崇尚一目了然的设计。现居深圳/广州，就职于腾讯微信设计团队。</p>
+                    <div class="extra">
+                        <span class="icon-location"> 北京. 哇哈哈</span>
+                        <span class="icon-link">
+                            <a href="javascript:;">http://botue.com</a>
+                        </span>
+                        <span class="icon-twitter">
+                            <a href="javascript:;"> @botue</a>
+                        </span>
+                    </div>
+                </div>
+                <!-- 社区 -->
+                <div class="social">
+                    <h4>分享</h4>
+                    <a href="javascript:;" class="icon-twitter"></a>
+                    <a href="javascript:;" class="icon-facebook"></a>
+                    <a href="javascript:;" class="icon-weibo"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+{{/block}}

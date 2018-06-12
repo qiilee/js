@@ -1,0 +1,128 @@
+<html>
+<head>
+    <title>网页标题</title>
+    <meta name="Keywords" content="哇哈哈网页设计培训">
+    <meta name="Description" content="北京哇哈哈设计培训">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+</head>
+<body>
+<form action="ok.html" method="post">
+    <fieldset >
+        <legend>会员界面</legend>
+        <table border="1" bordercolor="blue" cellspacing="0" align="center" width="600">
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" name="username" value="请输入用户名" size="" maxlength="5" disabled="disabled"> </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" /></td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input  type="password"></td>
+            </tr>
+            <tr>
+                <td>年龄：</td>
+                <td><input  type="text" name="age" value="25" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <fieldset>
+                        <legend>选择性别</legend>
+                        <input  type="radio" name="sex" value="男" checked="checked"/>男
+                        &nbsp;
+                        <input  type="radio" name="sex" value="女" />女
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td><input  type="radio" name="sex" value="男"  id="man"/>
+                    <label for="man">男</label>
+                    &nbsp;
+                    <input  type="radio" name="sex" value="女" />女
+                </td>
+            </tr>
+            <tr>
+                <td>城市：</td>
+                <td>
+                    &nbsp;
+                    <select name="citys">
+                        <option value=“北京”>北京</option>
+                        <option value=“天津”>天津</option>
+                        <option value=“上海”>上海</option>
+                        <option value=“沧州” selected="selected">沧州</option>
+                        <option value=“广州”>广州</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>城市主要地区：</td>
+                <td>
+                    &nbsp;
+
+                    <select name="citys">
+                        <optgroup label="北京">
+                            <option value=“朝阳区”>朝阳区</option>
+                            <option value=“大兴区”>大兴区</option>
+                            <option value=“海淀区”>海淀区</option>
+                            <option value=“东城区”>东城区</option>
+                            <optgroup label="上海">
+                                <option value=“朝阳区”>朝阳区</option>
+                                <option value=“大兴区”>大兴区</option>
+                                <option value=“海淀区”>海淀区</option>
+                                <option value=“东城区”>东城区</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>交友目的：</td>
+                <td>
+                    <!-- size能显示的行数  multiple能够多选 -->
+                    <select name="target" size="3" multiple="multiple">
+                        <option value=“同行”>同行</option>
+                        <option value=“普通朋友”>普通朋友</option>
+                        <option value=“爱人”>爱人</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>爱好：</td>
+                <td>
+                    <input type="checkbox" name="love" value="艺术"/>艺术
+                    <input type="checkbox" name="love" value="音乐"/>音乐
+                    <input type="checkbox" name="love" value="美术"/>美术
+                    <input type="checkbox" name="love" value="篮球"/>篮球
+                    <input type="checkbox" name="love" value="跑步"/>跑步
+                </td>
+            </tr>
+            <tr>
+                <td>照片上传：</td>
+                <td>
+                    <input  type="file" name="myPic">
+                </td>
+            </tr>
+            <tr>
+                <td>自我介绍：</td>
+                <td>
+			<textarea rows="5" cols="50">
+			</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="注册" />
+                    <input type="reset" value="取消">
+                    <input type="button" value="显示一名欢迎你" onclick="alert('你好');" />
+                    <input type="image" src="2016-04-17_203244.png"/>
+                </td>
+            </tr>
+
+
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

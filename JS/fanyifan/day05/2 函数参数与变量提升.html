@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 变量提升与函数参数
+
+   /* function fn(name,age){
+        console.log(name,age)
+        var name = 'jack'
+        console.log(name,age)
+    }
+    fn();//在函数被调用的时候，没有传递参数的话，函数的实参就是undefined*/
+
+    //函数参数的声明和赋值是发生在变量提升之前的
+
+   /* function fn(name,age){
+        var name;
+        var age;
+        name='jack'
+        console.log(name,age);//‘jack’ undefined
+        name='rose';
+        console.log(name,age)// ‘rose ’ undefined
+    }
+    fn('jack');//*/
+
+
+    function fn(name, age) {
+        console.log(name, age)
+        var name = 'rose'
+
+
+        function age(){
+            console.log('age')
+        }
+        console.log(name, age)
+    }
+    fn('jack',function(){
+        console.log('我是传递进去的参数')
+    });
+
+
+    /*function fn(name, age) {
+        var name;
+        var age;
+        name='jack';
+        age=function(){
+            console.log('我是传递进去的参数')
+        }
+        function age(){
+            console.log('age')
+        }
+        console.log(name, age)//‘jack'  函数体 'age'
+        name = 'rose'
+        console.log(name, age)// 'rose'  函数体  ‘age’
+    }
+    fn('jack',function(){
+        console.log('我是传递进去的参数')
+    });*/
+
+
+
+
+
+
+</script>
+</body>
+</html>

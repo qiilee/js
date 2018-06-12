@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            /*position: absolute;*/
+            /*top: 20px;*/
+            /*left: 20px;*/
+            margin: 50px;
+            border: 10px solid #000;
+        }
+
+        /*#fa{*/
+        /*width: 300px;*/
+        /*height: 300px;*/
+        /*border: 10px solid #000;*/
+        /*position: relative;*/
+        /*}*/
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //获取box的offset系列属性
+            //jq中的offset系列属性是针对页面的位置 (含margin值)
+            console.log($("#box").offset().left);
+            console.log($("#box").offset().top);
+
+
+            //设置offset系列属性
+            //设置值的显示方式：设置的值是含margin的，这个值是box的边框左侧，到页面的左侧的距离
+            //修改的时候是修改的left或者top的值
+
+            //传参方式：1 设置时必须使用数值
+            //         2 不能直接传一个参数和值，必须传对象
+            $("#box").offset({
+                "left": 100
+            });
+
+            //如果设置offset系列属性的元素没有定位，这时会设置一个定位，并且设置的是relative定位
+
+
+        });
+    </script>
+</head>
+<body>
+<!--<div id="fa">-->
+<div id="box"></div>
+<!--</div>-->
+</body>
+</html>

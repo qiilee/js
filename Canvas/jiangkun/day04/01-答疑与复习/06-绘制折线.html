@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+
+
+
+    // 确定几个点
+    var points = [
+        { x: 100, y: 100 },
+        { x: 150, y: 100 },
+        { x: 100, y: 150 },
+        { x: 200, y: 300 },
+        { x: 400,y: 100 },
+        { x: 500,y: 200 }
+    ];
+
+//自己的练习
+//    //先是画点
+//    points.forEach(function (v,i) {
+//        ctx.fillRect(v.x-5, v.y-5,10,10);
+//    })
+//    //再是连线
+//    points.forEach(function (v,i) {
+//        if(i=0){
+//            ctx.moveTo(v.x, v.y);
+//        }else{
+//            ctx.lineTo(v.x, v.y);
+//        }
+//        ctx.stroke();
+//    })
+
+
+
+    //map方法返回新数组
+     points.map(function (v,i) {
+        ctx.fillRect(v.x-5, v.y-5,10,10);
+        return v;
+     }).forEach(function (v,i) {
+         if(i=0){
+             ctx.moveTo(v.x, v.y);
+         }else{
+             ctx.lineTo(v.x, v.y);
+         }
+         ctx.stroke();
+     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // 传统的做法           TEACHER:
+    /*
+    // 1. 先绘制点
+    points.forEach( function ( v, i ) {
+        ctx.fillRect( v.x - 5, v.y - 5, 10, 10 );
+    });
+    // 2. 再绘制连线
+    points.forEach(function ( v, i ) {
+        // 第一句话应该 moveTo, 其后才是lineTo
+        if ( i == 0 ) {
+            ctx.moveTo( v.x, v.y );
+        } else {
+            ctx.lineTo( v.x, v.y );
+        }
+    });
+    ctx.stroke();
+    */
+
+
+
+    // 第二种做法
+//    points.map(function ( v, i ) {
+//        ctx.fillRect( v.x - 5, v.y - 5, 10, 10 );
+//        return v;
+//    }).forEach(function ( v, i ) {
+//        if ( i == 0 ) {
+//            ctx.moveTo( v.x, v.y );
+//        } else {
+//            ctx.lineTo( v.x, v.y );
+//        }
+//    });
+//    ctx.stroke();
+
+
+</script>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    function f1(){
+//        console.log(123);
+//    }
+//    function f2(){
+//        f1();
+//    }
+//    var a = 123;
+//    f2();
+
+    function f1(){
+        console.log(123);
+    }
+//   console.log(f1);
+//var f1 = function(){
+//    console.log(123);
+//}
+    function f2(fn){ //fn是一个形参，属于f2这个函数，这个形参要求是一个函数的类型
+        fn();
+    }
+    var a = 30;
+    f2(f1);
+    //像这种将函数做为参数进行传递的函数，叫做回调函数
+</script>
+</body>
+</html>

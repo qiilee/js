@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            padding-top: 10px;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $(window).scroll(function () {
+                //1 页面滚动时获取卷曲高度
+                var h = $(this).scrollTop();
+                //获取头部的高度
+                var tophead = $("#topPart").height();
+                var navHeight = $("#navBar").height();
+                if (h > tophead) {
+                    //让导航部定位
+                    $("#navBar").addClass("fixed");
+                    //跟底部加marginTop
+                    $("#mainPart").css("marginTop", navHeight + 10 + "px");
+                } else {
+                    $("#navBar").removeClass("fixed");
+                    //跟底部加marginTop
+                    $("#mainPart").css("marginTop", "0px");
+                }
+
+
+                //2 根据卷曲高度和头部高度的关系判断是否添加类名
+            })
+
+        });
+    </script>
+
+</head>
+<body>
+<div class="top" id="topPart">
+    <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>

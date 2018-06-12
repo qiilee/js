@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // (function(a){
+    //     function a(){};
+    //     console.log(a);
+    //     var a=10;
+    //     console.log( a);
+    // })(100);
+
+    // 预解析( 每一个函数在执行的时候 都有一次与解析 )
+    // 1, 执行自调用函数
+    //      传入参数 100, 并跳转到函数体内. 在跳转进入函数体内之前执行了 赋值 a = 100
+    //      由于 a 是函数的参数, 在赋值的时候就已经提升, 在函数内部, 参数有绝对的提升优先级
+    // 2, 在函数内部执行代码之前需要预解析.
+    //      提升函数 a() 但是第一步已经完成, 所谓只做第二部,
+    //      将函数体与名字 a 绑定, 即将 100 覆盖
+    //      有看到 var a = 10. 此时重复声明无效
+    //      预解析结束
+    // 3, 执行代码
+    //      首先打印 a, 打印函数体
+    //      赋值.
+
+
+
+    /*
+    (function(a){
+        // 在进入函数的时候要预解析
+        // 名字与函数体绑定, 如何用代码表示: 名字 = function () {}
+        // 注意,在预解析的时候完成
+        console.log(a);
+        function a(){};
+        console.log(a);
+    })(100)
+    */
+
+/*
+    (function(a){
+        function a(){};
+        console.log(a);
+        var a=10;
+        console.log( a);
+    })(100);
+
+
+    (function () {
+        var a = 100;
+        a = function a() {};
+        
+
+        console.log(a);
+        a=10;
+        console.log( a);
+
+    })()
+*/
+
+
+    (function ( a ){
+        // a = function a() {};
+        var a = 123;
+        function a() {};
+        // a = function ... 
+        console.log( a );
+        var a = 10;
+    })( 100 );
+
+
+    
+</script>
+</html>

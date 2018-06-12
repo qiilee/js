@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 绘制箭头由两个部分构成, 一个是直线, 另一个是填充的箭头
+    // 左右留 100 个像素
+    // 上下留 50 个像素
+    // 1. 绘制一条直线
+    ctx.moveTo( 100, 200 );
+    ctx.lineTo( 500, 200 );
+    ctx.stroke();
+    
+    // 2. 绘制填充箭头
+    // ctx.beginPath();
+    // ctx.moveTo( 480, 195 );
+    // ctx.lineTo( 490, 200 );
+    // ctx.lineTo( 480, 205 );
+    // ctx.lineTo( 500, 200 );
+    // ctx.closePath();
+    // ctx.fill();
+
+    // 将 箭头的 高设置为 40, 宽设置为 20
+    // ctx.beginPath();
+    // ctx.moveTo( 500 - 40, 200 - 20 / 2 );
+    // ctx.lineTo( 500 - 40 / 2, 200 );
+    // ctx.lineTo( 500 - 40, 200 + 20 / 2 );
+    // ctx.lineTo( 500, 200 );
+    // ctx.closePath();
+    // ctx.fill();
+
+
+    // 引入 变量
+    var arrowHeight = 20;
+    var arrowWidth = 10;
+    var xEnd = 500;
+    var yEnd = 200;
+
+    ctx.beginPath();
+    ctx.moveTo( xEnd, yEnd );
+    ctx.lineTo( xEnd - arrowHeight, yEnd - arrowWidth / 2 );
+    ctx.lineTo( xEnd - arrowHeight / 2, yEnd );
+    ctx.lineTo( xEnd - arrowHeight, yEnd + arrowWidth / 2 );
+    ctx.closePath();
+    ctx.fill();
+
+
+    
+   
+
+</script>
+</html>

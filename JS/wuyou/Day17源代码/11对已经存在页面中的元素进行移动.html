@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //如果放入的位置为多个元素，这时可以将一个标签同时放入多次(相当于剪切)
+            $("div").append($("#text"));
+            //注意：如果将一个标签一次放到多个位置，注意不要加id
+        });
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<p id="text">我是p标签</p>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+</body>
+<script src="./Itcast.js"></script>
+<script>
+    // 验证静态的 map 方法
+    // var arr = [ 1, 2, 3 ];
+    // var newArr = I.map( arr, function ( v, i ) {
+    //     return v * 2;
+    // });
+
+    // 遍历对象
+    // var o = {
+    //     name: 'jim', 
+    //     age: 19,
+    //     gender: '男'
+    // };
+
+    // I.each( o, function ( k, v ) {
+    //     console.log(  k + ', ' + v );
+    // });
+
+
+    // 设置页面元素的样式
+    I( 'div' ).each(function () {
+        this.style.width = '100px';
+        this.style.height = '50px';
+        this.style.border = '1px dashed red';
+        this.style.margin = '10px 0';
+    });
+
+</script>
+</html>

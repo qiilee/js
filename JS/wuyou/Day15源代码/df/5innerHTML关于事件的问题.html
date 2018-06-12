@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script>
+    /*总结：
+    * 1、原本有个<div id="box"></div>，这个盒子有个事件onclick
+    * 2、使用innerHTML在body中又添加一个<div id="box"></div>，问题来了，没有事件
+    *
+    * */
+
+    var box = document.getElementById("box");
+    box.onclick = function () {
+        console.log("今天天气不错");
+    };
+
+
+    document.body.innerHTML = '<div id="box"></div>' + 100;
+
+    //body中具有新的html代码
+    //新旧两个box不是同一个box，只是长得一样
+    console.log(document.body.children[0] == box);
+
+    //所以，不止不要再循环中使用innerHTML+=  因为有性能问题
+    //也不要使用任何的innerHTML+=的形式了
+    //除非你确定当前标签内的已存在的子元素都不具有样式
+
+    //设置的时候如果是纯文本，最好使用innerText和textContent进行兼容的函数
+
+</script>
+
+
+</body>
+</html>

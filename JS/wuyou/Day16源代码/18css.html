@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //设置单个样式
+            //$("#box").css("width","100px").css("height","100px").css("backgroundColor","red");
+
+            //同时设置多个样式
+            //$("#box").css({
+            //    "width": "100px",
+            //    "height": "100px",
+            //    "backgroundColor": "red"
+            //});
+
+            //css方法中可以使用background-color 的写法，但是我们不写-就是这么任性
+
+
+            //设置操作具有隐式迭代效果
+            //$("div").css({
+            //    "width": "100px",
+            //    "height": "100px",
+            //    "backgroundColor": "red",
+            //    "marginBottom":"10px"
+            //});
+
+
+            //获取某个样式的值
+            //console.log($("#box").css("width"));
+
+
+            //为了证明这个说法，我们可以先给所有div设置不同的宽
+            for (var i = 0; i < $("div").length; i++) {
+                $("div").eq(i).css("width", 100 + i * 10 + "px");
+            }
+
+            //获取型操作是无法进行隐式迭代的  获取后的结果是第一个元素的对应属性值
+            console.log($("div").css("width"));
+
+        });
+
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>祝愿墙</title>
+    <style>
+        body {
+            margin: 0 auto;
+            padding: 0px;
+            font-size: 12px;
+            background: url(images/bg.gif) repeat center 36px;
+            text-align: center;
+            background-color: #c30230;
+        }
+
+        #content {
+            margin: 0 auto;
+            width: 960px;
+            background: url(images/content_bg.jpg) no-repeat left top;
+            height: 627px;
+        }
+
+        #content .tip1, #content .tip2, #content .tip3, #content .tip4, #content .tip5, #content .tip6, #content .tip7, #content .tip8 {
+            position: absolute;
+            width: 227px;
+            left: 200px;
+            top: 100px;
+        }
+
+        #content .tip1 .tip_h {
+            background: url(images/tip1_h.gif) no-repeat left top;
+        }
+
+        #content .tip1 .tip_h, #content .tip2 .tip_h, #content .tip3 .tip_h, #content .tip4 .tip_h, #content .tip5 .tip_h, #content .tip6 .tip_h, #content .tip7 .tip_h, #content .tip8 .tip_h {
+            width: 227px;
+            padding-top: 45px;
+            height: 23px;
+            text-align: left;
+            cursor: move;
+        }
+
+        #content .tip1 .tip_c {
+            background: url(images/tip1_c.gif) repeat-y;
+        }
+
+        #content .tip1 .tip_c, #content .tip2 .tip_c, #content .tip3 .tip_c, #content .tip4 .tip_c, #content .tip5 .tip_c, #content .tip6 .tip_c, #content .tip7 .tip_c, #content .tip8 .tip_c {
+            width: 200px;
+            padding-left: 12px;
+            padding-right: 15px;
+            min-height: 40px;
+            text-align: left;
+            line-height: 20px;
+            max-height: 160px;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+        }
+
+        #content .tip1 .tip_f {
+            background: url(images/tip1_f.gif) no-repeat left top;
+        }
+
+        #content .tip1 .tip_f, #content .tip2 .tip_f, #content .tip3 .tip_f, #content .tip4 .tip_f, #content .tip5 .tip_f, #content .tip6 .tip_f, #content .tip7 .tip_f, #content .tip8 .tip_f {
+            width: 227px;
+            height: 53px;
+            padding-top: 20px;
+        }
+
+        #content .close, #content .close2 {
+            float: left;
+            font-size: 12px;
+            cursor: pointer;
+            color: #000000;
+        }
+
+        .clr {
+            clear: both;
+            overflow: auto;
+            display: block;
+            height: 0px;
+        }
+
+        #content .icon {
+            float: left;
+            width: 35px;
+            padding-left: 15px;
+            height: 35px;
+            text-align: center;
+        }
+
+        #content .name {
+            float: right;
+            padding-right: 15px;
+            text-align: right;
+            font-size: 14px;
+            line-height: 35px;
+            color: #C0F;
+        }
+
+        #content .num {
+            float: left;
+            padding-left: 7px;
+            width: 195px;
+        }
+
+        .add-bg {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            background: #000000;
+            /*filter: alpha(opacity=20);*/
+            opacity: 0.2;
+            display: none;
+            z-index: 99;
+        }
+
+        .add {
+            width: 512px;
+            position: absolute;
+            border: #ebebeb solid 1px;
+            height: 280px;
+            left: 50%;
+            right: 50%;
+            background: #ffffff;
+            box-shadow: 0px 0px 20px #ddd;
+            z-index: 9999;
+            margin-left: -250px;
+            margin-top: 140px;
+            display: none;
+            z-index: 100;
+        }
+
+        .add-title {
+            width: 100%;
+            margin: 10px 0px 0px 0px;
+            text-align: center;
+            line-height: 40px;
+            height: 40px;
+            font-size: 18px;
+            position: relative;
+            cursor: move;
+            -moz-user-select: none; /*火狐*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+            user-select: none;
+        }
+
+        .add-button {
+            width: 50%;
+            margin: 30px auto 0px auto;
+            line-height: 40px;
+            font-size: 20px;
+            border: #ebebeb 1px solid;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .add-button a {
+            display: block;
+        }
+
+        a:hover {
+            background-color: blue;
+            color: #fff;
+
+        }
+
+        .add-input input.add-input, .add-input textarea {
+            float: left;
+            height: 35px;
+            width: 350px;
+            border: #ebebeb 1px solid;
+            text-indent: 5px;
+        }
+
+        .add-input input.add-input {
+            line-height: 35px;
+        }
+
+        .add-input textarea {
+            resize: none;
+            height: 65px;
+        }
+
+        .add-input {
+            overflow: hidden;
+            margin: 0px 0px 20px 0px;
+        }
+
+        .add-input label {
+            float: left;
+            width: 90px;
+            padding-right: 10px;
+            text-align: right;
+            line-height: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+
+        .add-title span {
+            position: absolute;
+            font-size: 12px;
+            right: -20px;
+            top: -30px;
+            background: #ffffff;
+            border: #ebebeb solid 1px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn" value="添加" style="float:left">
+
+<div id="add" class="add">
+    <div id="title" class="add-title">添加祝愿纸条
+        <span>
+            <a id="closeBtn" href="javascript:void(0);" class="close-add">关闭</a>
+        </span>
+    </div>
+    <div class="add-input-content">
+        <div class="add-input">
+            <label>昵称：</label>
+            <input type="text" placeholder="请输入用户名" name="info[username]" id="username" class="add-input">
+        </div>
+        <div class="add-input">
+            <label>纸条内容：</label>
+            <textarea name="" id="txtContent" cols="50" rows="6"></textarea>
+        </div>
+    </div>
+    <div id="loginBtn" class="add-button"><a href="javascript:void(0);" id="add-button-submit">提交</a></div>
+</div>
+<div id="bg" class="add-bg"></div>
+<div id="content">
+
+</div>
+<script src="common.js"></script>
+<script>
+    //获取单击过程，先是获得closeNode的第一个子元素，再通过getNextElement获取第二个子元素，即x
+    //不能通过getElementById获取，必须与tipCC联系起来！！！
+    var messages = [    //数组里面的每一条数据都是一个json对象
+        {"id": 1, "name": "mahu", "content": "今天你拿苹果支付了么", "time": "2016-02-17 00:00:00"},
+        {"id": 2, "name": "haha", "content": "今天天气不错，风和日丽的", "time": "2016-02-18 12:40:00"},
+        {"id": 3, "name": "jjjj", "content": "常要说的事儿是乐生于苦", "time": "2016-03-18 12:40:00"},
+        {"id": 4, "name": "9.8的妹纸", "content": "把朋友家厕所拉堵了 不敢出去 掏了半小时了都", "time": "2016-03-18 12:40:00"},
+        {"id": 5, "name": "雷锋ii.", "content": "元宵节快乐", "time": "2016-02-22 12:40:00"},
+        {"id": 6, "name": "哎呦哥哥.", "content": "据说今晚央视的元宵晚会导演和春晚导演是同一个人，真是躲得过初一，躲不过十五。", "time": "2016-02-22 01:30:00"},
+        {"id": 7, "name": "哎呦杰杰.", "content": "真搞不懂你们地球人，月亮有什么好看的，全是坑，还是对面那哥们好看，", "time": "2016-02-22 01:30:00"}
+    ];
+    //获取要操作的对象
+    //大盒子对象
+    var content = document.getElementById("content");
+    //点击添加按钮是用到的对象
+    var btn = document.getElementById("btn");
+    var add = document.getElementById("add");
+    var bg = document.getElementById("bg");
+    var userName = document.getElementById("username");
+    var txtContent = document.getElementById("txtContent");
+    var submit = document.getElementById("add-button-submit");
+    var closeBtn = document.getElementById("closeBtn");
+    var id = messages.length + 1;
+    var zIndex = 0;
+    //遍历存在的祝愿纸条
+    for (var i = 0; i < messages.length; i++) {
+        var msg = messages[i];
+        var tipCC = createBox(msg);
+        getPositionAndZIndex(tipCC);
+
+    }
+    //封装的获得大盒子内容的函数
+    function createBox(msg) {
+        var tipCC = document.createElement("div");
+        content.appendChild(tipCC);
+        tipCC.className = "tip1";
+        tipCC.innerHTML = '<div class="tip_h" title="双击关闭纸条" id="tip h">'
+                + '<div class="num">第[' + msg.id + ']条 ' + msg.time + '</div>'
+                + '<div class="close" title="关闭纸条">×</div>'
+                + '<div class="clr"></div>'
+                + '</div>'
+                + '<div class="tip_c">'
+                + msg.content
+                + '</div>'
+                + '<div class="tip_f">'
+                + '<div class="icon">'
+                + '<img src="images/bpic_1.gif" alt="" title="">'
+                + '</div>'
+                + '<div class="name">' + msg.name + ' </div>'
+                + '<div class="clr"></div>'
+                + '</div>';
+        //双击盒子上部使盒子消失
+        var closeNode = ele.getFirstElement(tipCC);
+//         var closeNode = document.getElementById("tip h");//不能用！！！，必须与tipCC联系起来
+//
+        closeNode.ondblclick = function () {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+        var one = ele.getFirstElement(closeNode);
+        var two = ele.getNextElement(one);
+        two.onclick = function () {
+            this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        }
+        return tipCC;
+    }
+
+    //创建祝愿纸条，获得当前时间的函数
+    function getTime(obj) {
+        var year = obj.getFullYear();
+        var month = obj.getMonth() + 1; //0--11
+        // getDay() 获得的是星期几，而是从周日开始算的
+        var day = obj.getDate();
+        var hour = obj.getHours();
+        var minute = obj.getMinutes();
+        var second = obj.getSeconds();
+        month = month < 10 ? "0" + month : month;
+        day = day < 10 ? "0" + day : day;
+        hour = hour < 10 ? "0" + hour : hour;
+        minute = minute < 10 ? "0" + minute : minute;
+        second = second < 10 ? "0" + second : second;
+        return year + "-" + month + "-" + day + "  " + hour + ":" + minute + ":" + second;
+    }
+
+    //点击添加按钮会触发的事件
+    btn.onclick = function () {
+        show();
+    }
+    //点击关闭按钮会触发的时间
+    closeBtn.onclick = function () {
+        hide();
+    }
+    //使对象显示的函数
+    function show() {
+        add.style.display = "block";
+        bg.style.display = "block";
+    }
+    //使对象隐藏的函数
+    function hide() {
+        add.style.display = "none";
+        bg.style.display = "none";
+    }
+
+    //点击提交按钮触发的事件
+    submit.onclick = function () {
+        if (!(userName.value && txtContent.value)) {
+            alert("昵称或是内容不得为空。。。");
+            return;
+        }
+        var newObj = {};
+        newObj.name = userName.value;
+        newObj.content = txtContent.value;
+        newObj.id = id++;
+        var date = new Date();
+        newObj.time = getTime(date);
+        var tipCC = createBox(newObj);
+        getPositionAndZIndex(tipCC);
+        hide();
+    }
+    //获取随机定位和层级
+    function getPositionAndZIndex(tipCC) {
+        var x = Math.ceil(Math.random() * 700 + 200);
+        var y = Math.ceil(Math.random() * 500);
+        tipCC.style.left = x + "px";
+        tipCC.style.top = y + "px";
+        tipCC.onclick = function () {
+            zIndex++;
+            this.style.zIndex = zIndex + '';
+        }
+        return tipCC;
+    }
+</script>
+</body>
+</html>

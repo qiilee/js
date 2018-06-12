@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //输入一个年份，判断是否是闰年(能被4整除而不能被100整除.2.能被400整除.)
+    // 四年一闰，百年不闰，而四百年再闰
+    function isLeapYear(year){
+        if((year%4==0&&year%100!=0) || (year%400==0)){
+//           alert("是闰年");
+            return true;
+        }else {
+//            alert("不是闰年");
+            return false;
+        }
+    }
+//    var year = +prompt("请输入一个年份");
+//    isLeapYear(year);
+
+    //输入某年某月某日，判断这一天是这一年的第几
+    // 2016 2 1     31  32
+    // 2016 1 31
+    // 2016 5 20    31+29+31+30+20
+    // 做法： 是先将当前输入的月份之前的那些月的每一天加起来，再加当前月的天数
+
+    function getDays(year,month,day){
+        var days = day;//先让其等于当前传入的月份的天数
+        var months = [31,28,31,30,31,30,31,31,30,31,30,31];
+        for(var i=0;i<month-1;i++){
+             days+=months[i];
+        }
+        // 如果是闰年呢，需要加1天
+        if(month>2&&isLeapYear(year)){
+            days++;
+        }
+        return days;//返回这个天数
+    }
+    var year = +prompt("请输入一个年份");
+    var month = +prompt("请输入一个月份");
+    var day = +prompt("请输入当月的号数");
+    var days = getDays(year,month,day);
+    alert("您输入"+year+"的"+month+"月的"+day+"天是这一年的第"+days+"天");
+</script>
+</body>
+</html>

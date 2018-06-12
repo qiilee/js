@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+<script>
+    var datas = [
+        { name: 'jim1', age: 19, gender: '男' },
+        { name: 'jim2', age: 19, gender: '男' },
+        { name: 'jim3', age: 19, gender: '男' },
+        { name: 'jim4', age: 19, gender: '男' },
+        { name: 'jim5', age: 19, gender: '男' }
+    ];
+
+    var string = '';
+    string = '<table border="1" width="400"><thead>';
+    // 创建 th 标签
+    for ( var k in datas[ 0 ] ) {
+        string += '<th>' + k + '</th>';
+    }
+    string += '</thead><tbody>';
+
+    // 创建 tr
+    for ( var i = 0; i < datas.length; i++ ) {
+        string += '<tr>';
+        // 创建 td 标签
+        for ( var k in datas[ i ] ) {
+            string += '<td>' + datas[ i ][ k ] + '</td>';
+        }
+        string += '</tr>';
+    }
+
+    string += '</tbody></table>';
+
+
+    var dv = document.querySelectorAll( '#container' )[ 0 ];
+    dv.innerHTML = string;
+</script>
+</html>

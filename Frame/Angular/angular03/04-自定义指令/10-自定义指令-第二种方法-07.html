@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+
+    <div ng-controller="MainController"><!-- 该元素背后有一个 controller, 即有一个 $scope -->
+        <my-directive></my-directive>
+        <my-directive></my-directive>
+        <input type="text" ng-model="txt"><br>
+        <input type="text" ng-model="txt">
+    </div>
+    
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        // 定义指令
+        .directive( 'myDirective', function () {
+           return {
+               restrict: 'E',
+               templateUrl: './05.tmp.html',
+               scope: true,
+               replace: true,
+               controller: 'AAA'
+           }
+        })
+        .controller( 'MainController', function ( $scope ) {
+            $scope.txt = '哈哈哈';
+        })
+        .controller( 'AAA', function ( $scope ) {
+            $scope.txt = '嘻嘻';
+        })
+
+</script>
+</html>

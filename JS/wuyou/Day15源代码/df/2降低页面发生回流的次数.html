@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //动态创建元素，添加到页面中
+
+    //创建10个span
+    //会触发10次回流
+
+    //为了避免多次触发回流，我们可以先使用一个新创建的div进行存储
+    var div = document.createElement("div");
+
+    for (var i = 0; i < 10; i++) {
+        var span = document.createElement("span");
+        span.innerText = "今天天气不错";
+        div.appendChild(span);
+    }
+
+    //将div放入到body，提高性能
+    document.body.appendChild(div);
+
+
+    //documentFragment 相当于一个占位符，这个标签在添加到页面中时，不会将自身也放入，而是放入内部的所有节点
+    var df = document.createDocumentFragment();
+
+
+
+
+
+
+
+
+    //1、可能会干掉页面中所有内容，不能在页面加载后再执行（事件）
+    //document.write("111");
+
+    //2、性能问题（在循环中动态设置innerHTML）
+    //innerHTML
+
+    //2.1 aa: 3410.261ms
+//    console.time("aa");
+//    for (var i = 0; i <2000; i++) {
+//        document.body.innerHTML +="<div>我是div</div>";
+//    }
+//    console.timeEnd("aa");
+
+    //2.2 bb: 17.843ms
+//    console.time("bb");
+//    for (var i = 0; i <20000; i++) {
+//        var div = document.createElement("div");
+//        document.body.appendChild(div);
+//    }
+//    console.timeEnd("bb");
+
+
+
+
+
+</script>
+</body>
+</html>

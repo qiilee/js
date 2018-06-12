@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+
+
+    //语句
+    //console.log(var num = 100);
+    //    var num;
+
+    //表达式语句
+    //console.log(num = 1000);
+
+
+    //    var str = "aaa";
+    //    str = 1
+
+
+    //    var num1 = 100;
+    //    var num2 = 200;
+    //
+    //
+    //    var temp = num1;
+    //    num1 = num2;
+    //    num2 = temp;
+    //
+    //    var num1 = 100;
+    //    var num2 = 200;
+    //
+    //    var sum = num1 + num2;
+    //    num1 = sum - num1;
+    //    num2 = sum - num1;
+    //
+    //    var num1 = 100;
+    //    var str = typeof num1;
+    ////typeof(num2)
+    //console.log(typeof str);
+
+
+    var num = 17;
+    //toString具有一个参数，参数默认值为10，表示将num转为几进制
+    //console.log(num.toString(8));
+
+    //10进制 逢10进1  2进制 逢2 进1  8进制 021   16进制 0x100
+    //如何将其他进制转换为10进制
+    //8进制 021
+    //从右往左算  第几位数值 * 进制数的位数次方  位数从0开始    1*8^0 + 2*8^1 = 17
+
+    //var str = "21";
+    ////第二个参数表示第一个参数原本是多少进制，转换为10进制
+    //console.log(parseInt(str, 8));
+
+    //    var str = "100";
+    //    console.log(+str);
+    //
+    //
+    //    console.log(!![]);
+
+    //    var num = 98;
+    //    switch (true) {
+    //        case num <= 100:
+    //            alert("这个值大于100");
+    //            break;
+    //    }
+
+    var arr = [];
+
+    //数组检测
+    //Array.isArray(arr);
+
+    function CreateChe(paizi, color) {
+        this.paizi = paizi;
+        this.color = color;
+    }
+
+
+    //var qq = new CreateChe("qq", "red");
+
+    //检测前一个操作数是否是后一个操作数的实例
+    //实例：通过某一个构造函数create创建的对象obj，我们称这个对象就是这个构造函数的实例
+    //console.log(qq instanceof CreateChe);
+    //console.log([] instanceof Array);
+    //
+    //console.log(typeof arr);
+
+
+    //最强大的检测方式，但是太长
+    //var arr = [];
+    //保存arr的类型检测结果
+    //var result = Object.prototype.toString.call(arr);
+    //console.log("呵呵"+result+"哈哈");
+
+
+    //    function fun() {
+    //
+    //    }
+    //console.log(fun);
+    //console.log(fun.name);
+
+    //        var fun = function () {
+    //
+    //        };
+    //
+    //    console.log(fun);
+    //    console.log(fun.name);
+
+
+    // 自信 - 迷之自信
+    //    fun(1);
+    //    function fun(a, b) {
+    //        console.log(a);
+    //        console.log(b);
+    //    }
+
+
+    //    function fun(a, b) {
+    //        console.log(1);
+    //        console.log(2);
+    //        console.log(3);
+    //        console.log(4);
+    //        fun2();
+    //        console.log(5);
+    //        console.log(6);
+    //        console.log(7);
+    //        return a + b;
+    //    }
+    //
+    //    fun(1, 2)
+
+    //    function fun2() {
+    //        var a = 100;
+    //
+    //        function fun3() {
+    //            a = 1000;
+    //        }
+    //
+    //    }
+
+    //    var obj = {};
+    //    var str = "name";
+    //
+    //    obj[str]
+
+
+    //构造函数本质就是一个函数
+    function Create() {
+        this.name = "张三"
+    }
+    //用法的区别：
+    //1 构造函数的名字首字母大写
+    //2 在构造函数内使用this设置属性方法
+    //3 属性方法属于创建出来的对象
+    //4 调用时加new
+    var obj = new Create();
+
+
+    //this指向函数调用者
+    //new会帮我们做3件事
+    //1 创建对象
+    //2 改变this指向，指向新创建的对象
+    //3 返回这个对象
+
+
+    //ie9一下不支持
+    //document.getElementsByClassName()
+
+    window.onload = function () {
+        function getByClass(clsName) {
+            //能力检测
+//           if (typeof document.getElementsByClassName == "function") {
+//               return document.getElementsByClassName(clsName);
+//           } else {
+            //找到页面中具有当前参数类名的元素
+            var resultArr = [];
+            //1 获取body中所有元素
+            var tags = document.body.getElementsByTagName("*");
+
+            //2 遍历tags，检测每个元素的类名
+            for (var i = 0; i < tags.length; i++) {
+                //3 取出类名
+                var tempClass = tags[i].className;
+                //4 可能取出的类名中含有多个类名
+                //可将类名按照空格分开
+                var tempArr = tempClass.split(" ");
+                //检测tempArr中的每个元素
+                for (var j = 0; j < tempArr.length; j++) {
+                    if (tempArr[j] == clsName) {
+                        resultArr.push(tags[i]);
+                    }
+                }
+            }
+            return resultArr;
+//           }
+        }
+
+        console.log(getByClass("box"));
+    }
+
+
+</script>
+
+
+<div class="box"></div>
+<div class="box fl aaa"></div>
+<div class="box"></div>
+<div class="box"></div>
+</body>
+</html>

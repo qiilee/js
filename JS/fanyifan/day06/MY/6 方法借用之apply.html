@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：用数组进行传参
+
+    var obj = {
+        xxx: 1
+    }
+    function fn(name, age) {
+        console.log(name, age);//‘jack',18
+        console.log(this)// obj
+    }
+    fn.apply(obj, ['jack', 18]);
+
+    //输出的结果为：
+//    jack 18
+//    Object {xxx: 1}
+</script>
+</body>
+</html>

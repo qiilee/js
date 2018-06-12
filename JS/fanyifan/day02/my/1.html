@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Person() {
+        this.name = "ql"
+//        this.age = 12
+    }
+    Person.prototype.age = 18;
+    var person = new Person();
+    console.log(person.age);;
+    console.log(typeof Person.prototype);
+    console.log(Person.prototype instanceof Object);
+    console.log(person instanceof Person);
+</script>
+</body>
+</html>

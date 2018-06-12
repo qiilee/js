@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        /*取消图片底部3像素距离*/
+        .box {
+            width: 300px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: pink;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .box ul li {
+            float: left;
+        }
+
+        .box ul {
+            width: 1500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="screen">
+    <ul>
+        <li><img src="images/01.jpg" alt=""/></li>
+        <li><img src="images/02.jpg" alt=""/></li>
+        <li><img src="images/03.jpg" alt=""/></li>
+        <li><img src="images/04.jpg" alt=""/></li>
+        <!--放置了一个假的第一张，为了制作无缝滚动效果-->
+        <li><img src="images/01.jpg" alt=""/></li>
+    </ul>
+</div>
+<script>
+    //1 获取元素
+    var screen = document.getElementById("screen");
+    var list = screen.children[0];
+    var timer = null;
+    var imgWid = screen.offsetWidth;
+
+    //先让list运动起来
+    timer = setInterval(function () {
+        var leader = list.offsetLeft;
+        var step = -10;
+        //检测，当页面中显示这假的第一张时，执行抽回
+//        if (leader > -(list.offsetWidth - imgWid)) {
+        if (leader > -(list.children.length - 1) * imgWid) {
+            leader = leader + step;
+            //设置给list的left属性
+            list.style.left = leader + "px";
+        } else {
+            //抽回,抽回的时候需要注意一个问题，抽回的图跟最后一张图片是完全相同的
+            //在用户看起来可能有一步是停顿的
+            list.style.left = step + "px";
+        }
+    }, 30);
+
+
+</script>
+</body>
+</html>

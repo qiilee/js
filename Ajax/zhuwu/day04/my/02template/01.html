@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+
+    <script type="text/template" id="temId">
+        <%for(var i = 0;i<count.length;i++){%>
+        <tr>
+            <td><%=count[i].username%></td>
+            <td><%=count[i].age%></td>
+            <td><%=count[i].sex%></td>
+        </tr>
+        <%}%>
+</script>
+    <style>
+        table {
+            width: 600px;
+            border-collapse: collapse;
+        }
+
+        td {
+            height: 40px;
+            text-align: center;
+            border: 1px solid #CCC;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="buttonId" value="查询"/>
+<table>
+    <tr>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+    </tr>
+</table>
+<script>
+    $(function () {
+        $("#buttonId").on("click", function () {
+            $.ajax(
+                    {
+                        url: "01.php",
+                        type: "get",
+//                        data:"", 为啥不用data
+                        success: function (data) {
+                            var data = JSON.parse(data);
+                            //经检测  获得的是数组
+                            console.log(data);
+                            var obj = {
+                                count:data
+                            }
+                            var html = template("temId",obj);
+//                            console.log(html);
+                            $("table").append(html);
+                        }
+                    }
+            );
+        });
+    });
+</script>
+</body>
+</html>

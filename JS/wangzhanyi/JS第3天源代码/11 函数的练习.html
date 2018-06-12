@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //求2个数中的最大值
+    /**
+     * 定义了一个求两个数中最大值的函数
+     * @param num1
+     * @param num2
+     * @returns {number}
+     */
+    function  getMax(num1,num2){ // 形参
+        if(num1>num2){
+//            console.log(num1);
+            return num1
+        }else {
+//            console.log(num2);
+            return num2
+        }
+    }
+//   var reslut =  getMax(30,50);//函数的调用的时候，传进来的参数才叫实参
+//    console.log(reslut);
+    //求2个数中的最小值
+
+    /**
+     * 定义了一个求两个数中最小值的函数
+     * @param num1
+     * @param num2
+     * @returns {*}
+     */
+    function  getMin(num1,num2){ // 形参
+        if(num1<num2){
+//            console.log(num1);
+            return num1
+        }else {
+//            console.log(num2);
+            return num2
+        }
+    }
+//    var result = getMin(100,200);
+//    var result = getMin(1002,2009);
+//    console.log(result);
+    // 函数的好处，就是一次声明，多次调用或是多次执行
+    //求n-m之间所有数的和
+//    var sum = 0;
+//    for(var i=30;i<=500;i++){
+//        sum+=i;
+//    }
+    // 10--20   30--80   100-120
+
+    /**
+     * 定义了一个求n到m之间所有的整数的和的函数
+     * @param n
+     * @param m
+     * @returns {number}
+     */
+    function getSum(n,m){
+        var sum = 0;
+        for(var i=n;i<=m;i++){
+            sum+=i;
+        }
+        return sum;
+    }
+
+//    var result = getSum(1,100);
+//    var result = getSum(1,50);
+//    var result = getSum(1,26);
+//    console.log(result);
+    console.log(getSum(1,26));
+    console.log(getSum(1,100));
+    console.log(getSum(1,1000));
+</script>
+</body>
+</html>

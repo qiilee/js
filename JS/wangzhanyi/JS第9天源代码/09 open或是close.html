@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="打开" id="btn1"/>
+<input type="button" value="关闭" id="btn2"/>
+<script>
+    document.getElementById("btn1").onclick = function (){
+//        window.open("http://www.baidu.com");
+//        window.open("http://www.baidu.com","_blank");
+//        window.open("http://www.baidu.com","_self");
+       win= window.open("http://www.baidu.com","_blank","width=200,height=200,top=300,left=300");
+    };
+
+    //但是不推荐使用
+    document.getElementById("btn2").onclick = function (){
+        win.close();  // 关闭某个打开的窗口
+    };
+
+</script>
+</body>
+</html>

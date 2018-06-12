@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="123" id="txt"/>
+<input type="button" value="按钮" id="btn"  onclick="turn();"/>
+<input type="button" id="btn2" value="按钮2"/>
+<br/>
+<br/>
+<img src="images/1-small.jpg" alt="" id="img" width="300"  height="200"/>
+
+<script>
+    // 当单击按钮的时候，要把图片换成大的图片或是换成第二张图片
+    // ""代表函数的一个区间
+
+    // 1. 先获取要操作的对象   按钮  图片
+    var btn = document.getElementById("btn");
+    var img = document.getElementById("img");
+    var btn2 =document.getElementById("btn2");
+   // 2. 注册事件
+    // 3. 事件处理程序
+    function turn(){
+        img.src = "images/2-small.jpg";
+    }
+
+    // 给第二个按钮注册单击的事件
+    btn2.onclick = function(){
+        img.src = "images/3.jpg";
+        img.width = "500";
+        img.height="400";
+    }
+    // 就是之前我们手动写的标签或是属性，都可以使用JS来修改或是设置
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //1  属性搜索原则
+//    var oneColor = "red";
+//    function outer(){
+//        var oneColor = "blue";
+//        function inner(){
+//            console.log(oneColor);
+//        }
+//        inner();
+//    }
+//    outer();
+
+
+
+    //2
+//    console.log(str,num);
+//    var str = "jack";
+//    var num = 39;
+//    function fn(){
+//        console.log(str,num);
+//        num = 14;
+//        str = "rose";
+//        var num = 20;
+//        console.log(str,num);
+//    }
+//    fn();
+//    console.log(str,num);
+
+//    undefined undefined
+//    jack undefined
+//    rose 20
+//    rose 39
+
+
+
+
+    //3
+    var num ;
+    function f() {
+        function foo() {
+            var num;
+            num= 999;
+            console.log(num)//999
+        }
+        num = 456;
+        foo();//999
+        console.log(num);//456
+    }
+    num= 123;
+    f()
+</script>
+</body>
+</html>

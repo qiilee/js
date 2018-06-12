@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var arr = [12,23,451,1,3,4];
+        console.log(sort(arr));
+        function sort(arr){
+            arr = arr || [];
+
+            for(var i = 0;i<arr.length-1;i++){
+                var isSort = true;
+                for(var j =0;j<arr.length-1-i;j++){
+                    if(arr[j]>arr[j+1]){
+                        isSort = false;
+                        var tmp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = tmp;
+                    }
+
+                }
+                if(isSort){
+                    break;
+                }
+            }
+            return arr;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

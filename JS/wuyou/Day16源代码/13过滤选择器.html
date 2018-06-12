@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //eq 找到前面的选择器中选择的所有的标签中的索引值为某一个的标签
+            //eq(索引值)，表示要选择索引值为几的标签
+            //$("div:eq(2)").text("我是div");
+
+            //odd 索引值为奇数的一部分标签
+            $("div:odd").text("我是奇数部分");
+
+            //even 索引值为偶数的一部分标签
+            $("div:even").text("我是偶数部分");
+        });
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

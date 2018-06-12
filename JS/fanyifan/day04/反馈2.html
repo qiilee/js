@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*function Person(){
+        // 实例成员
+        this.name='jack';
+        this.age=18;
+    }
+    // Person的原型链：Function.prototype===>Object.prototype
+    Person.prototype.legs = 2;
+    var person = new Person;
+    for(var key in person){
+        if(person.hasOwnProperty(key)){
+            console.log(person[key]);
+        }
+    }*/
+
+
+    function Person(){}
+    console.log(Person.prototype);
+    Person.prototype={};
+    console.log(Person.prototype);
+    //一个普通的对象身上没有constructor属性，只有默认的原型对象上有一个constructor属性，这个属性指向了构造函数。
+</script>
+</body>
+</html>

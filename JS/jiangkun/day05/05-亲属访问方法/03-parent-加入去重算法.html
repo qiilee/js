@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script>
+        var arr = [],
+            push = arr.push;
+        
+        // 去重算法
+        Itcast.contains = function ( arr, item ) {
+            // return arr.indexOf( item ) > -1;
+            for ( var i = 0; i < arr.length; i++ ) {
+                if ( arr[ i ] == item ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        Itcast.unique = function ( arr ) {
+            var newArr = [];
+            for ( var i = 0; i < arr.length; i++ ) {
+                if( !Itcast.contains( newArr, arr[ i ] ) ) {
+                    newArr.push( arr[ i ] );
+                }
+            }
+            return newArr;
+        }
+
+        // 封装一个 将数组转换成 Itcast 对象的办法, 同时记录原先的 Itcast 对象
+        Itcast.fn.pushStack = function ( array ) {
+            // this 以前的 Itcast 对象
+            // 栈结构
+            var tmp = this.constructor();
+            push.apply( tmp, array );
+            tmp.prevObject = this;
+            return tmp;
+        }
+
+        Itcast.fn.parent = function () {
+            // 将每一个 this 中的元素的 父元素取出来, 构成 Itcast 对象
+            return this.pushStack( Itcast.unique( this.map(function ( v, i ) {
+                return v.parentNode;
+            })));
+
+
+
+            // this.constructor( selector ) => 符合选择器的所有元素
+            // this.parent() => 所有父元素
+            // 求交集
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <p>1</p>
+        <p class="c">2</p>
+        <p class="d">3</p>
+        <p>ppp</p>
+    </div>
+    <div>
+        <p>4</p>
+        <p class="c">5</p>
+    </div>
+    <ul>
+        <p class="c">6</p>
+        <p>7</p>
+    </ul>
+</body>
+<script>
+    var length = I( 'p' ).parent().each(function () {
+        this.style.border = '1px dashed red';
+    }).length;
+
+    console.log( length );
+
+</script>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p>呵呵</p>
+    <p>呵呵</p>
+    <p>呵呵</p>
+    <p>呵呵</p>
+    <span>我是span</span>
+</div>
+
+<script>
+    var box = document.getElementById("box");
+
+    //基本的事件添加方式，是将一个处理程序保存在元素的一个属性中。
+    //对一个对象的属性就行多次赋值，会导致后面的值覆盖前面的。
+    //所以多次添加事件会产生覆盖。
+    //    box.onclick = function () {
+    //        alert("1");
+    //    };
+    //
+    //    box.onclick = function () {
+    //        alert("2");
+    //    };
+
+
+    box.onclick = function (e) {
+        console.log("今天天气不错");
+    };
+
+    //自己写了一个函数，避免事件的覆盖问题（可选）
+
+    //js中提供了对应的方法
+    //普通浏览器  标签.addEventListener("click",function(){},false);
+    //ie 标签.attachEvent("onclick",function(){});
+
+    //移除方式
+    //简单事件的移出 box.onclick = null;
+    //removeEventListener - 对应addEventListener  -  移除时需要保证和添加时的参数完全相同（处理程序必须是同一个）
+    //detachEvent - 对应 attachEvent - 参数也是必须一一对应
+
+
+    //事件冒泡与事件捕获
+    //执行的情景：默认的所有都是冒泡的，addEventListener第三个参数为false，ie低版本只支持冒泡
+    //事件冒泡的执行顺序：从当前元素一直向父级冒泡，如果任意一个父级元素具有相同类型的事件。这时进行触发
+
+    //捕获的情景：addEventListener第三个参数为true
+    //捕获的执行顺序：触发当前元素事件后，事件会从页面向内查询，路过某一个父级元素时，如果具有相同类型事件，这时触发，最后触发自己
+    //捕获没用。
+
+    //取消事件冒泡和捕获
+    //普通浏览器 e.stopPropagation
+    //ie低版本  window.event.cancelBubble = true;
+
+    //事件委托（委托事件，代理事件，事件代理）
+    //使用场景:我们可能需要给某个元素内部的某些标签添加同一事件时，可以使用事件委托
+    //事件委托的原理：事件冒泡
+    //我们需要在父元素的事件内进行检测，检测真正触发事件的元素是哪些，是否符合我们的需求
+    //获取事件的真正触发者： e.target || e.srcElement;
+
+
+    //事件对象：事件对象内部保存了关于当前事件触发时的一些信息。
+    //事件对象的兼容 e || window.event;
+    //鼠标针对可视区域的坐标  e.clientX e.clientY
+    //鼠标针对页面的坐标  e.pageX e.pageY  兼容性问题  e.clientX + myScroll().left
+    //事件 onmousemove 鼠标移动事件  onmousedown 鼠标点下  onmouseup 鼠标按键抬起时触发
+
+    //
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background: darksalmon;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+
+<script>
+    function on(ele,type,fn){
+        //判断元素上有没有某类型的自定义事件池
+        //如果没有就创建一个自定义事件池 []
+        if(!ele['selfEvent'+type]){
+            ele['selfEvent'+type]=[];
+        }
+        //获取到自定义事件池
+        var selfEvent = ele['selfEvent'+type];
+
+        //如果之前的自定义事件池中已经有了某方法，那么就不再添加该方法，直接return
+        for(var i =0;i<selfEvent.length;i++){
+            if(selfEvent[i]===fn){
+                return;
+            }
+        }
+        //如果自定义事件池中没有该方法，则把该方法添加到自定义事件池当中。
+        selfEvent.push(fn)
+        //为该元素添加一个trigger方法，用来依次执行自定义事件池中的方法。
+        ele.onclick=trigger;
+    }
+
+
+    function trigger(e){
+        var e = e||window.event;
+        var ele = e.target||e.srcElement;
+        var type = e.type;
+        var selfEvent=ele['selfEvent'+type];
+        for(var i=0;i<selfEvent.length;i++){
+            if(selfEvent[i]){
+                selfEvent[i].call(ele,e)
+            }
+        }
+    }
+    // DOM0级事件
+    var div = document.getElementsByTagName('div')[0];
+    function f1(){console.log(1)}
+    function f2(){console.log(2)}
+    function f3(){console.log(3)}
+    function f4(){console.log(4)}
+    function f5(){console.log(5)}
+    function f6(){console.log(6)}
+    function f7(){console.log(7)}
+    function f8(){console.log(8)}
+    function f9(){console.log(9)}
+    function f10(){console.log(10)}
+    function f11(){console.log(11)}
+    function f12(){console.log(12)}
+    function f13(){console.log(13)}
+
+
+    /*Function.prototype.bind=function(){
+        //把要预处理的函数先缓存到self。
+        var self = this;
+        //在bind方法中arguments是实参集合，
+        // arguments[0]是我们手动指定的那个this指向。
+        var thisObj = arguments[0];
+        //剩下的arguments中的元素就是第一次传入bind方法的参数。
+        var firstArg = [].slice.call(arguments,1);
+        //bind方法会产生一个新的函数
+        return function(){
+            var secondArg = [].slice.call(arguments,0)
+            var finalArg = firstArg.concat(secondArg);
+            //在返回出的新的函数中的参数集合arguments就是第二次传入的参数。
+            return self.apply(thisObj,finalArg)
+        }
+    }
+
+    function addEvent(ele,type,fn){
+        if(ele.addEventListener){
+            addEvent=function(ele,type,fn){
+                ele.addEventListener(type,fn,false)
+            }
+            addEvent(ele,type,fn);
+        }else{
+            addEvent=function(ele,type,fn){
+                if(!ele['self'+type]){
+                    ele['self'+type]=[]
+                }
+                for(var i=0;i<ele['self'+type].length;i++){
+                    if(fn===ele['self'+type]){
+                        return;
+                    }else{
+                        ele['self'+type].push(fn)
+                    }
+                }
+                var f = fn.bind(ele)
+                ele.attachEvent('on'+type,f);
+            };
+            addEvent(ele,'on'+type,fn);
+        }
+    }*/
+
+
+
+
+    on(div,'click',f1)
+    on(div,'click',f2)
+    on(div,'click',f3)
+    on(div,'click',f4)
+    on(div,'click',f5)
+    on(div,'click',f6)
+    on(div,'click',f7)
+    on(div,'click',f8)
+    on(div,'click',f9)
+    on(div,'click',f10)
+    on(div,'click',f11)
+    on(div,'click',f12)
+    on(div,'click',f13)
+
+
+
+    //DOM2级事件是注册的方法放入了一个事件池，然后再点击某个元素的时候去触发某个方法。
+
+
+
+
+
+</script>
+</body>
+</html>

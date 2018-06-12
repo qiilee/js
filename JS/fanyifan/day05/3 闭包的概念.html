@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 闭包:
+    // 概念:因为js是一个词法作用域，并且js中的词法作用域只能由函数提供，当函数在执行的时候所在的外部作用域跟它被创建时候的外部作用域不一样的时候，我们就说形成了一个闭包。
+    //作用：能够去访问函数内部的变量。
+
+   /* function outer(){
+
+        function inner(){
+
+        }
+        return inner()
+    }*/
+
+
+    // 词法作用域
+
+
+   /* function fn(){
+        var num = 123;
+        return  num;
+
+    }
+
+    /!*console.log(num);// num is not defined; *!/
+    var num1 = fn();//把函数内部的一个变量return出来，就可以在函数外部去访问这样一个变量了。*/
+
+
+
+   /*//
+    function fn(){
+        var num = Math.random();
+        return num;
+    }
+    var num1 = fn();
+    var num2 = fn();
+
+    //num1跟num2 相等吗？// 大概率不相等
+    console.log(num1===num2);*/
+
+   /* function fn(){
+        var obj = {};
+        return obj;
+    }
+    var obj1 = fn();
+    var obj2 = fn();
+
+    //num1跟num2 相等吗？
+    console.log(obj1===obj2)// 永远不相等  */
+
+
+    // 如果想要在函数外部去获取两次函数内部的同一个变量，那我们怎么去做？
+
+
+    /*function fn(){
+        var num = Math.random();
+        function inner(){
+            return num;
+        }
+        return inner;
+    }
+    var innerFn = fn();// innerFn函数 就是inner函数
+   /!* console.log(innerFn)//输出inner的函数体 *!/
+
+    var num1 = innerFn();
+    var num2 = innerFn();
+    console.log(num1===num2)*/
+    // 利用闭包访问作用域内部的变量
+
+
+    /*function fn(){
+        var obj = {};
+        function inner(){
+            return obj;
+        }
+        return inner;
+    }
+    // 在函数外部获取inner函数
+    var innerFn = fn();
+    var obj1 = innerFn();
+    var obj2 = innerFn();
+    console.log(obj1===obj2);
+    obj1.name='jack';
+    obj1.age=18 ;
+
+    var obj3 = innerFn();
+
+    console.log(obj3)*/
+
+
+
+    // 在外界访问到obj1 和obj2 变量
+    function fn(){
+        var obj1 = {
+            name:'jack'
+        }
+        var obj2 = {
+            name:'rose'
+        }
+        function inner1(){
+            return obj1;
+        }
+        function inner2(){
+            return obj2;
+        }
+        var arr = [inner1,inner2]
+        var obj = {
+            inner1:inner1,
+            inner2:inner2
+        }
+        return obj;
+    }
+    /*var a = fn(); //obj1+obj2  '[object Object][object Object]'
+    console.log(a);*/
+
+   /* var arrFn = fn();
+    console.log(arrFn);//*/
+
+   var objFn= fn();
+   console.log(objFn)
+
+    var inner1Fn =objFn.inner1;
+    var inner2Fn =objFn.inner2;
+
+    // 利用两个函数去获取两个函数内部的变量
+
+    var obj1 = inner1Fn();// {name:'jack'}
+    var obj2 = inner2Fn();// {name:'rose'}
+    console.log(obj1);
+    console.log(obj2);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // #5
+    function Foo() {
+        getName = function () {
+            console.log(1);
+        };
+        return this;
+    }
+    Foo.getName = function () {
+        console.log(2);
+    };
+    Foo.prototype.getName = function () {
+        console.log(3);
+    };
+    getName = function () {
+        console.log(1);
+    };
+
+    //请写出以下输出结果：
+    Foo.getName();//2
+    getName();//4
+    // Foo是通过普通函数来进行调用的，所以内部的this是window
+    /*(Foo()).(getName());//*/
+    window.getName();//1
+    getName();//1
+    // Foo.getName 作为一个构造函数来进行调用
+    new Foo.getName();//2
+    //把Foo当做一个构造函数进行调用，产生的实例再调用getName
+    //实例本身上面没有getName方法，就到原型上去查找有没有getName方法
+    new Foo().getName();//3
+
+    //这边就相当于Foo.prototype.getName当做一个构造函数来进行调用
+    new new Foo().getName();//3
+
+
+    // 构造函数无参数列表
+    /*var f = new Foo;
+
+    //构造函数有参数列表
+    var f1 = new Foo();*/
+
+
+    // 第一步，要进行变量提升。
+</script>
+</body>
+</html>

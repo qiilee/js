@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>user</title>
+
+    <!-- Bootstrap -->
+    <link href="../../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap-table.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "MicroSoft YaHei", sans-serif;
+        }
+        .box{
+            width: 1200px;
+            margin: 100px auto;
+        }
+    </style>
+
+</head>
+<body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加讲师</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" id="form_teacherId">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="讲师账号">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="讲师密码">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="讲师姓名">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="school" id="school" placeholder="所属学院">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="age" id="age" placeholder="讲师年龄">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancelId" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="save_teacherId">添加数据</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="box">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加讲师</button>
+    <br> <br>
+    <table id="teacherId">
+    </table>
+</div>
+
+
+<script src="../../bootstrap/js/jquery-1.12.4.js"></script>
+<script src="../../bootstrap/js/bootstrap.js"></script>
+<script src="../../bootstrap/js/bootstrap-table.js"></script>
+<script src="../../bootstrap/js/bootstrap-table-zh-CN.js"></script>
+
+
+<script>
+    $(function(){
+        $("#teacherId").bootstrapTable({
+            url:"../api/findUsers.php",  //发送到服务端的地址,
+            method:"get",      //提交方式
+            striped: true,     //是否各行变色
+            cache: false,      //是否启用缓存
+            pagination: true,  //是否显示分页
+            sortable: true,    //是否使用排序
+            singleSelect:true,  //只允许选择单行
+            pageList:[10],      //每页显示10条
+            sidePagination: "server",  //开启服务端分页
+
+            queryParams: function(params){
+                //把服务端要的参数，通过这个params 给服务端
+                params.pageNum=params.offset/10+1;
+                params.pageSize=10;
+                return params;
+            },
+            height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            cardView: false,                    //是否显示详细视图
+            detailView: false,                   //是否显示父子表
+            rowStyle:function(row,index){
+                row.operation='<button type="button" class="btn btn-danger del_user_class" id="'+row.id+'">删除</button>';
+                console.log(row);
+                return row;
+            },
+
+
+            //根据这个属性，bootstrapTable 插件 创建表格需要的列
+            columns: [{
+                checkbox: true
+            }, {
+                field: 'id',
+                title: "讲师编号"
+            },{
+                field: 'username',
+                title: '讲师账号'
+            },{
+                field: 'password',
+                title: '讲师密码'
+            },{
+                field: 'name',
+                title: '讲师姓名'
+            },{
+                field: 'school',
+                title: '讲师学校'
+            },{
+                field: 'age',
+                title: '讲师年龄'
+            },{
+                field: 'operation',
+                title: '操作'
+            }
+            ]
+        });
+
+    })
+</script>
+</body>
+</html>

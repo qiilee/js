@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 1, 利用描点, 连线的方式绘制
+
+    // 2, 使用 strokeRect
+
+    // 3, 使用 fillRect
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect( 100, 100, 200, 100 ); 
+    // 在 ( 100, 100 ) 的位置绘制 宽为 200 高为 100 的矩形块
+
+
+    // 4, rect
+    ctx.rect( 100, 100, 200, 100 );
+    // 注意是 该方法是描点
+    // ctx.stroke();
+    ctx.fill();
+
+</script>
+</html>

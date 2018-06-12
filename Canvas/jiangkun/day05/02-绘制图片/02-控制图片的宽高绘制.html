@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    var img= new Image();
+    img.src = "https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1486610252&di=47ee20fb6d6d1fb8fe13b55aa53e1b64&src=http://img4.duitang.com/uploads/blog/201402/23/20140223123948_CaPnU.thumb.700_0.jpeg";
+
+    img.onload = function ( ) {
+        var w = img.width,
+            h = img.height;
+        
+        // w : h  === 100 : ? 
+        ctx.drawImage( img, 50, 50, 100, 100 * h / w );
+    };
+</script>
+</html>

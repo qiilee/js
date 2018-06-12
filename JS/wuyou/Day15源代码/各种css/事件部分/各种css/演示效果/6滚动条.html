@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 300px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 5px 18px 5px 5px;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        .scroll {
+            width: 18px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #eee;
+        }
+
+        .bar {
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: red;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="content" id="content">
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，111111111111111
+        我是文字内容，你是谁，你饿不饿是文字内容
+        我是文字内容，你是谁，111111111111111
+    </div>
+    <div id="scroll" class="scroll">
+        <div class="bar" id="bar"></div>
+    </div>
+</div>
+<script>
+    var box = document.getElementById("box");
+    var content = document.getElementById("content");
+    var scroll = document.getElementById("scroll");
+    var bar = document.getElementById("bar");
+
+    //比例关系 box/content == bar/scroll
+    var barHeight = scroll.offsetHeight * (box.offsetHeight / content.offsetHeight);
+    bar.style.height = barHeight + "px";
+
+    //点下去的时候去进行滚动的各种操作
+    bar.onmousedown = function (e) {
+        //先计算鼠标在bar中的位置
+//        console.log(bar.offsetTop);
+        //鼠标点击的位置是e.clientX-box上面的高度和bar距离scroll顶端的高度
+        var spaceY = e.clientY - bar.offsetTop - box.offsetTop;
+
+        document.onmousemove = function (e) {
+            //设置bar位置的时候用e.clientX - bar上面的高度 - box上面的高度 + 单位
+            var y = e.clientY - spaceY - box.offsetTop;
+            //设定bar的移动范围
+            y = y < 0 ? 0 : y;
+            y = y > scroll.offsetHeight - bar.offsetHeight ? scroll.offsetHeight - bar.offsetHeight : y;
+
+            bar.style.top = y + "px";
+            //取消文本选中状态
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+            //获取移动的比例
+            var bili = (content.offsetHeight - box.offsetHeight) / (scroll.offsetHeight-bar.offsetHeight);
+            //根据比例去设置文本的滚动高度
+            content.style.marginTop = -y * bili + "px";
+        };
+    };
+
+    //当鼠标抬起去取消滚动的代码
+    document.onmouseup = function () {
+        document.onmousemove = null;
+    };
+
+</script>
+</body>
+</html>

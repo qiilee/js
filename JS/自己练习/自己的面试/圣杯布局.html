@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #main {
+            float: left;
+            width: 100%;
+        }
+        #mainContainer {
+            margin: 0 230px;
+            height: 200px;
+            background: green;
+        }
+        #left {
+            float: left;
+            margin-left: -100%;
+            width: 230px
+        }
+        #right {
+            float: left;
+            margin-left: -230px;
+            width: 230px;
+        }
+        #left .inner,
+        #right .inner {
+            background: orange;
+            margin: 0 10px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<!--总结：四种方式：
+第一种：左右侧采用浮动 中间采用margin-left 和 margin-right 方法。
+第二种：左右两侧采用绝对定位 中间同样采用margin-left margin-right方法：
+第三种：负的margin（当前这种）
+第四种也是利用负的margin,待定考虑，不经常遇到
+-->
+<div id="main">
+    <div id="mainContainer">main content</div>
+</div>
+<div id="left">
+    <div id="leftContainer" class="inner">left content</div>
+</div>
+<div id="right">
+    <div id="rightContainer" class="inner">right</div>
+</div>
+</body>
+</html>

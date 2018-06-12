@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+<form action="#" id="formId">
+     昵称：  <input type="text" id="username" name="username"><br><br>
+     手机号：<input type="text" id="telephone" name="telephone"><br><br>
+     邮箱：  <input type="text" id="email" name="email"><br><br>
+     微信：  <input type="text" id="weixin" name="weixin"><br><br>
+     <input type="button" value="ajax 提交">
+</form>
+<script>
+        $("input[type=button]").on("click",function(){
+               //如果我要ajax 提交.
+               //我要获取表单项里面的数据.
+              //jQuery 给我们提供过来一个方法
+              //serialize 单词，序列化.
+              //调用这个方法，返回当前表单里面用户输入的数据.
+              //并且会拼接好字符串.
+              //var data=$("#formId").serialize();
+              //还有一个方法，跟这个方法类似，
+              //序列化数组，把当前表单里面的内容组装成一个数组.
+//              var array=$("#formId").serialize();//username=aaaa&telephone=123123123&email=123123&weixin=123
+            var array=$("#formId").serializeArray();//[Object, Object, Object, Object]
+
+              console.log(array);
+             //alert(data);
+               $.ajax({
+                   type:"post",
+                   data:array,
+                   url:"07ajaxform.php",
+                   success:function(data){
+                         alert(data);
+                   }
+               })
+
+        });
+</script>
+</body>
+</html>

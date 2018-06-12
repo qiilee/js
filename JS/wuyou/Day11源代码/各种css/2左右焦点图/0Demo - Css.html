@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, ol, li, img {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 490px;
+            height: 270px;
+            padding: 5px;
+            position: relative;
+            border: 1px solid #ccc;
+            margin: 100px auto 0;
+        }
+
+        .ad {
+            width: 490px;
+            height: 270px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        #box img {
+            width: 490px;
+        }
+
+        .ad ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .ad ol li {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background: #fff;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+            _display: inline;
+        }
+
+        .ad ol li.current {
+            background: yellow;
+        }
+
+        .ad ul li {
+            float: left;
+        }
+
+        .ad ul {
+            position: absolute;
+            top: 0;
+            width: 2940px;
+        }
+
+        .ad ul li.current {
+            display: block;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="all">
+    <div class="ad">
+        <ul id="imgs">
+            <li><img src="images/1.jpg"/></li>
+            <li><img src="images/2.jpg"/></li>
+            <li><img src="images/3.jpg"/></li>
+            <li><img src="images/4.jpg"/></li>
+            <li><img src="images/5.jpg"/></li>
+        </ul>
+    </div>
+
+    <div id="arr">
+        <span id="left">&lt;</span>
+        <span id="right">&gt;</span>
+    </div>
+</div>
+
+
+<script>
+    //点击左右按钮控制图片滚动的时候。由于没有一个值让我们额控制图片滚动的张数
+    //我们可以自己声明一个用于计数的变量
+
+    //1 获取元素
+    var box = document.getElementById("box");
+    //可视区域的盒子
+    var ad = box.children[0];
+    var list = ad.children[0];
+    var lis = list.children;
+    var arr = box.children[1];
+    var arrLeft = arr.children[0];
+    var arrRight = arr.children[1];
+    //获取图片的宽度
+    var imgWid = ad.offsetWidth;
+
+    //2 移入移出显示左右箭头
+    box.onmouseover = function () {
+        arr.style.display = "block";
+    };
+    box.onmouseout = function () {
+        arr.style.display = "none";
+    };
+
+    //3 点击左右按钮
+    //自己定义一个变量去记录当前滚过的图片张数
+    var pic = 0;
+    arrRight.onclick = function () {
+        //最大值是lis.length - 1
+        //小于length-1的时候可以进行运动
+        if (pic < lis.length - 1) {
+            //记录滚过的张数+1
+            pic++;
+            var target = -pic * imgWid;
+            animate(list, target);
+        }
+    };
+
+    arrLeft.onclick = function () {
+        if (pic > 0) {
+            //计数减一
+            pic--;
+            //让list根据计数进行运动
+            var target = -pic * imgWid;
+            animate(list, target);
+            //检测pic的最小值 0
+        }
+    };
+
+
+    //让某个盒子运动到某一个位置
+    function animate(tag, target) {
+        //每次传入一个标签准备进行运动
+        //我们可以将定时器的id保存在tag的某一个自定义属性上
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //leader的值的获取,元素的当前位置
+            var leader = tag.offsetLeft;
+            //step的值设置,step需要根据leader和target的关系判断正负
+            var step = 9;
+            //检测
+            step = leader > target ? -step : step;
+            //如果说当前位置和目标位置之间的距离不足一步，就不能再正常走了
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //匀速运动公式
+                //标签的位置（新） = 标签的位置（旧） + 步长
+                leader = leader + step;
+                //设置给left属性
+                tag.style.left = leader + "px";
+            } else {
+                //进入else，说明不足一步了
+                //直接设置盒子运动到指定目标位置
+                tag.style.left = target + "px";
+                clearInterval(tag.timer);
+            }
+
+        }, 17);
+    }
+</script>
+</body>
+</html>

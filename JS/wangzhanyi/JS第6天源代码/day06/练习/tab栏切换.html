@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 300px;
+            padding:20px;
+            border:1px solid #ccc;
+        }
+        .con {
+            width: 100%;
+            border:1px solid #ccc;
+            display:none;
+        }
+        .current {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    <button class="current">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+   <div class="con" style="display: block;">文本1</div>
+   <div class="con">文本2</div>
+   <div class="con">文本3</div>
+   <div class="con">文本4</div>
+</div>
+<script>
+    //获取要操作的对象
+    var box = document.getElementById("box");
+    var btns = box.getElementsByTagName("button");
+    var divs =box.getElementsByTagName("div");
+
+    for(var i =0;i<btns.length;i++){
+        //遍历时，给所有数组元素设置属性
+        btns[i].setAttribute("index",i);
+        btns[i].onclick = function () {
+            for(var j = 0;j<btns.length;j++){
+                btns[j].className = "";
+                divs[j].style.display ="none";
+            }
+            this.className = "current";
+            divs[this.getAttribute("index")].style.display="block";
+        }
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+跳转过来的页面
+<input type="button" value="后退" id="btn1"/>
+<input type="button" value="前进" id="btn2"/>
+<script>
+    document.getElementById("btn1").onclick = function (){
+//           window.history.back();
+        history.go(-1); // go的方式更加的灵活
+    };
+
+</script>
+</body>
+</html>

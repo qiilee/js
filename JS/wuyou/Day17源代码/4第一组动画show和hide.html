@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                //show()方法让盒子显示
+                //$("#box").show();
+
+                //在show方法中传入一个数值，表示运动要执行的时间  单位为毫秒
+                //$("#box").show(1000);
+                //动画提供了一些时间参数  slow600  normal400  fast200  字符串形式
+                $("#box").show(3000,function () {
+                    console.log("我执行完毕了");
+                });
+            });
+
+            $("#btn2").click(function () {
+                //hide()方法让盒子隐藏
+                //$("#box").hide();
+
+                //在hide方法中传入一个数值，表示运动要执行的时间  单位为毫秒
+                //$("#box").hide(1000);
+                //动画提供了一些时间参数  slow600  normal400  fast200  字符串形式
+                $("#box").hide(3000,function () {
+                    console.log("我执行完毕了");
+                });
+            });
+
+            //show和hide进行运动的方式，是修改 宽 高 透明度
+
+
+        });
+    </script>
+</head>
+<body>
+<button id="btn1">按钮显示</button>
+<button id="btn2">按钮隐藏</button>
+<div id="box"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //静态 成员和实例成员
+
+    function Person(){
+
+    }
+    Person.prototype.sayHello=function(){
+        console.log('我是原型上面的方法')
+    }
+    Person.study=function(){
+        console.log('我是构造函数上面的静态成员')
+    }
+    //构造函数能否调用的原型属性上面的方法。
+    /*Person.sayHello();*/// Uncaught TypeError: Person.sayHello is not a function
+
+    var person = new Person();
+    console.log(person.study)//undefined
+    person.study();//报一个错误。 Uncaught TypeError: person.study is not a function
+
+
+    // 静态成员 构造函数能够访问到的属性和方法，并且实例访问不到的属性和方法，
+    // 实例成员 实例能够访问到的属性和方法，构造函数访问不到的属性和方法。
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //数组中具有重复的元素，取出不重复的值
+    //[1,1,2,2,3,3]  =>  [1,2,3]
+
+    //    第一种方式：适用于任何场合
+    //    var arr = [1, 1, 2, 2, 3, 3, 2, 3, 1, 2];
+    //    //声明一个数组用于保存结果
+    //    var resultArr = [];
+    //    //先将第一个元素放入
+    //    resultArr[0] = arr[0];
+    //    //遍历arr，取出每一个元素
+    //    for (var i = 1; i < arr.length; i++) {
+    //        //假设可以放入,针对每一次循环取出的arr[i]
+    //        var flag = true;
+    //
+    //        //arr[i]跟resultArr中每一个元素都不相同
+    //        //遍历resultArr
+    //        for (var j = 0; j < resultArr.length; j++) {
+    //            //检测是否相同
+    //            //如果有任何一项跟arr[i]相等
+    //            if (arr[i] == resultArr[j]) {
+    //                //阻止放入
+    //                flag = false;
+    //            }
+    //        }
+    //        //不能确定是否可以将arr[i]放入到resultArr中
+    //        //根据flag的值。判断是否可以放入
+    //        if (flag) {
+    //            resultArr[resultArr.length] = arr[i];
+    //        }
+    //    }
+    //    console.log(resultArr);
+
+
+    //第二种方式使用数组方法indexOf，indexOf   ie9以下不支持
+    //var arr = [1, 1, 2, 2, 3, 3, 2, 3, 1, 2];
+    //var resultArr = [];
+    ////取出arr中的每一个元素
+    //for (var i = 0; i < arr.length; i++) {
+    //    //如果resultArr中没有arr[i]，放入
+    //    if(resultArr.indexOf(arr[i])==-1){
+    //        resultArr.push(arr[i]);
+    //    }
+    //}
+    //console.log(resultArr);
+
+    //统计数组中每一个元素出现的次数
+    var arr = [1, 1, 2, 2, 3, 4];
+    //使用对象
+    //我们使用对象作为记录的单子
+    var obj = {};
+    //根据arr中当前的一个元素是什么，记录这个元素出现的次数
+    //对象的属性不存在，值为什么？undefined
+    for (var i = 0; i < arr.length; i++) {
+        //出现过哪些元素，这些元素就作为属性名存在，并且出现次数+1（属性值）
+        //先检测arr[i] 这个属性名在obj中是否存在
+        var temp = arr[i];
+        if (obj[temp]) {
+            //说明这个元素出现过
+            //让计数加1
+            obj[temp]++;
+        } else {
+            //能进入else，没有这个属性
+            //说明是第一次出现
+            //设置出现次数为1
+            obj[temp] = 1;
+        }
+    }
+    console.log(obj);
+
+
+</script>
+</body>
+</html>

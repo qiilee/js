@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // find()  后代
+            //$("ul li").css("backgroundColor","red");
+
+            //$("ul").find("li").css("backgroundColor","red");
+
+
+            //获取父元素  parent()
+            // 跟 parentNode 没有区别
+            //$("#box").parent().css("backgroundColor","red");
+
+            //同时获取多个元素的父元素
+            //$("p").parent().css("backgroundColor","red");
+            //$("p").parent(".box").css("backgroundColor","red");
+
+
+            //siblings  同级元素
+            //$("#box").siblings("li").text("我是兄弟");
+
+            //eq()
+            var index = 3;
+            $("div:eq("+(3+index)+")").text("今天天气不错");
+
+            //使用eq方法可以避免拼字符串的问题，同时使用的情景可以灵活掌控
+            $("div").eq(index+3)
+
+        });
+    </script>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+<!--<ul>-->
+    <!--<div></div>-->
+    <!--<li>我是li</li>-->
+    <!--<li>我是li</li>-->
+    <!--<li>我是li</li>-->
+    <!--<li>我是li</li>-->
+    <!--<li id="box">我是li</li>-->
+    <!--<li>我是li</li>-->
+    <!--<li>我是li</li>-->
+    <!--<li>我是li</li>-->
+<!--</ul>-->
+
+<!--<div>-->
+<!--<p></p>-->
+<!--</div>-->
+<!--<div class="box">-->
+<!--<p></p>-->
+<!--</div>-->
+<!--<div>-->
+<!--<p></p>-->
+<!--</div>-->
+<!--<ul>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li></li>-->
+<!--<li>-->
+<!--<ol>-->
+<!--<li></li>-->
+<!--</ol>-->
+<!--</li>-->
+<!--<li></li>-->
+<!--</ul>-->
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../2-其他资料/jquery.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    var arr = "a,b,c,d,e,f,g".split( ',' );
+
+    // for
+    for ( var i = 0; i< arr.length; i++ ) {
+        console.log( 'index = ' + i + ', value = ' + arr[ i ] );
+    }
+    console.log( '==========================' );
+    // each
+    $.each( arr, function( i, v ) {
+        console.log( 'index = ' + i + ', value = ' + v );
+        return false; // 结束循环
+    });
+
+
+
+</script>
+</html>

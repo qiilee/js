@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box1 {
+            width: 400px;
+            height: 400px;
+            background-color: #a687ff;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #ecab6d;
+        }
+
+        #box4 {
+            width: 100px;
+            height: 100px;
+            background-color: #404bec;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <div id="box2">
+        <div id="box3"></div>
+    </div>
+</div>
+
+<script>
+    //总结：：
+    //在ie中只有事件冒泡
+    //阻止事件冒泡的时候有一个问题
+    //事件对象e在ie低版本不支持
+    //window.event 作用跟e相同
+    //阻止冒泡的方式
+    //    window.event.cancelBubble = true;
+
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    var box3 = document.getElementById("box3");
+
+    //给每个元素添加点击事件
+
+    box1.attachEvent("onclick", function () {
+        window.event.cancelBubble = true;
+        console.log("box1");
+    });
+    box2.attachEvent("onclick", function () {
+        window.event.cancelBubble = true;
+        console.log("box2");
+    });
+    box3.attachEvent("onclick", function () {
+        window.event.cancelBubble = true;
+        console.log("box3");
+    });
+</script>
+</body>
+</html>

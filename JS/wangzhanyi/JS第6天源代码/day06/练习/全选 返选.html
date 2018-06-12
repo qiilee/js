@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="button" id="btnSelectAll" value="全选"/>
+<input type="button" id="btnSelectNo" value="全不选"/>
+<input type="button" id="btnReverse" value="反选"/>
+</body>
+<script>
+    //获取要操作的对象
+    var inputs = document.getElementsByTagName("input");
+    var btnSelectAll = document.getElementById("btnSelectAll");
+    var btnSelectNo = document.getElementById("btnSelectNo");
+    var btnReverse = document.getElementById("btnReverse");
+    //给事件源注册事件
+    btnSelectAll.onclick = function () {
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type != "button") {
+                inputs[i].checked = true;
+            }
+        }
+    }
+    btnSelectNo.onclick = function () {
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type != "button") {
+                inputs[i].checked = false;
+            }
+        }
+    }
+    btnReverse.onclick = function () {
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].type != "button") {
+                inputs[i].checked = !inputs[i].checked;
+            }
+        }
+    }
+
+</script>
+</html>

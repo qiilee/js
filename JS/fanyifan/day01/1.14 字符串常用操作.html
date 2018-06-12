@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // indexOf
+    var str = 'czbk';
+    console.log(str.indexOf('b'))//2
+
+    // 如何去查看浏览器的信息
+
+    if(window.navigator.userAgent.indexOf('MSIE 9')>0){
+        console.log('我是ie9')
+    }
+
+
+    // split
+    // 作用：把字符串分割为几个不同的数组
+
+    var str = "https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=%E4%BC%A0%E6%99%BA%E6%92%AD%E5%AE%A2&rsv_pq=96c528f10003c10f&rsv_t=8ddedc6jmEKvLbOVM7dIE4RsMW4VI5fd8ET4bWkpKsd4bsk5Xy8G%2BrGuPCQ&rqlang=cn&rsv_enter=1&rsv_sug3=4"
+
+   /* var obj = {
+        ie:'utf-8',
+        f:8,
+        rsv_bp:0
+    }*/
+
+   var str1 = str.split('?')[1];
+   // 再使用&符号分隔出键值对
+    var str2 = str1.split('&');
+
+    var obj = {};
+    for(var i= 0;i<str2.length;i++){
+        var k = str2[i].split('=')[0];
+        var v = str2[i].split('=')[1];
+        obj[k]=v;
+    }
+    console.log(obj)
+
+
+
+
+
+</script>
+</body>
+</html>

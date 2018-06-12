@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="默认的值" id="txt"/>
+<input type="button" value="更改属性" id="btn" onclick="turn();"/>
+<input type="button" value="按钮" id="btn2"/>
+<script>
+    //1. 先获取页面元素   事件源
+    var btn = document.getElementById("btn");
+    var txt = document.getElementById("txt");
+    var btn2 = document.getElementById("btn2");
+    // 2. 注册事件
+    // 3. 事件处理程序  函数中要执行的代码
+    function turn(){
+        txt.value = "这是用js的方式修改的内容";
+    }
+
+    btn2.onclick = function(){  // 注册事件的时候，里面的代码是不会执行的，只有触发事件的时候，才会回来到这里来执行里面的代码
+        txt.value="这是第二个按钮修改的属性";
+    }
+
+    // 事件源(要给谁注册事件)  事件名称(click)  事件处理程序(要执行的代码，一般是放到一个函数当中或是匿名函数当中)
+    //  事件的书写位置：  一个是行内式，一个是内嵌式
+</script>
+</body>
+</html>

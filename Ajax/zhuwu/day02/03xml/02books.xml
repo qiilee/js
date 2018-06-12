@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+     <book>
+            <bookName>斗破苍穹</bookName>
+            <author>赵恒</author>
+            <price>9.99</price>
+            <cbs>清华大学出版社</cbs>
+     </book>
+        <book>
+            <bookName>坏蛋是怎么炼成的</bookName>
+            <author>王伦</author>
+            <price>10块三本</price>
+            <cbs>北大出版社</cbs>
+        </book>
+        <book>
+            <bookName>三个女人一台戏</bookName>
+            <author>李楠</author>
+            <price>1块</price>
+            <cbs>自己出版</cbs>
+        </book>
+        <book>
+            <bookName>盗者的空间</bookName>
+            <author>王伦</author>
+            <price>9.9</price>
+            <cbs>湖北人名出版</cbs>
+        </book>
+</books>

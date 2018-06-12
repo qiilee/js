@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="123456789" id="one"/>
+<input type="button" value="禁止"  id="two">
+<script>
+    //获取要操作的对象
+   var input1 = document.getElementById("one");
+   var input2 = document.getElementById("two");
+    //给事件源注册事件
+   input2.onclick = function () {
+       if(input2.value =="禁止"){
+           input1.disabled =true;
+           input2.value = "启动";
+       }else{
+           input1.disabled =false;
+           input2.value ="禁止";
+       }
+   };
+</script>
+</body>
+</html>

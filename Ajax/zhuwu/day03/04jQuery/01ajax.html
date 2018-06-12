@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- jQuery 的ajax-->
+    <script src="js/jquery-1.12.4.js"></script>
+</head>
+<body>
+
+<input type="button" value="jQuery 的ajax">
+    <script>
+
+            $("input[type=button]").on("click",function(){
+
+                    var telephone="13800000001";
+                    //在这里获取到数据。
+                    //对数据进行校验.
+
+                //使用jQuery 的api 发送请求了
+                $.ajax({
+                    //地址
+                    url:"01ajax.php",
+                    //提交方式
+                    type:"post",
+                    //发送到服务器的数据
+                    //数据的第一种格式.
+                    //data:"age=33",
+                    //第二种格式
+                    data:{
+                        age:2222,
+                        username:"linan"
+                    },
+                    // 请求发送之前调用.
+                    beforeSend:function(){
+                        //一般我们发送请求到服务器，
+                        //一般情况我们要发送一些参数到服务器
+                        //为了减少与服务器的交互
+                        //我们一般都是会对发送到服务端的数据进行校验
+                        //如果校验不通过，我就给用户提示，就不发送请求
+                        //alert("请求发送之前调用.");
+                        //beforeSend 是谁去调用.
+                        //$.ajax() 这个底层去调用.
+                        //发送之前对数据进行校验
+                        if(telephone.length!=11){
+                              alert("手机号格式有误");
+                              return false;
+                        }
+
+                    },
+                    //请求的超时时间.
+                    //timeout:3000,
+                    //数据返回成功之后的回调函数.
+                    success:function(data){
+                        alert("请求响应成功的时候调用");
+                    },
+                    //出错的时候回调用这个函数
+                    //我可以在这个函数里面给用户一些提示信息
+                    error:function(){
+                        alert("请求出错的时候调用");
+                    },
+                    //请求结束之后调用这个函数.
+                    //这个函数不管成功或者失败一定会调用.
+                    complete:function(){
+                        alert("请求结束之后调用");
+                    }
+                });
+            });
+    </script>
+
+
+</body>
+</html>

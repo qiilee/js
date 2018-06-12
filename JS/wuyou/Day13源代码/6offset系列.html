@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 400px;
+            height: 400px;
+            border: 10px solid #000;
+            position: relative;
+        }
+        #son{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            border: 10px solid #000;
+            margin: 10px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div>
+        <div id="son"></div>
+    </div>
+</div>
+<script>
+    var son = document.getElementById("son");
+    var box = document.getElementById("box");
+
+    //offsetLeft 当前元素距离定位的父盒子的左侧距离，计算方式是边框到边框（不含边框）
+    //console.log(son.offsetLeft);
+    //offsetTop 当前元素距离定位的父盒子的顶部距离，计算方式是边框到边框（不含边框）
+    //console.log(son.offsetTop);
+
+    //offsetWidth 盒子左边框左侧到右边框右侧的距离（除了margin以外的）
+    //console.log(son.offsetWidth);
+
+    //offsetHeight 盒子上边框顶部到底边框下面的距离（除了margin以外的）
+    //console.log(son.offsetHeight);
+
+    //* "下面"  是名词还是动词
+
+    //offsetParent 元素的访问方式 某个元素的外面的定位父盒子  干爹
+    //console.log(son.offsetParent);
+    //parentNode 父元素  亲爹
+    //console.log(son.parentNode);
+
+
+</script>
+
+</body>
+</html>

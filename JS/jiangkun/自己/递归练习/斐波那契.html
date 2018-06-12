@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 4> Fibonacci 数列
+    //      1, 1, 2, 3, 5, 8, 13, ...
+//    0    1
+//    1    1
+//    2    1+1
+//    3    1+2
+//    4    2+3
+//    5    3+5
+
+    function F(n){
+        if(n==0 || n==1){
+            return 1;
+        }
+        return F(n-1)+F(n-2);
+    }
+
+    console.log(F(5));
+</script>
+</body>
+</html>

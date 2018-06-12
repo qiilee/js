@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <!--
+      我扩展jQuery ，在jQuery 的基础上面添加一个方法.
+    -->
+    <script src="js/waterFall.js"></script>
+
+    <script>
+        /*$(function()) //页面上面所有的dom 元素加载完毕之后就执行
+         * window.onload= 页面上面所有的内容，包括图片这些加载完毕才会执行
+         * */
+        $(function(){
+
+            //帮我把瀑布里里面的元素进行重新布局定位.
+            $(".items").waterFall();
+
+        })
+    </script>
+
+    <style>
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+        .items{
+            position: relative;
+        }
+        .item{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 232px;
+            box-shadow:0px 0px 10px rgba(0,0,0,0.3);
+        }
+        .item>img{
+            width: 100%;
+            display: block;
+            height: 400px;
+        }
+        .item:nth-child(4n) img{
+            display: block;
+            height: 289px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="items">
+            <div class="item">
+                <img src="images/1.jpg" alt="" width="" height="">
+                <p>
+                    地产广告火凤凰：呵呵 钱多 人傻 速来：#晒稿·东大川南家居城#杂志报版提案稿。尝试用画面...
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

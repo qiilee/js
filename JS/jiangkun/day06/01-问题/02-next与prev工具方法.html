@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script>
+        var arr = [],
+            push = arr.push;
+            
+        Itcast.extend({
+            next: function ( node ) {
+                var tmp = node;
+                while ( tmp = tmp.nextSibling ) {
+                    if ( tmp.nodeType == 1 ) {
+                        return tmp;
+                    }
+                }
+                return null;
+            },
+            prev: function ( node ) {
+                var tmp = node;
+                while ( tmp = tmp.previousSibling ) {
+                    if ( tmp.nodeType == 1 ) {
+                        return tmp;
+                    }
+                }
+                return null;
+            }
+        });
+    </script>
+</head>
+<body>
+    <div>1</div>
+    <div id="dv">2</div><div>3</div>
+    <div>4</div>
+</body>
+<script>
+    
+    // 测试 next 方法
+    var dv = I( '#dv' ).get( 0 );
+
+     var next1 = Itcast.next( dv );
+     var next2 = dv.nextSibling;
+     console.log( next2.nextSibling == next1 );
+
+
+    // 测试 prev 方法
+    var prev1 = Itcast.prev( dv );
+    var prev2 = dv.previousSibling;
+    
+
+
+</script>
+</html>

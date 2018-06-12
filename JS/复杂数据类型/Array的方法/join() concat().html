@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //控制台蓝色是数字 boolean ；黑色是字符串
+    // join()  连接  将数组中的元素用什么样的分割符连接成字符串后进行输出
+    // 如果没有参数的话，默认是以逗号进行连接后并输出
+    var arr = ["a", "b", "c"];
+    var arr1 = [123, 456, "abc", "mmm"];
+
+
+    console.log(arr.join());//a,b,c
+    console.log(arr.join("%"));//a%b%c
+    console.log(arr.join("|"));//a|b|c
+    console.log(arr.join(""));//abc
+    console.log(arr.join(" "));//a b c
+    console.log(typeof arr.join());//string
+    console.log(arr.toString());//a,b,c   内部调用了join()
+    var arr = ["ccc", "ppp", "abc"];
+    var str = "";
+    for (var i = 0; i < arr.length; i++) {
+        str += arr[i];
+    }
+    console.log(str);//cccpppabc
+    console.log(arr.toString()); //ccc,ppp,abc
+
+</script>
+</body>
+</html>

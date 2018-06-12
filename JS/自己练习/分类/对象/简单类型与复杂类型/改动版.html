@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function Student(name, age, score) {
+
+        this.name = name;
+        this.age = age;
+        this.score = score;
+        this.sayHi = function () {
+            console.log("大家好，我叫：" + this.name);
+        };
+    }
+
+    function f2(stu) {
+        stu =new Student();
+        stu.name = "xxx";
+    }
+    var s = new Student("zs", 18, 100);
+    f2(s);
+    console.log(s.name);
+</script>
+</body>
+</html>

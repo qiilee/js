@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //当窗口改变大小的情况下，获取页面可视区域的宽高
+    //onresize
+    window.onresize = function () {
+        //获取的时候有多种方式需要兼容
+        //宽度获取
+        //window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+        //可视区域高度获取
+        //window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+
+        console.log(myClient().wid);
+    };
+    //封装一个函数
+    function myClient() {
+        return {
+            wid: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+            heit: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+        };
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Function 语法
+
+    // var func = new Function ( arg1, arg2, ..., argN, body );
+
+    // 所有的参数中, 最后一个参数作为 函数体, 前面的所有参数作为新的函数的参数
+
+    function func( a, b, c ) {
+        return a + b * c;
+    } 
+
+    var func = new Function ( 'a', 'b', 'c', 'return a + b * c' );
+
+</script>
+</html>

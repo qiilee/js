@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 400px;
+            margin: 200px auto;
+            /*border: 1px solid #000;*/
+        }
+        #txtSearch {
+            width: 300px;
+        }
+        #pop {
+            width: 300px;
+            border: 1px solid red;
+            padding: 0px;
+        }
+        #pop ul {
+            list-style-type : none;
+            margin: 5px;
+            padding: 0px;
+        }
+        #pop ul li{
+
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input type="text" value="" id="txtSearch"/>
+    <input type="button" value="搜索" id="btnSearch"/>
+    <!--<div id="pop">-->
+        <!--<ul>-->
+            <!--<li>a</li>-->
+            <!--<li>ab</li>-->
+            <!--<li>abc</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+</div>
+
+
+<script src="common.js"></script>
+<script>
+
+    // 当我们在输入框输入数据的时候，浏览器会发送一条ajax请求，去数据库查询是否有以用户输入的内容为开头的数据，如果有的话，则会将这些数据返回给浏览器，存到本地的一个文件当中
+    //
+    var arr = ["a","ab","abc","abcd","acc","aced","bbb","mmp","kkl"];
+
+    // 1. 先获得要操作的对象
+
+    var box = $$("box");
+    var txtSearch = $$("txtSearch");
+    var btn = $$("btnSearch");
+    // 2. 给事件源注册事件
+    txtSearch.onkeyup = function (){
+           // 3. 先获取输入框中的内容
+        var v = txtSearch.value;   // 拿到输入框中的数据
+        // 4. 去数据库查询，有多少数据是以用户输入的内容为开头的数据
+        var  filterArr = []; //filter  过滤
+        for(var i=0;i<arr.length;i++){  // 依次遍历数组中的每一项数据
+            if(arr[i].indexOf(v)==0){  //如果遍历到的当前数组元素，是以用户输入的内容为开头的话
+                //arr[i]是数组中的每一项的数据值，而这个数据值就是字符串，我们要判断的就是当前输入的值在这个字符串中的索引是不是0
+                // 如果是0,就可以看是以这个输入的内容为开头的数据
+                filterArr.push(arr[i]);//将符合条件的数据，追加到数据中
+            }
+        }
+        //5. 动态的创建元素
+        var divPop = document.createElement("div");
+        divPop.id = "pop";
+        box.appendChild(divPop);
+        var ul = document.createElement("ul");
+        divPop.appendChild(ul);
+        // 6. 根据过滤出来的数组来创建对应的li标签
+        for(var j=0;j<filterArr.length;j++) {
+            var li = document.createElement("li");
+            ul.appendChild(li);
+            li.innerHTML = filterArr[j];
+        }
+    }
+
+    // 1. 键盘按下并抬起的时候，获得用户输入的数据
+    // 2. 拿着用户输入的数据，去数据库搜索以用户输入的内容为开头的数据
+    // 3. 找到以用户输入的内容为开头的数据，存入新的容器中
+    // 4. 根据匹配到的数据(根据新数组的长度，来动态的生成列表中的li)，动态的生成列表
+    // 5. 判断特殊情况
+</script>
+</body>
+</html>

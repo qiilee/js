@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <!--肯定是使用模板去解析数据-->
+    <script src="js/template-native.js"></script>
+
+    <script type="text/template" id="obId">
+            <%for(var i=0;i<result.length;i++){%>
+                <li><%=result[i].word%></li>
+            <%}%>
+    </script>
+    <style>
+            .main{
+                 width: 700px;
+                 margin: 100px auto;
+            }
+
+            .main input[type=text]{
+                 width: 500px;
+                 font-size: 28px;
+            }
+            input[type=button]{
+                 font-size: 28px;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                border: 1px solid #ccc;
+                width: 502px;
+                display:none;
+            }
+            ul li{
+                list-style: none;
+                width: 500px;
+                padding: 5px;
+                cursor: pointer;
+            }
+
+            .soClass{
+                background: red;
+            }
+    </style>
+    <script>
+            $(function(){
+                    /*
+                    * 我需要给这些li 元素添加鼠标悬停事件.
+                    * 委托，动态创建的元素也能把事件绑定上去.
+                    * */
+                    $("ul").delegate("li","mouseover",function(){
+                           // $(this).css("background","red");
+                             $(this).addClass("soClass");
+                    });
+                    $("ul").delegate("li","mouseout",function(){
+                           //$(this).css("background","white");
+                           $(this).removeClass("soClass");
+
+                    });
+
+                    $("#keyword").on("keyup",function(event){
+                             //只能对这个按键进行限制.
+                             if(event.keyCode==40){
+                                return;
+                             }else if(event.keyCode==38){
+                                return;
+                             }
+                            var keywords=this.value;
+                            /*
+                            *
+                            * 1：我获取到关键字，对这个关键字进行一个判断.
+                            * 关键字去掉空格长度不等于0，我就去发送请求.
+                            * 否则不发送,把下面的内容隐藏掉
+                            * */
+                            if(keywords.trim().length>0){
+                                 //发送请求给360，获取数据，把数据放在对应的位置，然后显示给用户
+                                 $.ajax({
+                                      type:"get",
+                                      dataType:"jsonp",
+                                      url:"https://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word,obdata&word="+keywords,
+                                      success:function(data){
+                                           var html=template("obId",data);
+                                           $(".main>ul").html(html);
+                                      }
+                                 })
+                                 $(".main>ul").show(100);
+                            }else{
+                                 //隐藏下面对应的数据.
+                                 $(".main>ul").hide(100);
+
+                            }
+                    });
+
+                    /*
+                    * 我要实现的功能，监听鼠标的上下键的，实现这个动态的颜色切换，高亮
+                    * */
+                    document.onkeydown=function(event){
+                            if(event.keyCode==38){
+                                 //用户按的是向上的键
+
+                            }else if(event.keyCode==40){
+                                 //向下的键
+                                 //我按向下的键，我要判断当前的这些里元素有没有高亮.
+                                 //如果没有高亮的 ，我就应该li元素里面的第一个高亮.
+                                 //如果有高亮的，我得到当前高亮的，把它的背景色移除
+                                //然后得到当前元素的下一个高亮的，添加一个背景色
+                                 //如果当前高亮的元素
+                                //-----------------------------------------------------
+                                //获取当前正在高亮的元素  $(".soClass")
+                                var hClass=$(".soClass");
+                                if(hClass.length==0){
+                                     //说明没有高亮的元素. 我获取到第一个li 元素，添加一个soClass
+                                     $("ul>li:first-child").addClass("soClass");
+                                }else{
+                                    //判断当前选中的元素是否还有下一个元素.
+                                    //如果还有下一个元素，该怎么处理就怎么处理
+                                    //否则我把正在高亮的移除，获取到第一个li元素，高亮.
+                                    hClass.removeClass("soClass");
+                                    if(hClass.next().length==0){
+                                        $("ul>li:first-child").addClass("soClass");
+                                    }else{
+                                        hClass.next().addClass("soClass");
+                                    }
+                                }
+                                //获取当前正在高亮的li 元素里面的内容
+                                $("#keyword").val($(".soClass").text());
+                            }
+                    }
+            })
+    </script>
+</head>
+<body>
+    <div class="main">
+         <input type="text" autofocus id="keyword"> <input type="button" value="传智一下">
+        <ul>
+        </ul>
+    </div>
+</body>
+</html>

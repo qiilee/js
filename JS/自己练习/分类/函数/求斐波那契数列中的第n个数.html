@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function getF(n) {
+            n = n || 0;
+            if (n <= 0) {
+                return -1;//数值无意义
+            }
+            var n1 = 1;
+            var n2 = 1;
+            var sum = 0;
+            for (var i = 3; i <= n; i++) {
+                sum = n1 + n2;
+                n1 = n2;
+                n2 = sum;
+            }
+            return sum;
+        }
+        console.log(getF(7));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

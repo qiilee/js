@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>1</p>
+        <p class="c">2</p>
+        <p class="d">3</p>
+        <p>ppp</p>
+    </div>
+    <div>
+        <p>4</p>
+        <p class="c">5</p>
+    </div>
+    <ul>
+        <p class="c">6</p>
+        <p>7</p>
+    </ul>
+</body>
+<script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+<script>
+    // 1, parent
+    /*
+    console.log( $( 'p' ).parent( 'div' )   // => 2 个 div
+            .css({
+                width: '200px',
+                height: '100px',
+                border: '1px dashed blue'
+            }).length );
+    */
+    // 在 jq 中几乎所有的方法都可以带有选择器进行筛选
+
+
+    // next
+    // 获得该元素的下一个元素
+    // $( '.c' ).next( '.d' ).css( 'border', '1px solid red' );
+
+    // prev
+    // 获得上一个元素
+
+
+    // nextAll
+    // prevAll
+
+    // siblings
+    // 除了自己以外的所有兄弟元素
+    $( '.d' ).siblings().css( 'backgroundColor', 'pink' );
+
+</script>
+</html>

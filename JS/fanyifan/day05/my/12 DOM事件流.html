@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            color: #fff;
+        }
+
+        #div1 {
+            width: 300px;
+            height: 300px;
+            background: darksalmon;
+        }
+
+        #div2 {
+            width: 200px;
+            height: 200px;
+            background: darkblue;
+        }
+
+        #div3 {
+            width: 100px;
+            height: 100px;
+            background: goldenrod;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    div1
+    <div id="div2">
+        div2
+        <div id="div3">
+            div3
+        </div>
+    </div>
+</div>
+<script>
+
+    var div1 = document.getElementById('div1')
+    var div2 = document.getElementById('div2')
+    var div3 = document.getElementById('div3')
+
+
+    function fn1() {
+        console.log('div1')
+    }
+    function fn2() {
+        console.log('div2')
+    }
+    function fn3() {
+        console.log('div3')
+    }
+    //1、事件捕获  外到内
+    //    div1.addEventListener("click",fn1,true);
+    //    div2.addEventListener("click",fn2,true);
+    //    div3.addEventListener("click",fn3,true);
+
+    //2、事件冒泡  内到外
+    //    div1.addEventListener("click",fn1,false);
+    //    div2.addEventListener("click",fn2,false);
+    //    div3.addEventListener("click",fn3,false);
+
+
+    //3、ie浏览器中的事件流只有事件冒泡 ie11 不支持attachEvent方法
+    //attachEvent 第一个参数 ‘on’+EventType，第二个参数是一个函数
+    /*div1.attachEvent('onclick',fn1);
+     div2.attachEvent('onclick',fn2);
+     div3.attachEvent('onclick',fn3);*/
+
+
+
+    var count = 0;
+    //4、兼容性函数
+//    function addEvent(ele, type, fn) {
+//        count++;
+//        if (ele.addEventListener) {
+//            ele.addEventListener(type, fn);
+//        } else {
+//            ele.attachEvent("on" + type, fn);
+//        }
+//    }
+
+
+    //5、惰性思想（不太理解）
+        function addEvent(ele,type,fn){
+            count++;
+            if(ele.addEventListener){
+                addEvent=function(ele,type,fn){
+                    ele.addEventListener(type,fn,false)
+                }
+                addEvent(ele,type,fn)
+            }else{
+                addEvent=function(ele,type,fn){
+                    ele.attachEvent('on'+type,fn);
+                }
+                addEvent(ele,'on'+type,fn);
+            }
+        }
+
+
+
+
+
+        addEvent(div1,'click',fn1)
+        addEvent(div2,'click',fn2)
+        addEvent(div3,'click',fn3)
+        addEvent(div1,'click',fn1)
+        addEvent(div2,'click',fn2)
+        addEvent(div3,'click',fn3)
+        console.log(count);
+        //4题输出的是6 说明只调用了六次外层的addEvent()函数
+        //5题输出的是1 说明只调用了一次外层的addEvent()函数
+
+
+</script>
+</body>
+</html>

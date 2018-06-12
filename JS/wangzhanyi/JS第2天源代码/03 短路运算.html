@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*
+    * &&:   找假
+     如果第一个值为真(true)，则返回第二个，不管第二个是真还是假,如果第一个就为假(false),则直接返回第一个，第二个不看，不管是真还是假。
+     是先将其它的值，隐式的转换为对应的布尔类型的值，再进行判断
+     ||     找真
+     如果第一个为假，则返回第二个值，不管第二个是真还是假，如果第一个就为真(true),则直接返回，不管第二个值是真还是假。
+    * */
+//    var result = true && false; 原来正常的运算
+//    var result = 20 && 50 ;//50
+//    var result = 20 && undefined;//undefined
+//    var result = 20 && false;
+//    var result = 0 && 100;
+//    console.log(result);
+
+//
+//    var  a1 = null || 30 ;
+//    var a1 = "abc" || 0;
+//    var a1 = "mmm" || "ppp";
+//    var a1 = null || undefined;
+//    var a1 = undefined || null;
+    var a1 = null || 0;
+    console.log(a1);
+</script>
+</body>
+</html>

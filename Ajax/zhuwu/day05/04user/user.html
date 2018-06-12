@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>讲师管理模块</title>
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-table.css">
+    <style>
+            *{
+                 margin: 0;
+                 padding: 0;
+                 font-family: "MicroSoft YaHei", sans-serif;
+            }
+            .box{
+                 width: 1200px;
+                 margin: 100px auto;
+            }
+    </style>
+</head>
+<body>
+
+    <!--
+        我要在这个页面展示讲师的数据。
+        增删改查，都在这一个页面完成
+        后台的teacher 数据多。
+        数据多的情况下，我们一般使用什么去展示数据，table
+        table 展示数据.
+        等一下我们使用bootstrap 自带的插件. 展示数据.
+        假设我添加，如果给数据库添加了100条数据。
+        不会一次性把后台的数据100条一次性取出来，做分页处理。
+        第一页，第二页，第三页，第四页.
+        bootstrap 的table 功能比较简单.
+        bootstrap 还有插件.  就会有人去开发这个bootstrap 的插件.
+        我要使用bootstrap 扩展出来的插件。 table 插件。
+     来画页面。
+        点击添加讲师，就应该弹出一个窗口，
+        窗口里面是表单。
+        表单里有一个按钮，保存表单里面的信息.
+-->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加讲师</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" id="form_teacherId">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="讲师账号">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="讲师密码">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="讲师姓名">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="school" id="school" placeholder="所属学院">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="age" id="age" placeholder="讲师年龄">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="cancelId" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" id="save_teacherId">添加数据</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box">
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加讲师</button>
+             <br> <br>
+             <table id="teacherId">
+             </table>
+        </div>
+
+
+<!--
+        画表格
+-->
+
+<script src="../bootstrap/js/jquery-1.12.4.js"></script>
+<script src="../bootstrap/js/bootstrap.js"></script>
+<script src="../bootstrap/js/bootstrap-table.js"></script>
+<!--用来支持国际化的-->
+<script src="../bootstrap/js/bootstrap-table-zh-CN.js"></script>
+
+<script>
+    $(function(){
+        /*
+        *  这个bootstrapTable  实际是扩展了jQuery
+        *
+        *  $.fn.bootstrapTable=function(obj){
+        *       columns:[]
+        *       //columns 创建tr
+        *       //根据 columns 里面有多少个对象，就创建多少列 td
+        *       // td 里面的值 用户定义的title
+        *       // 还会生成一些 class 类名，有规则的生成类名
+        *       //根据bootstrap-table.css 我们就看到了一个表格.
+        *
+        *       //这个里面有多少行数据.
+        *       //根据用户的url,method,queryParams
+        *       //去给对应的后台地址发送请求.
+        *       //返回数据.
+        *       //返回数据之后会解析。解析之后放在  table 里面
+        *       //怎么去放.
+        *
+        *  }
+        *
+        *
+        * */
+
+        /*$(".del_user_class").on("click",function(){
+             alert("1");
+        });*/
+
+        $("#teacherId").bootstrapTable({
+            url:"../api/findUsers.php",  //发送到服务端的地址,
+            method:"get",  //提交方式
+            striped: true,     //是否各行变色
+            cache: false,      //是否启用缓存
+            pagination: true,  //是否显示分页
+            sortable: true,   //是否使用排序
+            singleSelect:true,  //只允许选择单行
+            pageList:[10,15],      //每页显示10条
+            sidePagination: "server",  //开启服务端分页
+            /*
+            *   这个是一个回调函数，这个回调函数什么时候调用，
+            *   发送请求之前调用
+            *   设计这个回调函数的目的，就是让我自己可以自定义一些参数给服务器.
+            *   这个插件会自动带一些参数给服务端.
+            * */
+            queryParams: function(params){
+                //把服务端要的参数，通过这个params 给服务端
+                params.pageNum=params.offset/10+1;
+                params.pageSize=10;
+                return params;
+            },
+            height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+            cardView: false,                    //是否显示详细视图
+            detailView: false,                   //是否显示父子表
+            //提供了一个回调函数，因为我每次bootstrapTable
+            //帮我发送请求，发送了请求之后，服务端要给我返回数据
+            //返回数据之后，一般情况下是吧数据渲染到table 里面
+            //但是在渲染数据之前，会调用 rowStyle
+            //然后把数据会交个这个函数.
+            //我可以把数据进行更改，把后台返回给我的数据
+            //通过 rowStyle 回调函数 进行更改，然后把更改了数据
+            //交给bootstrapTable 让它按照修改了之后的数据进行渲染
+            /*
+            * row 第一个是数据
+            * index  第二个是索引.
+            *
+            * */
+            rowStyle:function(row,index){
+                row.operation='<button type="button" class="btn btn-danger del_user_class" id="'+row.id+'">删除</button>';
+                console.log(row);
+                return row;
+            },
+            //数据加载成功之后触发
+            onLoadSuccess:function(){
+                $(".del_user_class").on("click",function(){
+                        //alert(this.id);
+                        var flag=window.confirm("您确定要删除这条记录吗?");
+
+                        if(flag){
+
+                                $.ajax({
+                                     url:"../api/removeUser.php",
+                                     type:"post",
+                                     data:{
+                                          id:this.id
+                                     },
+                                     success:function(data){
+                                            var obj=JSON.parse(data);
+                                            if(obj.status=="ok"){
+                                                 alert("删除成功");
+                                                $("#teacherId").bootstrapTable("refresh");
+                                            }
+                                     }
+                                })
+                        }
+                })
+            },
+            //根据这个属性，bootstrapTable 插件 创建表格需要的列
+            columns: [{
+                 checkbox: true
+            }, {
+                field: 'id',
+                title: "讲师编号"
+            },{
+                field: 'username',
+                title: '讲师账号'
+            },{
+                field: 'password',
+                title: '讲师密码'
+            },{
+                field: 'name',
+                title: '讲师姓名'
+            },{
+                field: 'school',
+                title: '讲师学校'
+            },{
+                field: 'age',
+                title: '讲师年龄'
+            },{
+                field: 'operation',
+                title: '操作'
+            }
+            ]
+        });
+
+        /*
+        *
+        * 添加数据。
+        *
+        * */
+        $("#save_teacherId").on("click",function(){
+                //获取用户输入的数据.
+                //ajax 提交.
+                var data=$("#form_teacherId").serialize();
+//                alert(data);
+                $.ajax({
+                     type:"post",
+                     url:"../api/saveUser.php",
+                     data:data,
+                     success:function(data){
+                         //console.log(data);
+                         var obj=JSON.parse(data);
+
+                         if(obj.status=="ok"){
+                                $("#cancelId").click();
+
+                                 //刷新表格.
+                                $("#teacherId").bootstrapTable("refresh");
+
+                         };
+                     }
+                })
+        });
+    })
+</script>
+</body>
+</html>

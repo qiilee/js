@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学员信息</title>
+	<link rel="stylesheet" href="./css/list.css">
+</head>
+<body>
+	<table>
+		<caption>学员信息</caption>
+		<tr>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th>手机号码</th>
+			<th>邮箱地址</th>
+			<th>所属学院</th>
+			<th>入学成绩</th>
+			<th>入学时间</th>
+			<th>毕业时间</th>
+			<th>操作</th>
+		</tr>
+		{{each students}}
+		<tr>
+			<td>{{$value.name}}</td>
+			<td>{{$value.sex}}</td>
+			<td>{{$value.age}}</td>
+			<td>{{$value.phone}}</td>
+			<td>{{$value.email}}</td>
+			<td>{{$value.subject}}</td>
+			<td>{{$value.score}}</td>
+			<td>{{$value.date_start}}</td>
+			<td>{{$value.date_end}}</td>
+			<td data-id="{{$index}}">
+				<a href="javascript:;">编辑</a>
+				<a href="javascript:;">删除</a>
+			</td>
+		</tr>
+		{{/each}}
+	</table>
+	<script src="./js/jquery.min.js"></script>
+</body>
+</html>

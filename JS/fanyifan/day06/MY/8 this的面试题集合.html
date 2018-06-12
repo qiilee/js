@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：难点，多看多总结   第四题未解决
+
+
+    //第一题
+    //    function Fn() {
+    //        console.log(this);
+    //    }
+    //    Fn();//window
+    //    new Fn();//new fn() 错 Fn
+    //    Fn.apply(Fn);//fn  错 Fn的函数体
+
+
+    //第二题
+    //    var o = {
+    //        f: function () {
+    //            console.log(this);
+    //        },
+    //        2: function () {
+    //            console.log(this);
+    //            console.log(this.__proto__ === o[2].prototype)
+    //        }
+    //    };
+    //    o.f();//o  Object {}
+    //    o[2]();//o  Object {}  false
+    //    new o[2]();//o[2] 错 2{}   true
+    //    o.f.call([1, 2]);//[1,2]
+    //    o[2].call([1, 2, 3, 4]);//[1,2,3,4]  false
+
+
+    //第三题
+    //    var name = 'out';
+    //    var obj = {
+    //        name: 'in',
+    //        prop: {
+    //            name: 'inside',
+    //            getName: function () {
+    //                return this.name;
+    //            }
+    //        }
+    //    };
+    //    console.log(obj.prop.getName());//inside
+    //    var test = obj.prop.getName;//
+    //    console.log(test());//out
+    //    console.log(obj.prop.getName.apply(this));// out  存疑
+
+    // 第三题  详解
+    //    var name = 'out';
+    //    var obj = {
+    //        name: 'in',
+    //        prop: {
+    //            name: 'inside',
+    //            getName: function () {
+    //                return this.name;
+    //            }
+    //        }
+    //    };
+    //
+    //    console.log(obj.prop.getName());//对象调用模式来进行调用  obj.prop.name  'inside'
+    //    var test = obj.prop.getName;//
+    //    console.log(test());//普通函数模式来进行调用  window 'out'
+    //    console.log(obj.prop.getName.apply(window));//方法借用模式  'out'
+    //    console.log(obj.prop.getName.apply(this));//方法借用模式  'out'
+    //    console.log(this===window);//true
+    //    //在全局中this是window
+
+    //第四题
+    //    var length = 10;
+    //    function fn() {
+    //        console.log(this.length);
+    //    }
+    //    var obj = {
+    //        length: 5,
+    //        method: function (f) {
+    ////            console.log(this);//Object {length: 5}
+    ////            console.log(arguments);//[function]
+    ////            console.log(arguments.length);//1
+    //            f();//
+    //            arguments[0]();//
+    //
+    //            arguments[0].call(this);
+    //
+    //        }
+    //    };
+    //    obj.method(fn);
+
+
+    //第四题  详解1
+    //    var arr = [function(){console.log(this)}]
+    //    arr[0]();//数组本身
+    //数组也是一个复杂数据类型，也是一个对象，那用数组去调用函数，使用的模式就是对象方法调用模式。
+    //        function f(){
+    //            console.log(this)
+    //        }
+    //        function fn(){
+    //            console.log(arguments)// 类数组，也是就一个对象    [0:function f(){}]
+    //            console.log(this);// window
+    //            arguments[0]()//[function]
+    //            console.log(arguments[0]);//内部的this就是arguments
+    //            // 通过arguments对f这个方法进行调用，使用的是对象方法调用模式。
+    //        }
+    //        fn(f)
+
+    //第四题  详解2
+    //    var length = 10;
+    //    function fn() {
+    //        console.log(this.length);
+    //    }
+    //    var obj = {
+    //        length: 5,
+    //        method: function (f) {
+    //            /*console.log(this)//obj
+    //             f();//普通函数进行调用 内部的this是window // 10
+    //             console.log(arguments);*/
+    //            console.log(arguments)
+    //            arguments[0]();//执行之前有[]和.就是对象调用模式。  1
+    //            //通过arguments对象进行调用，因此函数内部的this是  arguments
+    //            // 如果一个函数在调用的时候它前面有call和apply那么就肯定是方法借用模式调用
+    //
+    //            arguments[0].call(this);// obj.length  5
+    //            arguments[0].call(obj);//obj.length  5
+    //        }
+    //    };
+    //
+    //    obj.method(fn);//method是通过对象方法模式来进行调用的,Ta内部的this是obj
+
+
+    //第五题
+        function Foo() {
+            getName = function () {
+                console.log(1);
+            };
+            return this;
+        };
+        function getName() {
+           console.log(5);
+        }
+        Foo.getName = function () {
+            console.log(2);
+        };
+        Foo.prototype.getName = function () {
+            console.log(3);
+        };
+        getName = function () {
+            console.log(4);
+        };
+
+        //请写出以下输出结果：
+        Foo.getName();//2
+        getName();//4
+        Foo().getName();//1
+        getName();//1
+        new Foo.getName();//2
+        new Foo().getName();//3
+        new new Foo().getName()//3
+
+
+
+
+
+
+    //第六题
+    //    var obj = {
+    //        fn: function () {
+    //            console.log(this)
+    //        }
+    //    }
+    //    obj.fn();//obj
+    //    var f = obj.fn;
+    //    f();//window
+    //    console.log(f === obj.fn)//true
+
+
+    //第七题
+    //    var test = (function (a) {
+    //        this.a = a;
+    //        return function (b) {
+    //            return this.a + b;
+    //        }
+    //    }(function (a, b) {
+    //        return a;
+    //    }(1, 2)));
+    //
+    //    console.log(test(4));//5
+
+
+    //    第八题
+    //    var foo = {
+    //        bar: function() {
+    //            return this.baz;
+    //        },
+    //        baz: 1
+    //    };
+    //    var a = (function() {
+    //        return arguments[0]();
+    //    })(foo.bar);
+    //    console.log(a); // undefined
+
+
+    //    第九题
+//    var length = 10;
+//    function fn() {
+//        console.log(this.length);
+//    }
+//    var obj = {
+//        length: 5,
+//        method: function (fn) {
+//            fn();   // 10
+//            arguments[0](); // 2
+//        }
+//    };
+//    obj.method(fn, 123);
+
+</script>
+</body>
+</html>

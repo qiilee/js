@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //    var nameSpace = function () {
+    //        function listToArray(arrayLike){
+    //           return Array.prototype.slice.call(arrayLike,0)
+    //        };
+    //        function isArray(obj){
+    //           return Object.prototype.toString.call(obj)==="[object Array]";
+    //        }
+    //        return {
+    //            listToArray:listToArray,
+    //            isArray:isArray
+    //        }
+    //    }()
+    //    console.log(nameSpace);
+
+    ~function (w) {
+        function listToArray(arrayLike) {
+            return Array.prototype.slice.call(arrayLike, 0)
+        };
+        function isArray(obj) {
+            return Object.prototype.toString.call(obj) === "[object Array]";
+        }
+
+        var nameSpace= {
+            listToArray: listToArray,
+            isArray: isArray
+        }
+        w.namespace = nameSpace;
+    }(window)
+    console.log(namespace);
+</script>
+</body>
+</html>

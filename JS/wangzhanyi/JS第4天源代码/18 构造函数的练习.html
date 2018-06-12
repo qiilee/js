@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //// 汽车的构造函数   宝马   长城      品牌  价格    颜色   speed  方法：驾驶
+
+    function Car(type,price,color,speed){
+            this.type = type; // 不是一回事，前面的this.type是对象的属性用来存储数据的，而后面的type是形参
+            this.price = price;
+            this.color = color;
+            this.speed = speed;
+            this.drive = function(){
+                console.log("大家好，我是"+this.type+"牌汽车，我的售价是"+this.price+",我的颜色是："+this.color+"，我的速度是"+this.speed);
+            }
+    }
+    var bmw = new Car("BMW","300000元/台","白色","200公里/时");
+    bmw.drive();
+    var at = new Car("AT","5000元/台","黄色","20公里/时");
+    at.drive();
+    // 手机    品牌  价格   颜色   call
+
+    function Telephone(type,price,color,tag){
+        this.type=type;
+        this.price = price;
+        this.color = color;
+        this.tag = tag;
+        this.call = function(){
+            console.log("大家好，我是"+this.type+"牌手机,我的售价是："+this.price+",我的颜色是"+this.color+",我的标签是："+this.tag);
+        }
+    }
+    var apple = new Telephone("apple","7000元/台","土豪金","很贵，一般人用不起");
+    apple.call();
+    var sumsung = new Telephone("sumsung","4500/台","棕色","一不高兴就爆炸");
+    sumsung.call();
+    var mi = new Telephone("小米","600元/台","红色","多开两个游戏就不怕冷");
+    mi.call();
+
+    // 使用构造函数的好处，就是可以批量的创建对象
+    // 有时候我们仅仅需要一个对象即可
+</script>
+</body>
+</html>

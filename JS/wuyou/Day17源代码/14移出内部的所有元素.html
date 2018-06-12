@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //删除box内部的所有元素
+            //$("#box").html("");
+            //html方法有一个问题，如果内部的某个子元素具有事件
+            //使用html方法进行清除后，这个事件是没有清除的。
+
+            //empty()  用于清除内部的所有元素(包括事件)  感觉被掏空
+            //$("#box").empty();
+
+            //remove()  清除内部以及自身  自杀
+//            $("div").remove(".box");
+            $(".box").remove();
+
+        });
+    </script>
+</head>
+<body>
+<div></div>
+<div class="box"></div>
+<div class="box"></div>
+<div class="box"></div>
+<div></div>
+<div></div>
+
+<!--<div id="box">-->
+    <!--<p></p>-->
+    <!--<span></span>-->
+    <!--<ul>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+        <!--<li></li>-->
+    <!--</ul>-->
+<!--</div>-->
+</body>
+</html>

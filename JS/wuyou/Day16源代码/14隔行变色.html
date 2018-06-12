@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        //入口函数
+        $(function () {
+            //找到所有的li
+            //过滤出所有奇数的li
+            $("li:odd").css("backgroundColor", "red");
+            //过滤出所有偶数的li
+            $("li:even").css("backgroundColor", "blue");
+        });
+    </script>
+</head>
+<body>
+<ul>
+    <li>我是li</li>
+    <li>我是li</li>
+    <li>我是li</li>
+    <li>我是li</li>
+    <li>我是li</li>
+    <li>我是li</li>
+</ul>
+</body>
+</html>

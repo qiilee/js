@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+   <canvas width="400" height="400"></canvas>
+</body>
+<script>
+ //  总结：平移-坐标轴-画圆-缩放-画圆
+
+    // 开始的坐标轴先平移再描线
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    ctx.setLineDash([5]);
+    ctx.beginPath();
+    ctx.strokeStyle = "green";
+    // 平移
+    ctx.translate(200,200);
+// 坐标轴
+    ctx.moveTo(0,0);
+    ctx.lineTo(400,0);
+    ctx.moveTo(0,0);
+    ctx.lineTo( 0, 400 );
+    ctx.stroke();
+
+// 画圆
+    ctx.beginPath();
+    ctx.setLineDash([6]);
+  ctx.arc(0,0,80,0,Math.PI*2);
+  ctx.stroke();
+
+// 缩放
+    ctx.beginPath();
+    ctx.strokeStyle = 'red';
+    ctx.setLineDash([]);
+    ctx.scale(2,1);
+
+    ctx.arc(0,0,80,0,Math.PI*2);
+// 画圆
+    ctx.stroke();
+</script>
+</html>

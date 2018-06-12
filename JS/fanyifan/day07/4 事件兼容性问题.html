@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background: darksalmon;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+</div>
+<script>
+    // 事件兼容性问题
+    // DOM0级事件
+    var div = document.getElementsByTagName('div')[0];
+
+    function f1(){console.log(1)/*console.log(this===window)*/}
+    function f2(){console.log(2)/*console.log(this)*/}
+    function f3(){console.log(3)/*console.log(this)*/}
+    function f4(){console.log(4)/*console.log(this)*/}
+    function f5(){console.log(5)/*console.log(this)*/}
+    function f6(){console.log(6)/*console.log(this)*/}
+    function f7(){console.log(7)/*console.log(this)*/}
+    function f8(){console.log(8)/*console.log(this)*/}
+    function f9(){console.log(9)/*console.log(this)*/}
+    function f10(){console.log(10)/*console.log(this)*/}
+    function f11(){console.log(11)/*console.log(this)*/}
+    function f12(){console.log(12)/*console.log(this)*/}
+    function f13(){console.log(13)/*console.log(this)*/}
+    function f14(){console.log(14)/*console.log(this)*/}
+    function f15(){console.log(15)/*console.log(this)*/}
+
+ /*   div.onclick=f1;
+    div.onclick=f2;*/
+
+
+    //DOM2级事件
+    // addEventListener(EventType,fn,useCapture)
+ /*   div.addEventListener('click',f1,false);
+    div.addEventListener('click',f2,false);
+    div.addEventListener('click',f3,false);
+    div.addEventListener('click',f4,false);
+    div.addEventListener('click',f5,false);
+    div.addEventListener('click',f6,false);
+    div.addEventListener('click',f7,false);
+    div.addEventListener('click',f8,false);
+    div.addEventListener('click',f9,false);
+    div.addEventListener('click',f10,false);
+    div.addEventListener('click',f10,false);
+    div.addEventListener('click',f10,false);
+    div.addEventListener('click',f10,false);
+    div.addEventListener('click',f10,false);*/
+
+    //ie浏览器只支持事件冒泡，因此没有第三个参数
+    div.attachEvent('onclick',f1)
+    div.attachEvent('onclick',f1)
+    div.attachEvent('onclick',f1)
+    div.attachEvent('onclick',f1)
+    /*div.attachEvent('onclick',f2)
+    div.attachEvent('onclick',f3)
+    div.attachEvent('onclick',f4)
+    div.attachEvent('onclick',f5)
+    div.attachEvent('onclick',f6)
+    div.attachEvent('onclick',f7)
+    div.attachEvent('onclick',f8)
+    div.attachEvent('onclick',f9)
+    div.attachEvent('onclick',f10)
+    div.attachEvent('onclick',f11)
+    div.attachEvent('onclick',f12)
+    div.attachEvent('onclick',f13)
+    div.attachEvent('onclick',f14)
+    div.attachEvent('onclick',f15)*/
+
+    // 标准浏览器和非标准浏览器存在的兼容性问题
+    // 1方法名称的兼容性问题   addEventListener   attachEvent
+
+    // 2在标准浏览器中方法内部的this指向了当前的元素，在低版本ie中使用attachEvent方法给元素添加事件，那么方法中的this指向了window
+
+    // 3 执行顺序的问题
+    // 在ie低版本浏览器中先注册的事件后执行，后注册的先执行。
+    // 在ie低版本浏览器中，当用attachEvent方法给某个元素注册超过10个方法之后，ie的执行顺序就变得非常傻叉。。
+
+    // 4 重复执行的问题
+    // 在标准浏览器中，绑定多个相同的方法的时候，当触发该事件，只会执行一次该方法。
+    // 在低版本ie浏览器中，绑定了多少个方法，就执行多少次方法 。
+
+
+
+
+
+
+</script>
+</body>
+</html>

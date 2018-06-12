@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</body>
+<script>
+    
+    // 三种用法
+    // 1> .css( key, value )
+    // 2> .css( key )
+    // 3> .css( options )
+
+    // jquery 典型的特征 隐式迭代
+    // 迭代就是循环, 隐式迭代就是 看不见的循环
+    // $( 'div' ).css( 'border', '1px dashed red' );
+
+    /*
+    $( 'div' ).css({
+        width: '200px',
+        height: '100px',
+        margin: '10px 0',
+        border: '1px dashed blue'
+    }).first().css( 'backgroundColor', 'rgba( 255, 0, 0, 1 )' )
+    .next().css( 'backgroundColor', 'rgba( 0, 255, 0, 1 )' )
+    .next().css( 'backgroundColor', 'rgba( 0, 0, 255, 1 )' );
+
+    console.log( $( 'div' ).css( 'backgroundColor' ) );
+    */
+
+</script>
+</html>

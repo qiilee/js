@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='js/angular-1.5.8/angular.js'></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+<div>{{123|func}}</div>
+<div>{{num}}</div>
+</body>
+<script>
+    angular.module('mainApp',[])
+            .controller('mainController',function($scope,$filter){
+                $scope.num = $filter('func')(456);
+            })
+            .filter('func',function(){ //实现依赖注入
+                return function(value){//过滤器函数
+                    return '【'+value+'】';
+                }
+            })
+</script>
+</html>

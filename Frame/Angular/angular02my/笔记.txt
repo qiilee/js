@@ -1,0 +1,128 @@
+filter(过滤器 而不是filter过滤器)
+           1currency：以货币的形式上来使用数据
+                    {{123|currency}}
+                    $filter('currency')(123)
+           2date:格式化时间输出
+                       {{currentDate|date:'yyyy:MM:dd hh:mm:ss'}}
+                       $filter('date')(currentDate,'yyyy:MM:dd HH:mm:ss')
+           3filter 对数组或字符串做过滤,留下子数组或字符
+                   可以使用的参数有：字符串，对象，函数
+
+                   {{array|filter:'a'}}//将字符串数组中元素中含有a的元素留下来
+                   $filter('filter')(array,'a')
+
+                   {{array|filter:{gender:'女',address:'西三旗'}}}
+                   $filter('filter')(array,{gender:'女',address:'西三旗'})
+
+                   {{array|filter:fn}}
+                   $filter('filter')(array,function(){})
+
+           json
+           limitTo
+           lowercase
+           uppercase   {{'abc'|uppercase}}
+           orderBy     {{array|orderBy:属性名}}
+
+
+2自定义过滤器
+           基本语法
+           <module>.filter('过滤名'，function(){   //实现依赖注入
+              return function(){                  //过滤器函数
+              }
+           })
+
+3指令（directive）
+ 什么是指令？
+           ng中的指令带有
+           1》ng开头的一些属性
+           2》一些特殊的标签，
+           3》特殊的class属性，
+           4》特殊的注释
+           以使得在浏览器显示对应标签的时候，实现一些额外的操作
+
+          function stopBubble(e){
+            if(e && e.stopPropagation()){
+              e.stopPropagation();
+            }else{
+             window.event.cancelBubble = true;
+            }
+          }
+
+          function stopDefault(e){
+            if(e && e.preventDefault()){
+               e.preventDefault();
+            }else{
+              window.event.returnValue = false;
+            }
+            return false;
+          }
+
+ 常见的内置指令
+          boolean型指令
+          ng-readonly
+          ng-checked
+          ng-selected
+
+          ng-show  是否显示
+          ng-hide  是否隐藏
+          ng-if    是否存在
+
+          事件型指令
+          ng-click
+          ng-mouseover
+          ng-keyup
+
+          可以创建子作用域的指令
+              ng-app
+              ng-controller
+              ng-repeat
+
+
+
+
+
+          其他：ng-bind 值绑定  和ng-cloak
+
+          ng-bind必须在标签中，但是插值语法更灵活
+
+          缺点，必须保证ng先加载，手动操作样式
+
+          ng-class="对象" 对象的键是类样式的名字
+                          值是boolean 变式是否含有对应的类样式
+
+
+          ng-style   理论上style是使用分号分隔的键值对，
+
+
+          encodeURL('')   编码   decodeURL('')  解码
+
+
+
+
+ 5.自定义指令
+
+      JSON.parse 将json字符串转化为对象
+
+
+      E A C M   注释 属性  类名  标签
+
+      template：后面不能过长
+      指令默认不创建新的scope，scope可以继承。
+
+
+    依赖注入的完整写法：
+
+    $http 必须要掌握
+
+
+    路由：就是页面导航 【概念要掌握，步骤记住】
+
+    redirectTo重定向
+
+    老师笔记3指令上面的一个程序，实际上，后面要改成数组的形式
+
+
+
+
+
+

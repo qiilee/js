@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="hide" value="隐藏" onclick="hide();"/>
+<input type="button" id="show" value="显示"/>
+<p style="clear:both"></p>
+<div>这是第1个盒子</div>
+<div>这是第2个盒子</div>
+<div>这是第3个盒子</div>
+<div>这是第4个盒子</div>
+<div>这是第5个盒子</div>
+<div>这是第6个盒子</div>
+<script>
+    // 单击隐藏按钮的时候，让所有的盒子都隐藏起来
+     // 1. 先获得要操作的对象
+    var btnHide = document.getElementById("hide");
+    var btnShow = document.getElementById("show");
+    var divs = document.getElementsByTagName("div"); //获得所有的标签对象，是一个对象数组
+    // 2. 给事件源注册事件
+//    btnHide.onclick =function (){
+////           divs[0].style.display = "none";
+////           divs[1].style.display = "none";
+//        for(var i=0;i<divs.length;i++){
+//            divs[i].style.display = "none";
+//        }
+//    }
+
+    function hide(){
+        for(var i=0;i<divs.length;i++){
+            divs[i].style.display = "none";
+        }
+    }
+    // 3. 显示出来
+    btnShow.onclick = function(){
+        for(var i=0;i<divs.length;i++){
+            divs[i].style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>

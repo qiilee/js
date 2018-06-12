@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+       var num = Number(prompt("请输入一个数字"));
+       var count =0;
+       while(num != 0){
+           var tmp = num%10;
+           num = parseInt(num/10);
+           console.log(tmp);
+           count += tmp;
+        }
+        console.log("各位数和是"+count);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

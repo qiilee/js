@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <script>
+            $(function(){
+                $("input[type=button]").on("click",function(){
+
+                      var tel=$("#telephone").val();
+
+                      $.ajax({
+                          url:"telephone.php",
+                          data:{
+                              telephone:tel
+                          },
+                          type:"get",
+                          success:function(data){
+                              console.log(data);
+                              $("div").html(data);
+                          }
+
+
+                      })
+
+                });
+            })
+
+    </script>
+</head>
+<body>
+手机号归属地查询:
+<input type="number" id="telephone" placeholder="请输入手机号">
+<input type="button" value="查询">
+<div></div>
+</body>
+</html>

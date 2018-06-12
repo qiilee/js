@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src ='../../../../jQuery版本/jquery-3.0.0.js'></script>
+</head>
+<body>
+<div id="container"></div>
+<div id="control"></div>
+<script>
+    var musics = [];
+    for (var i = 0; i <10; i++) {
+      musics.push('歌曲:'+i);
+    }
+    $('#container').append($.map(musics,function(v,i){
+        return "<input type='checkbox'/>"+v+"<br/>";
+    }).join(''));                //疑问   为神魔使用html=的方式得不到结果
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //jq的两大特性 ： 链式编程  隐式迭代
+            //当我们对jq对象进行设置型操作后可以继续使用当前对象进行新的操作
+            //$("#box").text("我是box").css("width","100px");
+            //如果进行了获取型操作，这时方法会返回一个值，就无法继续链式编程了。
+            //$("#box").text("我是box").css("width");
+
+            //var obj = {};
+            //obj.setName =function (name) {
+            //    this.name = name;
+            //    return this;
+            //};
+            //obj.getName = function () {
+            //    return this.name;
+            //};
+//
+            //console.log(obj.setName("张三").setName("李四").setName("王五"));
+            //console.log(obj.setName("张三").setName("李四").setName("王五").getName());
+
+
+            //隐式迭代
+            //当我们进行设置型操作时，可以同时对获取到的多个元素进行同时操作
+            //$("p").text("我是p标签");
+
+            //如果进行获取型操作，无法隐式迭代，会返回第一个元素的对应属性值值
+
+
+        });
+    </script>
+</head>
+<body>
+<div id="box"></div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+</body>
+</html>

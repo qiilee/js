@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //使用prop方法去获取元素行内的自带属性
+            //获取
+            //console.log($("#box").prop("id"));
+            //获取操作时，不能获取一个标签的多个属性值，也不可以获取多个标签的属性值
+
+            //设置属性值
+            //1 设置单个属性
+            //$("#box").prop("id","box1");
+
+            //2 设置多个属性
+            //$("#box").prop({
+            //    "id":"box2",
+            //    "class":"box2"
+            //});
+
+            //3 使用prop获取自定义的行内属性值 -- 获取不到
+            //console.log($("#box").prop("hehe"));
+            //获取表单的某些状态属性时，值为true或者false
+            //console.log($("#ipt").prop("checked"));
+
+
+            //第二种方式 attr方法 使用attr获取自定义的行内属性
+            //获取
+//            console.log($("#box").attr("hehe"));
+
+            //设置
+            //设置单个
+            //$("#box").attr("dddd","123");
+            //设置多个
+            //$("#box").attr({
+            //    "dddd":"123",
+            //    "hehe":"456"
+            //});
+
+            //使用attr属性去获取自带的行内属性
+            //console.log($("#box").attr("id"));
+
+            //使用attr获取表单属性的值时会出现问题
+            //console.log($("#ipt").attr("checked"));
+
+
+            //总结  我们一般使用prop方法去获取和设置自带的行内属性值
+            //使用attr设置或获取自定义的行内属性值
+
+        });
+    </script>
+</head>
+<body>
+<div id="box" class="box" hehe="abc"></div>
+<input id="ipt" type="checkbox" checked>
+</body>
+</html>

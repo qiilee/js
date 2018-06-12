@@ -1,0 +1,22 @@
+* {margin:0;padding:0;border:0;}
+#main {width:900px; height:500px; background:pink; margin:auto; margin-top:10px;}
+#left {width:200px; height:500px;background:#F5DEB3; float:left;}
+#right {width:700px; height:500px; background:rgb(206,263,49); float:left;}
+#content {height:379px; padding-top:1px;}
+#send {height:120px; background:rgb(51,175,234);}
+#control {position:relative; left:75px; top:18px;}
+select,textarea {border:1px solid gray;}
+#msg {width:410px;height:52px; margin-top:5px;}
+#content-title{color:green;font-size:14px;width:245px;margin:10px auto;}
+hr {border:1px solid gray; width:600px; margin:auto;}
+#show_msg {width:600px; margin-left:47px;margin-top:10px;font-size:14px;font-weight:bold;
+	height:328px;
+	overflow:auto;
+}
+#left h2 {color:#8B4513;font-size:14px;position:relative; left:36px;top:24px; width:150px; }
+#left #user { position:relative; top:46px;left:48px;   }
+
+ul {font-size:12px;  list-style:none; width:110px; }
+
+#anniu {margin-top:280px; margin-left:50px; }
+#anniu input {margin-top:3px; width:98px;height:30px; background:#CD853F; color:white; border:2px solid white;}

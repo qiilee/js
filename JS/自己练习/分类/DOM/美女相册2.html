@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="images/1.jpg" id="a1"><img src="images/1-small.jpg" alt=""/></a>
+<a href="images/2.jpg" id="a2"><img src="images/2-small.jpg" alt=""/></a>
+<br/>
+<img src="images/placeholder.png" alt="" width="400" id="img"/>
+<br/>
+<script>
+
+
+    var img = document.getElementById("img");
+    var a = document.getElementsByTagName("a");
+    a[0].onclick = function () {
+        img.src = this.href;
+        return false;
+    };
+    a[1].onclick = function () {
+        img.src = this.href;
+        return false;
+    };
+
+</script>
+</body>
+</html>

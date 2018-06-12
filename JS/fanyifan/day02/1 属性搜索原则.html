@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 属性搜索原则
+    /*
+    * 1 首先会去查找对象本身上面有没有这个属性，有的话，就返回这个属性
+    * 2 如果对象本身上面没有这个属性，就到它的原型上面去查找，如果有，就返回
+    * 3 就到原型的原型上面去查找有没有这个属性，如果查找到最后一只没有找到，就返回一个undefined
+    *
+    * */
+
+    /*var obj = {}
+    console.log(obj.name)//undefined*/
+
+    function Person(){
+        this.name = 'jack';
+        this.age=17;
+    }
+    Person.prototype.age=18;
+
+    // 当构造函数在被调用的时候没有参数传递，是可以把小括号省略掉的。
+    var person1 = new Person;
+
+    console.log(person1.name)// ‘jack’
+    console.log(person1.age)// 17
+
+    console.log(typeof Person.prototype);
+    console.log(Person.prototype instanceof Object);//true
+    console.log(person1 instanceof Person);// true
+
+
+    console.log(Person.prototype)// 原型
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        //总结：
+        //     取消事件冒泡:e.stopPropagation();
+        //     取消默认事件效果:e.preventDefault();
+        //     两个效果都可以实现: return false;
+
+
+
+        $(function () {
+            $("#link").click(function (e) {
+                //取消事件冒泡和取消默认事件效果的方式
+                //e.stopPropagation();
+                //e.preventDefault();
+
+                //return false; 两个效果都可以实现
+                return false;
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<a id="link" href="13事件触发的方式.html">点击</a>
+</body>
+</html>

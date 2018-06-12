@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //在正则中使用[] 中括号中的内容表示一位字符
+    //有任意一位字符为a或者b或者c即可
+    //var reg = /[abc]/;
+
+    //console.log(reg.test("jldaasjd"));
+    //console.log(reg.test("dddddd"));
+    //console.log(reg.test("jykgckyg"));
+
+    //反向类
+    //在中括号的开头使用^，表示反向
+    //只要有除了abc以外的任意一个字符就可以
+    var reg = /[^abc]/;
+    console.log(reg.test("ddllldldl"));
+    console.log(reg.test("a"));
+    console.log(reg.test("fa"));
+
+
+</script>
+</body>
+</html>

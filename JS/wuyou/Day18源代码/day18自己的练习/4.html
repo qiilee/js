@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: red;
+            /*left: 50px;*/
+            /*top:50px;*/
+            /*margin-left: 50px;*/
+            /*margin-top: 50px;*/
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+//            console.log($("#box").offset().left);
+//            console.log($("#box").offset().top);
+////            $("#box").offset({
+////                "left":100,
+////                "top":100
+////            });
+
+//1
+//             $("#box").on("click", function () {
+//                 console.log("111");
+//             });
+
+
+//2
+//            $("#box").on({
+//                "click": function () {
+//                    console.log("2222");
+//                },
+//                "mouseover": function () {
+//                    console.log("3333");
+//                }
+//            });
+
+
+//3
+            $("#box").on("click","p,span", function () {
+                console.log("44");
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="box">
+    <p>gaaaghs</p>
+    <span>eqweqwe</span>
+</div>
+</body>
+</html>

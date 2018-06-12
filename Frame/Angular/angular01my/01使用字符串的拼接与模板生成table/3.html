@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='template-native.js'></script>
+    <script type="text/template" id="code">
+        <table border='1' width='400'>
+            <thead>
+            <% for (var i = 0;i < title.length;i++ ){%>
+            <th><%= title[i]%></th>
+            <% }%>
+            </thead>
+            <tbody>
+            <% for (var i = 0;i<datas.length;i++) { %>
+            <% if(!datas[i].isShow) continue;%>
+            <tr>
+                <td><%= datas[i]['name']%></td>
+                <td><%= datas[i]['age']%></td>
+                <td><%= datas[i]['gender']%></td>
+            </tr>
+            <% }%>
+            </tbody>
+        </table>
+    </script>
+</head>
+<body>
+<input type="text" id="txt"><input type="button" value="查询" id="btn">
+<div></div>
+</body>
+<script>
+    var obj = {
+        title: [ 'name', 'age', 'gender' ],
+        datas: [
+            { name: 'jim1', age: 19, gender: '男',isShow:true },
+            { name: 'jim1', age: 19, gender: '男',isShow:true },
+            { name: 'tom2', age: 19, gender: '男',isShow:true },
+            { name: 'jim3', age: 19, gender: '男',isShow:true },
+            { name: 'jim1', age: 19, gender: '男',isShow:true },
+            { name: 'jack', age: 19, gender: '男',isShow:true },
+            { name: 'jim1', age: 19, gender: '男',isShow:true },
+            { name: 'jim1', age: 19, gender: '男',isShow:true },
+            { name: 'jim2', age: 19, gender: '男',isShow:true },
+            { name: 'jim3', age: 19, gender: '男',isShow:true },
+            { name: 'jim4', age: 19, gender: '男',isShow:true },
+            { name: 'jim5', age: 19, gender: '男',isShow:true }
+        ]
+    };
+    // 控制显示用的逻辑
+    var container = document.querySelectorAll( 'div' )[ 0 ],
+            txt = document.querySelectorAll( '#txt' )[ 0 ],
+            btn = document.querySelectorAll( '#btn' )[ 0 ];
+
+    // 页面渲染( 将丑陋的东西渲染成好看的东西 )
+    function  render () {
+        container.innerHTML = template( 'code', obj );
+    }
+    render();
+
+    btn.onclick = function () {
+        // 根据用户的输入 处理数据
+        var text = txt.value;
+        if ( text.trim().length == 0 ) return;
+
+        // 我要处理的是 数据的筛选
+        obj.datas.forEach(function ( v, i ) {
+            // 判断 v 中的 isShow, 用 v 中的 name 和 text 判断
+            v.isShow = v.name == text;
+        });
+
+        // 渲染
+        render();
+        console.log( 'over' );
+    }
+</script>
+</html>

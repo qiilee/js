@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var num  = 0;
+    function fib(n){
+        num++;
+        //边界条件:如果n===1或者n===2,直接返回1
+        if(n===1||n===2){
+            return 1;
+        }
+        return fib(n-1)+fib(n-2)
+    }
+    //之前我们在用fib函数去求解斐波那契数列的问题的时候，如果求的数字比较大，浏览器会崩溃
+
+
+
+
+   /* console.log(fib(1));//1*/
+ /*   console.log(fib(2));//1*/
+    /*console.log(fib(3));//3*/
+  /*  console.log(fib(4));//5*/
+/*    console.log(fib(7));//25*/
+/*    console.log(fib(9));//67*/
+/*    console.log(fib(12));//289*/
+/*    console.log(fib(15));//1219*/
+   /* console.log(fib(20));//13529*/
+   /* console.log(fib(21));//21891*/
+ /*   console.log(fib(22));//35421*/
+
+     fib(5)
+
+
+
+
+
+    /*console.log(fib(10)); //执行了109次*/
+    console.log(num)
+
+    /*console.log(fib(50))*/
+</script>
+</body>
+</html>

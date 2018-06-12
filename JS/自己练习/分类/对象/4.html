@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+function test(){
+    console.log(this);
+//此时this是window，因为是window调用的此函数
+}
+    window.test();
+//    test();
+</script>
+</body>
+</html>

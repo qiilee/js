@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="查询数据库"/>
+
+<div></div>
+<script>
+    document.querySelector("input[type=button]").onclick = function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("post","5.php");
+        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var data = xhr.responseText;
+                var arr = data.split(",");
+                var div ="";
+                for (var i = 0; i < arr.length; i++) {
+                    div+="<div>"+arr[i]+"</div>";
+                }
+                document.querySelector("div").innerHTML = div;
+                
+            }
+        }
+    }
+</script>
+</body>
+</html>

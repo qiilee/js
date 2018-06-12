@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script>
+        Itcast.fn.removeClass = function ( className ) {
+            // 将 this 中 每一个 DOM 元素的 className 属性中符合 参数中描述的 className 的类样式删除
+            className = className.trim(); // ES5
+            return this.each(function () {
+
+                // 删除 this 中的 对应 className
+                var classNames = this.className && this.className.split( ' ' );
+                if ( !classNames ) return;
+
+                // 移除数组中符合要求的字符串
+                var index; // undefined
+                while( ( index = classNames.indexOf( className ) ) != -1 ) {
+                    classNames.splice( index, 1 );
+                }
+
+                this.className = classNames.join( ' ' );
+
+            });
+        };
+        
+    </script>
+</head>
+<body>
+    <div class="c1 c c2 c3 c c4 c5 c c c c6"></div>
+    <div class="c1 c2 c3 c"></div>
+    <div class="c c1 c2 c c3"></div>
+</body>
+<script>
+    I( 'div' ).removeClass( 'c' );
+
+</script>
+</html>

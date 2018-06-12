@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数的原型
+    var fn = new Function();
+    // fn的构造函数是Function/
+    // fn的原型对象fn.__proto__
+    // Function的原型属性 Function.prototype
+    console.log(fn.__proto__===Function.prototype)
+</script>
+</body>
+</html>

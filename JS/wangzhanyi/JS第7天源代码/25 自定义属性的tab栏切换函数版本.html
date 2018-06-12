@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+        .hd {
+            height: 45px;
+        }
+        .hd span {
+            display: inline-block; /*将行内元素转换成行内块元素，宽高才起作用*/
+            width: 90px;
+            background-color: pink;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .hd span.current {
+            background-color: purple; /*紫色*/
+        }
+        .bd li {
+            height: 255px;
+            background-color: purple;
+            display: none;  /*设置隐藏*/
+        }
+        .bd li.current {
+            display: block; /*显示*/
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box1">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我的娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="box2">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我的娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="box3">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我的娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<div class="box" id="box4">
+    <div class="hd">
+        <span class="current">体育</span>
+        <span>娱乐</span>
+        <span>新闻</span>
+        <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我的娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+<script>
+    //以下的两种写法都能做出来  建议使用第二种
+    // spans[j].setAttribute("class", "");
+    // lis[j].setAttribute("class", "");
+    // spans[j].removeAttribute("class");
+    // lis[j].removeAttribute("class");
+    tabTurn("box1");
+    tabTurn("box2");
+    tabTurn("box3");
+    tabTurn("box4");
+
+
+    //    myself  twice
+    function tabTurn(id) {
+        var box = document.getElementById(id);
+        var spans = box.getElementsByTagName("span");
+        var lis = box.getElementsByTagName("li");
+        for (var i = 0; i < spans.length; i++) {
+            spans[i].setAttribute("index", i);
+            spans[i].onclick = function () {
+                for (var j = 0; j < spans.length; j++) {
+                    spans[j].removeAttribute("class");
+                    lis[j].removeAttribute("class");
+                }
+                this.setAttribute("class", "current");
+                lis[this.getAttribute("index")].setAttribute("class", "current");
+            }
+        }
+    }
+
+
+    //myself once
+    //    function tabTurn(id) {
+    //        var box = document.getElementById(id);
+    //        var spans = box.getElementsByTagName("span");
+    //        var lis = box.getElementsByTagName("li");
+    //
+    //        for (var i = 0; i < spans.length; i++) {
+    //            spans[i].setAttribute("index", i);
+    //            spans[i].onclick = function () {
+    //                for (var j = 0; j < spans.length; j++) {
+    //                    spans[j].setAttribute("class", "");
+    //                    lis[j].setAttribute("class", "");
+    ////                    spans[j].removeAttribute("class");
+    ////                    lis[j].removeAttribute("class");
+    //                }
+    //                this.setAttribute("class", "current");
+    //                lis[this.getAttribute("index")].setAttribute("class", "current");
+    //            }
+    //
+    //        }
+    //    }
+
+
+    /**
+     * tab栏切换的函数版本  teacher：：：：：：
+     * @param id
+     */
+    //    function tabTurn(id){
+    //        // 1. 先获得要操作的对象
+    //        var box = document.getElementById(id);
+    //        var spans = box.getElementsByTagName("span");
+    //        var lis = box.getElementsByTagName("li");
+    //        // 2. 给事件源注册事件
+    //        for(var i=0;i<spans.length;i++){
+    //            spans[i].setAttribute("index",i);
+    //            spans[i].onclick =function (){
+    //                // 当前单击的span标签的背景颜色 变成紫色，也就是让当前的标签具有current类
+    //                for(var j=0;j<spans.length;j++){
+    //                    spans[j].removeAttribute("class"); //先把所有的span的类current移除掉
+    //                    lis[j].removeAttribute("class");
+    //                }
+    //                this.setAttribute("class","current");//再让当前单击的这个span标签添加类current
+    //
+    ////            for(var k=0;k<lis.length;k++){
+    ////                lis[k].removeAttribute("class");
+    ////            }
+    //                var index = this.getAttribute("index");
+    //                lis[index].setAttribute("class","current");
+    //            }
+    //        }
+    //    }
+</script>
+</body>
+</html>

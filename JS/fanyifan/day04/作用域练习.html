@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    /*var num1 =123;
+    function fn(){
+        console.log(num1)
+        var num2 = 456;
+    }
+    console.log(num2)*/
+
+
+    var num = 123;
+    function f1() {
+        console.log(num);//
+    }
+    function f2() {
+        var num = 456;
+        f1();//
+    }
+    f2();
+
+
+
+    function fn(name,age){
+        console.log(name,age)
+    }
+
+
+
+    var oneColor = "red";
+    function outer(){
+        var oneColor = "blue";
+        function inner(){
+            console.log(oneColor);
+        }
+        inner();
+    }
+    outer();
+
+
+
+    console.log(str,num);
+    var str = "jack";
+    var num = 39;
+    function fn(){
+        console.log(str,num);
+        num = 14;
+        str = "rose";
+        var num = 20;
+        console.log(str,num);
+    }
+    fn();
+    console.log(str,num);
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.c {
+  width: 100px;
+}
+.c .c1 {
+  height: 200px;
+}
+.c .c1 .c2 {
+  border: 1px solid red;
+}

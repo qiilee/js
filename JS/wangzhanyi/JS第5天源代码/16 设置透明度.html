@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /*opacity: 0.3;*/
+            /*filter: alpha(opacity=30); /!*0---100*!/*/
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<div ></div>
+<script>
+    //1. 先获得要操作的对象
+    var btn = document.getElementById("btn");
+    var div = document.getElementsByTagName("div");// 对象的数组
+    // 2. 注册单击事件
+    btn.onclick = function (){
+//           div.style.opacity = "0.3";
+        div[0].style.opacity = "0.3";
+        div[0].style.filter="alpha(opacity=30)";
+    }
+</script>
+</body>
+</html>

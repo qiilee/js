@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--总结：在用户访问网站整个生命周期中都会用到的数据用session来存储，
+    例如用户名，登录状态，购物车信息-->
+<!--显示在网页上的信息数据大多通过 request或Ajax方式获取-->
+
+1.利用cookie对象
+  Cookie是服务器保存在客户端中的一小段数据信息。使用Cookie有一个前提，
+  就是客户端浏览器允许使用Cookie并对此做出相应的设置。一般不赞成使用Cookie。
+2.利用session对象
+  session对象表示特定会话session的用户数据。客户第一次访问支持session的JSP网页，
+  服务器会创建一个session对象记录客户的信息。
+  当客户访问同一网站的不同网页时，仍处于同一个session中。
+3.利用request重定向，设置setAttribute
+
+4.利用Ajax进行异步数据请求（得到的数据可以以json或xml格式返回，便于处理）
+</body>
+</html>

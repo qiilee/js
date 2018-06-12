@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+    <script type="text/template" id="weatherId">
+        <%for(var i=0;i<result.future.length;i++) {%>
+        <tr>
+            <td>
+                <%=result.future[i].date%>
+            </td>
+            <td>
+                <%=result.future[i].temperature%>
+            </td>
+            <td>
+                <%=result.future[i].weather%>
+            </td>
+            <td>
+                <%=result.future[i].weather_id%>
+            </td>
+            <td>
+                <%=result.future[i].week%>
+            </td>
+            <td>
+                <%=result.future[i].wind%>
+            </td>
+        </tr>
+        <% } %>
+
+
+
+</script>
+</head>
+<body>
+
+    <input type="text" id="city"><input type="button" value="查询天气">
+    <table>
+    </table>
+    <script>
+        $("input[type=button]").on("click", function () {
+            var cityName = $("#city").val();
+            $.ajax({
+                url:"http://v.juhe.cn/weather/index?format=2&cityname="+cityName+"&key=7fe81e21da8bd34636069eaf0aa24d38",
+                type:"get",
+                dataType:"jsonp",
+                success: function (data) {
+
+                    console.log(data);
+
+                    var html = template("weatherId",data);
+
+//                    console.log(html);
+
+                    $("table").append(html);
+
+
+                }
+            });
+            
+        });
+    </script>
+
+
+</body>
+</html>

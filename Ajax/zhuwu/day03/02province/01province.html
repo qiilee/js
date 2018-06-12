@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+            /*
+            * 1：页面加载完毕，我要通过ajax 去获取数据
+            * 2: 获取到数据之后，我要解析省份对应的数据（省份的名称）
+            * 3：解析到省份对应的数据之后，组装成option
+            * 4: 放在第一个select 里面 provinceId
+            * 5：用户选中省份，我需要根据省份找到省份下面对应的城市
+            *       1：当用户点击省份，获取到用户选中的省份
+            *       2：根据选中的省份从后台返回的数据里面进行查找
+            *       3：查找相同的省份的数据。
+            *       4：找到相同的省份，然后再根据省份找到对应的城市。
+            *       5：遍历出来城市，创建option，往第二个select 里面丢.
+            * 6：我找到了城市，然后把城市组装成option
+            * 7：放在第二个select 当中 cityId
+            * 8: 用户选中了城市，根据城市找到对应的县级市。
+            * 9：找到了县级市，组装option
+            * 10：然后放在第三个select 当中 areaId
+            * */
+            window.onload=function(){
+                     var obj;
+                     var cities;
+                     var xhr=new XMLHttpRequest();
+                     xhr.open("GET","01province.php");
+                     xhr.send(null);
+                     xhr.onreadystatechange=function(){
+                         if(xhr.readyState==4 && xhr.status==200){
+                                var data=xhr.responseText;
+                                obj=JSON.parse(data);
+                                for(var i=0;i<obj.length;i++){
+                                      var provinceName=obj[i].provinceName;
+                                      var option=document.createElement("option");
+                                      option.innerHTML=provinceName;
+                                      document.getElementById("provinceId").appendChild(option);
+                                }
+                         }
+                    }
+
+                    /*要给省份的select 添加事件，这个事件叫做什么
+                    * onchange 事件。 下拉框发生改变的时候触发.
+                    * */
+                   document.querySelector("#provinceId").onchange=function(){
+                           var provinceName=this.value;
+                           for(var i=0;i<obj.length;i++){
+                               if(obj[i].provinceName==provinceName){
+                                    cities=obj[i].cities;
+                                    document.getElementById("cityId").innerHTML='<option selected>请选择城市</option>';
+                                    document.getElementById("areaId").innerHTML='<option selected>请选择区县</option>';
+                                   for(var j=0;j<cities.length;j++){
+                                         var cityName=cities[j].cityName;
+                                         var option=document.createElement("option");
+                                         option.innerHTML=cityName;
+                                         document.getElementById("cityId").appendChild(option);
+                                    }
+                               }
+                           }
+                   }
+
+                   document.getElementById("cityId").onchange=function(){
+                          var cityName=this.value;
+                          for(var i=0;i<cities.length;i++){
+                                if(cities[i].cityName==cityName){
+                                     //cities[i] 找所有的区域.
+
+                                    document.getElementById("areaId").innerHTML='<option selected>请选择区县</option>';
+
+                                      var areas=cities[i].areas;
+
+                                      for(j=0;j<areas.length;j++){
+
+                                         var areaName=areas[j].areaName;
+
+                                          //console.log(areaName);
+
+                                         var option=document.createElement("option");
+
+                                          option.innerHTML=areaName;
+
+                                          document.getElementById("areaId").appendChild(option);
+                                      }
+
+                                }
+                          }
+                   }
+
+            };
+
+
+    </script>
+</head>
+<body>
+    <select id="provinceId">
+        <option selected>请选择省份</option>
+    </select>
+    <select id="cityId">
+        <option selected>请选择城市</option>
+    </select>
+    <select id="areaId">
+        <option selected>请选择区县</option>
+    </select>
+</body>
+</html>

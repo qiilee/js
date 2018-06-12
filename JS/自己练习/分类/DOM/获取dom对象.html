@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="点我啊" onclick="handler();">
+<div id="one">AAAA</div>
+<div>BBBB</div>
+<div>CCCC</div>
+<script>
+function handler(){
+    var divs = document.getElementsByTagName("div");
+    for(var i =0;i<divs.length;i++){
+        if(divs[i].id!="one"){
+           console.log(divs[i]);
+        }
+    }
+
+}
+</script>
+</body>
+</html>

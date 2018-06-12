@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //当浏览器窗口可视区域大小改变时，设置不同的背景颜色
+    window.onresize = function () {
+        //>960 pc 电脑
+        //>640 tablet 平板
+        //<640 手机
+        if (myClient().wid > 960) {
+            document.body.style.backgroundColor = "red";
+            document.body.innerHTML = "pc";
+        } else if (myClient().wid > 640) {
+            document.body.style.backgroundColor = "orange";
+            document.body.innerHTML = "平板";
+        } else {
+            document.body.style.backgroundColor = "green";
+            document.body.innerHTML = "手机";
+        }
+    };
+
+    //封装一个函数
+    function myClient() {
+        return {
+            wid: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+            heit: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+        };
+    }
+</script>
+</body>
+</html>

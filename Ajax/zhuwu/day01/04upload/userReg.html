@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--文件上传专用-->
+    <form action="userReg.php" method="post" enctype="multipart/form-data">
+            <!--接收的意思，这里接收的文件类型是什么类型
+            用户只能选择图片这种文件，其它的就会过滤掉
+            -->
+          形象照:<input type="file" name="lifephoto" accept="image/jpeg">
+         <input type="submit" value="文件上传">
+    </form>
+</body>
+</html>

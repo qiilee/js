@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <style>
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>pppp</p>
+        <p>pppp</p>
+        <p>pppp</p>
+        <p class="c">pppp</p>
+        <p>pppp</p>
+        <p>pppp</p>
+    </div>
+    <div>
+        <p>pppp</p>
+        <p>pppp</p>
+        <p class="c">pppp</p>
+        <p>pppp</p>
+    </div>
+    <div>
+        <p>pppp</p>
+        <p class="c">pppp</p>
+        <p>pppp</p>
+        <p>pppp</p>
+    </div>
+</body>
+<script>
+    // parent
+    var length = I( 'p' ).parent().each(function () {
+        this.style.width = '200px';
+        this.style.height = '200px';
+        this.style.border = '1px dashed red';
+        this.style.margin = '10px 0';
+//        console.log(this);
+    }).length;
+    console.log( 'length = ' + length );
+
+
+    // nextAll 方法
+    // 让所有的 class 为 c 的元素的 nextAll 元素 加边框
+    I( '.c' ).each(function () {
+        this.style.backgroundColor = 'pink';
+    }).nextAll().each(function  () {
+        this.style.border = '1px solid blue';
+    })
+
+    // prevAll 加边框
+    I( '.c' ).prevAll().each(function () {
+        this.style.border = '1px solid green';
+    });
+
+
+    // next 与 prev
+    I( '.c' ).next().each(function () {
+        this.style.backgroundColor = 'olive';
+    }).end().prev().each(function () {
+        this.style.backgroundColor = 'orange';
+    });
+</script>
+</html>

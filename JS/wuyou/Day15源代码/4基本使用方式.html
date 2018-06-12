@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //可以匹配一个字符串中是否含义abc
+    var reg = /abc/;
+
+    //正则方法 reg.test(str); 返回true或者false
+    //只要内容中具有abc就可以
+    console.log(reg.test("dddabcd"));
+    console.log(reg.test("abc"));
+    //不连续不可以
+    console.log(reg.test("ffafffbffffcfff"));
+
+
+</script>
+</body>
+</html>

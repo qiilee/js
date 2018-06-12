@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //jQuery事件的发展历程
+
+            //简单事件添加
+            //$("#box").click(function () {
+            //   console.log("我是事件代码");
+            //});
+//
+            //$("#box").mouseenter(function () {
+            //    console.log("我是事件代码");
+            //});
+
+
+            //同时添加多个事件的方式 bind
+            //$("#box").bind("click mouseenter",function () {
+            //    console.log("我是事件代码");
+            //});
+
+            //给多个事件添加不同的事件处理程序
+//            $("#box").bind({
+//                "click":function () {
+//                    console.log("我是点击事件");
+//                },
+//                "mouseenter":function () {
+//                    console.log("我是移入事件");
+//                }
+//            });
+
+            //演示bind的问题
+            //先给box中的p标签添加一个事件
+            //$("#box>p").bind("click",function () {
+            //    console.log("我是点击事件");
+            //});
+
+
+            //点击按钮，动态创建一个p，添加到box中
+            $("#btn").click(function () {
+                $("#box").append("<p>我是新的p标签</p>");
+            });
+
+            //问题：我们发现动态创建的元素是无法使用已经在加载时设置的事件
+            //--------------------解决方式：添加新的方法--------------------
+            //delegate()  事件委托  代理事件
+            //$("#box").delegate("p", "click", function () {
+            //    console.log("我是内部的p标签");
+            //});
+
+
+            //-----------------必须记住的最新的方式on 方法-----------------
+            //jq在最终使用一个方法统一了事件的添加方式 on();
+
+            //简单事件添加:   参数1 事件类型  参数2 事件处理程序
+            //$("#box").on("click",function () {
+            //   console.log("我是点击事件");
+            //});
+
+            //多个事件添加:   参数1 对象
+            //$("#box").on({
+            //    "click": function () {
+            //        console.log("我是点击事件");
+            //    },
+            //    "mouseenter":function () {
+            //        console.log("我是移入事件");
+            //    }
+            //});
+
+            //事件委托:  参数1 事件类型   参数2 选择器  参数3 事件处理程序
+            //事件委托的原理：事件冒泡;
+            $("#box").on("click", "p,span", function () {
+                console.log("我是由box内部的p标签执行的事件");
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<button id="btn">点击</button>
+<div id="box">
+    <p>我是一段文本</p>
+    <span>我是span</span>
+    <h1>我是h1</h1>
+</div>
+</body>
+</html>

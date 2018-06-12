@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 字符串是字符的组合，可以看成是字符的数组
+    var str = "abcdefgabcm";
+   // console.log(str.length);
+    // indexOf
+    console.log(str.indexOf("a"));
+    console.log(str.indexOf("f"));
+    console.log(str.indexOf("ab"));
+    console.log(str.indexOf("abc"));
+    console.log(str.indexOf("d"));
+    console.log(str.indexOf("cd"));
+    console.log(str.indexOf("m")); // 不存在就是-1
+    console.log(str.indexOf("a",3));//从索引为3的位置开始往后找
+
+
+    //如果你要查询的内容，刚好在字符串中的索引位置为0的话，那么还可以把这个字符串看成是以查询的这个元素为开头的字符串
+
+
+    console.log(str.lastIndexOf("a"));
+    console.log(str.lastIndexOf("b"));
+</script>
+</body>
+</html>

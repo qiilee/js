@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<script>
+    // 1. 获得要操作的标签对象
+    var inputs = document.getElementsByTagName("input");
+    // 2. 给事件源注册事件
+    for(var i=0;i<inputs.length;i++){ // 这层循环是给每个标签注册单击事件的
+        inputs[i].onclick = function (){
+            for(var j=0;j<inputs.length;j++){ // 这层循环是清空所有的背景样式
+                inputs[j].style.backgroundColor = "";
+            }
+             this.style.backgroundColor = "red";
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var o1 = {name:"女娲", age: 1, gender: "female"};
+    var o2 = {grade: "三年级二班", score: 100};
+
+    // o2 继承 o1
+    for ( var k in o1 ) {
+        o2[k] = o1[k];
+    }
+
+    // 如果希望 o2 可以继承自任意的对象. 所以为了简化继承的代码
+    // 给 o2 提供一个方法, 叫 extend
+    o2.extend = function (obj) {
+        for (var k in obj) {
+            this[k] = obj[k];
+        }
+    }
+
+    o2.extend(o1);  // 继承
+</script>
+</body>
+</html>

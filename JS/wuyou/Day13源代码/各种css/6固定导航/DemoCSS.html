@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="top" id="topPart">
+    <img id="pic" src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+<script>
+    var topPart = document.getElementById("topPart");
+    var navBar = document.getElementById("navBar");
+    var mainPart = document.getElementById("mainPart");
+
+    //当页面滚动到一定位置的时候，让导航定在页面顶部
+
+    //什么时候检测？ 滚动页面的时候进行检测
+    window.onscroll = function () {
+        //什么时候定住？ 当卷曲的高度超过了顶部的高度
+        //不要判断相等
+        if (myScroll().top > topPart.offsetHeight) {
+            //让导航定住，添加类名,注意元素标签是否具有类名
+            navBar.className = "nav fixed";
+            //由于固定定位会脱标。mainPart会插入到navBar的底部
+            //设置底部的marginTop，给navBar预留出位置
+            mainPart.style.marginTop = navBar.offsetHeight + 10 + "px";
+        } else {
+            //卷曲高度小于了顶部的高度
+            //清除掉navBar的类名
+            navBar.className = "nav";
+            //清除marginTop
+            mainPart.style.marginTop = 10 + "px";
+        }
+
+    }
+
+
+    function myScroll() {
+        return {
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+
+</script>
+</body>
+</html>

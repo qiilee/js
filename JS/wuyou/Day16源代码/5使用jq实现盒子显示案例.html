@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 150px;
+            background-color: pink;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        //总结：与文件3对比 没有对比就没有伤害
+
+        //1 入口函数
+        $(document).ready(function () {
+            //2 点击按钮，让盒子显示
+            $("#btn1").click(function () {
+                //3 让盒子显示
+                $("div").show(1000);  //隐式迭代  隐式 - 偷偷的  迭代 - 遍历
+            });
+
+            //4 点击设置盒子的内容
+            $("#btn2").click(function () {
+                $("div").text("我是一个快乐的小盒子！~");
+            });
+        });
+
+    </script>
+</head>
+<body>
+<button id="btn1">点击显示盒子</button>
+<button id="btn2">点击显示文字</button>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>

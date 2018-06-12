@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+
+    <form action=".index.ashx" method="get">
+
+        <textarea name="txt" id="" cols="30" rows="10">abc</textarea>
+        <input type="submit">
+    </form>
+
+
+    用户名<input type="text" name="uid" ng-model="name"/><br>
+
+    密码<input type="password" name="pwd"  ng-model="password"/><br>
+    
+    <input type="button" value="登录" ng-click="func()"/><br>
+    
+    <div>{{message}}</div>
+
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+            // 控制器, 只会在一开始的时候执行, 而且只执行一次.
+            // 因此将控制逻辑 应该放在 submit 方法中
+
+            $scope.func = function () {
+
+                var name = $scope.name,
+                    password = $scope.password;
+
+
+                // // 此时的逻辑应该是判断存在
+                // if ( name && name.trim().length > 0 && 
+                //      password && password.trim().length > 0 ) {
+                    
+                //     $scope.message = '登录成功';
+                // } else {
+                //     $scope.message = ' 请输入完整信息';
+                // }
+
+                $scope.message = 
+                    ( name && name.trim().length > 0 ) && ( password && password.trim().length > 0 )
+                    ? '登录成功'
+                    : '请输入完整信息';
+
+            };
+
+        });
+
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+        var a = 1;
+        function fun(a) {
+            //这个题多了一个传参的过程
+            //a=1;
+            //----------
+            var a;
+            function a() {
+            }
+            //----------
+            console.log(a);//函数
+            a = 100;
+            console.log(a);//100
+
+        }
+        fun(1);
+</script>
+</body>
+</html>

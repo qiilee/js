@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //字符串连接 concat
+    //我们几乎不用这个方法，因为+操作比较方便
+//    var str = "abc";
+//    var strNew = str.concat("d","e");
+//    console.log(strNew); //abcde
+
+    //slice(start,end); 获取的时候止含有start不含end
+    //var str = "abcde";
+    //console.log(str.slice(1, 4));
+
+    //substr(start,len)  start表示获取的起始位置索引值，第二个参数表示获取的字符个数
+    //console.log(str.substr(1, 3));
+
+    //substring(start,end); 用法和slice基本一样 一般使用slice
+    //console.log(str.substring(0, 3));
+
+    //替换方法 replace(要替换的字符串，替换成什么字符串);
+    var str = "abcdeaa";
+    //console.log(str.replace("a", "z"));
+    //console.log(str.replace("ab", "zzzz"));
+
+    //注意，替换的时候只能替换一次
+    console.log(str.replace("a", "z"));
+
+
+</script>
+
+</body>
+</html>

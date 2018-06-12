@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 自执行函数、立即执行的函数表达式、IIFE
+
+
+    /*function fn(){
+        console.log(1)
+    }();  // Uncaught SyntaxError: Unexpected token )*/
+
+
+
+    //函数声明 函数表达式
+    // 函数声明就是通过function关键字声明的函数
+    // 函数表达式
+    // 函数声明跟函数表达式的区别：函数声明不可以直接调用，函数表达式，可以直接调用。
+
+   /* var f =function(){
+        console.log(2)
+    }();//函数表达式可以直接调用，会输出 2  */
+
+
+    //如何把一个函数声明变成一个函数表达式？
+
+    (function fn(){
+        console.log(1)
+    })();// 1
+    // （）会把内部的函数声明转换为函数表达式，函数表达式就可以进行调用了
+
+
+    //在哪些情况下函数声明会转换为一个函数表达式?
+    //在函数声明前，加一元运算符，就会自动把函数声明，转换为函数表达式
+
+    //+ - ! ~
+    ~function fn(){
+        console.log(3)
+    }();
+    +function fn(){
+        console.log(4)
+    }();
+    -function fn(){
+        console.log(5)
+    }();
+    !function fn(){
+        console.log(6)
+    }();
+
+    // 一元运算符~ 的作用:取反再减一
+    console.log(~2017);
+    console.log(~100);//-101
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

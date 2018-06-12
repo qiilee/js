@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-top: 10px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="隐藏" id="but1"/>
+<input type="button" value="显示" id="but2"/>
+
+<div class="box"></div>
+<script>
+    var but1 = document.getElementById("but1");
+    var but2 = document.getElementById("but2");
+    var div =  document.getElementsByTagName("div");
+
+    but1.onclick = function () {
+        div[0].className = "box hide";
+    }
+    but2.onclick = function () {
+        div[0].className = "box show";
+    }
+
+</script>
+</body>
+</html>

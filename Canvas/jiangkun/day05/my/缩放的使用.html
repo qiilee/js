@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+   <canvas width="400" height="400"></canvas>
+</body>
+<script>
+ //  总结：平移-坐标轴-画圆-缩放-画圆
+
+    // 开始的坐标轴先平移再描线
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    var img = document.createElement("img");
+    img.src ="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2923878328,1220699118&fm=58";
+    img.onload = function(){
+        ctx.drawImage(img,100,100);
+    }
+</script>
+</html>

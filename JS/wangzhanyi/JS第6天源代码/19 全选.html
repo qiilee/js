@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="checkbox"/>
+<input type="button" id="btnAll" value="全选"/>
+<input type="button" id="btnNo" value="全不选"/>
+<input type="button" id="btnRev" value="反选"/>
+<script>
+    // 要求：当单击全选按钮的时候，要把所有的复选框都选中
+    // 1. 获得要操作的对象
+    var inputs = document.getElementsByTagName("input");
+    var btnAll = document.getElementById("btnAll");
+    var btnNo = document.getElementById("btnNo");
+    var btnRev = document.getElementById("btnRev");
+    // 2. 给事件源注册事件
+    btnAll.onclick =function (){
+         for(var i=0;i<inputs.length;i++){
+             if(inputs[i].type=="checkbox"){
+                 // 如果属性值只有一个的时候，在用JS设置的时候，得用boolean类型的true或是false来设置
+                 inputs[i].checked = true;
+             }
+         }
+    }
+</script>
+</body>
+</html>

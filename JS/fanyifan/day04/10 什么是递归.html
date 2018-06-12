@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 什么是递归：不断地重复一个行为
+    // 不断重复的行为需要一个终止条件
+
+    var weigth = 190;
+    function eat(){
+        weigth++;
+        if(weigth>=200){
+            return;
+        }
+        console.log('吃得很开心')
+        eat();
+    }
+    eat();
+    // Uncaught RangeError: Maximum call stack size exceeded
+    // 未捕获的 范围错误  ： 最大  调用 堆栈大小   溢出
+
+    //写递归的注意点：一定不要忘记加边界条件。
+
+</script>
+</body>
+</html>

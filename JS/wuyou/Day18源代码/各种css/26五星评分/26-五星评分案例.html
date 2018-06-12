@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>五角星评分案例</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .comment {
+            font-size: 40px;
+            color: teal;
+        }
+
+        .comment li {
+            float: left;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //准备两种星星
+            var kXin = "☆";
+            var sXin = "★";
+
+            //1 鼠标移入时，设置当前移入的星星和前面的元素为实心，后面的元素为空心
+            $(".comment>li").mouseenter(function () {
+                //end方法可以让用户继续使用上一次操作的对象
+                $(this).text(sXin).prevAll().text(sXin).end().nextAll().text(kXin);
+                //$(this).nextAll().text(kXin);
+            });
+
+
+            //2 移出时清空所有的星星
+//            $(".comment>li").mouseleave(function () {
+//                $(this).text(kXin).siblings().text(kXin);
+//            });
+            $(".comment").mouseleave(function () {
+                $(this).children().text(kXin);
+
+                //清空后去检测，如果有某一个子元素具有类名current,这时单独处理
+                $(this).children(".current").text(sXin).prevAll().text(sXin);
+
+            });
+
+
+            //3 点击某个li的时候对这个li进行标记，标记可以使用类名的方式
+            $(".comment>li").click(function () {
+                //设置一个类名，再排他
+                $(this).addClass("current").siblings().removeClass("current");
+            });
+
+            //1 移入某一个li时设置当前li和前面的所有元素设置内容为实心,在设置后面的元素为空心
+            //2 移出的时候设置所有星星为空心
+            //3 点击某个li，使用类名作为标记，同时清除其余人的标记
+            //4 设置移出时的检测，如果某个li具有类名，设置他和他前面所有元素的内容为实心
+
+
+        });
+    </script>
+</head>
+
+<body>
+<ul class="comment">
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <style>
+        .container {
+            width: 200px;
+            height: 300px;
+            border: 1px dashed blue;
+        }
+        .box {
+            width: 100px;
+            height: 50px;
+            border: 1px solid red;
+            margin: 20px auto;
+        }
+    </style>
+    <script>
+        // 实例方法 appendTo
+        Itcast.fn.appendTo = function ( dom ) {
+            // 现在 this 中是多个 DOM 元素. 
+            // for ( var i = 0; i < this.length; i++ ) {
+            //     dom.appendChild( this[ i ] );
+            // }
+
+            // 这里的 this 是伪数组
+            return this.each(function () {
+                // 这里的this是伪数组中的每一个 dom 元素
+                dom.appendChild(this);
+            });
+            
+        }
+        // 我们现在讨论 左边为 单个 DOM 元素与 多个 DOM 元素的情况
+        // 哪一个更加具有普遍性. 
+    </script>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+<script>
+    I( '<div class="box"></div><div class="box"></div><div class="box"></div>' ).appendTo( document.getElementsByClassName( 'container' )[ 0 ] )
+    I( '<div class="box">' ).appendTo( document.getElementsByClassName( 'container' )[ 0 ] )
+</script>
+</html>

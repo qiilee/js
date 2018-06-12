@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            $("input").bind("click",function(){
+
+                    $.getJSON("06json.php",{username:11},function(data){
+                         alert(data);
+                    })
+
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+<div></div>
+<input type="button" value="json 方式提交">
+</body>
+</html>

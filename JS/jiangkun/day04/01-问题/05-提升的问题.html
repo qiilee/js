@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function foo(){
+        foo.a=function(){alert(1)};
+        // 替换了静态方法 a 打印的 1
+
+        this.a=function(){alert(2)};
+        // 新增了实例方法 a 打印 2
+        
+        a=function(){alert(3)};
+
+        var a=function(){alert(4)};
+        // 在 构造函数内部有 a 函数, 默认打印 4
+        
+    };
+    
+    foo.prototype.a=function(){alert(5)};  
+    // 有一个实例方法 就是 a , 打印 的是 5
+
+    foo.a=function(){alert(6)};
+    // 有一个静态方法 a 打印 6
+
+
+    foo.a();//6
+
+    var obj=new foo(); // 执行构造函数
+
+    obj.a();//2
+    foo.a();//1
+
+
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    // this 的含义看 谁调用
+    // 1> 没有任何引用就是 全局, window( 注意: 在浏览器中是 window )
+    // 2> 如果是对象引用: this 就是当前对象
+    //      o.func();
+    //      arr[ i ]();
+    // 3> 有 new 的就是构造器调用. this 就是刚刚创建的实例对象
+    // 4> 上下文调用( 自定义的 this ), call, apply
+
+    function each(arr, callback) {
+
+        for (var i = 0; i < arr.length; i++) {
+            // var res = callback.call( arr[ i ], arr[ i ], i );
+            // if ( res === false ) break;
+
+            if (callback.call(arr[i], arr[i], i) === false) break;
+        }
+
+        return arr;
+    }
+
+    each([1, 2, 3], function () {
+        console.log(this);
+        return false;
+    });
+
+
+    //ziji1
+    /*this的含义
+     * 1没有任何的引用，window
+     * 2对象调用，谁调用指向谁
+     * 3构造函数调用，指向实例
+     * 4上下文调用  call apply*/
+    function each(arr, callback) {
+        for (var i = 0; i < arr.length; i++) {
+            if (callback.call(arr[i], arr[i], i) === false) break;
+        }
+        return arr;
+    }
+    var arr = [1, 2, 3];
+    var max = arr[0];
+    each(arr, function (v, i) {
+
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+
+    });
+    console.log(max);
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+
+        //js入口函数和jq入口函数的执行顺序
+        window.onload = function () {
+            alert("我是js的入口函数");
+        };
+
+
+        //写法1 -  今天咱们使用这个方式
+        $(document).ready(function () {
+            alert("我是jq入口函数1");
+        });
+
+        //写法2 -  以后都是使用这个方式
+        $(function () {
+            alert("我是jq入口函数2");
+        });
+
+
+        //js的入口函数：页面完全加载（文件，图片，结构）
+        //jq入口函数的执行时机：页面结构加载完毕后执行
+
+        //jq的两种入口函数的执行顺序，谁先写谁执行
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

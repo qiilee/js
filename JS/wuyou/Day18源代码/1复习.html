@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //不传参数，表示显示和隐藏show()  hide()
+            //传入数值表示运动的时间  传入字符串 "slow" 600 "normal"  400  "fast" 200
+            //传一个任意字符串 默认为400
+            //第二个参数 function(){}  表示在运动完毕之后执行什么代码
+            //改变宽高透明度
+
+
+            //slide
+            //slideUp()  slideDown()
+            //参数1 为运动时间 特殊点是可以不传，不传默认为400
+            //参数2 回调函数
+            //slideToggle()  如果当前元素显示完全，会执行slideUp的效果 ，否则执行slideDown
+
+
+            //fade 渐变
+            //fadeIn 透明度从0-1
+            //fadeOut  从1-0
+            //fadeToggle
+            //fadeTo(1000,0.4,function(){})  会影响其他运动，我们一般不使用
+
+
+            //animate 自定义动画
+            //$("#box").animate({
+            //    "width": "100px",
+            //    "height": "100px"
+            //}, 1000, "linear", function () {
+            //    console.log(1);
+            //});
+            //参数1 要修改的值和改到多少  都带引号，带单位
+            //参数2 运动时间
+            //参数3 运动模式 "linear" 匀速 "swing"缓动  默认为swing
+            //参数4 回调函数  运动后做什么
+
+            //动画队列：当我们给一个或多个元素添加多次动画时，动画执行没有完毕，导致动画的积累
+            //这种情况我们称为动画队列
+
+            //如何保证当前新触发的动画可以立刻执行，可以使用stop方法
+            //stop()
+            //参数1 是否清除动画队列   默认值为false
+            //参数2 是否跳到当前运动最终效果  默认值为false
+            //我们最常用的就是false false的传法
+
+            //注意stop所书写的位置，如果需要在动画执行过程中添加一个新的动画，需要将stop写到新动画前面
+
+            //1 创建元素方式
+            // var $div = $("<div></div>") 使用这种方式创建的元素是不存在与页面中的
+            // 使用html方法 可以直接设置某个元素内部的子元素
+
+            //2 添加方式
+            //append
+            // $("#box").append($div); 添加新创建的元素
+            // $("#box").append("<div></div>");使用append直接生成标签
+            //prepend
+            //after 添加在同级的后面
+            //before 添加在同级的前面
+            //appendTo() 功能和append相同 但是需要注意前后元素的顺序
+            //prependTo()
+
+            //3 清除元素
+            //$("#box").html("")  如果内部元素具有事件，这个事件无法清除
+            //$("#box").empty();  清除内部的所有东西
+            //$("#box").remove();  清除自己 (内部可以写选择器，但是我们一般不使用)
+
+
+        });
+
+    </script>
+</head>
+<body>
+<div></div>
+<div class="box"></div>
+<div class="box"></div>
+<div></div>
+<div></div>
+</body>
+</html>

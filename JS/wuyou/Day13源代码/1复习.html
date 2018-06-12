@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">点击跑到400</button>
+<button id="btn2">点击跑到800</button>
+<div id="box"></div>
+
+<script>
+    //获取元素
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box = document.getElementById("box");
+    var timer = null;
+    //添加点击事件
+//    btn1.onclick = function () {
+//        clearInterval(timer);
+//        timer = setInterval(function () {
+//            var leader = box.offsetLeft;//取值四舍五入
+//            //缓动运动公式
+//            var step = (400 - leader) / 10;
+//            //对step进行取整，为了保证盒子可以正常运动
+//            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+//
+//            leader = leader + step;
+//
+//            //将leader设置给box
+//            box.style.left = leader + "px";
+//
+//            if (leader == 400) {
+//                clearInterval(timer);
+//            }
+//        }, 20);
+//    };
+
+
+    btn2.onclick = function () {
+        animate(box, "width", 800);
+    };
+
+    //    function animate(tag,target) {
+    //        clearInterval(tag.timer);
+    //        tag.timer = setInterval(function () {
+    //            var leader = tag.offsetLeft;//取值四舍五入
+    //            //缓动运动公式
+    //            var step = (target - leader) / 10;
+    //            //对step进行取整，为了保证盒子可以正常运动
+    //            //取整的时候需要判断step的正负
+    //            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+    //
+    //            leader = leader + step;
+    //
+    //            //将leader设置给box
+    //            tag.style.left = leader + "px";
+    //
+    //            if(leader == target){
+    //                clearInterval(tag.timer);
+    //            }
+    //        }, 20);
+    //    }
+
+    //修改任意属性
+    function animate(tag, attr, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //取值的时候,getStyle获取的值带有单位
+            //auto  NaN || 0   100 || 0
+            var leader = parseInt(getStyle(tag, attr)) || 0;
+            //缓动运动公式
+            var step = (target - leader) / 10;
+            //对step进行取整，为了保证盒子可以正常运动
+            //取整的时候需要判断step的正负
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+            leader = leader + step;
+
+            //设置的时候
+            tag.style[attr] = leader + "px";
+
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+        }, 20);
+    }
+
+
+    //getStyle(box, "width")
+    //获取计算后的样式的值
+    function getStyle(tag, attr) {
+//        if (tag.currentStyle) {
+//            //当你确定你要使用的是及格字母的时候,使用字符串
+//            //当你使用的不是字母，而是内部保存的值，这时使用变量
+//            return tag.currentStyle[attr];
+//        } else {
+//            return getComputedStyle(tag, null)[attr];
+//        }
+
+
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+
+
+    }
+
+
+</script>
+</body>
+</html>

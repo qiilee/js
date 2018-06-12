@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function sayHi(name){
+        console.log("你好啊："+name);
+        return ;  // 程序执行到return 处，会立即返回，也就是说跳出当前函数
+        // 程序执行到return处，如果有返回值的话，会将返回值返回到函数的外面，然后跳出当前函数，return后面的代码都不会再执行了。
+        // 如果return后面没有真正的数据值的话，则此函数有默认的返回值undefined,程序 执行到此return语句后，也是跳出当前函数
+        console.log("这行是否输出");
+    }
+    var a = 10;
+    sayHi("张三");
+</script>
+</body>
+</html>

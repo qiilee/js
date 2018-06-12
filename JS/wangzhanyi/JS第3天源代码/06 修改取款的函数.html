@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function getMoney(card,passWord,money){  // 在定义函数的时候，小括号中的参数叫做形参，形式上的参数，起占位置的作用
+         if(card=="123456"&&passWord=="888888"){
+               return money;
+         }else {
+             return "您输入的卡号或是密码不正确";
+         }
+    }
+    var n1 = prompt("请输入您的卡号");
+    var n2 = prompt("请输入密码");
+    var n3 = prompt("请输入取款的金额。。。");
+//   var result =   getMoney("123456","888888",200);
+    var result = getMoney(n1,n2,n3);
+    console.log(result);
+    // 函数只要调用就会有返回值，如果函数里面有关键字return及后面有数据的话，则此数据就是这个函数的返回值，如果没有关键字return也没有后面的数据的话，则此函数有默认的返回值，是undefined
+</script>
+</body>
+</html>

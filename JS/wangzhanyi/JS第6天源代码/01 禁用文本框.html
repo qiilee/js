@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="txt" />
+<input type="button" value="禁用" id="btn"/>
+<script>
+    // 1. 获得要操作的对象
+    var txt = document.getElementById("txt");
+    var btn = document.getElementById("btn");
+    // 2. 给事件源注册事件
+    btn.onclick = function(){
+        if(this.value=="禁用"){
+            txt.disabled= true; //像这样的，在css里面的属性值，只有一种的时候，在用JS设置的时候，得用boolean来设置，true/false
+//            btn.value ="启用";
+            this.value = "启用"
+        }else {
+            txt.disabled = false;
+//            btn.value = "禁用";
+            this.value = "禁用";
+        }
+    }
+
+</script>
+</body>
+</html>

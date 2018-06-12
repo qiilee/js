@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../jQuery版本/jquery-2.2.4.js"></script>
+</head>
+<body>
+<script>
+//    1. 该方法处理一维数组,代码如下:
+
+    $.each(["aaa","bbb","ccc"],function(index,value){
+        console.log(index+"..."+value);
+    });
+//    结果是输出  0...aaa   1...bbb   2...ccc
+
+
+
+//    2.该方法处理二维数组,代码如下：
+//
+//    复制代码
+    $(function () {
+        $.each([["aaa", "bbb", "ccc"], ["ddd", "eee", "fff"], ["ggg", "hhh", "iii"]], function (index, item) {
+            console.log(index + "..." + item);
+            //输出0...aaa,bbb,ccc  1...ddd,eee,fff  2...ggg,hhh,iii   这时的index为数组下标,item相当于取这二维数组中的每一个数组
+            $.each(item, function (index, itemobj) {
+                console.log(index + "....." + itemobj);
+            });
+        });
+        //输出0...aaa,bbb,ccc  0...aaa 1...bbb 2...cccc  1...ddd,eee,fff  0...ddd 1...eee 2...fff  2...ggg,hhh,iii 0...ggg 1...hhh 2...iii
+    });
+//    复制代码
+//
+//
+//    3.该方法处理json数组,代码如下:
+//
+//    复制代码
+    $(function () {
+        var json = [{ name: "张三", sex: "男" }, { name: "李四", sex: "女" }, { name: "王五", sex: "gay"}];  //自定义一个json数组
+        $.each(json, function (index, obj) {
+            console.log(index + "..." + obj.name+"..."+obj.sex);
+        });
+    });
+//    复制代码
+//
+//
+//    json为后台传递过来的json数组，each遍历该数组,index通常为数组里面对象的索引,而obj为当前遍历到的对象
+
+</script>
+
+</body>
+</html>

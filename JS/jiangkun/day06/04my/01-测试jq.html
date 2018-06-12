@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../../jQuery版本/jquery-3.0.0.js"></script>
+    <style>
+        div {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<script>
+    //总结：1、green的rgba是rgb(0, 128, 0)
+    //     2、css获取样式是获取的dom对象中的第一个
+    //     3、jq的典型特征就是隐式迭代
+
+
+
+
+//一、css的三种写法
+//1 设置单个样式
+    $('div').css('border','1px solid red');
+//2 设置多个样式
+    $('div').css({
+        width:'600px',
+        backgroundColor : 'green'
+    });
+//3 获取样式
+    console.log($('div').css('backgroundColor'));
+
+//4 验证获取的是第几个的样式
+    $('div').first().css("backgroundColor",'red').next().css("backgroundColor",'blue');
+    console.log($('div').css('backgroundColor'));
+
+</script>
+</body>
+</html>

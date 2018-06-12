@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<img src="images/tianshi.gif" id="ts">
+<script>
+    var ts = document.getElementById("ts");
+    //让ts跟随鼠标位置移动
+    //1 获取鼠标位置
+    document.onmousemove = function (e) {
+        //2 兼容事件对象
+        var e = e || window.event;
+        //3 获取鼠标位置 分别赋值给left和top
+        ts.style.left = e.clientX + "px";
+        ts.style.top = e.clientY + "px";
+    };
+
+
+</script>
+</body>
+</html>

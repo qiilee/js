@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [40, 30, 20, 10];
+    //5个元素比4次 2个元素比1 arr.length比arr.length-1
+    //for (var i = 1; i <= arr.length - 1; i++) {
+    for (var i = 0; i < arr.length - 1; i++) {//一共比较多少趟
+        for (var j = 0; j < arr.length - 1; j++) {//两两比较的次数
+            if (arr[j] > arr[j + 1]) {  arr[i]>arr[i+1]
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

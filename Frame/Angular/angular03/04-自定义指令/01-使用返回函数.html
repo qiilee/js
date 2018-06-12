@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+    <div ng-controller="MainController">
+        456
+        <!--指令的用法有四种
+
+            1> 使用属性: <div ng-app></div>
+            2> 标签: <a href=""></a>
+            3> class: <div class="指令名"></div>
+            4> <!\-\- directive: 指令名 \-\->
+        -->
+        <!-- 模拟一个 ng-repeat -->
+        <div itcast-Directive="hahahh" >123</div>
+    </div>
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        // 定义指令
+        .directive( 'itcastDirective', function () {
+            // 这个函数什么时候执行, 这个函数有什么参数
+            return function () {
+                console.log( arguments );
+            }
+        })
+        .controller( 'MainController', function ( $scope ) {
+            $scope.itcast = '哇哈哈';
+        });
+
+</script>
+</html>

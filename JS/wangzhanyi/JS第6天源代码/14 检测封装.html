@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <p>这是一个p标签</p>
+</div>
+<p id="p1"></p>
+<script src="common.js"></script>
+<script>
+    var box = document.getElementById("box");
+    var p1 = document.getElementById("p1");
+    var str =    getText(box);
+    console.log(str);
+    setText(p1,"这是给p1标签设置的纯文本内容");
+    function getSum(a,b){
+        return a+b;
+    }
+    getSum(10,20);
+</script>
+</body>
+</html>

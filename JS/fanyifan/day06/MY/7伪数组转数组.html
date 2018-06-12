@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1、伪数组转为数组的函数
+    function listToArray(arg) {
+        var ret = Array.prototype.slice.call(arg, 0);
+        return ret;
+    }
+    //2、判断是否是数组的函数
+    function isArray(obj) {
+        return Object.prototype.toString.call(obj) === "[object Array]"
+    }
+    //3、数组的slice方法 参数为0 得到的是原数组
+    //     var arr = [1,2,3];
+    //     var arr1 = arr.slice(0);
+    //    console.log(arr1);
+
+    //4、1到3的集合案例
+    function fn(name, age, gender) {
+        //4.1输出实参的集合
+        console.log(arguments);
+        //4.2判断 伪数组不是数组
+        console.log(isArray(arguments));
+        //4.3向伪数组里添加元素
+        Array.prototype.push.call(arguments,'发射器');
+        console.log(arguments);
+        //4.4 调用listToArray方法，把伪数组转为数组
+        var argArray = listToArray(arguments);
+        console.log(isArray(argArray));
+        console.log(argArray);
+
+    }
+    fn('阿萨德', 12, '女');
+</script>
+</body>
+</html>

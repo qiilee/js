@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制坐标轴</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    // 首先将绘制的结果进行拆分
+    // 1, 两条直线, 坐标轴线
+    // 2, 两个箭头, 表示正方向
+    // 3, 绘制正中的点
+
+    // 1) 准备变量
+    var w = cas.width,
+        h = cas.height;
+    
+    var marginLeft = w / 2,
+        marginTop = 10,
+        marginRight = 10,
+        marginBottom = h / 2;
+    
+    var arrowHeight = 20,
+        arrowWidth = 10;
+    
+
+    // 2) 开始准备绘制坐标轴线
+    ctx.beginPath();
+    var x = marginLeft,
+        y = h - marginBottom;
+    
+    ctx.moveTo( marginLeft, marginTop );
+    ctx.lineTo( x, y );
+    ctx.lineTo( w - marginRight, y );
+
+    ctx.stroke();
+
+
+    // 3) 开始绘制箭头
+    ctx.beginPath();
+
+    // 3.1 绘制 y 轴的箭头
+    ctx.moveTo( marginLeft, marginTop );
+    ctx.lineTo( marginLeft - arrowWidth / 2, marginTop + arrowHeight );
+    ctx.lineTo( marginLeft, marginTop + arrowHeight / 2 );
+    ctx.lineTo( marginLeft + arrowWidth / 2, marginTop + arrowHeight );
+    ctx.closePath();
+
+    // 3.2 绘制 x 轴的箭头
+    ctx.moveTo( w - marginRight, y );
+    ctx.lineTo( w - marginRight - arrowHeight, y - arrowWidth / 2 );
+    ctx.lineTo( w - marginRight - arrowHeight / 2, y );
+    ctx.lineTo( w - marginRight - arrowHeight, y + arrowWidth / 2 );
+    ctx.closePath();
+
+    ctx.fill();
+
+
+
+    // 4) 开始再坐标轴的中心绘制点
+    // 4.1 确定绘制的矩形区域
+    ctx.beginPath();
+    ctx.fillStyle = 'blue';
+
+
+    var boxWidth = w - marginLeft - marginRight - arrowHeight,
+        boxHeigth = h - marginTop - marginBottom - arrowHeight;
+    
+    // 4.2 计算中间的坐标
+    var objX = x + boxWidth / 2,
+        objY = y - boxHeigth / 2;
+
+    // 4.3 开始绘制点
+    // 假定矩形的宽高为 10
+    var pointWidth = 10;
+    ctx.fillRect( objX - pointWidth / 2, objY - pointWidth / 2, pointWidth, pointWidth );
+
+
+    // 5. 绘制辅助线
+    ctx.beginPath();
+    ctx.strokeStyle = 'blue';
+    ctx.setLineDash( [ 5 ] );
+
+    ctx.moveTo( x, objY );
+    ctx.lineTo( objX, objY );
+    ctx.lineTo( objX, y );
+
+    ctx.stroke();
+
+
+</script>
+</html>

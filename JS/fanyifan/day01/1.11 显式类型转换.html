@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 显式类型转换
+    console.log(typeof Number('123'));// number
+    console.log(Boolean(1));// true
+    console.log(Boolean('哇哈哈'));// true
+    console.log(Boolean(null));// false
+    console.log(Boolean(undefined));// false
+    console.log(Boolean(0));// false
+    console.log(Boolean(''));// false
+    console.log(Boolean(NaN));// false
+    // 其他数据类型的值转换为布尔数据类型，只有null undefined 0 ‘’
+    // NaN会被转换为false
+    console.log(String(1));// ‘1’
+
+    console.log(parseInt('100px'));//100
+    console.log(parseInt('100.1px'));//100
+    console.log(parseFloat('100px'))//100
+    console.log(parseFloat('100.1px'))//100.1
+
+    // toString 将其他数据类型的值转换为字符串
+    console.log((1).toString())
+
+</script>
+</body>
+</html>

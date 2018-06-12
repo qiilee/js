@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<img id="pic" src="//img.hb.aicdn.com/cd974c97906b8363bf80ea3abe46bb0c585f3faa741386-btAcqw_fw658" alt="">
+<script>
+    //获取pic图片宽高
+    var pic = document.getElementById("pic");
+
+    //offsetHeight 获取高度
+    console.log(pic.offsetHeight);
+
+    //onload 加载事件
+    //入口函数 ： 当网页完全加载时触发事件
+    window.onload = function () {
+        console.log(pic.offsetHeight);
+    };
+
+
+</script>
+</body>
+</html>

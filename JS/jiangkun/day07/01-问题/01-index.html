@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./01-1.css">
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    var div = document.querySelectorAll( 'div' )[ 0 ]
+    // style
+    var res1 = div.style.border;
+
+//     getComputedStyle
+     var  res2 = window.getComputedStyle( div ).border;
+    console.log(res2);
+
+    // currentStyle
+    var res3 = div.currentStyle;  // 使用 border 的分量
+
+    var _ = 0; // 为了设置断点
+
+</script>
+</html>

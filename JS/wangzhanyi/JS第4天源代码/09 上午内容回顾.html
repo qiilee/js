@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //  arguments  每个函数当中都有的一个伪数组对象  用来接收实参的数据的
+//    function getSum(a,b){
+//        return a+b;
+//    }
+//    function getSum(){
+//        // arguments
+//        var sum = 0;
+//        for(var i=0;i<arguments.length;i++){
+//           sum+=  arguments[i];
+//        }
+//        return sum;
+//    }
+//    getSum(10,20);
+
+    // 回调函数   就是一个普通的函数，把函数当做参数进行的传递的函数
+
+//    function f1(){
+//        console.log(123);
+//    }
+//    function f2(){
+//        f1();// 函数的内部是可以调用另一个函数的
+//    }
+//    f2();
+
+//    function f1(){
+//        console.log(123);
+//    }
+//    var f1 = function(){
+//        console.log(456);
+//    };
+//    function f2(fn){
+//        fn();
+//    }
+////    f2(f1);
+//    f2(function(){
+//        console.log(789);
+//    });
+//    function getSum(a,b){
+//        return a+b;
+//    }
+//    var getSum = function(a,b){
+//        return a+b;
+//    };
+//    function getResult(a,b,seprator){
+//        if(seprator=="+"){
+//            return a+b;
+//        }else if(seprator =="-"){
+//            return a-b;
+//        }
+//    }
+    function getResult(a,b,fn){
+       return fn(a,b);
+    }
+   var result =  getResult(20,30,function(a,b){
+       return a+b;
+   });
+    var result1 = getResult(80,90,function(a,b){
+        return a*b;
+    });
+    var result3 = getResult(90,30,function(a,b){
+        return a/b;
+    });
+    console.log(result);
+    console.log(result1);
+</script>
+</body>
+</html>

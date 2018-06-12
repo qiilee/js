@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script>
+    // 引入 qsa 方法
+    // var nodes = document.querySelectorAll( 'div, p' );
+    // 在开发中 该方法可能会频繁使用
+
+    // 当代码量越来越大的时候, 方法的名字越长, 出现的错误率越高, 因此会考虑使用较为短的名字来代替
+
+    // 同时, 代码在开发环境中是用于阅读和维护的, 因此代码越详尽越好
+    // 但是生产环境中, 越精简越好, 因此会考虑代码的压缩混淆.
+    
+    function select( selector ) {
+        return document.querySelectorAll( selector );
+    }
+
+    var nodes = select( 'div, p' )
+
+
+
+    // 如果是自己写项目, 作为工具方法
+    var J = {};
+    J.qsa = function ( selector ) {
+        return document.querySelectorAll( selector );
+    };
+    var qsa = 123;
+    // 命名空间模式
+    // namespace mode
+    
+
+
+</script>
+</html>

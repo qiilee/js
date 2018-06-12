@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div {
+			width: 550px;
+			margin: 100px auto;
+		}
+		button {
+			width: 60px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" id="txtNum1" />
+		<select id="op">
+			<option value="0">--请选择--</option>
+			<option value="1">+</option>
+			<option value="2">-</option>
+			<option value="3">*</option>
+			<option value="4">/</option>
+		</select>
+		<input type="text" id="txtNum2" />
+		<button id="btnCacl">=</button>
+		<span id="ret"></span>
+	</div>
+	
+	<script type="text/javascript">
+		// var opArr = ["+", "-", "*", ""];
+		var opObj = {
+			"1": "+",
+			"2": "-",
+			"3": "*",
+			"4": "/"
+		};
+		
+		// 1 找到 = 按钮，并绑定单击事件
+		var btnCacl = document.getElementById('btnCacl');
+		btnCacl.onclick = function() {
+			// var ret;
+			// 2 找到第一个和第二个文本框的值
+			var num1 = document.getElementById('txtNum1').value;
+			var num2 = document.getElementById('txtNum2').value;
+
+			// 3 获取运算符，获取select标签的值
+			var op = document.getElementById('op').value;
+			//  1 2 3 4
+			// 怎么将获取到的具体的值跟 运算符联系起来？？
+			// 1 switch-case
+			// 2 数组或对象
+			// eval("var ret = " + num1 + opObj[op] + num2 );
+			var fn = new Function("return " + num1 + opObj[op] + num2);
+			// function fn() { return num1 + num2; }
+			var ret = fn();
+
+			// 4 将结果放到 span 中
+			document.getElementById('ret').innerHTML = ret;
+		};
+	</script>
+</body>
+</html>

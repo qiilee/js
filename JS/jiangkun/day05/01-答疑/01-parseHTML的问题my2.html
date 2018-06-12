@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="dv"></div>
+</body>
+<script>
+    function parseHTML(html) {
+//      1准备容器
+        var div = document.createElement('div');
+//      2设置innerHTML
+        div.innerHTML = html;
+//      3取出来
+        var res = [];
+        for (var i = 0; i < div.childNodes.length; i++) {
+            res.push(div.childNodes[i]);
+        }
+        return {
+            childNodes:div.childNodes,
+            res:res
+        };
+    };
+
+
+</script>
+</html>

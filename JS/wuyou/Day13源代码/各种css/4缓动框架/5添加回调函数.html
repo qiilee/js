@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<button id="btn">跑到400</button>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var timer = null;
+
+    box.onclick = function () {
+//        animate(box, "top", 200);
+//        animate(box, "width", 200);
+//        animate(box, {"width": 200, "height": 150, "opacity": 0.3, "zIndex": 3},function () {
+////            alert(1);
+//            //这个新的运动需要在什么时候执行？需要在上一个运动结束后在开启新的
+//        animate(box, {"top":100,"width": 300, "height": 250, "opacity": 0.7, "zIndex": 3});
+//        });
+
+        //有可能用户只进行一次运动
+        animate(box, {"top": 100, "width": 300, "height": 250, "opacity": 0.7, "zIndex": 3},animate());
+
+    };
+
+    /**
+     *
+     * @param tag
+     * @param obj
+     * @param fn 你要不传入函数，我就给你报错  只要函数的某一个参数需要传函数，这个函数必定是函数体
+     * 函数体有两种，一个匿名函数 一个是有名函数的函数名
+     */
+    function animate(tag, obj, fn) {
+        //fn = undefined
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //假设可以清除
+            var flag = true;
+            //要操作的是obj里面的每一个属性
+            for (var k in obj) {
+                //检测，如果是opacity，这时单独处理
+                if (k == "opacity") {
+                    //为了避免小数精度问题，扩大100倍
+                    var target = obj[k] * 100;
+                    var leader = getStyle(tag, k) * 100 || 0;
+                    var step = (target - leader) / 10;
+                    //需要对step进行处理
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    //计算结果除以100
+                    tag.style[k] = leader / 100;
+
+                } else if (k == "zIndex") {
+                    //层级不需要运动，直接设置
+                    tag.style.zIndex = obj[k];
+                } else {
+                    var target = obj[k];
+                    var leader = parseInt(getStyle(tag, k)) || 0;
+                    var step = (target - leader) / 10;
+                    //需要对step进行处理
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                    leader = leader + step;
+                    tag.style[k] = leader + "px";
+                    //某个属性没有到达指定位置/不能清除
+                }
+
+                //检测是否可以清除定时器放在外面
+                if (leader != target) {
+                    flag = false;
+                }
+            }
+
+            if (flag) {
+                //清除定时器，表示定时器不会有下一次代码执行了，但是当前这一次会执行完毕
+                clearInterval(tag.timer);
+
+                //这个位置说明当前运动执行完毕了
+                //我们需要的fn是一个函数
+                //检测fn的类型：最严谨的方式
+                if (typeof fn == "function") {
+                    fn();
+                }
+                //短路操作
+                //有fn就调用，没有fn就不调用
+                //没有上面的那种方式严谨
+                //但是我们自己使用的代码，自己清楚用法，可以相对放宽一些，写法也比較简便
+                //fn && fn();
+            }
+        }, 17);
+    }
+
+    //如果没有设置某些值的初始值。会获取出auto
+    function getStyle(tag, attr) {
+        if (tag.currentStyle) {
+            return tag.currentStyle[attr];
+        } else {
+            return getComputedStyle(tag, null)[attr];
+        }
+    }
+
+
+</script>
+<script>
+
+
+</script>
+</body>
+</html>

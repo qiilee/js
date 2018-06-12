@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //
+
+    Function.prototype.uncurry=function(){
+        /*
+        var self = this;
+        return function(){
+            var arg = [].slice.call(arguments,0);
+            return self.apply(arg[0],arg.slice(1))
+        }*/
+        return this.call.bind(this);
+    }
+    var obj = {}
+    var push = Array.prototype.push.uncurry();
+    push(obj,'jack')
+    console.log(obj)
+
+
+
+
+
+    Array.prototype.slice.call()
+
+
+    var toString = Object.prototype.toString.uncurry();
+    toString([])//
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

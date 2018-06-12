@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    function createStudent(sex,name,age){
+        var  o = new  Object();//创建了一个空对象
+        o.name = name;
+        o.age = age;
+        o.sex = sex;
+        o.sayHi = function(){
+            console.log("大家好：我叫"+ o.name+"，我是"+ o.sex+"生,我今年"+ o.age+"岁了;");
+        }
+        return o;
+    }
+     var zs = createStudent("男","张三",25);
+    zs.sayHi();
+    var ls = createStudent("男","李四",26);
+    ls.sayHi();
+    var tq = createStudent('女',"田七",28);
+    tq.sayHi();
+    var zs = createStudent("男","尼古拉思*赵四",46);
+    zs.sayHi();
+</script>
+</body>
+</html>

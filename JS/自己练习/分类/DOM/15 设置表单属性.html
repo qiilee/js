@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" id="btn1" value="按钮1"/>
+<input type="button" id="btn2" value="按钮2"/>
+
+<div id="box1"> 请选择性别
+    <input type="radio" name="sex"/>男
+    <input type="radio" name="sex"/>女
+    <input type="radio" name="sex"/>不详
+</div>
+<div id="box2">请选择你的爱好
+    <input type="checkbox"/>吃饭
+    <input type="checkbox"/>睡觉
+    <input type="checkbox"/>打豆豆
+    <input type="checkbox"/>学习
+    <input type="checkbox"/>打游戏
+</div>
+<script>
+    // 要求，单击按钮1的时候，随机选中三个性别中的一个 单击按钮2的时候，随机选中爱好中的其中一个
+    // 1. 先获得要操作的对象
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var box1 =document.getElementById("box1");
+    var box2 =document.getElementById("box2");
+    var inputs1 = box1.getElementsByTagName("input");//box1这个盒子内部，使用标签名获得所有的input标签对象
+    var inputs2 = box2.getElementsByTagName("input");
+   // 2. 给事件源注册事件
+    btn1.onclick = function (){
+           // 随机选取   Math.random(); 0--1  0---0.999999  2.9999    0---2.9999  0   1   2
+        var  index= Math.floor(Math.random()*3); // 两边的边界值
+        console.log(index);
+        inputs1[index].checked =true; // 如果标签元素的属性值只有一个的时候，在用JS来设置的时候，一般是用boolean来代替 true  false
+    }
+
+    btn2.onclick = function () {
+        for(var i = 0;i<inputs2.length;i++){
+            inputs2[i].checked=false;
+        }
+        var index = Math.floor(Math.random()*5);
+        inputs2[index].checked = true;
+    }
+</script>
+</body>
+</html>

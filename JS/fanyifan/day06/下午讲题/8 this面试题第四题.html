@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // #4
+
+    var length = 10;
+    function fn() {
+        console.log(this.length);
+    }
+    var obj = {
+        length: 5,
+        method: function (f) {
+            console.log(this)
+            /*f();//普通函数调用时  this是window  window.length    10*/
+            /*console.log(arguments.length)//1 */
+           /* arguments[0]();//   this 是arguments arguments.length  1*/
+            arguments[0].call(this);// this是obj    obj.length   5
+            arguments[0].call(obj);// this 是obj   obj.length    5
+            //传入的this是什么值？
+        }
+    };
+    obj.method(fn);//通过对象方法调用模式来调用
+
+
+    console.log(this)
+    obj.method.call(this);
+    obj.method.call(window);
+</script>
+</body>
+</html>

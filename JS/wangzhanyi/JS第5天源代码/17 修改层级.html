@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+        .box1 {
+            background-color: blue;
+            /*z-index:10;*/
+        }
+        .box2 {
+            background-color: red;
+            left: 50px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+<script>
+    // 要求，单哪个div，哪个div在最上面显示
+    // 1. 先获得要操作的标签对象
+    var divs = document.getElementsByTagName("div");
+    // 2. 给事件源注册事件
+    var zIndex = 0;// 全局变量
+    divs[0].onclick = function(){
+        zIndex++;
+        divs[0].style.zIndex = zIndex+"";// 将zIndex隐式转换成字符串
+    }
+    divs[1].onclick = function (){
+        zIndex++;
+           divs[1].style.zIndex = zIndex+"";
+    }
+</script>
+</body>
+</html>

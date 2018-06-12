@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // in操作符
+    // 作用： 判断一个属性是否在一个对象的本身或者原型链上。
+    //        判断一个对象能不能够访问到某个属性
+
+    function Person(){
+
+    }
+    Person.prototype.age=18;
+
+    var person = new Person();
+    console.log('age' in person)//true
+    console.log('age' in Person.prototype)//true
+
+
+    console.log('xxx' in person);//false
+
+
+
+    //判断window身上有没有name这个属性？
+    console.log('name' in window)//
+
+
+
+
+
+</script>
+</body>
+</html>

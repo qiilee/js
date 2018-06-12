@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击按钮" id="btn">
+</body>
+<script>
+    function s( selector ) {
+        return document.querySelectorAll( selector );
+    }
+
+    /*
+
+
+    // 添加点击事件的办法
+    // 1, onclick = ...
+    // 2, addEventListener( 'click', ... )
+    // 3, attachEvent( 'onclick', ... )
+
+    // 需求
+    // 1> 事件的添加
+    // 2> 事件的追加
+    // 3> 调用顺序
+    // 4> this 的问题
+
+    // 1, 判断浏览器中的支持性
+    // var btn = s( '#btn')[ 0 ];
+
+    // if ( btn.addEventListener ) {
+    //     // 支持 addEventListener 方法
+
+    // } else {
+    //     // 支持 attachEvent
+
+    // }
+
+
+    // 2, 假设需要增加的事件为 
+    var type = 'click';
+    // 假设 需要增加的处理函数为 
+    function func( e ) {
+        console.log( this );
+        this.value = '哈哈哈, 我呗调用了';
+
+        console.log( e );
+    }
+
+
+    var btn = s( '#btn')[ 0 ];
+
+    // if ( btn.addEventListener ) {
+    //     // 支持 addEventListener 方法
+    //     btn.addEventListener( type, func );
+    //     console.log( '非 IE' );
+    // } else {
+    //     // 支持 attachEvent
+    //     btn.attachEvent( 'on' + type, func );
+    //     console.log( 'IE' );
+    // }
+
+
+
+
+
+
+    // 3, 解决 this 的问题
+
+    if ( btn.addEventListener ) {
+        // 支持 addEventListener 方法
+        btn.addEventListener( type, func );
+        console.log( '非 IE' );
+    } else {
+        // 支持 attachEvent
+        btn.attachEvent( 'on' + type, function ( e ) {
+            func.call( btn, e );
+        } );
+        console.log( 'IE' );
+    }
+
+    */
+
+    // 4, 封装成函数
+    function myAddEvent( control, type, callback ) {
+        // 给控件 control 添加事件 type, 处理函数为 callback
+        if ( control.addEventListener ) {
+            // 支持 addEventListener 方法
+            control.addEventListener( type, callback );
+            console.log( '非 IE' );
+        } else {
+            // 支持 attachEvent
+            control.attachEvent( 'on' + type, function ( e ) {
+                callback.call( control, e );
+            } );
+            console.log( 'IE' );
+        }
+    }
+
+
+
+
+    // myAddEvent( s( '#btn' )[ 0 ], 'click', function ( e ) {
+    //     console.log( '打印事件处理函数' );
+    //     console.log( 'e 是 ' + e );
+    //     console.log( 'this 是 ' + this );
+    // });
+
+
+    // 5, 追加的问题
+    myAddEvent( s( '#btn' )[ 0 ], 'click', function ( e ) {
+        console.log( 1 );
+    });
+    myAddEvent( s( '#btn' )[ 0 ], 'click', function ( e ) {
+        console.log( 2 );
+    });
+    myAddEvent( s( '#btn' )[ 0 ], 'click', function ( e ) {
+        console.log( 3 );
+    });
+    myAddEvent( s( '#btn' )[ 0 ], 'click', function ( e ) {
+        console.log( 4 );
+    });
+
+
+    // 调用一个事件是没有问题的, 但是调用多个事件就有问题了
+    // 事件又要按照顺序调用, 所以使用数组存储
+    // 计划, 每次 add 事件的时候, 病没有存到 按钮上面, 而是存到数组中了
+    // 而点击按钮触发的事件其实只有一个函数, 是从数组中取出每一个函数依次调用
+
+</script>
+</html>

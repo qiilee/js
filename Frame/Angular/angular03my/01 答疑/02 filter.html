@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='../js/angular-1.5.8/angular.js'></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+<div ng-repeat="item in list">{{item}}</div>
+</body>
+<script>
+    //总结：跟1的对比  区别还是很大
+    //     要传入$filter参数
+    //     最后一句，$scope.list=
+    angular.module('mainApp',[])
+            .controller('mainController',function($scope,$filter){
+                var list = [1,2,3,4,5,6];
+                $scope.list = $filter('filter')(list,function(v){
+                    return v%2 ==1;
+                })
+            })
+</script>
+</html>

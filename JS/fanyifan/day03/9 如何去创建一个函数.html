@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 如何去创建一个函数
+    // 1 对象字面量的形式
+    /*var fn = function(){
+        console.log('我是由对象字面量创建出来的函数fn')
+    }
+    fn()*/
+    // 2 函数表达式  function关键字
+   /* function fn(){
+        console.log('我是由function关键字创造出来的函数')
+    }
+    fn()*/
+    // 3 由构造函数Function创造一个函数
+
+    // 由构造函数Function创建一个函数的时候，可以通过传入字符串的形式给实例（函数）
+    // 添加自己的函数体
+    var fn = new Function('name','age','console.log("我是由构造函数创造出来的函数fn");console.log(name);console.log(age)')
+    fn('jack',18);
+
+
+    // 函数应该是有参数的
+    // 通过Function创造出来的函数可以通过传参的形式为函数添加参数。
+
+    //如何去创建一个函数
+
+
+
+
+
+</script>
+</body>
+</html>

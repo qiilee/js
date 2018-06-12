@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //1
+    var arr = [1,2,3,4,5];
+    fun(arr);
+    function fun(arrIn){
+        arrIn[0] = 111;
+        console.log(arrIn);
+    }
+    console.log(arr);
+   //2
+    var arr = [1,2,3,4,5];
+    function fun2(arrIn){
+        //复制一个新的函数
+        var newArr = arrIn.concat();
+        newArr[0] = 222;
+        return newArr;
+    }
+    console.log(fun2(arr));
+    console.log(arr);
+</script>
+</body>
+</html>

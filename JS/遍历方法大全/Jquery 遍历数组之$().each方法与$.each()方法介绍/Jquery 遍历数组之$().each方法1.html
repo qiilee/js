@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+/*    $().each()
+
+    对于这个方法，在dom处理上用的比较多,如果一个html页面上面有多个checkbox，
+    这时用$().each来处理checkbox是比较不错的;*/
+
+$("input[type='checkbox']").each(function(i){
+    $(this).attr("checked",true);
+});
+
+/*回调函数里面的i在此处代表input集合传递过去的索引(也就是正在遍历的input元素的索引)；
+
+ 但是这段代码只用到了input集合的索引*/
+
+
+</script>
+
+</body>
+</html>

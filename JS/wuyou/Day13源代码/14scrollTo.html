@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 4000px;
+            width: 4000px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">点击跳转</button>
+<script>
+    var btn = document.getElementById("btn");
+
+    //点击的时候，让页面卷曲指定的大小
+    btn.onclick = function () {
+        //第一个参数是横向滚动距离，第二个是纵向滚动距离
+      window.scrollTo(2000,1000);
+    };
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 1*1 = 1  1*2 = 2
+//    for(var i=1;i<=9;i++){
+    //        for(var j=1;j<=i;j++){
+    //            document.write(i+"*"+j+"="+i*j+"&nbsp;");
+    //        }
+    //        document.write("<br/>");
+    //    }
+    document.write("<table border='1'>");
+        for(var i=1;i<=9;i++){
+            document.write("<tr>");
+            for(var j=1;j<=i;j++){
+                document.write("<td>"+i+"*"+j+"="+i*j+"&nbsp;"+"</td>");
+            }
+//            document.write("<br/>");
+            document.write("</tr>");
+        }
+    document.write("</table>");
+</script>
+</body>
+</html>

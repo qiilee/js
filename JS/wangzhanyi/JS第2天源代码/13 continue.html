@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //用 while continue实现
+    //计算1到100(含)之间的除了能被7整除之外所有整数的和。 7的倍数
+    var i=1;
+    var sum = 0;
+    while(i<=100){
+        if(i%7==0){
+          //进入到这里面来的，都是能够整除7的数，也就是7的倍数
+            i++;
+            continue; // 后面的代码都不会执行的
+           console.log("是否执行");
+        }
+        sum+=i;
+        i++;
+    }
+    console.log(sum);
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    //反科里化是让一个函数能够适用于更广的场景。
+
+
+    //想要一个能够对所有类数组和数组都能够使用的slice方法
+    Function.prototype.uncurry=function(){
+        return this.call.bind(this)
+    }
+    var slice = Array.prototype.slice.uncurry()
+
+
+    function fn(name,age){
+        console.log(arguments);
+        console.log(Object.prototype.toString.call(arguments))
+        var ary = slice(arguments,0);
+        console.log(ary)
+
+    }
+    fn('jack',14)
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <p></p>
+    <div>
+        <p><span>这是p元素的子代元素 - 996</span></p>
+    </div>
+</div>
+
+<div>
+    <p></p>
+    <div>
+        <p><span>这是p元素的子代元素 - 你瞅啥</span></p>
+    </div>
+</div>
+<!--<div>-->
+    <!--<p></p>-->
+    <!--<div>-->
+        <!--&lt;!&ndash;这是一个p标签&ndash;&gt;-->
+        <!--<p><span>这是p元素的子代元素 - 抽你咋滴</span></p>-->
+    <!--</div>-->
+    <!--<div>-->
+        <!--<ul>-->
+            <!--&lt;!&ndash;这是一些li标签&ndash;&gt;-->
+            <!--<li>这是li</li>-->
+            <!--<li>这是li</li>-->
+            <!--<li>这是li</li>-->
+            <!--<li>这是li</li>-->
+            <!--<li>这是li</li>-->
+            <!--<li>这是li</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+<!--</div>-->
+<script>
+    // 需求： 获取到页面中所有的元素节点，然后给所有的元素节点设置一个红色的边框。
+
+    // 实现需求的思路分析：
+    /*
+    * 问题?DOM操作中有没有一个方法可以获取到所有的元素节点？
+    * childNodes
+    * 1 获取到body下面所有的子节点，然后进行分类，如果一个节点是元素节点并且不是一个script标签。
+    * 2 就是对每一个元素子节点进行同样的操作，这样一直操作到左后
+    *
+    * */
+
+
+    // 使用 childNodes获取一个DOM节点的所有子节点
+
+   /* var node = document.body.childNodes;
+    console.log(node)
+
+    //如何去判断一个节点是否是元素节点？ nodeType
+
+    // 对node进行遍历，如果节点类型为元素节点
+    var arr = [];
+    for(var i=0;i<node.length;i++){
+        //判断是否为元素节点
+        if(node[i].nodeType===1&&node[i].tagName.toLowerCase()!=='script'){
+            arr.push(node[i])
+        }
+    }
+    console.log(arr);*/
+
+   // 把获取到的所有的元素节点都存放在一个数组当中
+    var arr = [];
+
+    // 帮我们实现获取一个元素节点所有不限层级的元素子节点的功能
+    function getNode(node){
+        //1 获取到node的所有子节点。
+        var cNodes = node.childNodes;
+
+        // 对cNodes进行循环遍历，剔除出所有的非元素节点以及script标签
+        for(var i = 0;i<cNodes.length;i++){
+            // 对一个节点的所有子节点进行遍历，当没有子节点的时候，我们的函数就不会再继续执行了
+            // 这就是一个隐藏的终止条件。
+            //对子节点进行判断，如果是元素节点，就保存下来，并且要获取到这个元素节点所有的元素节点。
+            if(cNodes[i].nodeType===1&&cNodes[i].tagName.toUpperCase()!=='SCRIPT'){
+                arr.push(cNodes[i]);
+                var list =  getNode(cNodes[i]);
+                // 把之前存储的元素节点跟之后获取的元素节点合并到一起
+                arr.concat(list);//这句话不起作用，重新拼接成的新数组与arr没有关系
+//                console.log([123].concat(list));
+            }
+        }
+        return arr;
+    }
+    //获取body所有的元素子节点
+    var node = getNode(document.body);
+    console.log(node)
+
+    // 2 为所有的元素节点设置红色的边框
+    for(var i = 0;i<node.length;i++){
+        node[i].style.border='1px solid red'
+    }
+
+
+
+    // 如何去查看一个DOM元素的节点类型
+    //DOM元素的相关信息都存储在原型链上 Node.prototype
+    // nodeType === 1 元素节点
+    // nodeType === 3 文本节点
+    // nodeType === 8 注释节点
+
+
+
+
+
+</script>
+
+</body>
+</html>

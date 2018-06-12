@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+        }
+
+        div {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul li {
+            width: 100%;
+            height: 100%;
+        }
+
+        ol {
+            position: fixed;
+            top: 60px;
+            left: 60px;
+        }
+
+        ol li {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #000;
+            margin-top: -1px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <!-- 背景的大方块-->
+    <ul>
+        <li>男装</li>
+        <li>女装</li>
+        <li>童装</li>
+        <li>老年装</li>
+        <li>妈咪装</li>
+    </ul>
+    <!-- 左侧的小按钮-->
+    <ol>
+        <li>男装</li>
+        <li>女装</li>
+        <li>童装</li>
+        <li>老年装</li>
+        <li>妈咪装</li>
+    </ol>
+</div>
+<script>
+    //定义颜色数组
+    var color = ["pink", "blue", "green", "orange", "purple"];
+    var box = document.getElementById("box");
+    //大背景
+    var ul = box.children[0];
+    var ol = box.children[1];
+    var lisUl = ul.children;
+    var lisOl = ol.children;
+    var target = 0, leader = 0, timer = null;
+
+    //先给每一个盒子加背景色
+    //先遍历
+    for (var i = 0; i < lisOl.length; i++) {
+        lisOl[i].style.backgroundColor = color[i];
+        //ul跟ol每一个区域的颜色是对应的
+        lisUl[i].style.backgroundColor = color[i];
+        //添加索引自定义属性
+        lisOl[i].index = i;
+
+        //如果进行拖动滚动条的滚动时，我们需要更新leader的值
+        window.onscroll = function () {
+            var scrl = scroll();
+            leader = scrl.top;
+        };
+
+        //添加点击事件
+        lisOl[i].onclick = function () {
+            clearInterval(timer);
+            //在点击某一个按钮的时候，先根据当前按钮的索引去获取对应的ul中的一样的offsetTop
+            //这个offsetTop就是目标值
+            target = lisUl[this.index].offsetTop;
+            timer = setInterval(function () {
+                var step = (target - leader) / 10;
+                //进行取整操作
+                step = target > leader ? Math.ceil(step) : Math.floor(step);
+                leader = leader + step;
+                //这个值设置给window.scrollTo
+                window.scrollTo(0, leader);
+                //滚到位置
+                if (leader == target) {
+                    clearInterval(timer);
+                }
+            }, 17);
+        };
+    };
+
+
+    function scroll() {
+        //获取页面卷曲的高度和宽度
+        return {
+            //内部代码用于兼容各个浏览器
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+
+
+</script>
+</body>
+</html>

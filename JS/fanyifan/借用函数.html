@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    借用函数
+    function Person(name){
+        this.name = name;
+    }
+    function Student(name,age,gender){
+        Person.call(this,name);
+        this.age = age;
+        this.gender = gender;
+    }
+    var a = new Student("qw",12,"男");
+    console.log(a);
+
+</script>
+</body>
+</html>

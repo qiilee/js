@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+
+    //每个作用域的提升都是提升到当前作用域的顶端
+    function fun(){
+        var num;
+        function fun2() {
+
+        }
+        //----------
+        num = 100;
+
+
+        fun2();
+        
+
+
+    }
+
+    fun();
+
+
+
+
+</script>
+</body>
+</html>

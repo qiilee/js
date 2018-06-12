@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var datas = [
+        {'name':'jian','age':12,'gender':'男'},
+        {'name':'jim','age':14,'gender':'男'},
+        {'name':'jin','age':15,'gender':'女'},
+        {'name':'ji','age':16,'gender':'男'},
+        {'name':'jan','age':17,'gender':'女'}
+    ];
+    var string ='';
+    string += '<table border="1" width="400" align="center" cellpadding="10" cellspacing="2"><thead><tr>';
+    for(var k in datas[0]){
+        string+='<th>'+k+'</th>';
+    }
+    string+='</tr></thead><tbody>';
+    for (var i = 0; i < datas.length; i++) {
+       string+='<tr>';
+        for(var k in datas[i]){
+            string+='<td style="text-align: center">'+datas[i][k]+'</td>';
+        }
+        string+='</tr>'
+    }
+    string+='</tbody></table>'
+
+    document.body.innerHTML = string;
+</script>
+</body>
+</html>

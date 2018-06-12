@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //判断日期的函数
+    var a = new Date();
+    function isDate(obj) {
+        return Object.prototype.toString.call(obj) === "[object Date]";
+    }
+    console.log(isDate(a));
+
+    // 判断布尔的函数
+        var b = new Boolean();
+    function isBoolean(obj) {
+        return Object.prototype.toString.call(obj) === "[object Boolean]";
+    }
+    console.log(isBoolean(b));
+</script>
+</body>
+</html>

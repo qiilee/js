@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div onclick="fn1()" style="width:100px;height:100px;background-color: green;padding: 50px;">
+		<div onclick="fn2(event)"  style="width:100px;height:100px;background-color: red;">xxxx</div>
+	</div>
+</body>
+
+
+<script type="text/javascript">
+
+function fn1(){
+	alert("fn1");
+}
+function fn2(e){
+	alert("fn2");
+	//阻止事件的传播
+	if(e&&e.stopPropagation){
+			alert("w3c");
+			e.stopPropagation();
+		//IE标签
+		}else{
+			alert("ie");
+			window.event.cancelBubble = true;
+	}
+	
+}
+
+
+</script>
+
+</html>

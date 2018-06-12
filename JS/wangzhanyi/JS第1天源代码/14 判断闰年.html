@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /*写下判断闰年的表达式,设待判断的年份变量为year.
+    润年的判定(符合下面两个条件之一):
+    年份能够被400整除.(2000)
+    年份能够被4整除但不能被100整除.(2008)
+    让用户输入一个年份,如果是润年,则输出true,如果不是,则输出false.
+    2100/1600/1800/2009年是闰年吗？
+    */
+    var year = prompt("请输入一个正常的年份");
+    var b =  (year%400==0) ||  ((year%4==0)&&(year%100!=0));
+    console.log(b);
+</script>
+</body>
+</html>

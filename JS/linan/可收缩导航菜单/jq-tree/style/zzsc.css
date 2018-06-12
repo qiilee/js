@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{ overflow-y:scroll;}
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+h1, h2, h3, h4, h5, h6 { font-size:100%; }
+/*定位*/
+.none { display:none }
+
+/*通用*/
+.content { width:960px; }
+.main { margin:15px auto 0 auto;  overflow:hidden; zoom:1 }
+.main .left-sider { float:left; width:221px; }
+.operate h3 { font-family: "Microsoft YaHei",微软雅黑; font-size:16px; background:#f7f7f7; height:43px; line-height:43px; padding-left:12px; }
+.operate ul li { display:inline; }
+.operate ul li a {  padding-left:30px; text-decoration:none; font-size:14px; color:#555; display:block;  height:43px;  line-height:43px; border-bottom:1px dotted #d2d2d2; }
+.operate ul li a.noline { border-bottom:none; }
+.operate ul li a:hover{ color:#8caf00; }
+.operate ul li a.selected:hover { color:#fff; }
+.operate ul li .selected { background-color:#8caf00;  background-position:200px -9px; color:#fff; }
+.operate ul li { border-bottom:1px dotted #d2d2d2; display:inline-block; width:100%; position: relative; min-height:43px; _height:43px; z-index: 10; zoom:1 }
+.operate ul li h4 { cursor:pointer; background:url(../images/bg3.png) no-repeat 20px 18px; padding-left:30px; text-decoration:none; font-size:14px; color:#555; display:block;  line-height:43px; font-weight:normal; }
+.operate ul li.noline { border-bottom:none; }
+.operate ul li h4:hover { color:#8caf00; text-decoration:underline; }
+.operate ul li.selected h4 { background-position:20px -37px; border-bottom:1px dotted #d2d2d2; }
+.operate ul li a { }
+.operate ul li .on a { color:#8caf00; font-weight:bold; }
+.operate ul li a:hover { color:#8caf00; text-decoration:underline; }
+.bg-color { background-color:#8caf00; }
+.operate li .list-item { padding:5px 0; position:relative; zoom:1 }
+.operate li .list-item p { padding-left:8px; background:url(../images/ico_li.png) no-repeat 60px center; }
+.operate li .list-item a { background:none;  border:none; color: #333333; display:block; height:32px; line-height: 32px; margin: 0 -1px 0 1px; padding-left: 60px;  position: relative; text-decoration: none; font-size:12px; }
+.left-sider .operate { border:1px solid #eaeaea;  zoom:1 }
+.left-sider .ser-online a { background:url(../images/bg_ser_online.jpg) no-repeat 0 0; margin-top:10px; height:75px; border:1px solid #eaeaea; display:block; }

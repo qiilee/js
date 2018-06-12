@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function Student(name, age, score) {
+
+            this.name = name;
+            this.age = age;
+            this.score = score;
+            this.sayHi = function () {
+                console.log("大家好，我叫：" + this.name);
+            };
+        }
+        //基本类型作为函数的参数
+        //当基本类型作为函数的参数的时候，
+        // 函数内部对变量的修改，不会修改外部的变量
+        function f1(a) {
+            a = 100;
+        }
+        var x = 1;
+        f1(x);
+        console.log(x);
+
+        //复杂类型作为函数的参数
+        //复杂类型作为函数的参数，函数内部对参数的修改，会影响外部变量
+        function f2(stu) {
+            stu.name = "xxx";
+        }
+        var s = new Student("zs", 18, 100);
+        f2(s);
+        console.log(s.name);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

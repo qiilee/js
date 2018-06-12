@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="点击我啊" id="button1" onclick="turn();">
+<input type="button" value="点击我啊" id="button2">
+<input type="text" value="hahahahahah" id="txt">
+<script>
+    //获取要操作的对象
+    var but1 = document.getElementById("button1");
+    var but2 = document.getElementById("button2");
+    var txt = document.getElementById("txt");
+
+
+    function turn() {
+        txt.value = "xixixixixixi";
+    }
+    but2.onclick = function () {
+        txt.value = "alalalalalalal";
+    }
+</script>
+</body>
+</html>

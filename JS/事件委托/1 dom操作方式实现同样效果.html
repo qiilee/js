@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #000;
+            list-style: none;
+        }
+        li {
+            width: 100px;
+            height: 20px;
+        }
+        li:nth-child(1) {
+            background-color: red;
+        }
+        li:nth-child(2) {
+            background-color: pink;
+        }
+        li:nth-child(3) {
+            background-color: green;
+        }
+        li:nth-child(4) {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+<!--实现功能是点击li，弹出123-->
+<ul id="ul1">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+</ul>
+<script>
+    window.onload = function(){
+        var oUl = document.getElementById("ul1");
+        var aLi = oUl.getElementsByTagName('li');
+        for(var i=0;i<aLi.length;i++){
+            aLi[i].onclick = function(){
+                alert(123);
+            }
+        }
+    }
+</script>
+</body>
+</html>

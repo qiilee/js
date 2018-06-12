@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+
+    ctx.moveTo( 100, 100 );
+
+    ctx.lineTo( 400, 100 );
+
+    // ctx.setLineDash( [ 10, 5, 2, 5, 2, 5 ] ); // 需要一个参数, 参数是一个数组, 表示的是虚线中实线与空白的间距
+    ctx.setLineDash( [5] );
+    
+    ctx.stroke();
+
+    // 一般绘制的是 实线部分与虚线部分等长的
+    // ctx.setLineDash( [5] )
+
+    console.log( ctx.getLineDash() );
+
+</script>
+</html>

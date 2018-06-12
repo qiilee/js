@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+
+<script>
+    //点击按钮做一件事
+
+    var btn = document.getElementById("btn");
+//    var flag = true;
+
+    //点击事件
+//    btn.onclick = function () {
+//        if (flag) {
+//            alert("今天天气不错");
+//            flag = false;
+//        }
+//    };
+
+    //点击一次就不点了
+    btn.onclick = function () {
+        alert("今天天气不错");
+        //事件清除
+        btn.onclick = null;
+    };
+
+
+</script>
+</body>
+</html>

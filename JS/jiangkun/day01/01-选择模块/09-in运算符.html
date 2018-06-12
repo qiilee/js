@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // in 运算符: 判断一个用名字描述的属性是否在一个对象中
+    // 语法:
+    //  '名字' in 对象 -> boolean
+    // 对象中是否含有一个名字与描述相同的属性
+
+    var o = {
+         name: 'jim',
+         age: 19
+    };
+
+    // 实际开发中不应该直接利用对象修改原型, 应该使用构造函数来修改.
+    o.__proto__ = {
+
+            gender: '男'
+
+        };
+
+    // o 有两个属性, name, age
+    console.log( 'name' in o ); // true;
+    console.log( 'gender' in o ); //(不修改原型为false，修改原型为true)
+
+</script>
+</html>

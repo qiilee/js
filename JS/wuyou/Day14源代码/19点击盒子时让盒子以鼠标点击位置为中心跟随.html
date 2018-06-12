@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 150px;
+            left: 210px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var box = document.getElementById("box");
+    box.onclick = function (e) {
+        var e = e || event;
+        //1 点击时，先获取鼠标在盒子内的位置
+        var x = e.clientX - box.offsetLeft;
+        var y = e.clientY - box.offsetTop;
+
+        //console.log(x);
+
+        //2 让盒子跟随鼠标
+        document.onmousemove = function (e) {
+            var e = e || event;
+            //3 让盒子跟随时，根据鼠标在盒子内的位置进行偏移
+            box.style.left = e.clientX - x + "px";
+            box.style.top = e.clientY - y + "px";
+        };
+    }
+
+</script>
+</body>
+</html>

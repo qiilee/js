@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>学生档案</title>
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+	<!-- action是一个变量，用来设置接口的地址 -->
+	<form id="ajaxForm" action="{{action}}">
+		<!-- 表单的name属性通常性况下对应数据表的字段 -->
+		<fieldset>
+			<legend>学生档案</legend>
+			<!-- 由于添加和编辑共用一个页面 -->
+			<!-- 并且只有编辑需要学生ID -->
+			<!-- 添加学生时 ID 是自增的 -->
+			{{#if (action === '/update')}}
+			<input type="hidden" name="id" value="{{id}}">
+			{{/if}}
+			<label for="">
+				姓名: <input type="text" name="name" autofocus placeholder="请输入姓名" value="{{name}}">
+			</label>
+			<label for="">
+				性别:  男 <input type="radio" name="sex" {{#if (sex === 0)}}checked{{/if}} value="0">
+					   女 <input type="radio" name="sex" {{#if (sex === 1)}}checked{{/if}} value="1">
+			</label>
+			<label for="">
+				年龄: <input type="text" name="age" value="{{age}}" autofocus placeholder="请输入年龄">
+			</label>
+			<label for="">
+				手机号码: <input type="tel" name="phone" value="{{phone}}" placeholder="请输入手机号码">
+			</label>
+			<label for="">
+				邮箱地址: <input type="email" name="email" value="{{email}}" placeholder="请输入邮箱地址">
+			</label>
+			<label for="">
+				所属学院: 
+					<select name="subject" id="subject">
+						<option>请选择学院</option>
+						{{#each (subjects)}}
+						<option value="{{this.val}}" {{#if (subject === this.val)}}selected{{/if}}>{{this.text}}</option>
+						{{/each}}
+					</select>
+			</label>
+			<label for="">
+				入学成绩: <input type="number" value="{{score}}" name="score" max="100" id="score" step="10">
+			</label>
+			<!-- <label for="">
+				入学日期: <input type="date" name="date_start" value="{{date_start}}">
+			</label>
+			<label for="">
+				毕业时间: <input type="date" name="date_end" value="{{date_end}}">
+			</label> -->
+			<label for="" class="btn">
+				<input type="submit" value="保存">
+			</label>
+		</fieldset>
+	</form>
+	<script src="/js/jquery.min.js"></script>
+	<script>
+		$('#ajaxForm').on('submit', function () {
+			// 缓存当前DOM对象
+			var _this = $(this);
+			// 获取表单action的属性
+			var action = _this.attr('action');
+
+			// console.log($('#subject option:selected').text());
+			// 获取选中下拉框的文本
+			var subject_text = $('#subject option:selected').text();
+
+			$.ajax({
+				url: action, // 根据表单action属性，确定请求地址
+				type: 'post',
+				data: _this.serialize() + '&subject_text=' + subject_text,
+				success: function (info) {
+					// 提示信息
+					alert(info.msg);
+
+					if(info.code == 10000) {
+						// 当成功后跳转至列表页面
+						location.href = '/list';
+					}
+				}
+			})
+			// 阻止表单默认提交，使用ajax提交数据
+			return false;
+		});
+	</script>
+</body>
+</html>

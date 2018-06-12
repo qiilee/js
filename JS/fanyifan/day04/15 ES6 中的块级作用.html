@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // ES6中的块级作用域
+    // 跟let关键字搭配使用。
+
+    {
+        let num = 123;
+    }
+    console.log(num);//因为ES6拥有块级作用域的功能，所以就不能输出num
+                     //会报一个错误  num is not defined
+                     // Uncaught ReferenceError: num is not defined
+</script>
+</body>
+</html>

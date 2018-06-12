@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var foo02 = new function()
+    {
+        var temp = 100;
+        this.temp = 200;
+        return temp + this.temp;
+    }
+
+    alert(typeof(foo02));
+    alert(foo02.constructor());
+
+
+    /*运行结果：  object
+     300    这是一个比较puzzle的function的使用方式，好像是定一个函数。
+     但是实际上这是定一个JavaScript中的用户自定义对象，不过这里是个匿名类。
+     这个用法和函数本身的使用基本没有任何关系，在大扩号中会构建一个变量作用域，
+     this指代这个作用域本身。 */
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>旋转木马轮播图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+    <script type="text/javascript" src="js/animate.js"></script>
+</head>
+<body>
+<div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+        <ul>
+            <li><a href="javascript:;"><img src="images/slidepic1.jpg" alt=""/></a></li>
+            <li><a href="javascript:;"><img src="images/slidepic2.jpg" alt=""/></a></li>
+            <li><a href="javascript:;"><img src="images/slidepic3.jpg" alt=""/></a></li>
+            <li><a href="javascript:;"><img src="images/slidepic4.jpg" alt=""/></a></li>
+            <li><a href="javascript:;"><img src="images/slidepic5.jpg" alt=""/></a></li>
+        </ul>
+        <div class="arrow" id="arrow">
+            <a href="javascript:;" class="prev" id="arrLeft"></a>
+            <a href="javascript:;" class="next" id="arrRight"></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    var config = [
+        {
+            width: 400,
+            top: 20,
+            left: 50,
+            opacity: 0.2,
+            zIndex: 2
+        },//0
+        {
+            width: 600,
+            top: 70,
+            left: 0,
+            opacity: 0.8,
+            zIndex: 3
+        },//1
+        {
+            width: 800,
+            top: 100,
+            left: 200,
+            opacity: 1,
+            zIndex: 4
+        },//2
+        {
+            width: 600,
+            top: 70,
+            left: 600,
+            opacity: 0.8,
+            zIndex: 3
+        },//3
+        {
+            width: 400,
+            top: 20,
+            left: 750,
+            opacity: 0.2,
+            zIndex: 2
+        }//4
+    ];//其实就是一个配置单 规定了每张图片的大小位置层级透明度
+
+    //获取页面元素
+    var wrap = document.getElementById("wrap");
+    var slide = wrap.children[0];
+    var ul = slide.children[0];
+    var lis = ul.children;
+    var arrow = document.getElementById("arrow");
+    var arrLeft = arrow.children[0];
+    var arrRight = arrow.children[1];
+
+    //让每一个li根据配置单走到指定位置
+    for (var i = 0; i < lis.length; i++) {
+        animate(lis[i], config[i]);
+    }
+
+    //设置箭头的显示和隐藏
+    wrap.onmouseover = function () {
+        animate(arrow, {"opacity": 1}, function () {
+        });
+    };
+    wrap.onmouseout = function () {
+        animate(arrow, {"opacity": 0});
+    };
+
+    //-----------------------操作部分-----------------------
+    var arr = [0, 1, 2, 3, 4];
+    setIndex();
+    arrRight.onclick = function () {
+        scrollRight();
+    };
+    arrLeft.onclick = function () {
+        scrollLeft();
+    };
+
+    //设置每个li的点击事件
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+            switch (this.index) {
+                case 0:
+                    scrollRight();
+                    scrollRight();
+                    break;
+                case 1:
+                    scrollRight();
+                    break;
+                case 3:
+                    scrollLeft();
+                    break;
+                case 4:
+                    scrollLeft();
+                    scrollLeft();
+                    break;
+            }
+        };
+    }
+
+    function scrollLeft() {
+        config.unshift(config.pop());
+        arr.unshift(arr.pop());
+        setIndex();
+
+        for (var i = 0; i < lis.length; i++) {
+            animate(lis[i], config[i], function () {
+                flag = true;
+            }, 17);
+        }
+    }
+
+    function setIndex() {
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = arr[i];
+        }
+    }
+
+
+    function scrollRight() {
+        config.push(config.shift());
+        arr.push(arr.shift());
+        setIndex();
+        for (var i = 0; i < lis.length; i++) {
+            animate(lis[i], config[i], function () {
+            }, 17);
+        }
+    }
+
+
+</script>
+</body>
+</html>

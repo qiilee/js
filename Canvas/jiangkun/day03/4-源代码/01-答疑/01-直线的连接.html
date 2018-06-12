@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>答疑</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    ctx.lineWidth = 40;
+
+    /*
+    // ctx.lineJoin = 'bevel';
+    ctx.lineJoin = 'round';
+
+    // 一种使用默认的连接方式
+    ctx.moveTo( 100, 100 );
+    ctx.lineTo( 300, 100 );
+    ctx.lineTo( 250, 160 );
+    // 上面的这条是连续的曲线, 在连接处由 lineJoin 属性控制效果
+
+
+
+
+    // 另一种使用断开的连接方式
+    ctx.moveTo( 100, 200 );
+    ctx.lineTo( 300, 200 );
+    ctx.moveTo( 300, 200 );
+    ctx.lineTo( 250, 260 );
+    // 归根结底是两条线段, 只是一条的起点 是另一条的 终点
+    */
+
+
+
+
+
+
+    // 绘制 lineTo 的连接
+    // ctx.lineJoin = 'bevel';
+    ctx.moveTo( 100, 100 );
+    ctx.lineTo( 300, 100 );
+    ctx.lineTo( 300, 300 );
+    // ctx.lineTo( 100, 100 ); // 回到开始的位置
+    // ctx.lineTo( 101, 100 ); // 只要一拐, 就可以保证转角处是连续的. 
+
+
+    // 绘制 closePath 的连线
+    // 可以保证首尾是连续的连接
+    ctx.closePath();
+
+
+
+    ctx.stroke();
+
+</script>
+</html>

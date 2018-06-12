@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+//    .filter
+//    含义过滤. 含义是 利用回调函数判断每一个元素, 如果符合要求就保留下来构成一个新的数组
+//    arr.filter( function ( v, i ) {
+//        判断, 返回 bool 值
+//    });
+//    如果返回的是 true 那么该数据就会被保留下来
+
+
+
+// filter 过滤
+//作用： 筛选一部分元素
+//返回值： 一个满足筛选条件的新数组
+// 是否改变原有数组：不会
+
+/*var arr = [2,5,3,4]
+ var ret = arr.filter(function(value){
+ return value>3;
+ })
+ console.log(ret);//[5,4]
+ console.log(arr)//[2,5,3,4]*/
+
+    // 在学生数组中, 找出姓张的
+    var datas = [
+
+        { name: '张三丰', age: 100, gender: '男' },
+        { name: '李三丰', age: 100, gender: '男' },
+        { name: '王三丰', age: 100, gender: '男' },
+        { name: '赵三丰', age: 100, gender: '男' },
+        { name: '钱三丰', age: 100, gender: '男' },
+        { name: '孙三丰', age: 100, gender: '男' },
+        { name: '周三丰', age: 100, gender: '男' },
+        { name: '吴三丰', age: 100, gender: '男' },
+        { name: '三丰', age: 100, gender: '男' }
+
+    ];
+
+    var newArr = datas.filter( function ( v, i ) {
+        return v.name.charAt( 0 ) == '张';
+    });
+    console.log(newArr);
+</script>
+</html>

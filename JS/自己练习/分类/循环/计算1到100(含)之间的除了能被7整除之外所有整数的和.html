@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var sum = 0;
+        for (var a = 1; a <= 100; a++) {
+            if (a % 7 === 0) {
+                a++;
+                continue;
+
+            }
+
+            sum += a;
+            a++;
+        }
+        alert(sum);
+    </script>
+</head>
+<body>
+1.计算1到100(含)之间的除了能被7整除之外所有整数的和
+</body>
+</html>

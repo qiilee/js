@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<button id="btn">跑到400</button>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var timer = null;
+
+    box.onclick = function () {
+        animate(box,"top", 200);
+    };
+
+    btn.onclick = function () {
+        animate(box,"height", 400);
+    }
+
+    function animate(tag, attr, target) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //我想要修改任意一个样式属性
+            //想要修改先获取
+            var leader = parseInt(getStyle(tag, attr)) || 0;
+            var step = (target - leader) / 10;
+            //需要对step进行处理
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+            leader = leader + step;
+            tag.style[attr] = leader + "px";
+            //到了位置。定时器不用了就需要清除，节能环保
+            if (leader == target) {
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+
+    //如果没有设置某些值的初始值。会获取出auto
+    function getStyle(tag, attr) {
+        if (tag.currentStyle) {
+            return tag.currentStyle[attr];
+        } else {
+            return getComputedStyle(tag, null)[attr];
+        }
+    }
+
+
+</script>
+<script>
+
+
+</script>
+</body>
+</html>

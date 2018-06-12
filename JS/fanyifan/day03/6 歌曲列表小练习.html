@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 创建一个歌曲列表，要有这个歌曲列表里有一些歌曲的信息，音乐的歌曲名，
+    //音乐的歌手名字
+
+    var songs = [
+        {
+            sName:'最炫民族风',
+            sSinger:'凤凰传奇'
+        },
+        {
+            sName:'捉泥鳅',
+            sSinger:'滑树森'
+       },
+        {
+            sName:'捉泥鳅',
+            sSinger:'卓依婷'
+        }
+    ]
+
+    // 歌曲列表要能够实现一些功能
+    // 1 根据歌曲名获取歌手信息
+    // 2 根据歌名删除相关的歌曲
+    // 3 为歌曲列表添加歌曲
+
+
+    // 1 根据歌曲名获取歌手信息
+    /*
+    * 思路分析
+    * 1 循环遍历歌曲列表
+    * 2 判断一下要查询的歌曲是否存在
+    * 3 如果有这首歌，就把这首歌的歌手信息存储在一个数组当中。
+    * */
+    /*var singer= []
+    for(var i = 0;i<songs.length;i++){
+        //!* 2 判断一下要查询的歌曲是否存在
+        if('捉泥鳅'===songs[i].sName){
+            singer.push(songs[i].sSinger)
+        }
+    }*/
+
+    // 封装获取歌手的函数。
+    function getSinger(sName){
+        var singer=[]
+        // 1 遍历歌曲列表中的每一项
+        for(var i = 0;i<songs.length;i++){
+            //* 2 判断一下要查询的歌曲是否存在
+            if(sName===songs[i].sName){
+                singer.push(songs[i].sSinger)
+            }
+        }
+        //if判断语句里[]会转换为true，因此要判断数组的长度
+        //数组长度为0，就说明没有相关的信息。
+        if(singer.length===0){
+            return '没有查找到相关的歌手信息'
+        }
+        // 返回获取到的歌手信息
+        return singer;
+    }
+    console.log(getSinger('最炫民族风'))
+
+
+/*    console.log(singer)*/
+
+
+    // 2 根据歌名删除相关的歌曲
+    /*for(var i= 0;i<songs.length;i++){
+        //!* 2 判断一下要查询的歌曲是否存在
+        if('捉泥鳅'===songs[i].sName){
+            songs.splice(i,1);
+            i--;
+      /!*      delete songs[i];*!/
+        }
+    }*/
+
+    // 封装的删除歌曲的函数
+    function removeSong(sName){
+        // 遍历歌曲信息列表
+        for(var i= 0;i<songs.length;i++){
+            // 判断是否是要删除的一首歌
+            if(sName===songs[i].sName){
+                songs.splice(i,1);
+                // 处理数组塌陷问题
+                i--;
+            }
+        }
+    }
+    console.log(songs);//
+    removeSong('捉泥鳅')
+    console.log(songs);
+
+  /*  console.log(songs)*/
+
+
+    //3 为歌曲列表添加歌曲
+
+    songs.push({
+        sName:'四面楚歌',
+        sSinger:'周杰伦'
+    })
+
+
+    function addSong(obj){
+        songs.push(obj)
+    }
+
+    addSong({
+        sName:'歌唱祖国',
+        sSinger:'李谷一'
+    })
+
+    console.log(songs)
+/*    console.log(songs)*/
+
+
+    var songs2  =[
+
+    ]
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

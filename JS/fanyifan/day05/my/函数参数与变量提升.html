@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		//原式1  输出function a(){}
+//		(function (a) {
+//		    console.log(a);
+//			var a = 10;
+//		     function a(){}
+//		 }( 100 ));
+
+		//变式 应该是输出function a(){} 但是function a(){}还会提升，所以运行输出100
+//		function fn(a){
+//			var a ;
+//			a=100;
+//			function a(){}
+//			console.log(a);
+//			a=10;
+//		}
+//        fn(100);
+
+
+
+
+
+		//原式2： 变量跟参数重名
+//		(function (a) {
+//		    console.log(a);//100
+//		    var a = 10;
+//		    console.log(a);//10
+//		})( 100 );
+
+/*		function fn(a){
+		    var a;
+		    a = 100;
+		    console.log(a);//100
+		    a = 10;
+		    console.log(a);//10
+		}
+		fn(100)*/
+
+
+
+
+		//原式3 函数跟参数重名 function a() {}   function a() {}
+//
+//		(function (a) {
+//		 console.log(a);// 输出函数体
+//		 function a() {}
+//		 console.log(a);//输出函数体
+//		 })( 100 );
+
+
+
+		//变量提升一次之后的代码　
+/*		function fn(a){
+		    //1 对传入的参数声明和赋值
+			var a;
+			a=100;
+			//2 对函数内部的代码进行提升
+            function a(){}
+            console.log(a);//100　
+		    console.log(a)//100
+		}
+		fn(100);*/
+
+
+
+		// 函数参数与变量提升
+		/*
+		* 把传入的参数先进行提升到当前作用域顶部，然后再进行变量提升
+		* 传入实参就声明并且赋值，没有传入实参就只发生声明不发生赋值
+		*　
+		* */
+
+//   变量提升两次之后的代码　
+//        function fn(a){
+//            //1 对传入的参数声明和赋值
+//            var a;
+//            function a(){}
+//            a=100;
+//            //2 对函数内部的代码进行提升
+//            console.log(a);//100　
+//            console.log(a)//100
+//        }
+//        fn(100);
+	</script>
+</body>
+</html>

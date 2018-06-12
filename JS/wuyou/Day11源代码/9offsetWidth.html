@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 10px solid #000;
+            margin: 50px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="box" style='left: 100px;'></div>
+<script>
+    var box = document.getElementById("box");
+    //盒子的宽度 左边框的左侧到右边框的右侧包含border,padding  但不含margin
+    console.log(box.offsetWidth);
+
+
+</script>
+</body>
+
+</html>

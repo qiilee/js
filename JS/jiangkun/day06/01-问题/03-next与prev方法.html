@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script>
+        var arr = [],
+            push = arr.push,
+            concat = arr.concat;
+            
+        Itcast.extend({
+            next: function ( node ) {
+                var tmp = node;
+                while ( tmp = tmp.nextSibling ) {
+                    if ( tmp.nodeType == 1 ) {
+                        return tmp;
+                    }
+                }
+                return null;
+            },
+            nextAll: function  ( node ) {
+                var tmp = node,
+                    arr = [];
+                while ( tmp = tmp.nextSibling ) {
+                    if ( tmp.nodeType == 1 ) {
+                        arr.push( tmp );
+                    }
+                }
+                return arr;
+            },
+            prev: function ( node ) {
+                var tmp = node;
+                while ( tmp = tmp.previousSibling ) {
+                    if ( tmp.nodeType == 1 ) {
+                        return tmp;
+                    }
+                }
+                return null;
+            },
+            prevAll: function  ( node ) {
+                var tmp = node,
+                    arr = [];
+                while ( tmp = tmp.previousSibling ) {
+                    if ( tmp.nodeType == 1 ) {
+                        arr.push( tmp );
+                    }
+                }
+                return arr;
+            }
+        });
+
+
+        Itcast.fn.extend({
+            next: function () {
+                // 将 this 的所有的下一个兄弟元素组成 Itcast 对象返回
+                return this.pushStack( this.map(function ( v ) {
+                    return Itcast.next( v );
+                }) );
+            },
+            nextAll: function () {
+
+                // 返回 this 中所有元素的 所有后面的兄弟元素
+                var arr = this.map(function ( v ) {
+                    return Itcast.nextAll( v );
+                });
+                // 返回结构: [ [], [], ... ]
+                // 将其扁平化
+                // [ , , , ... ]
+                arr = arr.concat.apply( [], arr );
+
+                // 去重
+                arr = Itcast.unique( arr );
+
+                // pushStack
+                return this.pushStack( arr );
+
+
+
+            } ,
+            prev: function () {
+                return this.pushStack( this.map(function ( v ) {
+                    return Itcast.prev( v );
+                }) );
+            },
+            prevAll: function () {
+                return this.pushStack( Itcast.unique( [].concat.apply( [], this.map( function ( v ) {
+                    return Itcast.prevAll( v );
+                }) ) ) );
+            },
+            siblings: function () {
+                var prevAll = this.prevAll().toArray();
+                var nextAll = this.nextAll().toArray();
+
+                return this.pushStack( prevAll.concat( nextAll ) );
+            }
+
+
+        })
+    </script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div id="dv">4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+</body>
+<script>
+   
+    I( "#dv" ).prevAll().each(function () {
+        this.style.backgroundColor = 'red';
+    }).end().nextAll().each(function ( ) {
+        this.style.backgroundColor = 'green';
+    }).end().each(function () {
+        this.style.backgroundColor = 'blue';
+    });
+
+</script>
+</html>

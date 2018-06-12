@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：注意undefined in window与window.undefined的区别
+    console.log(true in window);//false
+    console.log(false in window);//false
+    console.log(undefined in window);//true
+    console.log(null in window);//false
+
+
+    console.log(window.undefined);//undefined
+    console.log(window.null);//undefined
+
+    console.log('name' in window);//true
+    console.log(window.name);//空字符串
+    console.log(window);
+</script>
+</body>
+</html>

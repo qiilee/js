@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script type="text/template" id="templateid">
+           <tr>
+               <td><%=name%></td>
+               <td><%=cmq%></td>
+               <td><%=lovegirl%></td>
+           </tr>
+    </script>
+
+</head>
+<body>
+    <table></table>
+    <script>
+
+        //获取table
+        var table = document.querySelector("table");
+        var templateid = document.querySelector("#templateid");
+        var templatestr = templateid.innerHTML;
+        console.log(templatestr);
+        var obj = [{
+            name:"周杰伦",
+            cmq:"秋刀鱼",
+            lovegirl:"昆凌"
+        },
+            {
+                name:"陈小春",
+                cmq:"二锅头",
+                lovegirl:"应采儿"
+            }
+        ]
+        var itcast = {
+            template:function(templateStr,obj){
+                var reg = /<%=\s*([^%>]+\S)\s*%>/;
+                //exec() 方法检索字符串中的指定值。返回值是被找到的值。如果没有发现匹配，则返回 null。
+                //第一次替换
+                var result;
+                while(result = reg.exec(templateStr)){
+                    result = reg.exec(templateStr);
+                    // console.log(result);
+                    var resultString = result[0]; //<%=name%>
+                    var resultWord = result[1]; //name
+
+                    templateStr = templateStr.replace(resultString,obj[resultWord]);
+
+                }
+                return templateStr;
+            }
+        }
+
+       // nr 最后得到的值是
+
+//         <tr>
+//        <td>周杰伦</td>
+//        <td>秋刀鱼</td>
+//        <td>昆凌</td>
+//        </tr>
+
+        var nr = "";
+        for(var i=0;i<obj.length;i++){
+            nr = nr + itcast.template(templatestr, obj[i]);
+        }
+
+        table.innerHTML = nr;
+
+
+    </script>
+</body>
+</html>

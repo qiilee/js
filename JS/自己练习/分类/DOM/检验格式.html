@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<!-- 向控件定义标注（标记）。如果您在 label 元素内点击文本，就会触发此控件。
+就是说，当用户选择该标签时，浏览器就会自动将焦点转到和标签相关的表单控件上。
+
+注释："for" 属性可把 label 绑定到另外一个元素。请把 "for" 属性的值设置为相关元素的
+    id 属性的值。
+
+-->
+<label for="txt">name</label>
+<input id="txt" type="text"/><span id="action"></span>
+
+</body>
+
+
+<script type="text/javascript">
+    var txt = document.getElementById("txt");
+    txt.onfocus = function () {
+        //友好提示
+        var span = document.getElementById("action");
+        span.innerHTML = "用户名格式最小8位";
+        span.style.color = "green";
+    };
+    txt.onblur = function () {
+        //错误提示
+        var span = document.getElementById("action");
+        span.innerHTML = "对不起 格式不正确";
+        span.style.color = "red";
+    };
+</script>
+
+
+</html>

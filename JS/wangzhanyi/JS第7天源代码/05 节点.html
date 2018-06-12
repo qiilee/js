@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+    <ul id="list">123
+        <li>这是第1个li标签</li>
+        <li>这是第2个li标签</li>
+        <li>这是第3个li标签</li>
+        <li>这是第4个li标签</li>
+    </ul>
+</div>
+<p class="p1" id="p1"></p>
+<script>
+    // parentNode可以用来获取当前对象的父标签节点
+    // 子标签节点   是标准的DOM属性，不但可以获得子标签节点，还可以获得文本节点
+    // 文档由什么组成： 节点组成    标签   属性    文本   注释
+    //getAttributeNode() 获得属性节点
+
+    //                  标签                   文本                属性
+    //nodeType  ::      1                      3                  2
+    //nodeName  ::      对应的标签名            #text              对应的属性
+    //nodeValue ::      null                  对应的文本内容       对应的属性值
+
+
+
+
+    //myself  thrice
+    //    var list = document.getElementById("list");
+    //    var childs = list.childNodes;
+    //    console.log(childs);//[text, li, text, li, text, li, text, li, text]
+    //    var a = list.children;
+    //    console.log(a);//[li, li, li, li]
+    //    var father = list.parentNode;
+    //    console.log(father);
+    //    //<div>
+    //    //    <ul id="list">
+    //    //            <li>这是第1个li标签</li>
+    //    //            <li>这是第2个li标签</li>
+    //    //            <li>这是第3个li标签</li>
+    //    //            <li>这是第4个li标签</li>
+    //    //            </ul>
+    //    //            </div>
+    //    for (var i = 0; i < a.length; i++) {
+    //        console.log(a[i].nodeType);
+    //        console.log(a[i].nodeName);
+    //        console.log(a[i].nodeValue);
+    //    }
+    //    //1
+    //    //    LI
+    //    //    null
+    //    //    1
+    //    //    LI
+    //    //    null
+    //    //    1
+    //    //    LI
+    //    //    null
+    //    //    1
+    //    //    LI
+    //    //    null
+
+
+    //once  myself
+    //    var list = document.getElementById("list");
+    ////    console.log(list.parentNode);
+    ////    console.log(list.childNodes); //[text, li, text, li, text, li, text, li, text]
+    //    var lis = list.childNodes;
+    ////    console.log(list.childNodes.length); //9
+    //    for(var i=0;i<lis.length;i++){
+    //      console.log( lis[i]);//          #text..   <li>...</li>
+    //      console.log( lis[i].nodeType);// 3         1
+    //      console.log( lis[i].nodeName);//#text      LI
+    //      console.log( lis[i].nodeValue);//空         null
+    //    }
+    //
+    //    var p1 = document.getElementById("p1");
+    //    var node = p1.getAttributeNode("id");
+    //    console.log(node.nodeType);//2
+    //    console.log(node.nodeName);//id
+    //    console.log(node.nodeValue);//p1
+
+
+    /* teacher::::
+     var list = document.getElementById("list");
+     console.log(list.parentNode); // parentNode可以用来获取当前对象的父标签节点
+     var lis = list.childNodes; // 子标签节点   是标准的DOM属性，不但可以获得子标签节点，还可以获得文本节点
+     console.log(lis.length);
+     // 文档由什么组成： 节点组成    标签   属性    文本   注释
+     // nodeType   nodeValue   nodeName
+     for(var i=0;i<lis.length;i++){
+     //console.log(lis[i].nodeType); // 标签     1             文本       3
+     //console.log(lis[i].nodeName); // 标签  对应的标签名      文本    #text
+     //console.log(lis[i].nodeValue);// 标签    null           文本    对应的文本内容
+     }
+
+     var p1 = document.getElementById("p1");
+
+     var node = p1.getAttributeNode("id");
+     console.log(node.nodeType); // 属性  2
+     console.log(node.nodeName); //   对应的属性名
+     console.log(node.nodeValue);//   对应的属性值 */
+
+
+    /* Teacher:::::::::
+    var list = document.getElementById("list");
+//    var box = document.getElementById("box");
+    console.log(list.parentNode); // parentNode可以用来获取当前对象的父标签节点
+    var lis = list.childNodes; // 子标签节点   是标准的DOM属性，不但可以获得子标签节点，还可以获得文本节点
+    console.log(lis.length);
+    // 文档由什么组成： 节点组成    标签   属性    文本   注释
+    // nodeType   nodeValue   nodeName
+    for(var i=0;i<lis.length;i++){
+        //console.log(lis[i].nodeType); // 标签     1             文本       3
+        //console.log(lis[i].nodeName); // 标签  对应的标签名      文本    #text
+        //console.log(lis[i].nodeValue);// 标签    null           文本    对应的文本内容
+    }
+    var p1 = document.getElementById("p1");
+    var node = p1.getAttributeNode("id");
+    console.log(node.nodeType); // 属性  2
+    console.log(node.nodeName); //   对应的属性名
+    console.log(node.nodeValue);//   对应的属性值
+    */
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>微博发布案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline: none; /*去掉环绕线*/
+            resize: none; /*禁用拖动*/
+        }
+
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+
+        ul li {
+            /*line-height: 25px;*/
+            height: 25px;
+            width: 450px;
+            /*border: 1px solid #000;*/
+            border-bottom: 1px dashed #cccccc;
+        }
+
+        .del {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="30" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <!--<ul>-->
+    <!--<li><input type="button" value="删除"/></li>-->
+    <!--</ul>-->
+</div>
+<script src="common.js"></script>
+<script>
+    //创建ul要在点击事件外
+    //点击事件内  由Txt.setText(li,val); 求val，li
+    //创建删除按钮  并绑定事件
+    var box = $$("weibo");
+    var txt = $$("txt");
+    var btn = $$("btn");
+
+
+
+
+
+
+
+
+
+
+//    myself  thrice
+//    var ul = document.createElement("ul");
+//    box.appendChild(ul);
+//
+//    btn.onclick = function () {
+//        var val = txt.value;
+//        if(!val){
+//            alert("输入的内容不能为空！！！！");
+//            return;
+//        }
+//        var li = document.createElement("li");
+//        var lis =ul.children;
+//        if(lis.length){
+//            ul.insertBefore(li,lis[0]);
+//        }else{
+//            ul.appendChild(li);
+//        }
+//        Txt.setText(li,val);
+//
+//        var input  =document.createElement("input");
+//        input.className="del";
+//        input.type = "button";
+//        input.value= "删除";
+//        li.appendChild(input);
+//
+//        input.onclick = function () {
+//            this.parentNode.parentNode.removeChild(this.parentNode);
+//        }
+//
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//myself  twice
+    //创建ul
+    var ul = document.createElement("ul");
+    box.appendChild(ul);
+    btn.onclick = function () {
+
+        //获得文本值
+        var val = txt.value;
+        if (!val) {
+            alert("不能为空");
+            return;
+        }
+        //获得li标签
+        var li = document.createElement("li");
+//       ul.appendChild(li);
+        var lis = ul.children;
+        if (lis.length) {
+            ul.insertBefore(li, lis[0]);
+        } else {
+            ul.appendChild(li);
+        }
+        Txt.setText(li, val);
+        //删除按钮
+        var del = document.createElement("input");
+        del.className = "del";
+        del.type = "button";
+        del.value = "删除";
+        li.appendChild(del);
+        //d点击事件
+        del.onclick = function () {
+            this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+    }
+
+
+    // 1. 先获得对象
+    // 2. 创建ul,并追加到box中
+    //3.给事件源注册事件
+    //4.先获得文本域内的文本内容
+    // 5. 动态创建li标签
+    // 6. 创建删除按钮，并追加到li标签当中
+    // 7. 给删除按钮添加事件
+
+
+    //myself once
+    //    var box = $$("weibo");
+    //    var txt = $$("txt");
+    //    var btn = $$("btn");
+    //
+    //    var ul = document.createElement("ul");
+    //    box.appendChild(ul);
+    //
+    //    btn.onclick = function () {
+    //        var val = txt.value;
+    //        if (!val) {
+    //            alert("不能为空！！！！！！！");
+    //            return;
+    //        }
+    //        var li = document.createElement("li");
+    //        var lis = ul.children;
+    //        if (lis.length) {
+    //            ul.insertBefore(li, lis[0]);
+    //        } else {
+    //            ul.appendChild(li);
+    //        }
+    //
+    //        Txt.setText(li, val);// 给li添加内容
+    //        var input = document.createElement("input");
+    //        input.className = "del";
+    //        input.type = "button";
+    //        input.value = "删除";
+    //        li.appendChild(input);
+    //
+    //        // 7. 给删除按钮添加事件
+    //        input.onclick = function () {
+    //            this.parentNode.parentNode.removeChild(this.parentNode);
+    //        }
+    //    }
+
+
+    //Teacher:::::::::::::::::::::::::::::::::::
+    //    // 1. 先获得对象
+    //    var box = $$("weibo");
+    //    var txt= $$("txt");
+    //    var btn = $$("btn");
+    //    // 2. 创建ul,并追加到box中
+    //    var ul = document.createElement("ul");
+    //    box.appendChild(ul);
+    //
+    //    //3.给事件源注册事件
+    //    btn.onclick =function (){
+    //           //4.先获得文本域内的文本内容
+    //        var val = txt.value;
+    //        if(!val){
+    //            alert("内容不能为空，请重新输入。。。");
+    //            return;
+    //        }
+    //        // 5. 动态创建li标签
+    //        var li = document.createElement("li");
+    //        var lis = ul.children;
+    //        if(lis.length){
+    //            ul.insertBefore(li,lis[0]);
+    //        }else {
+    //            ul.appendChild(li);
+    //        }
+    //
+    //        Txt.setText(li,val);// 给li添加内容
+    //
+    //        // 6. 创建删除按钮，并追加到li标签当中
+    //        var input = document.createElement("input");
+    //        input.className = "del";
+    //        input.type = "button";
+    //        input.value="删除";
+    //        li.appendChild(input);
+    //
+    //        // 7. 给删除按钮添加事件
+    //        input.onclick = function (){
+    //             this.parentNode.parentNode.removeChild(this.parentNode);
+    //        }
+    //    }
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--给定一个字符串如：“abaasdffggghhjjkkgfddsssss3444343”问题如下：
+1、字符串的长度?
+2、取出指定位置的字符，如：0,3,5,9等
+3、查找指定字符是否在以上字符串中存在，如：i，c?，b等
+4、替换指定的字符，如：g替换为22,ss替换为b等操作方法
+5、截取指定开始位置到结束位置的字符串，如：取得1-5的字符串
+6、找出以上字符串中出现次数最多的字符和出现的次数-->
+<script>
+    //总结：字符串有着唯一的属性 length
+    //
+    //
+    //
+    //
+    var str = 'abaasdffggghhjjkkgfddsssss3444343';
+    //1
+    console.log(str.length);//33
+    //2
+    console.log(getChar(0));
+    function getChar(index){
+        return str.charAt(index);
+    }
+    //3
+    console.log(isExist("a"));
+    function isExist(char){
+        if(str.indexOf(char)!=-1){
+            return "Exist";
+        }else{
+            return "isNotExist";
+        }
+    }
+    //4
+    console.log(replaceStr("g","22"));
+    function replaceStr(a,b){
+        while(str.indexOf(a)!=-1){
+           str = str.replace(a,b);
+        }
+        return str;
+    }
+    //5
+    var str = 'abaasdffggghhjjkkgfddsssss3444343';
+    console.log(getString(1,5));
+    function getString(a,b){
+        return str.slice(a,b);
+    }
+    //6 先将字符串转为数组
+    var str = 'abaasdffggghhjjkkgfddsssss3444343';
+     var arr = str.split("");
+    console.log(aa(arr));
+    function aa(arr){
+        var obj = {};
+        for (var i = 0; i < arr.length; i++) {
+            var temp = arr[i];
+            if (obj[temp]) {
+                obj[temp]++;
+            } else {
+                obj[temp] = 1;
+            }
+        }
+        return obj;
+    }
+
+</script>
+</body>
+</html>

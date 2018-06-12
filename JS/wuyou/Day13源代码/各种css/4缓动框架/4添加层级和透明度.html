@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<button id="btn">跑到400</button>
+<script>
+    var box = document.getElementById("box");
+    var btn = document.getElementById("btn");
+    var timer = null;
+
+    box.onclick = function () {
+//        animate(box, "top", 200);
+//        animate(box, "width", 200);
+        animate(box, {"width": 200, "height": 150, "opacity": 0.3, "zIndex": 3});
+        alert(1);
+        animate(box, {"width": 300, "height": 150, "opacity": 0.3, "zIndex": 3});
+
+    };
+
+    function animate(tag, obj) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //假设可以清除
+            var flag = true;
+            //要操作的是obj里面的每一个属性
+            for (var k in obj) {
+                //检测，如果是opacity，这时单独处理
+                if (k == "opacity") {
+                    //为了避免小数精度问题，扩大100倍
+                    var target = obj[k] * 100;
+                    var leader = getStyle(tag, k) * 100 || 0;
+                    var step = (target - leader) / 10;
+                    //需要对step进行处理
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step;
+                    //计算结果除以100
+                    tag.style[k] = leader / 100;
+
+                } else if (k == "zIndex") {
+                    //层级不需要运动，直接设置
+                    tag.style.zIndex = obj[k];
+                } else {
+                    var target = obj[k];
+                    var leader = parseInt(getStyle(tag, k)) || 0;
+                    var step = (target - leader) / 10;
+                    //需要对step进行处理
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                    leader = leader + step;
+                    tag.style[k] = leader + "px";
+                    //某个属性没有到达指定位置/不能清除
+                }
+
+                //检测是否可以清除定时器放在外面
+                if (leader != target) {
+                    flag = false;
+                }
+            }
+
+            if (flag) {
+                clearInterval(tag.timer);
+            }
+
+        }, 17);
+    }
+
+    //如果没有设置某些值的初始值。会获取出auto
+    function getStyle(tag, attr) {
+        if (tag.currentStyle) {
+            return tag.currentStyle[attr];
+        } else {
+            return getComputedStyle(tag, null)[attr];
+        }
+    }
+
+
+</script>
+<script>
+
+
+</script>
+</body>
+</html>

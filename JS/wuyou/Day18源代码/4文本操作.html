@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //text方法   html方法    val方法  的使用
+
+            //使用text方法   跟innerText相同，只能设置或者获取纯文本
+            //console.log($("#box").text());
+            //$("#box").text("我是box的新内容<div></div>");
+
+            //使用html方法
+            //console.log($("#box").html());
+            //设置时可以解析内部的标签
+            //$("#box").html("我是box<p>我是子元素p</p>");
+
+
+            //表单的内容设置和获取 val()
+            // console.log($("#text").val());
+
+            //$("#text").val("我是ipt的新内容");
+
+            //自己做了一遍总结：把focus写成onfocus，blur写成onblur
+//                              this没有带$
+            //获取焦点 focus
+            $("#text").focus(function () {
+                //获取焦点时，如果文本框的内容为默认内容，进行清空
+                if($(this).val()=="我是ipt的内容"){
+                    //清空
+                    $(this).val("");
+                }
+            });
+
+            //失去焦点  blur
+            $("#text").blur(function () {
+                //如果内容为空，设置为默认文本
+                if($(this).val()==""){
+                    $(this).val("我是ipt的内容");
+                }
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+<input id="text" type="text" value="我是ipt的内容">
+<!--<div id="box">我是box的内容-->
+<!--<span>我是span</span>-->
+<!--</div>-->
+</body>
+</html>

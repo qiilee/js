@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 100px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+<select name="" id="all" multiple>
+    <option value="">西瓜</option>
+    <option value="">香蕉</option>
+    <option value="">桔子</option>
+    <option value="">苹果</option>
+    <option value="">梨</option>
+    <option value="">荔枝</option>
+</select>
+<input type="button" value=">>" id="btn1"/>
+<input type="button" value="<<" id="btn2"/>
+<input type="button" value=">" id="btn3"/>
+<input type="button" value="<" id="btn4"/>
+<select name="" id="sel" multiple>
+
+</select>
+<script src="common.js"></script>
+<script>
+    //1. 先获得要操作的对象
+    var btn1 = $$("btn1");
+    var btn2 = $$("btn2");
+    var btn3 = $$("btn3");
+    var btn4 = $$("btn4");
+
+
+    // 2. 给事件源注册事件，当单击第一个按钮的时候，要把左侧的select里面的所有的option移到右边的select里面
+    btn1.onclick =function (){
+           var all = $$("all");
+        var sel = $$("sel");
+        var options = all.children;//仅仅获取子标签节点
+        for(var i=0;i<options.length;i++){
+            sel.appendChild(options[i]); //是将左侧的option一个一个的剪切到右边
+            // appendChild  剪切当前标签，再追加到相应的DOM树上
+            // JS是一种动态的弱类型语言
+            // 1. 可以给对象动态添加属性和方法
+            // 2. 数组是动态改变的(数组的长度和元素是动态改变的，随时添加或是删除)
+            i--; //保证，始终拿新数组中的第一个数据
+        }
+    }
+    // 3. 给第二个按钮注册事件，将右侧的option移动左侧
+    btn2.onclick =function (){
+        var sel = $$("sel");
+        var all = $$("all");
+        var options = sel.children;
+        for(var i=0;i<options.length;i++){
+            all.appendChild(options[i]);
+            i--;
+        }
+    }
+    // 4. 给第三个按钮注册单击事件，将左侧选中的option移动到右侧
+    btn3.onclick = function (){
+        var all = $$("all");
+        var sel = $$("sel");
+        var options = all.children;
+        for(var i=0;i<options.length;i++){ // 循环遍历每一个option,查看选中状态
+            if(options[i].selected){ // 判断当前循环到的这个option是否被选中
+                sel.appendChild(options[i]);//将这个被选中的追加到右侧的select中
+                i--;// i--之后，再++,保证再从原来剪切的位置继续向后循环
+            }
+
+        }
+    }
+    // 5. 点击第4个按钮的时候，要将右侧选中的移到左侧来
+    btn4.onclick = function (){
+           var all = $$("all");
+        var sel = $$("sel");
+        var options = sel.children; // 获得左侧所有的option
+        for(var i=0;i<options.length;i++){
+            if(options[i].selected){ // 判断当前的option是否被选中
+                all.appendChild(options[i]);// 如果当前的选中的，则追加到左侧
+                i--;//是先-- 再++，再次循环的时候，从当前的位置继续向后判断
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

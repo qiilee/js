@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+        .items{
+            position: relative;
+        }
+        .item{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 232px;
+            box-shadow:0px 0px 10px rgba(0,0,0,0.3);
+        }
+        .item>img{
+            width: 100%;
+            display: block;
+            height: 400px;
+        }
+        .item:nth-child(4n) img{
+            display: block;
+            height: 289px;
+        }
+
+        .container > .btn {
+            width: 280px;
+            height: 40px;
+            margin: 30px auto;
+            text-align: center;
+            line-height: 40px;
+            background-color: #CCC;
+            border-radius: 6px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .container > .loading {
+            background-color: transparent;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <!--在这里编写瀑布流的插件-->
+    <script src="js/waterFall.js"></script>
+    <script src="js/template-native.js"></script>
+    <script type="text/template" id="waterId">
+       <%for (var i=0;i<items.length;i++){%>
+        <div class="item">
+            <img src="<%=items[i].path%>" alt="">
+             <p>
+                 <%=items[i].text%>
+             </p>
+        </div>
+        <%}%>
+    </script>
+
+    <script>
+            $(function(){
+
+                var $items=$(".items");
+
+                var $btn=$(".btn");
+
+                //扩展jQuery 的插件.
+                //就是在$ 去扩展方法
+                //jQuery 分为两种方法
+                //$.ajax() //全局方法
+                //$("").show() 局部方法
+                // 扩展jQuery 的方法，可以扩展全局方法，也可以扩展局部方法
+                //调用这个方法，能够自动帮我完成瀑布流的布局
+                //怎么去扩展一个局部方法
+                //然后再这个方法里面写逻辑.
+                //扩展局部方法  $.fn.waterFall=function(){}
+
+
+                 //要去看后台。后台的话已经写好了，我们只需要调用
+                 /*
+                 * 1:接口说明，是干嘛的
+                 * 2:url
+                 * 3:type
+                 * 4:data
+                 * 5:responseData
+                 *
+                 *
+                   1.请求方式  get
+                   2.请求url  data.php
+                   3.请求传递的参数   page  当前页数  pageSize  每一页多少条数据
+                   4.是后台在处理
+                  page:1
+                  假设我传递一个1，它从0，开始，后面10条
+                  我传递一个2，从10开始，后面10条
+                  pageSize:10
+                   5.返回数据 {page:'下一页的页码',items:[{path:'图片路径',text:'文字'},{},{}...]}
+                  */
+                var params={
+                     page:1,
+                     pageSize:4
+                }
+                var render=function(){
+                    $.ajax({
+                        type:"get",
+                        url:"data.php",
+                        data:params,
+                        beforeSend:function(){
+                             //发送之前，我往这个btn 按钮上面添加一个loading样式
+                             $btn.html("正在加载中");
+                             $btn.addClass("loading");
+
+                        },
+                        success:function(data){
+                            //在这个地方可以得到page:2
+                            var obj=JSON.parse(data);
+                            params.page=obj.page;
+                            var html=template("waterId",obj);
+                            console.log(html);
+                             //追加
+                            $items.append(html);
+                            $items.waterFall();
+
+                            $btn.html("点击加载");
+                            $btn.removeClass("loading");
+
+                        }
+                    })
+                }
+
+                //获取第一页.
+                render();
+
+                  /*点击发送请求..*/
+                $btn.on("click",function(){
+                        //发送请求，加载数据，渲染数据.
+                       if($btn.hasClass("loading")){
+                           return;
+                       }
+                       render();
+                });
+            })
+    </script>
+
+</head>
+<body>
+    <div class="container">
+            <div class="items">
+
+            </div>
+            <div class="btn loading">点击加载</div>
+    </div>
+</body>
+</html>

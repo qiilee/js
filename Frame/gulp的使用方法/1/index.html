@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    hahha
+    <button id="btn"> click </button>
+    <div id="dv"></div>
+</body>
+<script>
+    var btn = document.querySelectorAll( '#btn' )[ 0 ];
+    var div = document.querySelectorAll( '#dv' )[ 0 ];
+
+    btn.onclick = function () {
+
+            var xhr = new XMLHttpRequest();
+            xhr.open( 'GET', './tmp.html' );
+            xhr.onreadystatechange = function () {
+                if( xhr.readyState == 4 && xhr.status == 200 ) {
+                    div.innerHTML = xhr.responseText;
+                }
+            }
+			xhr.send();
+
+    };
+ 
+
+</script>
+</html>

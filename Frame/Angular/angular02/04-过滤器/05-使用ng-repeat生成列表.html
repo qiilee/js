@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+   <!-- 菜单的列表 -->
+   <ul>
+        <li ng-repeat="item in list">
+            <!-- 有些指令可以创建子作用域( 子 scope ) -->
+            <a href="#" ng-click="isShow=!isShow" >{{item.name}}</a>
+            <ul ng-show="isShow">
+                <li ng-repeat="subitem in item.submenul"><a href="#">{{subitem}}</a></li>
+            </ul>
+        </li>
+   </ul>
+</body>
+<script>
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+                var menul = [
+                    { name: '主菜单1', submenul: [ '子菜单1', '子菜单2' ] },
+                    { name: '主菜单2', submenul: [ '子菜单1', '子菜单2', '子菜单3', '子菜单4' ] },
+                    { name: '主菜单3', submenul: [ '子菜单1', '子菜单2' ] },
+                    { name: '主菜单4', submenul: [ '子菜单1', '子菜单2', '子菜单3' ] },
+                    { name: '主菜单5', submenul: [ '子菜单1', '子菜单2', '子菜单3' ] },
+                    { name: '主菜单6', submenul: [ '子菜单1', '子菜单2' ] },
+                    { name: '主菜单7', submenul: [ '子菜单1', '子菜单2', '子菜单3', '子菜单4', '子菜单5' ] }
+                ];
+
+                $scope.list = menul;
+            });
+</script>
+</html>

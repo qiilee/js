@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 递归
+    // 定义： 在函数内部去调用函数自身
+    // 注意点：写递归的时候要注意边界条件
+    // 作用：1 解决数学问题
+    //       2 获取不限层级的元素节点
+
+    var count=0;
+    function fib(n){
+        count++;
+        //边界条件
+        if(n===1||n===2){
+            return 1;
+        }
+        return fib(n-1)+fib(n-2);
+    }
+    console.log(fib(5));
+    console.log(count)
+
+
+
+
+</script>
+</body>
+</html>

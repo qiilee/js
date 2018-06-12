@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// 1
+		var o1 = new Object();
+		var o2 = new Object();
+
+		// o1的原型链：Object.prototype
+		// o2的原型链：Object.prototype
+		// Object的原型链： Function.prototype==>Object.prototype
+		// Function的原型链：Function.prototype==>Object.prototype
+		// Function.prototype的原型链 ：Object.prototype
+		// 2
+		function Person () {}
+		var p1 = new Person();
+		var p2 = new Person();
+
+		var obj = new Object();
+	</script>
+</body>
+</html>

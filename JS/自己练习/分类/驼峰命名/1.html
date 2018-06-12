@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+    //自己的驼峰
+    var str = 'get-element-by-id';
+    var arr = str.split("-");
+    //   console.log(arr); //["get", "element", "by", "id"]
+    for (var i = 1; i < arr.length; i++) {
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substring(1);
+    }
+    var newStr = arr.join("");
+    console.log(newStr);
+
+
+
+
+
+    //    var str = 'get-element-by-id';
+    //    function combo(str) {
+    //        var parts = str.split('-');
+    //        for (var i = 1, len = parts.length; i < len; i++) {
+    //            parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].substring(1);
+    //        }
+    //        return parts.join('');
+    //    }
+    //
+    //    alert(combo(str));
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //循环录入5个人的年龄并计算平均年龄,如果录入的数据出现负数或大于100的数,立即停止输入并报错.
+
+//    var i = 0;
+//    while(i<5){
+//        var age = prompt("请输入年龄");
+//        if(age<0||age>100){
+//            alert("你输入的不正确，范围应该是在1--99之间");
+//            break; // 直接跳出所在的循环，break后面的语名不会再执行了
+//        }
+//        i++;
+//    }
+    //在while中用break实现要求用户一直输入用户名和密码，只要不是admin、88888就一直提示要求重新输入,如果正确则提登录成功.
+    while(true){
+        var admin = prompt("请输入用户名");
+        var password = prompt("请输入密码");
+        if(admin=="admin"&&password=="88888"){
+                // 跳出循环
+            alert("输入正确，登陆成功");
+            break;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul {
+            list-style: none
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            position: relative;
+            width: 1200px;
+            height: 400px;
+            margin: 50px auto;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+
+        div li {
+            width: 1200px;
+            height: 400px;
+            /*float: left;*/
+            position: absolute;
+        }
+
+        div ul {
+            width: 1200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="tools.js"></script>
+<script>
+    var box = document.getElementById("box");
+    var ul = box.children[0];
+    var lis = ul.children;
+    //循环遍历 给每一个li 绑定背景图片
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].style.backgroundImage = "url(images/" + (i + 1) + ".jpg)";
+        lis[i].style.left = i * 240 + "px";
+        lis[i].index = i;
+        //给每一个里绑定 按钮排他事件
+        lis[i].onmouseover = function () {
+            //干掉所有人
+            for (var j = 0; j < lis.length; j++) {
+                //让所有的li的宽度渐渐地变为100
+//                animate(lis[j], {"width": 100});
+                if (j <= this.index) {
+                    animate(lis[j], {"left": 100 * j});
+                } else {
+                    animate(lis[j], {"left": 100 * j + 700});
+                }
+            }
+            //留下我自己
+            //让当前的li的宽度渐渐地变为800
+//            animate(this, {"width": 800, "backgroundPosition": -240});
+        };
+        //鼠标离开后 让所有的li的宽度渐渐地变为240
+        lis[i].onmouseout = function () {
+            for (var k = 0; k < lis.length; k++) {
+//                animate(lis[k], {"width": 240, "backgroundPosition": 0});
+                animate(lis[k], {"left": k * 240});
+
+            }
+        };
+    }
+
+</script>
+</body>
+</html>

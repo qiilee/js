@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>    
+    <div id="control"></div>
+</body>
+<script src="./itcast.js"></script>
+<script>
+    var musices = [];
+    for ( var i = 0; i < 10; i++ ) {
+        musices.push( '歌曲' + i );
+    } 
+
+
+    new F( '#container' )[ 0 ].innerHTML = F.map( musices, function ( v, i ) {
+        return '<input type="checkbox" />' + v + '<br />';
+    }).join( '' );
+
+    // 创建 按钮
+    // var btns = '全选,全部选,反选'.split( ',' ),
+    //     btnIds = 'all,no,fn'.split( ',' );
+
+
+    // F.map( btns, function ( v, i ) {
+    //     return '<input type="button" value=" ' + v + ' " id="' + btnIds[ i ] + '">'
+    // })
+
+    var btns = [
+        { name: '全选', id: 'all' },
+        { name: '全不选', id: 'no' },
+        { name: '反选', id: 'fan' }
+    ];
+
+    new F( '#control' )[ 0 ].innerHTML = F.map( btns, function ( v, i ) {
+        return '<input type="button" value=" ' + v.name + ' " id="' + v.id + '">';
+    }).join( '' );
+
+
+    // 添加事件
+    new F( '#all' )[ 0 ].onclick = function () {
+        new F( '#container input' ).each(function () {
+            this.checked = true;
+        });
+    };
+
+    new F( '#no' )[ 0 ].onclick = function () {
+        new F( '#container input' ).each(function () {
+            this.checked = false;
+        });
+    };
+
+    new F( '#fan' )[ 0 ].onclick = function () {
+        new F( '#container input' ).each(function () {
+            this.checked = !this.checked;
+        });
+    };
+
+
+
+</script>
+</html> 

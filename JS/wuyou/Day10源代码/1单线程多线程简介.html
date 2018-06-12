@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>按钮</button>
+<script>
+    //js是单线程的
+    //执行的任务分为两种：同步任务  异步任务
+    //同步任务的执行就是直接由进程一个一个执行
+    //异步任务不是直接加入线程直接被执行。而是放到任务队列中，等待某个事件被添加到线程中去执行
+
+    //var btn = document.getElementById("btn");
+    //btn.onclick = function () {
+    //    alert("我要弹出来了");
+    //};
+
+    //点击按钮开启一个定时器
+    var btn = document.getElementById("btn");
+    var timer = null;
+
+//    btn.onclick = function () {
+//
+//    };
+
+
+    console.time("hehe");
+    //100毫秒以后将定时器代码执行
+    timer = setTimeout(function () {
+        console.log('今天天气不错');
+        console.timeEnd("hehe");
+    },100);
+
+
+    //书写一些代码
+    for (var i = 0; i < 10000; i++) {
+        document.body.innerHTML+="呵呵";
+    }
+    console.log("结束了");
+
+    //由于异步的任务是在时间到达以后将代码添加到线程任务执行列表中。这时根据当前正在执行的代码速度不同
+    //执行的效果不一样。
+    //两种情况，第一种是当前代码执行时间短于定时器的等待时间，正常执行
+    //第二种。当前执行的代码时间比较长，长过了定时器需要等待的时间。这是时间到了代码也无法正常执行
+
+</script>
+</body>
+</html>

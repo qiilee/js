@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-1.12.4.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+    //
+
+
+    //jq中用$.each遍历数组的索引及对应值
+    //用return false;结束循环
+    //
+
+//    each 用法
+//    $.each( 数组或对象, callback )
+//    在内部会遍历 "数组会对象" 的每一个成员
+//    如果遍历的是数组, 那么遍历的就是数组中的每一个 [ i ] 的元素( 注意其他成员不遍历 )
+//    如果遍历的是对象, 那么就会将对象的所有成员都遍历出来( 包括下标的数据, 和方法属性等 )
+//    例如:
+//            var arr = [ 1, 2, 3 ];
+//    var o = { name: 'jim', '0': '123', sayHello: function () { ... } };
+//    在遍历数据的时候会使用回调函数处理每一个被遍历的元素
+//    回调函数默认有两个参数, 他们是该数据在数组中的索引, 以及被遍历的数据
+//    for ( var i= 0; i < arr.length; i++ ) {
+//        console.log( arr[ i ] + ', ' + i );
+//    }
+//
+//    可以使用
+//    $.each( arr, function ( i, v ) {
+//        console.log( v + ', ' + i );
+//    });
+//
+//    如果想要跳出循环, 可以使用 return false 的办法
+
+    //    补充:
+    //    1> 在 jq 中 each 可以使用 this 表示当前遍历的元素
+    //    2> each 方法也会返回数据, 但是返回的是被遍历的数组
+
+
+    var arr = "a,b,c,d,e,f,g".split( ',' );
+
+    $.each(arr,function(i,v){
+       console.log("索引为"+i);
+        console.log("对应值为"+v);
+    })
+
+
+
+/*  teacher版本
+
+
+    // for
+    for ( var i = 0; i< arr.length; i++ ) {
+        console.log( 'index = ' + i + ', value = ' + arr[ i ] );
+    }
+    console.log( '==========================' );
+    // each
+    $.each( arr, function( i, v ) {
+        console.log( 'index = ' + i + ', value = ' + v );
+        return false; // 结束循环
+    });
+    */
+
+
+
+</script>
+</html>

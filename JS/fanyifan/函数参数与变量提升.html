@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+//		(function (a) {
+//		    console.log(a); //
+//			var a = 10;
+//			function a(){}
+//		 }( 100 ))
+
+/**  输出的是function a(){} 没问题
+ * (function(a){
+ *  var a ;
+ *  a = 100;
+ *  function a(){}
+ *  console.log(a);
+ *  a=10;
+ * })
+ *
+ *
+ *
+ *
+
+//变量跟参数重名
+//		(function (a) {
+//		    console.log(a);
+//		    var a = 10;
+//		    console.log(a);
+//		})( 100 );*/
+
+		(function(a){
+			console.log(a); //100
+			a=10;
+			console.log(a); //10
+		})(100)
+		/*// 函数跟参数重名
+		(function (a) {
+		    console.log(a);
+		    function a() {}
+		    console.log(a);
+		})( 100 );*/
+
+
+		// 函数参数与变量提升
+		/*
+		* 把传入的参数先进行提升到当前作用域顶部，然后再进行变量提升
+		* 传入实参就声明并且赋值，没有传入实参就只发生声明不发生赋值
+		* */
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script src="../jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //卷曲时触发 scroll事件
+            //获取高度 height()
+            //获取页面卷曲高度  $(this).scrollTop()
+            //设置marginTop  $("#mainPart").css("marginTop",height+10)
+            //类名添加 addClass
+
+            $(window).scroll(function () {
+                //检测页面卷曲高度和顶部图片的高度之间的关系
+                if ($(this).scrollTop() > $("#topPart").height()) {
+                    //设置navBar的类名为fixed
+                    $("#navBar").addClass("fixed");
+                    //设置mainPart的marginTop值
+                    $("#mainPart").css("marginTop", $("#navBar").height() + 10 + "px");
+                } else {
+                    $("#navBar").removeClass("fixed");
+                    $("#mainPart").css("marginTop", "10px");
+                }
+
+            });
+        });
+    </script>
+
+</head>
+<body>
+<div class="top" id="topPart">
+    <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+</html>

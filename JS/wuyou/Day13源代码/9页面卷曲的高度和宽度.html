@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            height: 10000px;
+            width: 5000px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //在页面被卷曲的时候，获取页面被卷曲的高度和宽度
+    //第一步先看卷曲高度
+    //  window.scrollY ie不认识   window.pageYOffset  标准方法 ie低版本不认识
+
+    //document.documentElement  html标签
+    //document.body  body标签
+
+    window.onscroll = function () {
+        //ie 获取有问题
+        //console.log(window.pageYOffset);
+
+        //谷歌不支持
+        //console.log(document.documentElement.scrollTop);
+
+        //只有谷歌支持
+        //console.log(document.body.scrollTop);
+
+        //兼容三种获取方式
+        //短路操作    getStyle() || 0
+        //console.log(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0);
+        //页面被卷曲的宽度
+
+        //console.log(window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0);
+
+        //得到结果是一个对象
+        //页面在滚动的过程中，卷曲的高度和卷曲的宽度在实时的发生改变
+        //所以需要在每次滚动的时候重新获取
+        var data = myScroll();
+
+        console.log(data.top);
+        console.log(data.left);
+
+    };
+
+    function myScroll() {
+        //方式一 ：基本写法：
+//        var obj = {};
+//        obj.top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+//        obj.left = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+
+        //方式二 ：字面量写法
+        //var obj = {
+        //    top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+        //    left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        //}
+        ////返回对象
+        //return obj;
+
+        //能不能不存？
+        //方式三 ：直接返回
+        return {
+            top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="input" value="请输入要搜索的值"/>
+<script>
+    var input = document.getElementById("input");
+    input.onfocus = function () {
+        if (this.value == "请输入要搜索的值") {
+            this.value = "";
+        } else {
+            this.value = this.value;
+        }
+
+    }
+    input.onblur = function () {
+        if (this.value == "") {
+            this.value = "请输入要搜索的值";
+        } else {
+            this.value = this.value;
+        }
+    }
+</script>
+</body>
+</html>

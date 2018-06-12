@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border-bottom: 1px dashed red;
+            border-right: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 1, 绘制出原始坐标系的坐标轴
+    ctx.strokeStyle = 'blue';
+    ctx.setLineDash( [ 5 ] );
+
+    // ctx.moveTo( 0, 0 );
+    // ctx.lineTo( 600, 0 );
+    // ctx.moveTo( 0, 0 );
+    // ctx.lineTo( 0, 400 );
+    // ctx.stroke();
+
+
+    // 2, 让坐标系向右平移 300 像素位置
+    ctx.beginPath();
+    ctx.strokeStyle = 'green';
+    ctx.translate( 300, 0 );
+
+    // 绘制坐标系
+    // ctx.moveTo( 0, 0 );
+    // ctx.lineTo( 600, 0 );
+    // ctx.moveTo( 0, 0 );
+    // ctx.lineTo( 0, 400 );
+    // ctx.stroke();
+
+
+    // 3. 让坐标系向下平移 200 个 单位
+    ctx.beginPath();
+    ctx.strokeStyle = 'red';
+    ctx.translate( 0, 200 );
+
+    // 绘制坐标系
+    ctx.moveTo( 0, 0 );
+    ctx.lineTo( 600, 0 );
+    ctx.moveTo( 0, 0 );
+    ctx.lineTo( 0, 400 );
+    ctx.stroke();
+
+    // 变换是可以累加的
+    // 绘制矩形
+    ctx.beginPath();
+    ctx.strokeStyle = '#000';
+    // ctx.setLineDash( [] );
+    ctx.strokeRect( -100, -50, 200, 100 );
+
+    // 4, 逆时针旋转坐标轴 30度
+    ctx.beginPath();
+    ctx.rotate( -Math.PI * 2 / 3 );
+
+    ctx.strokeStyle = 'olive';
+    ctx.setLineDash( [] );
+    // 绘制坐标轴
+    ctx.moveTo( 0, 0 );
+    ctx.lineTo( 600, 0 );
+    ctx.moveTo( 0, 0 );
+    ctx.lineTo( 0, 400 );
+    ctx.stroke();
+
+    // 绘制矩形
+    ctx.beginPath();
+    ctx.strokeStyle = 'purple';
+
+    ctx.strokeRect( -100, -50, 200, 100 );
+</script>
+</html>

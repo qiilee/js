@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(){
+        this.name= 'jack'
+    }
+    Person.prototype.age=17
+    var person = new Person();
+    delete person.name;
+    console.log(person)
+    delete person.age;
+    console.log(Person.prototype)
+
+    // 属性删除原则
+    // 删除对象的某个属性，只会对对象本身有影响，不会对对象的原型链产生影响。
+
+</script>
+</body>
+</html>

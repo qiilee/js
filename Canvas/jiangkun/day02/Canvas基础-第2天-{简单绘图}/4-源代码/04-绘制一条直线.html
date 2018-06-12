@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    // 先绘制一个对角线
+    // 从 ( 0, 0 ) 位置, 绘制到 ( 600, 400 ) 的位置
+    ctx.moveTo( 0, 0 );
+    ctx.lineTo( 600, 400 );
+    // 将描点连起来
+    // ctx.stroke();
+
+    // 如果是绘制一个矩形
+    // 先画一条横线, 在结尾的地方绘制一条竖线
+    // 紧接着在竖线结尾的地方绘制横线
+    // 在横线结尾的地方绘制竖线
+    // 回到起点
+
+    ctx.moveTo( 100, 50 );
+    ctx.lineTo( 300, 50 );
+    ctx.lineTo( 300, 150 );
+    ctx.lineTo( 100, 150 );
+    ctx.lineTo( 100, 50 );
+
+
+    ctx.stroke();
+    
+</script>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+    <img id="img" src="" alt="">
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    // var x = 10, 
+    //     y = 200;
+    // var deltaY = 0;
+    // // 选择初等函数
+    // var func = Math.sin;
+
+    // ctx.moveTo( 10, 200 );
+
+    // for ( var i = 0; i < 580; i++ ) {
+    //     ctx.lineTo( x + i, y + 50 * func( i / 10 ) );    
+    // }
+
+    // ctx.stroke();
+
+
+    // // 保存
+    // img.src = cas.toDataURL( 'image/png', 0.1 );
+
+
+    var image1 = new Image();
+    // image1.setAttribute('crossOrigin', 'anonymous');
+    image1.src = './1.png';
+    image1.onload = function () {
+        ctx.drawImage( image1, 0, 0 );
+        
+        img.src = cas.toDataURL( 'image/jpeg', 0.0001 );
+        
+        console.log( img.src );
+    };
+
+    
+
+</script>
+</html>

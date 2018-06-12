@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var age = prompt("请输入您的年龄");
+        if(age>=18){
+            alert("可以查看");
+        }else if(age<10){
+            alert("不允许查看");
+        }else if(age>=10&&age<18){
+            var a =prompt("是否继续查看");
+            if(a=="yes"){
+                alert("请查看");
+            }else{
+                alert("退出,你放弃查看");
+            }
+        }
+    </script>
+</head>
+<body>
+练习3：提示用户输入年龄，如果大于等于18，则告知用户可以查看，
+如果小于10岁，则告知不允许查看，
+如果大于等于10岁并且小于18，则提示用户是否继续查看（yes、no），
+如果输入的是yes则提示用户请查看，否则提示"退出,你放弃查看"。
+</body>
+</html>

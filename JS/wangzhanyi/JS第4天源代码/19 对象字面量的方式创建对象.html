@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // 使用对象字面量的方式创建对象的好处是，非常的方便
+//    var o = {}; // []就是数组，{}就是对象
+//    o.name = "张三"; // JS是动态的弱类型语言  可以给对象动态的添加属性和方法
+//    o.age = 20;
+//    o.sex = "男";
+//    o.sayHi = function(){
+//        console.log("大家好：我叫"+ o.name+"，我是"+ o.sex+"生,我今年"+ o.age+"岁了;");
+//    }
+//    o.sayHi();
+    // 对象可以看成是无序属性的集合  也可以看成是键值对的集合
+    var o ={    // 键值对  key  value   字典   字：
+        age:20,
+        name:"张三",
+        sex:"男",
+        sayHi:function(){
+            console.log("大家好：我叫"+ o.name+"，我是"+ o.sex+"生,我今年"+ o.age+"岁了;");
+        }
+    }
+    o.sayHi();
+</script>
+</body>
+</html>

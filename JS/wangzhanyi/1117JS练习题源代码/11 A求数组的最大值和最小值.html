@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+注意三点： arr =arr||[];
+          if(arr.length==0)
+          var max = arr[0];
+
+<script>
+    //9.求一组数中的最大值
+    var arr = [10,20,50,60,90,100];
+    // 先假设第一个数就是数组中的最大值，然后拿这个值依次和数组中的每一个值进行两两比较，如果后面的值大，则进行重新赋值
+//   var max = arr[0];//
+//    for(var i=1;i<arr.length;i++){
+//        if(max<arr[i]){
+//            max=arr[i];
+//        }
+//    }
+//    console.log(max);
+
+    function getMax(arr){
+        arr =arr||[];
+        if(arr.length==0){
+            alert("输入数组不正确");
+            return ; //跳出函数，后面的代码都不会再执行
+        }
+        var max = arr[0];//
+        for(var i=1;i<arr.length;i++){
+            if(max<arr[i]){
+                max=arr[i];
+            }
+        }
+    }
+    //10.求一组数中的最小值
+</script>
+</body>
+</html>

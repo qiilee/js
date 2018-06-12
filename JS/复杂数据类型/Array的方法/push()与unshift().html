@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //push():   向数组的末尾添加一个或更多元素，并返回新的长度
+    //unshift():向数组的开头添加一个或更多元素，并返回新的长度
+
+    var arr = ["a", "b", "c"];
+    var num = arr.push(1, 2, 3);
+    console.log(num);//6
+    console.log(arr);//["a", "b", "c", 1, 2, 3]
+
+
+    var arr = ["a", "b", "c"];
+    arr.unshift(100);
+    arr.unshift(200);
+    console.log(arr);//[200, 100, "a", "b", "c"]
+    var a = arr.unshift("abc", "mmm", "999");//从数组前面添加数据，返回添加后的数组的长度
+    console.log(a);//8
+    console.log(arr);//["abc", "mmm", "999", 200, 100, "a", "b", "c"]
+
+</script>
+</body>
+</html>

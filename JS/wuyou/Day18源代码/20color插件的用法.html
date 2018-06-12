@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            background-color: #bada55;
+            width: 300px;
+            height: 300px;
+            border: 1px solid pink;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jquery.color.js"></script>
+</head>
+<body>
+<button id="go">Simple</button>
+<button id="sat">Desaturate</button>
+<div id="block">Hello!</div>
+<script>
+
+    //总结：1、自己用的时候就仿照第一个按钮的方法书写，
+    //     2、backgroundColor: "#ffc0cb"，尽量使用十六进制的形式（//不认识pink）
+    //     3、
+    //
+    //
+    jQuery("#go").click(function () {
+        jQuery("#block").animate({
+            backgroundColor: "#ffc0cb"
+        }, 1500);
+    });
+
+    jQuery("#sat").click(function () {
+        jQuery("#block").animate({
+            backgroundColor: jQuery.Color({saturation: 1})
+        }, 1500);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    在js中，数组是特殊的对象，凡是对象有的性质，数组都有，数组表示有序数据的集合，而对象表示无序数据的集合。
+//    那伪数组是什么呢，当然它也是对象，伪数组一般具有以下特点：
+//    按索引方式存储数据；
+//    具有length属性；
+//    没有数组的push、shift、pop等方法;
+//    function的arguments对象，还有getElementsByTagName、ele.childNodes等返回的NodeList对象，或者自定义的某些对象，这些都可以是伪数组。
+
+//1、使用Array.prototype.slice.call();
+//Js代码  收藏代码
+//Array.prototype.slice.call({
+//    0:"likeke",
+//    1:12,
+//    2:true,
+//    length:3
+//});
+//["likeke", 12, true]
+
+
+//2、使用[].slice.call()，了解js原型链的都知道，实际上这种方法和第一中方法是一样的，但上面第一种方式相对效率更高。
+//Js代码  收藏代码
+//        [].slice.call({
+//            0:"likeke",
+//            1:12,
+//            2:true,
+//            length:3
+//        });
+//["likeke", 12, true]
+
+
+
+
+//3、使用ES6中Array.from方法;
+//Js代码  收藏代码
+//Array.from({
+//    0:"lk",
+//    1:12,
+//    2:2013,
+//    3:"长安大学",
+//    length:4
+//});
+//["lk", 12, 2013, "长安大学"]
+</script>
+</body>
+</html>

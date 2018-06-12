@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //总结：第一个setTimeout，时间间隔<1000的话，输出1000多，>1000的话，输出间隔值多
+    //     第二个setTimeout，是1000+时间间隔
+    var dateNum = new Date();
+    setTimeout(function(){
+       console.log(new Date() - dateNum);
+    },1200); //1200多
+    while(new Date() - dateNum <1000){
+       var a = 1;
+    }
+    setTimeout(function(){
+        console.log(new Date() - dateNum);
+    },1500);// 2500左右
+</script>
+</body>
+</html>

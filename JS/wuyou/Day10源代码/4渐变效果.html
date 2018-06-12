@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+    //效果:点击box，让盒子渐出
+    //1 获取box
+    var box = document.getElementById("box");
+    var timer = null;
+    //2 因为透明度是1-0之间的小数，再计算的时候我们不能直接加减，所以扩大100倍
+    var opacityValue = 100;
+    //3 点击盒子box
+    box.onclick = function () {
+        //4 防止加速，清除旧的timer
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //7 最小为0
+            if (opacityValue > 0) {
+                //5 修改透明度，降低（自动降低）
+                opacityValue -= 5;
+                //6 将这个值设置给透明度属性，需要除以倍数
+                box.style.opacity = opacityValue / 100;
+            } else {
+                //8 到达位置清除定时器
+                clearInterval(timer);
+            }
+        }, 20);
+    };
+
+
+    //小数进行加减计算的时候会出现精度，乘除是没有问题的
+    //我们为了避免这个问题会将小数扩大倍数，计算后再除以这个倍数
+    //console.log((0.1*100 + 100*0.2)/100);
+
+
+</script>
+</body>
+</html>

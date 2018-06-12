@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>item</li>
+    <li></li>
+    <li></li>
+    <li>item</li>
+    <li>item</li>
+</ul>
+<script>
+
+
+
+
+//   2求当前li的个数   4个   注意删除子元素的时候个数与索引的变化
+    var items = document.getElementsByTagName('li');
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].innerHTML == '') {
+            items[i].parentNode.removeChild(items[i]);
+        }
+    }
+</script>
+</body>
+</html>

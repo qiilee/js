@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //求一组数中的最大值
+    var arr = [10,20,30,50,80,90,120,150,180,200];
+//    var max = arr[0];//假设数组中的第一项就是最大值
+//    for(var i=1;i<arr.length;i++){
+//        if(max<arr[i]){
+//            max = arr[i];
+//        }
+//    }
+//    console.log(max);
+
+    /**
+     * 求数组中的最大值
+     * @param arr
+     * @returns {*}
+     */
+//    function getMax(arr){
+//        //传进来的是一个null,undefined,0,false,NaN
+//        var max = arr[0];//假设传进来的参数数组中的第一项就是最大值
+//        for(var i=1;i<arr.length;i++){
+//            if(max<arr[i]){
+//                max = arr[i];
+//            }
+//        }
+//        return max;
+//    }
+//
+//    var max = getMax(arr);
+//    console.log(max);
+
+
+    function getMax(arr){
+        //传进来的是一个null,undefined,0,false,NaN
+        arr = arr ||[]; // 如果用户传进来的参数是上面的非法值中的一个的话，我们给一个默认的空数组
+        if(arr.length==0){
+            alert("传入的参数不正确，程序中止。。。");
+            return ;//中止程序，跳出当前函数
+        }
+        var max = arr[0];//假设传进来的参数数组中的第一项就是最大值
+        for(var i=1;i<arr.length;i++){
+            if(max<arr[i]){
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    var max = getMax(false);
+    console.log(max);
+</script>
+</body>
+</html>

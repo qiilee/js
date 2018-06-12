@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--要求检测 用户名是否是3--6位 密码是否是6--8位，如果不满足要求高亮显示文本框-->
+用户名：<input type="text" id="userName"/><span id="span1"></span><br/>
+密码：<input type="text" id="passWord"/><span id="span2"></span><br/>
+<input type="button" id="button" value="登录"/>
+<script>
+    //if下面的判断：首先要清除之前的背景颜色，并提示，，，，
+
+
+
+
+
+
+    var userName = document.getElementById("userName");
+    var passWord = document.getElementById("passWord");
+    var button = document.getElementById("button");
+    var span1 = document.getElementById("span1");
+    var span2 = document.getElementById("span2");
+
+    button.onclick = function () {
+        if (userName.value.length < 3 || userName.value.length > 6) {
+            userName.style.backgroundColor = "red";
+            span1.innerText = "用户名长度不合法，请重新输入";
+
+        } else if (passWord.value.length < 6 || passWord.value.length > 8) {
+            userName.style.backgroundColor = "";
+            span1.innerText = "用户名合法";
+            passWord.style.backgroundColor = "red";
+            span2.innerText = "密码长度不合法，请重新输入";
+        } else {
+            userName.style.backgroundColor = "";
+            span1.innerText = "用户名合法";
+            passWord.style.backgroundColor = "";
+            span2.innerText = "密码长度合法";
+            alert("登录成功！！");
+        }
+    }
+
+
+</script>
+</body>
+</html>

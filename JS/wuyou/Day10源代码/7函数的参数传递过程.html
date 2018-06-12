@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //总结，首先要知道基本类型和复杂类型在复制上的区别
+    //函数的参数传递实际上就是实参复制给形参的过程
+
+
+    //参数的传递
+    //function fun(n, m) {
+    //    //形参就相当于在函数内声明的两个局部变量
+    //    //形参本身没有值，值时在调用的时候从实参复制的
+    //    //n = num1 m = 20
+    //
+    //
+    //    console.log(n + m);
+    //}
+
+    //传入的参数时基本类型时，实参和形参相互之间没有关联
+    //var num1 = 100;
+    //fun(num1,20);
+
+    //如果传入的参数是一个复杂数据类型
+    //    var arr = [1, 2, 3, 4, 5];
+    //    fun2(arr);
+    //    console.log(arr);
+
+    //    function fun2(arrIn) {
+    //arrIn = arr; 实际上复制的是栈中保存的指针
+    //内部保存的值是同一个
+    //修改参数的内部第一个元素值
+    //        arrIn[0] = 1000;
+    //        console.log(arrIn);
+    //如果在外部传入的实参是一个复杂类型，就需要考虑是否想要修改实参
+    //如果不想修改，就先复制然后在进行操作（concat方法）
+    //如果想要修改，直接修改形参即可。
+    //如果修改了复杂类型的实参，在函数内就不需要返回了
+    //    }
+
+
+    var arr = [1, 2, 3, 4, 5];
+    fun(arr);
+    console.log(arr);
+
+    //第一个函数是需要修改实参的
+    function fun(arrIn) {
+        //arrIn = arr; 两个变量实际上是同一个值
+        //修改数组的第一个元素
+        arrIn[0] = 1000;
+        //不需要返回
+    }
+
+    //第二函数的作用是在参数的基础上生成一个新的数组
+    function fun2(arrIn) {
+        //复制arrIn
+        var arrNew = arrIn.concat();
+        //给新的数组添加元素
+        arrNew[arrNew.length] = 10000;
+        arrNew[arrNew.length] = 10000;
+        arrNew[arrNew.length] = 10000;
+        arrNew[arrNew.length] = 10000;
+        //必须要返回，让函数外得到结果
+        return arrNew;
+    }
+
+    var resultArr = fun2(arr);
+    console.log(resultArr);
+    console.log(arr);
+
+
+    //举得数组方法中的例子:使用某些数组方法后不需要返回
+//    reverse() 翻转数组
+//    var arr5 = [1,2,3,4,5];
+//    //直接修改了实参，所以不需要返回
+//    var arr6 = arr5.reverse();
+//    arr6[0] = 1000;
+//    console.log(arr5);
+//    console.log(arr6);
+
+
+</script>
+</body>
+</html>

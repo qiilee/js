@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var fnName;
+
+        console.log(fnName(1, 2));//fnName is not a function
+
+         fnName= function (a, b) {
+            return a + b;
+        };
+
+         //结果 fnName is not a function
+//        只会把var fnName 提前
+        console.log("--------------下面的是面试题，上面是预解析后的----------------");
+
+        console.log(fnName(1, 2));
+
+        var fnName = function (a, b) {
+            return a + b;
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

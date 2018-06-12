@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //创建一个构造函数
+    function Person(){
+    }
+    //创建一个对象
+    var obj ={
+        sayHello:function(){
+            console.log('哈哈哈')
+        }
+    };
+    //让obj变量指向Person.prototype指向的那个内存地址
+    obj=Person.prototype;
+    //调用构造函数创建一个实例person1
+    var person1 = new Person();
+    // 问题：person1能够调用obj里面的方法吗？
+</script>
+</body>
+</html>

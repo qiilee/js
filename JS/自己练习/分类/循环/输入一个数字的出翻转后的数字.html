@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        var num =Number(prompt("请输入一个数字"));
+        if(num){
+            num = parseInt(num);
+            do{
+                var tmp = num % 10;
+                console.log(tmp);
+                num = parseInt(num/10);
+            }while(num != 0);
+        }else if(num == 0) {
+            console.log("0");
+        }else{
+            console.log("输入的数字非法");
+        }
+
+    </script>
+</head>
+<body>
+    输入一个数字的出翻转后的数字
+</body>
+</html>

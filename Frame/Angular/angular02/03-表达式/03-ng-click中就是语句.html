@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+    <style>
+        .c {
+            background-color: black;
+        }
+    </style>
+</head>
+<body ng-app="mainApp" ng-controller="mainController" ng-class="{ c: btn=='开' }">
+    <div >
+        <button ng-click="console.log( '哈哈哈' );"> click </button>
+        <button ng-click="val=!val"> 点击修改变量 </button>
+        <div>{{val}}</div>
+        <button ng-click="btn = btn === '关' ? '开' : '关' ">{{ btn }}</button>
+    </div>
+</body>
+<script>
+
+    // 凡是表达式中的名字就是 scope 中的一个属性
+    // 因此 scope 中应该有一个属性是 console
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope ) {
+            $scope.btn = '关';
+
+            $scope.val = true;
+
+            $scope.console = window.console;
+
+        });
+
+</script>
+</html>

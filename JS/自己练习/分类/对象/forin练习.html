@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+            var o = {
+                name: "ql",//值
+                age: 18,
+                sex: "未知",
+                salary: 100,
+                sayHi: function () {
+                    console.log("大家好，我是" + this.name);
+                }
+            };
+            for (var key in o) {
+                console.log(key);
+                console.log(o[key]);
+//                console.log(o.key); //获取o对象的key属性，因为key属性未定义，所以输出undefined
+            }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

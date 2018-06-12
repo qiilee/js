@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+    <div>{{ date }}</div>
+    <div>{{ date | date: 'yyyy年MM月dd日 HH时mm分ss秒' }}</div>
+    <div>{{ newDate }}</div>
+</body>
+<script>
+    //1
+//    angular.module( 'mainApp', [] )
+//        .controller( 'mainController', function ( $scope, $filter ) {
+//            var curr = new Date();
+//            $scope.date = curr;
+//
+//            $scope.newDate = $filter( 'date' )( curr, 'hh:mm:ss dd/MM/yyyy' );
+//        });
+
+    angular.module( 'mainApp', [] )
+            .controller( 'mainController', function ( $scope, $filter ) {
+                var date = new Date();
+                $scope.date = date;
+                $scope.newDate = $filter('date')(date,'hh:mm:ss yyyy:MM:dd')
+            });
+</script>
+</html>

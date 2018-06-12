@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 使用递归来描述属性搜索原则
+    function getProperty(obj,prop){
+        if(obj.hasOwnProperty(prop)){
+            return obj[prop]
+        }else if(obj.__proto__!==null){
+            getProperty(obj.__proto__,prop)
+        }
+        return undefined;
+    }
+</script>
+</body>
+</html>

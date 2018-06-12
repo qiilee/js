@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function foo(){
+        var random=Math.random();
+        return {
+            getRandom:function(){
+                return random;
+            }
+        }
+    }
+    var result=foo();
+    console.log(result.getRandom());
+    console.log(result.getRandom());
+    console.log(result.getRandom());
+</script>
+</body>
+</html>

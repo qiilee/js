@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--现在是移入li，li变红，移出li，li变白，这么一个效果，然后点击按钮，可以向ul中添加一个li子节点-->
+<input type="button" name="" id="btn" value="添加" />
+<ul id="ul1">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+</ul>
+<script>
+    window.onload = function(){
+        var oBtn = document.getElementById("btn");
+        var oUl = document.getElementById("ul1");
+        var aLi = oUl.getElementsByTagName('li');
+        var num = 4;
+
+        function mHover () {
+            //鼠标移入变红，移出变白
+            for(var i=0; i<aLi.length;i++){
+                aLi[i].onmouseover = function(){
+                    this.style.background = 'red';
+                };
+                aLi[i].onmouseout = function(){
+                    this.style.background = '#fff';
+                }
+            }
+        }
+        mHover ();
+        //添加新节点
+        oBtn.onclick = function(){
+            num++;
+            var oLi = document.createElement('li');
+            oLi.innerHTML = 111*num;
+            oUl.appendChild(oLi);
+            mHover ();
+        };
+    }
+
+
+
+
+
+
+//    window.onload = function(){
+//        var oBtn = document.getElementById("btn");
+//        var oUl = document.getElementById("ul1");
+//        var aLi = oUl.getElementsByTagName('li');
+//        var num = 4;
+//
+//        //鼠标移入变红，移出变白
+//        for(var i=0; i<aLi.length;i++){
+//            aLi[i].onmouseover = function(){
+//                this.style.background = 'red';
+//            };
+//            aLi[i].onmouseout = function(){
+//                this.style.background = '#fff';
+//            }
+//        }
+//        //添加新节点
+//        oBtn.onclick = function(){
+//            num++;
+//            var oLi = document.createElement('li');
+//            oLi.innerHTML = 111*num;
+//            oUl.appendChild(oLi);
+//        };
+//    }
+</script>
+</body>
+</html>

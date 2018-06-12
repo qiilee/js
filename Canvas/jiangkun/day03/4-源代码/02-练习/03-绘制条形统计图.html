@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制坐标轴</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    
+    // 首先将绘制的结果进行拆分
+    // 1, 两条直线, 坐标轴线
+    // 2, 两个箭头, 表示正方向
+    // 3, 绘制正中的点
+
+    // 1) 准备变量
+    var w = cas.width,
+        h = cas.height;
+    
+    var marginLeft = 10,
+        marginTop = 10,
+        marginRight = 10,
+        marginBottom = 10;
+    
+    var arrowHeight = 20,
+        arrowWidth = 10;
+    
+
+    // 2) 开始准备绘制坐标轴线
+    ctx.beginPath();
+    var x = marginLeft,
+        y = h - marginBottom;
+    
+    ctx.moveTo( marginLeft, marginTop );
+    ctx.lineTo( x, y );
+    ctx.lineTo( w - marginRight, y );
+
+    ctx.stroke();
+
+
+    // 3) 开始绘制箭头
+    ctx.beginPath();
+
+    // 3.1 绘制 y 轴的箭头
+    ctx.moveTo( marginLeft, marginTop );
+    ctx.lineTo( marginLeft - arrowWidth / 2, marginTop + arrowHeight );
+    ctx.lineTo( marginLeft, marginTop + arrowHeight / 2 );
+    ctx.lineTo( marginLeft + arrowWidth / 2, marginTop + arrowHeight );
+    ctx.closePath();
+
+    // 3.2 绘制 x 轴的箭头
+    ctx.moveTo( w - marginRight, y );
+    ctx.lineTo( w - marginRight - arrowHeight, y - arrowWidth / 2 );
+    ctx.lineTo( w - marginRight - arrowHeight / 2, y );
+    ctx.lineTo( w - marginRight - arrowHeight, y + arrowWidth / 2 );
+    ctx.closePath();
+
+    ctx.fill();
+
+
+
+    // 4) 开始再坐标轴的中心绘制点
+    // 4.1 确定绘制的矩形区域
+    ctx.beginPath();
+    ctx.fillStyle = 'blue';
+
+
+    var boxWidth = w - marginLeft - marginRight - arrowHeight,
+        boxHeigth = h - marginTop - marginBottom - arrowHeight;
+    
+    // 4.2 计算中间的坐标
+    var objX = x + boxWidth / 2,
+        objY = y - boxHeigth / 2;
+
+ 
+
+    // ======================================================================
+
+
+    // 绘制数据
+    function random( min, max ) {
+        return parseInt(( max - min ) * Math.random()) + min;
+    }
+
+    // 开始绘制
+    // 1> 生成四个随机数
+    var datas = [];
+    for ( var i = 0; i < 4; i++ ) {
+        datas.push( random( 40, 160 ) );
+    }
+
+    // 2> 分隔 x 轴, 就是在求 间距
+    var zhukuan = boxWidth / ( datas.length + 1 );
+
+    // 3> 计算比例
+    // 目标是利用 现有数字 生成 应该绘制的高度( 像素 )
+    // boxHeigth / max == 要求的像素 / 现有数字
+    // 要求的像素 = boxHeigth / max * 现有数字;
+    var max = Math.max.apply( null, datas );
+
+    // 复习
+    // call, 什么意思?
+    // func.call( obj )
+    // func()
+
+    // apply
+    // func()
+    // func.apply( obj )
+
+    // 如何函数需要如下形式调用
+    // func( 1, 2, 3 )
+    // call
+    //  func.call( null, 1, 2, 3 )
+    // apply
+    //  func.apply( null, [ 1, 2, 3 ] )
+    
+    // 当一个函数调用需要的是一些散列的参数时, 但是我们的参数又存储在数组中的时候
+    // 那么可以使用 apply 调用将参数展开
+
+
+    // 比率
+    var k = boxHeigth / max;   // 注释: 在实际开发中应该保证尽可能少用变量, 如数据只用一次, 那么就不要声明变量.
+
+    // 4> 每一个条形图的 高度( 像素 )
+    // 构建一个数组对象
+    // [ { value: 原始值, pointX:..., pointY: ... }, {}, {}, {} ]
+
+    var newDatas = datas.map( function ( v, i ) {
+        // 此时 v 就是随机生成的数字
+        var o = {};
+        o.value = v;
+        // 生成绘制条形图的坐标( 最好生成 起始坐标 和 终点坐标 )
+        // startX, endX
+        // 原点坐标是 x, y
+        o.start = { x: x + ( i + 1 ) * zhukuan, y: y };
+        o.end = { x: x + ( i + 1 ) * zhukuan, y: y - k * v };
+
+        return o;
+    });
+
+
+    // 5> 遍历绘图
+    newDatas.forEach(function ( v ) {
+        ctx.moveTo( v.start.x, v.start.y );
+        ctx.lineTo( v.end.x, v.end.y );
+    });
+
+
+    // 6> 设置线宽
+    ctx.strokeStyle = 'pink';
+    ctx.lineWidth = zhukuan * 2 / 5;
+    ctx.stroke();
+
+
+
+
+</script>
+</html>

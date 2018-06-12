@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #fff;
+            float: left;
+            margin-left: 20px;
+        }
+        .red {
+            background-color: red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+
+<input type="button" value="红色" id="but1"/>
+<input type="button" value="黄色" id="but2"/>
+<input type="button" value="绿色" id="but3"/>
+
+<script>
+    var but1 = document.getElementById("but1");
+    var but2 = document.getElementById("but2");
+    var but3 = document.getElementById("but3");
+    var divs = document.getElementsByTagName("div");
+
+    but1.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].className = "red";
+        }
+    };
+    but2.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].className = "yellow";
+        }
+    };
+    but3.onclick = function () {
+        for (var i = 0; i < divs.length; i++) {
+            divs[i].className = "green";
+        }
+    };
+</script>
+</body>
+</html>

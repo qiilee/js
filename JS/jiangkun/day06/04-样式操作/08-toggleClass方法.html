@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script src="./src/Itcast.style.js"></script>
+    <style>
+        .black {
+            background-color: #000;
+        }
+    </style>
+    <script>
+        Itcast.fn.toggleClass = function ( className ) {
+            // 给每一个 dom 元素处理一下, 有则减, 无则加
+            return this.each( function () {
+                if( I(this).hasClass( className ) ) {
+                    I( this ).removeClass( className );
+                } else {
+                    I( this ).addClass( className );
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <button> click </button>
+</body>
+<script>
+    I( 'button' ).click(function () {
+        I( 'body' ).toggleClass( 'black' );
+    });
+
+</script>
+</html>

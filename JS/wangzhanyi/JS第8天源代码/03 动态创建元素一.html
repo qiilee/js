@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<p>绿水本无悠，因风皱面</p>
+<div>
+    <script>
+        document.write("待我长发及腰，遮住一身肥膘");
+    </script>
+</div>
+<script>
+    document.write("青山原不老，为雪白头");
+    var btn = document.getElementById("btn");
+    btn.onclick = function (){
+           document.write("纵使一身肥膘，也要高冷傲娇");
+    }
+
+    // 页面一开始加载 的时候，是同一个标准流，加载 完毕 之后，标准流就相当于是关闭了
+    // 当我们单击按钮的时候，再次调用document.write的时候，会默认的先调用document.open()
+    // 再次开启一个标准流，因此会将原来的标准里面的元素给冲刷掉 ，原来的就不存在了
+    // 最后再次调用document.close() 关闭标准流
+</script>
+</body>
+</html>

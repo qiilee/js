@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            background-color: #bada55;
+            width: 100px;
+            border: 1px solid green;
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="../jquery.color.js"></script>
+</head>
+<body>
+<button id="go">Simple</button>
+<div id="block">Hello!</div>
+<script>
+    jQuery("#go").click(function(){
+        jQuery("#block").animate({
+            backgroundColor: "#fff"
+        }, 1500 );
+    });
+
+</script>
+</body>
+</html>

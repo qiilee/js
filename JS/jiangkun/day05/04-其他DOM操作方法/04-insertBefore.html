@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script>
+        var arr = [],
+            push = arr.push;
+
+        Itcast.fn.insertBefore = function ( selector ) {
+            var iObj = this.constructor( selector ); // 统一变成伪数组了
+            // this 是 伪数组, iObj 也是伪数组, 将 this 中的每一个元素, 加到 iObj 中的每一个元素里
+            var tmp = [], tmpNode;
+            for ( var i = 0; i < this.length; i++ ) {
+                for ( var j = 0; j < iObj.length; j++ ) {
+                    tmpNode = j == iObj.length - 1 ? this[ i ] : this[ i ].cloneNode( true );
+                    tmp.push( tmpNode );
+
+                    iObj[ j ].parentNode.insertBefore( tmpNode, iObj[ j ] );
+                }
+            }
+
+            // dfg -> 元素上
+
+            // 返回的是一个新的 jq 对象, 用 tmp 中的元素组成
+            var tmpIobj = this.constructor();
+            tmpIobj.prevObject = this;
+            push.apply( tmpIobj, tmp );
+            return tmpIobj;
+        }
+
+        Itcast.fn.before = function ( selector ) {
+            this.constructor( selector ).insertBefore( this );
+            return  this;
+        }
+        
+    </script>
+    <style>
+        div {
+            border: 1px dashed red;
+            height: 200px;
+            margin: 10px 0;
+        }
+        div>p {
+            border: 1px solid blue;
+            margin: 10px 0;
+        }
+        .c {
+            background-color: green;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+<script>
+    // I( '<p>pp1</p><p>pp2</p>' ).insertBefore( 'div' ).each(function () {
+    //     this.className = 'c';
+    // });
+
+
+    I( 'div' ).before(  '<p>pp1</p><p>pp2</p>'  );
+
+</script>
+</html>

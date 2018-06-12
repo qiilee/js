@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nodejs服务器</title>
+	<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+	<div class="viewport">
+		<h1>{{headers.title}}</h1>
+		<nav>
+			{{#each (headers.navs)}}
+			<a href="{{this.link}}">{{this.text}}</a>
+			{{/each}}
+		</nav>
+		<section>
+			<!-- “占位符”，起个名字叫section -->
+			{{{block ('section')}}}
+		</section>
+		<!-- “占位符”，起个名字叫table -->
+		{{{block ('table')}}}
+	</div>
+	<script src="/js/jquery.min.js"></script>
+</body>
+</html>

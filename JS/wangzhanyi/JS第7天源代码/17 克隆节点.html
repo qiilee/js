@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li id="li1">这是第1个li标签</li>
+    <li>这是第2个li标签</li>
+    <li>这是第3个li标签</li>
+    <li>这是第4个li标签</li>
+</ul>
+<script>
+    //var clone =要克隆的节点对象.cloneNode(true)
+    // 默认的时候，括号里面没有参数，其实是和false的效果是一样的，浅克隆，只会克隆标签
+    // 深度克隆，不但会克隆标签，还会克隆标签内的内容
+    ////父节点.appendChild(子节点);
+
+
+
+
+
+
+    //  myself  twice
+    //    var list =document.getElementById("list");
+    //    var li1 =document.getElementById("li1");
+    //    var clone1 = li1.cloneNode(false);
+    //    var clone2 = li1.cloneNode(true);
+    //    console.log(clone1);//<li id="li1"></li>
+    //    console.log(clone2);//<li id="li1">这是第1个li标签</li>
+
+
+    //    myself  once
+    //    var li1 = document.getElementById("li1");
+    //    var list = document.getElementById("list");
+    //    var clone = li1.cloneNode(true);
+    //    console.log(clone);
+    //    list.appendChild(clone);
+
+
+
+
+// teacher::::::
+//    // 克隆节点   cloneNode
+//    var  li1 = document.getElementById("li1");
+//    var list = document.getElementById("list");
+////    var node = li1.cloneNode(false);// 默认的时候，括号里面没有参数，其实是和false的效果是一样的，浅克隆，只会克隆标签
+//    var node = li1.cloneNode(true); // 深度克隆，不但会克隆标签，还会克隆标签内的内容
+//    console.log(node);
+//    list.appendChild(node); // 是在父元素的子元素的最后追加节点
+
+</script>
+</body>
+</html>

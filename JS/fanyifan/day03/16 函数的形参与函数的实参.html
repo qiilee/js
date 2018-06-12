@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数的形参与实参
+    //函数的length属性，代表了函数的形参个数
+    //arguments 实参的集合  在函数外部，arguments属性无法使用
+    //arguments.length 就是实参的个数
+    function fn(name,age){
+        //输出形参的个数 函数.length
+        console.log('我是形参的个数'+fn.length);
+      /*  console.log(arguments);*/
+        console.log('我是实参的个数'+arguments.length)
+      /*  console.log(name);
+        console.log(age)*/
+    }
+//    console.log(arguments);//报一个错 arguments is not defiend
+    //当函数在被调用的时候如果没有传入参数，相应的实参就是undefined
+/*    fn()// undefined
+    //函数在被调用的时候可以传入实参
+    fn('jack',18);// 输出 jack 18 */
+
+    // 如何去确定函数形参以及函数实参的个数
+
+    fn('jack',18);// 形参个数是2   实参个数 2
+    fn('jack')//形参个数 2  实参个数 1
+
+
+
+
+
+
+</script>
+</body>
+</html>

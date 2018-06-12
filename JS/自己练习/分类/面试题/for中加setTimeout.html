@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //   原式1
+    //   与for（var i=1;i<=3;i++）{setTimeout()}类似，i的值为items.length
+    //    var items = document.querySelectorAll('#list>li');
+    //    for(var i = 0;i < items.length; i++){
+    //        setTimeout(function(){
+    //            items[i].style.backgroundColor = 'red';
+    //        }, 5);
+    //    }
+
+    //  原式2：：
+    //    for(var i=1;i<=3;i++){
+    //        setTimeout(function(){
+    //            console.log(i);
+    //        },0);
+    //    }     //输出的是3个4
+
+
+
+
+    //    解决问题 原式2：：
+    //   1、立即执行函数：：
+    //    for (var i = 1; i <= 3; i++) {
+    //        setTimeout((function (num) {
+    //            return function () {
+    //                console.log(num);
+    //            }
+    //
+    //        })(i), 0);
+    //    }
+
+
+    //   2、闭包：：
+    //    for(var i=1;i<=3;i++){
+    //        setTimeout((function(){
+    //            var j=i;
+    //            return function(){
+    //                console.log(j);
+    //            };
+    //        })(),0);
+    //    }
+
+    for(var i = 1;i<=3;i++){
+        setTimeout((function(){
+            var j=i;
+            return function(){
+                console.log(j);
+            }
+        })(),0);
+    }
+
+//    自己的练习
+    //    for (var i = 1; i <=3; i++) {
+    //        setTimeout((function(num){
+    //            return function(){
+    //                console.log(num);
+    //            }
+    //        })(i),0);
+    //
+    //    }
+
+
+
+</script>
+</body>
+</html>

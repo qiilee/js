@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .red {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<input type="button" value="按钮"/>
+<script>
+
+    var inputs = document.getElementsByTagName("input");
+
+    for (var i = 0; i < inputs.length; i++) {
+
+        inputs[i].onclick = function () {
+
+            for (var j = 0; j < inputs.length; j++) {
+                inputs[j].style.backgroundColor = "";
+            }
+            this.style.backgroundColor = 'red';
+        }
+
+    }
+
+</script>
+</body>
+</html>

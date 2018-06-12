@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            width: 100px;
+            height: 100px;
+            border: 5px solid #000;
+            list-style: none;
+        }
+        li {
+            width: 100px;
+            height: 20px;
+        }
+        li:nth-child(1) {
+            background-color: red;
+        }
+        li:nth-child(2) {
+            background-color: pink;
+        }
+        li:nth-child(3) {
+            background-color: green;
+        }
+        li:nth-child(4) {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<!--实现功能是点击li，弹出123-->
+<ul id="ul1">
+    <li>111</li>
+    <li>222</li>
+    <li>333</li>
+    <li>444</li>
+</ul>
+<script>
+    /*
+    * 1、Event对象提供了一个属性叫target，可以返回事件的目标节点，我们成为事件源，
+    * 也就是说，target就可以表示为当前的事件操作的dom，但是不是真正操作dom，当然，这个是有兼容性的，
+    * 标准浏览器用ev.target，IE浏览器用event.srcElement，此时只是获取了当前节点的位置，并不知道是什么节点名称，
+    * 这里我们用nodeName来获取具体是什么标签名，这个返回的是一个大写的，我们需要转成小写再做比较：
+    * 2、这样改下就只有点击li会触发事件了，且每次只执行一次dom操作，
+    * 如果li数量很多的话，将大大减少dom的操作，优化的性能可想而知！
+    *
+    * */
+    window.onload = function(){
+        var oUl = document.getElementById("ul1");
+        // 1 添加点击事件
+        oUl.onclick = function(ev){
+            //2 兼容事件对象ev
+            var ev = ev || window.event;
+//           3 兼容取出触发事件的元素的方式  （标准浏览器用ev.target，IE浏览器用event.srcElement）
+            var target = ev.target || ev.srcElement;
+//           4 检测target是什么标签
+            if(target.nodeName.toLowerCase() == 'li'){
+                alert(123);
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var arr = [1,2,3,1,2,3,"a","b","c","a","b","c"];
+    //第一种方法 使用双层for加flag标记判断
+    var newArr = [];
+    newArr[0] = arr[0];
+    for (var i = 1; i < arr.length; i++) {
+        var flag = true;
+        for (var j = 0; j < newArr.length; j++) {
+          if(newArr[j] == arr[i]){
+              flag = false;
+          }
+        }
+        if(flag){
+            newArr.push(arr[i]);
+        }
+    }
+    console.log(newArr);
+
+
+    //第二种方法 使用一个for加indexOf判断新数组中是否有原数组中的元素
+    var newArr= [];
+    for (var i = 0; i < arr.length; i++) {
+        if(newArr.indexOf(arr[i])==-1){
+            newArr.push(arr[i]);
+        }
+    }
+    console.log(newArr);
+
+
+    //方法三  把数组中的每个元素当做对象的属性，没有此属性会给属性值加1
+    //,有此属性，属性值继续加一   !!!!注意不可写成obj.arr[i],这是错误的形式
+    var obj = {};
+//    console.log(obj[name]); 事实证明没属性会返回undefined
+    for (var i = 0; i < arr.length; i++) {
+       if(obj[arr[i]]){
+           obj[arr[i]]++;
+       }else{
+           obj[arr[i]] =1;
+       }
+    }
+    console.log(obj);
+
+</script>
+</body>
+</html>

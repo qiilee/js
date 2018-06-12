@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //一次语文测试后,老师让班长统计每一个学生的成绩并计算全班(全班共60人)的平均成绩,然后把所有成绩显示出来.
+    // 5
+    var arr = [];
+//    arr[0] = 100;
+//    arr[1] = 99;
+//    arr[2] = 98;
+//    arr[3] = 97;
+//    arr[4] = 96;
+//    var score = prompt("请输入学生的成绩");
+//    var k = 0;
+//    for(var i = 100;i<105;i++){
+//
+////        arr[i]=score;
+//        arr[k]=+prompt("请输入学生的成绩");
+//        k++;
+//    }
+    for(var i=100;i<105;i++){
+        arr[arr.length] = +prompt("请输入学生的成绩");
+    }
+    var sum = 0;
+    for(var i = 0; i < arr.length; i++) {
+          sum+=  arr[i];
+    }
+    var avg = sum /arr.length;
+    console.log("学生的成绩是"+arr+",总成绩是："+sum+"，平均成绩是:"+avg);
+</script>
+</body>
+</html>

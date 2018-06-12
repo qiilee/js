@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+
+    <div ng-controller="MainController">
+
+        <button ng-disabled="allowClick">{{ msg }}</button>
+
+    </div>
+    
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+       
+        .controller( 'MainController', function ( $scope, $interval ) {
+           $scope.msg = '请等待 5 秒钟';
+           $scope.allowClick = true;
+
+           // setInterval( func, 1000 )
+            //    var i = 0;
+            //    var interval = setInterval( function () {
+            //         i++;
+            //         console.log( i );
+            //         if ( i == 5 ) {
+            //             $scope.msg = '可以点击了';
+            //             $scope.allowClick = false;
+            //             $scope.$apply(); // 强制 ng 刷新数据
+            //             clearInterval( interval );
+            //         }
+            //    }, 1000 );
+
+            var i = 0;
+            var promise = $interval( function () {
+                i++;
+                console.log( i );
+                if ( i == 5 ) {
+                    $scope.msg = '可以点击了';
+                    $scope.allowClick = false;
+                    $interval.cancel( promise );
+                }
+            }, 1000 );
+
+
+        });
+
+</script>
+</html>

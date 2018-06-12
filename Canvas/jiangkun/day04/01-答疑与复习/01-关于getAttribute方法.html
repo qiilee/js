@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        div {
+            border: 1px dashed red;
+            width: 200px;
+            height: 100px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div itcast="哇哈哈"></div>
+    <div></div>
+</body>
+<script>
+    // 1, 利用 setAttribute 设置第二个 div 的自定义属性
+    var divs = document.querySelectorAll( 'div' );
+    divs[ 1 ].setAttribute( 'itheima', '黑马程序员' );
+
+
+
+    // 2, 分别打印出 他们的自定义属性
+    // 2.1 
+    var v1 = divs[ 0 ].getAttribute( 'itcast' );
+    console.log( v1 );
+
+    // 2.2 
+    var v2 = divs[ 1 ].getAttribute( 'itheima' );
+    console.log( v2 );
+
+</script>
+</html>

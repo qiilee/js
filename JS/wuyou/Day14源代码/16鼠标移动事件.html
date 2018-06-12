@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    //鼠标移动事件
+    //onmousemove
+
+    //当鼠标在页面上移动的时候，让盒子跟随鼠标移动
+    var box = document.getElementById("box");
+
+    document.onmousemove = function (e) {
+        //1 兼容事件对象
+        var e = e || window.event;
+        // 获取鼠标的位置
+        box.style.left = e.clientX + "px";
+        box.style.top = e.clientY + "px";
+    };
+
+
+</script>
+</body>
+</html>

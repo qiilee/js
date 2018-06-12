@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="txt"/>
+<script>
+    // 1. 先获得文本框
+    var txt = document.getElementById("txt");
+    // 2. 给文本框注册事件
+//    txt.onkeydown = function (){   // keydown  键盘按下的事件
+//           console.log(txt.value); //只能获得之前的数据值，键盘按下就会触发的事件
+//    }
+
+    txt.onkeyup = function (){ // 键盘按下并抬起的时候，就会触发的事件，可以将文本框里面的值输出出来
+           console.log(txt.value);
+    }
+</script>
+</body>
+</html>

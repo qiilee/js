@@ -1,0 +1,1 @@
+测试$ gulp uglify 压缩js文件  看gulpfile.js文件即可

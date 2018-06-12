@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    var num=0;
+//    function fib(n) {
+//        num++;
+//        if (n == 1 || n == 2) {
+//            return 1;
+//        }
+//        return fib(n - 1) + fib(n - 2);
+//    }
+//
+//   console.log(fib(9));
+//    console.log(num);
+
+//闭包的经典形式
+    function outer(){
+        function inner(){
+
+        }
+        return inner;
+    }
+    var f = outer();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>q</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/template-native.js"></script>
+
+    <script type="text/template" id="obId">
+        <%for(var i = 0;i
+        <result.length;i++){%>
+        <li><%=result[i].word%></li>
+        <%}%>
+    </script>
+    <style>
+        .main {
+            width: 700px;
+            margin: 100px auto;
+        }
+
+        .main input[type=text] {
+            width: 500px;
+            font-size: 28px;
+        }
+
+        input[type=button] {
+            font-size: 28px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            border: 1px solid #ccc;
+            width: 502px;
+            display: none;
+        }
+
+        ul li {
+            list-style: none;
+            width: 500px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .soClass {
+            background: red;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("ul").delegate("li","mouseover",function(){
+                $(this).addClass("soClass");
+            });
+            $("ul").delegate("li","mouseout",function(){
+                $(this).removeClass("soClass");
+            });
+            $("#keyword").on("keyup", function (event) {
+                if (event.keyCode == 40) {
+                    return;
+                } else if (event.keyCode == 38) {
+                    return;
+                }
+                var keywords = this.value;
+
+                if(keywords.trim().length>0){
+                    $.ajax({
+                        url:"https://sug.so.360.cn/suggest?callback=suggest_so&encodein=utf-8&encodeout=utf-8&format=json&fields=word,obdata&word="+keywords,
+                        type:"get",
+                        dataType:"jsonp",
+                        success:function (data) {
+                            var html = template("obId",data);
+                            $(".main>ul").html(html);
+                        }
+                    })
+                    $(".main>ul").show(100);
+                }else{
+                    $(".main>ul").hide(100);
+                }
+            });
+            document.onkeydown=function(event){
+                if(event.keyCode==38){
+                    //用户按的是向上的键
+
+                }else if(event.keyCode==40){
+
+                    var hClass=$(".soClass");
+                    if(hClass.length==0){
+                        //说明没有高亮的元素. 我获取到第一个li 元素，添加一个soClass
+                        $("ul>li:first-child").addClass("soClass");
+                    }else{
+                        hClass.removeClass("soClass");
+                        if(hClass.next().length==0){
+                            $("ul>li:first-child").addClass("soClass");
+                        }else{
+                            hClass.next().addClass("soClass");
+                        }
+                    }
+                    $("#keyword").val($(".soClass").text());
+                }
+            }
+        })
+    </script>
+</head>
+<body>
+<div class="main">
+    <input type="text" autofocus id="keyword"/><input type="button" value="百度一下">
+    <ul></ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+</body>
+<script>
+    // get*by* 返回的是一个 DOM 的伪数组
+    // 什么是伪数组???
+    // 所谓的伪数组, 首先它不是一个数组; 但是可以像数组一样遍历( for 循环遍历 )使用.
+    // 只需要满足:
+    // 1> 可以使用 [ index ] 来获得元素
+    // 2> 可以使用 .length 属性获得元素长度
+    // 因此必须保证 length 是一个 >= 0 的数字
+    // 因此可以封装一个函数来实现伪数组的判断( 待会儿 )
+
+
+
+
+    var divs = document.getElementsByTagName( 'div' );
+    var ps = document.getElementsByTagName( 'p' );
+
+    for ( var i = 0; i < divs.length;i++ ) {
+        divs[ i ].style.border = '1px solid red';
+    }
+
+    for ( var i = 0; i < ps.length; i++ ) {
+        ps[ i ].style.border = '1px solid blue';
+    }
+
+    // $( 'div, p' ).css( ... )
+
+
+    // 优化
+    // 1, 将 for 循环封装成方法
+    //      function css ( elems, styles ) { ... } -> undefined
+    // 2, 优化一下前面的函数
+    //      function css ( obj ) { ... } 
+    //      obj: { elems: [], styles: { ... } }
+    // 3, 应该将 for 循环封装成 each 或 map 的方法, 这样就可以处理任意的遍历了.
+
+    // 现在是要封装库或框架, 这时一定要考虑通用性.
+
+    // 4, 使用 qsa 方法封装元素获取
+
+
+
+</script>
+</html>

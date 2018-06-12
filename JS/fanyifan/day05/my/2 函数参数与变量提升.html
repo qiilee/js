@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //
+    function fn(name, age) {
+        var name;
+        var age;
+        name = "jack";
+        age = function(){
+            console.log('我是传递进去的参数')
+        };
+        function age(){
+            console.log('age')
+        }
+        console.log(name, age)
+        name = 'rose'
+        console.log(name, age)
+    }
+    fn('jack',function(){
+        console.log('我是传递进去的参数')
+    });
+</script>
+</body>
+</html>

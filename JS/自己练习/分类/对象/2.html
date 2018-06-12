@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function creatStudent(name,age,score){
+        var student = new Object();
+        student.name = name;
+        student.age = age;
+        student.score= score;
+        student.sayHi=function(){
+             console.log("大家好，我叫："+this.name);
+        };
+        return student;
+    }
+    var s1 = creatStudent("小明",18,10);
+    var s2 = creatStudent("小云",12,99);
+    console.log(s1.name);
+    console.log(s2.name);
+    console.log(s1.age);
+    console.log(s2.age);
+    s1.sayHi();
+    s2.sayHi();
+
+
+    var a = new Object();
+    console.log(typeof a);
+    console.log(a);
+    console.log(s1);
+    console.log(s2);
+
+</script>
+</body>
+</html>

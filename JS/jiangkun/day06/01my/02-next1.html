@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="one"></div>
+<div id="two"></div>
+<div></div>
+
+<script>
+    //思想：看下一个元素是否是元素节点，是的话，不是的话
+    //总结：有老师的有所不同，但是能够得出正确的结果
+
+    function next(node){
+        while(node = node.nextSibling){
+            if(node.nodeType == 1){
+               return node;
+            }
+        }
+        return null;
+
+    }
+    var one = document.getElementById('one');
+    console.log(next(one));;
+
+</script>
+</body>
+</html>

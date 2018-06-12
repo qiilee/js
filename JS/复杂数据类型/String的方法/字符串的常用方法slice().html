@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a href="#"></a>
+<a href="#"></a>
+<a href="#"></a>
+<script>
+    //字符串slice截取方法  MDN这样说  slice() 方法提取字符串中的一部分，并返回这个新的字符串。
+    //跟substring相似，建议使用slice
+    // -1代表倒数第一位  -3代表倒数第三位
+    var str = 'abcdefg';
+    var str1 = str.slice(2,5);
+    var str2 = str.slice(4, -1);
+    var str3 = str.slice(-3);
+    var str4 = str.slice(5,2);
+    console.log(str1);//cde
+    console.log(str2);//ef
+    console.log(str3);//efg
+    console.log(str4);//空字符串
+
+</script>
+</body>
+</html>

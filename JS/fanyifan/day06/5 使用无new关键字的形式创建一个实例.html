@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.9.1.js"></script>
+</head>
+<body>
+<script>
+    //我们在用jquery创建一个实例的时候没有使用new关键字。
+    var obj =$('document.body');
+    console.log(obj.__proto__===$.prototype)
+
+
+    // 利用了构造函数内部的this指向的是实例而不是一个window，来判断函数有没有
+    //使用new关键字来创建实例.
+
+
+    function Person(){
+        if(this===window){
+            //如果函数内部的this是window说明没有通过new关键字进行调用
+            //如果函数内部的this不是window，说明是通过new关键字进行的调用
+            //如果是用普通函数创建实例的话，就在普通函数内部返回一个 构造函数产生的实例
+            return new Person();
+        }
+        this.name='jack';
+        this.age=18
+    }
+
+
+    //使用无new关键字创建实例。
+    //防止漏写掉new关键字，这样写代码看起来也更简洁了。
+    var person = Person();
+    console.log(person.__proto__===Person.prototype)
+
+
+
+</script>
+</body>
+</html>

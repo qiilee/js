@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //混入式继承:把其他对象身上的属性和方法拿到自己身上。
+
+    var obj1 ={};
+    var obj2 = {
+        sayHello:function(){
+            console.log('我是obj2上的sayHello方法')
+        },
+        study:function(){
+            console.log('我是obj2上的study方法')
+        }
+    }
+    // 让obj1 继承obj2中的sayHello方法
+  /*  obj1.sayHello=obj2.sayHello;
+    obj1.sayHello();
+    obj1.study=obj2.study;
+    obj1.study();*/
+
+  for(var key in obj2){
+      obj1[key]=obj2[key]
+  }
+  console.log(obj1)
+
+
+    // 使用函数封装来提高代码的复用率
+
+
+    /**
+     * 混入式继承
+     * @param obj1 继承的对象
+     * @param obj2 被继承的对象
+     */
+
+    function mixin(obj1,obj2){
+      for(var key in obj2){
+          obj1[key]=obj2[key]
+      }
+    }
+
+
+
+</script>
+</body>
+</html>

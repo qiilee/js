@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="list">
+    <li>这是第1个li标签节点</li>
+    <li>这是第2个li标签节点</li>
+    <li>这是第3个li标签节点</li>
+    <li>这是第4个li标签节点</li>
+</ul>
+<script>
+    // childNodes  是标准的DOM属性，但是不但可以获得标签节点，还可以获得文本节点，但是IE8及之前的浏览器，会忽略空白文本节点
+    // children 不是标准的DOM属性，是庶出，但是得到了所有的浏览器的支持，只会获得标签节点
+
+    var list = document.getElementById("list");
+    //    var lis = list.childNodes;
+    //    console.log(lis.length);//9
+
+
+    var lis = list.children;
+    for (var i = 0; i < lis.length; i++) {
+        console.log(lis[i]);
+    }
+    console.log(lis.length);
+
+
+
+
+
+
+
+
+
+
+
+/*
+    // childNodes  是标准的DOM属性，但是不但可以获得标签节点，还可以获得文本节点，但是IE8及之前的浏览器，会忽略空白文本节点
+    var list = document.getElementById("list");
+//    var lis = list.childNodes;
+//    console.log(lis.length);
+
+    var lis = list.children; // children 不是标准的DOM属性，是庶出，但是得到了所有的浏览器的支持，只会获得标签节点
+    for(var i=0;i<lis.length;i++){
+        console.log(lis[i]);
+    }
+    // children
+    console.log(lis.length);
+
+    // 写一个隔行变色的作用  分别用children  childNodes来做
+    // 算法：就是解决的方法
+
+
+    */
+</script>
+</body>
+</html>

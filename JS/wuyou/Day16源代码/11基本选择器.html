@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div, p, span {
+
+        }
+
+        span.sp {
+
+        }
+    </style>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //标签选择器
+//            $("div").text("我是div的内容");
+
+            //id选择器
+//            $("#box").text("我是box");
+
+            //class选择器
+            //$(".box").text("我是类名为box的元素");
+
+
+            //并集选择器
+            //$("div,p,.sp").text("我是各种标签");
+
+            //交集选择器
+            //$("span.sp").text("我是具有sp类名的span");
+
+
+        });
+    </script>
+</head>
+<body>
+<div class="box"></div>
+<div class="box"></div>
+<div id="box"></div>
+<div></div>
+<p class="sp"></p>
+<p></p>
+<span></span>
+<span class="sp"></span>
+<span></span>
+</body>
+</html>

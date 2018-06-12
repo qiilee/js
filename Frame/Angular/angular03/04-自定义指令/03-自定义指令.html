@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+    <div ng-controller="MainController">
+       <div my-repeat="list" itcast="123" itheima="456" ></div> 
+    </div>
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        // 定义指令
+        .directive( 'myRepeat', function () {
+            // 这个函数什么时候执行, 这个函数有什么参数
+            return function ( scope, elems, attrs ) {
+
+                console.log( arguments );
+
+                var attr = attrs.myRepeat;
+
+                var datas = scope[ attr ];
+
+                elems.append( datas.map( function ( v ) {
+                    return '<div>' + v + '</div>';
+                }).join( '' ) );
+
+            };
+        })
+        .controller( 'MainController', function ( $scope ) {
+            $scope.list = '首页,主页,副业,产业,爷爷,阿爷,毕业'.split( ',' );
+        });
+
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./itcast.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="control"></div>
+</body>
+<script>
+
+    I( '#container' )[ 0 ].innerHTML = 
+
+    F.map( ['名字','名字','名字','名字','名字','名字'], function  ( v, i) {
+        return '<input type="checkbox" >' + v + '<br />';
+    }).join( '' );
+
+
+    // 添加按钮
+    I( '#control' )[ 0 ].innerHTML = '<button id="btn"> click </button>';
+
+    // 添加事件
+    I( '#btn' )[ 0 ].onclick = function () {
+
+        I( '#container input' ).each(function () {
+            this.checked = true;
+        });
+
+    };
+
+
+</script>
+</html>

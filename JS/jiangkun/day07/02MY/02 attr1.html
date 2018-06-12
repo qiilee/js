@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script src="./src/Itcast.style.js"></script>
+    <script>
+        //总结：1、判断与undefined相等要用=== ，==会有类型转换
+        //     2 、值为undefined就是获取，
+        //         值为boolean，就要使用.的方式设置
+        //       3、测试有错误  未解决
+        //
+
+
+      Itcast.fn.attr = function (attrName, attrValue){
+          if(attrValue === undefined){
+              return this[0].getAttribute(attrName)||this[0].[attrName];
+          }else{
+              return this.each(function(){
+                  if(typeof attrValue === 'boolean'){
+                      this[attrName] =attrValue;
+                  }else {
+                      this.setAttribute(attrName,attrValue);
+                  }
+              });
+          }
+      }
+    </script>
+</head>
+<body>
+<br>
+<a href=""></a>
+<input type="checkbox"><br>
+<img src="" alt="">
+</body>
+<script>
+    I( 'img' ).attr( 'src', 'http://pic38.nipic.com/20140228/3822951_135521683000_2.jpg' );
+
+    I( 'a' ).attr( 'href', 'http://www.itcast.cn').each(function () {
+        this.innerHTML = '哇哈哈';
+    });
+
+    I( 'input' ).attr( 'checked', true );
+    // I( 'input' ).attr( 'checked', false );
+
+
+    console.log( 'src = ' + I( 'img' ).attr( 'src' ) );
+    console.log( 'href = ' + I( 'a' ).attr( 'href' ) );
+    console.log( 'checked = ' + I( 'input' ).attr( 'checked' ) );
+
+    I( 'input' ).attr( 'checked', false );
+
+    console.log( 'checked = ' + I( 'input' ).attr( 'checked' ) );
+
+</script>
+</html>

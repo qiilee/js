@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+
+<input type="button" value="ajax 交互">
+
+<script>
+        document.querySelector("input").onclick=function(){
+
+              ajax({
+                  type:"get",
+                  data:"username=zhangsan",
+                  url:"",
+                  //请求成功之后就调用这里
+                  success:function(data){
+                      console.log(data);
+                      //得到数据，解析数据.
+                  }
+
+              })
+
+        }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body>
+    
+    <div>
+        <input type="text" ng-model="txt"><br />
+
+        <input type="text" ng-model="txt"><br />
+    </div>
+
+    <hr>
+
+    <div>
+        <input type="text" ng-model="txt"><br />
+
+        <input type="text" ng-model="txt"><br />
+    </div>
+
+</body>
+<script>
+
+    angular.module( 'app1', [] );
+
+    angular.module( 'app2', [] );
+
+    // 就是开机绑定, ng 运行起来的时候 手动绑定模块   不推荐
+    var divs = document.querySelectorAll( 'div' );
+
+    angular.bootstrap( divs[ 0 ], [ 'app1' ] );
+
+    angular.bootstrap( divs[ 1 ], [ 'app2' ] );
+
+
+    
+
+</script>
+</html>

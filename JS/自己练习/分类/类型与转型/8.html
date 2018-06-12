@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var a = " ";
+    var b = Number(a);//0   parseInt 返回NaN
+    alert(b);
+    alert(isNaN(a));
+
+    var c =undefined;
+    var d = Number(c);//NaN代表的是数字的一种不正常状态，本来要转换的操作数，转换不成number类型
+    alert(d);
+    var e =null;
+    var f = Number(e);//0 空值，转换成number就是0
+    alert(f);
+
+
+</script>
+</body>
+</html>

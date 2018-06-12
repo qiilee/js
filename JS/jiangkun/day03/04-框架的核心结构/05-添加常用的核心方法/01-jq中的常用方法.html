@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../../../../jQuery版本/jquery-3.0.0.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+</body>
+<script>
+    var $obj1 = $();
+
+
+    // toArray
+    var $obj2 = $( 'div' );
+    var arr2 = $obj2.toArray();
+
+
+    // get
+    var $obj3 = $( 'div' );
+    var o1 = $obj3.get( 2 );   // 等价于 $obj3[ 2 ]
+    var o2 = $obj3.get( -1 );  // 从后往前的第一个
+    var o3 = $obj3.get();      // 与 toArray 等价
+
+
+    // fist
+    // eq   equal
+
+</script>
+</html>

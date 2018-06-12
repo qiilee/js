@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas {
+            border:1px solid red;
+        }
+        #img {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+   <canvas width="400" height="400"></canvas>
+   <img src="11.jpg" alt="" id="img">
+   <button id="btn">点</button>
+
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+    ctx.fillStyle = "red";
+      ctx.fillRect(100,100,100,50);
+    var data = cas.toDataURL('image/jpg',1);
+    btn.addEventListener("click",function(){
+        img.src= data;
+    });
+</script>
+</html>

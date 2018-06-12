@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            width:100px;
+            height:20px;
+            background: #D5D5D5;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background: red;
+            font-size: 100px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .changeTo{
+            border-radius: 50%;
+            background: darksalmon;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">1</button>
+<button id="btn2">2</button>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div class="change">4</div>
+<div class="change">5</div>
+<script>
+    // 变量名冲突的问题、全局污染的问题
+
+    // 利用命名空间来管理创建的众多函数
+
+    var nameSpace = {
+        getDOM:{
+            getById:function(id){
+                return document.getElementById(id);
+            },
+            getByClassName:function(clsName){
+                return document.getElementsByClassName(clsName)
+            }
+        },
+        style:{
+            setClassName:function(ele,clsName){
+                for(var i=0;i<ele.length;i++){
+                    ele[i].className=clsName;
+                }
+            }
+        }
+    }
+
+    // 利用命名空间来解决变量名冲突的问题，然后利用小命名空间来解决后期管理和维护代码
+    //的问题。
+
+    var btn1 = nameSpace.getById('btn1');
+    var btn2 = nameSpace.getById('btn2');
+    var oDiv = nameSpace.getByClassName('change');
+    btn1.onclick=function(){
+        nameSpace.setClassName(oDiv,'change changeTo')
+    }
+    btn2.onclick=function() {
+        nameSpace.setClassName(oDiv, 'change')
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

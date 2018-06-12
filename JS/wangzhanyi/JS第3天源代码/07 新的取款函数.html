@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    /**
+     * 定义了一个取款的函数
+     * @param card
+     * @param passWord
+     * @returns {string}
+     */
+    function getMoney(card,passWord){ // 形参
+        if(card=="123456"&&passWord=="888888"){
+            var money = prompt("请输入取款的金额");
+            return money;
+        }else {
+            return "你的卡号或是密码不正确，取款失败。。。";
+        }
+    }
+    var card = prompt("请输入您的卡号");
+    var passWord = prompt("请输入卡号的密码");
+    var result = getMoney(card,passWord);
+    console.log(result);
+</script>
+</body>
+</html>

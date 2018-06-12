@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var o ={    // 键值对  key  value   字典   字：
+        age:20,
+        name:"张三",
+        sex:"男",
+        sayHi:function(){
+            console.log("大家好：我叫"+ o.name+"，我是"+ o.sex+"生,我今年"+ o.age+"岁了;");
+        }
+    }
+    // 数组是通过下标或是索引的方式来访问的
+    // 而对象是通过.的方式     第二种是通过[]
+//   console.log(o.name);
+//    console.log(o.sex);
+
+    console.log(o["name"]);
+    console.log(o["age"]);// 下面[]的方式访问对象的形式更加的灵活一些
+
+    // 对象也可以进行遍历   for-in
+//    for(var key in o){
+//        // key对应着对象的属性   而o[key]是属性的属性值
+//        console.log(key+"===="+o[key]);
+//    }
+
+    for(var mm in o){
+        console.log(mm+"==="+o[mm]);
+    }
+</script>
+</body>
+</html>

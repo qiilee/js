@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background: darksalmon;
+        }
+    </style>
+</head>
+<body>
+<div>
+
+</div>
+<script>
+
+
+
+    var div = document.getElementsByTagName('div')[0];
+
+    function f1(){console.log(1)
+        console.log(this)
+    }
+    function f2(){console.log(2)/*console.log(this)*/}
+    function f3(){console.log(3)/*console.log(this)*/}
+    function f4(){console.log(4)/*console.log(this)*/}
+    function f5(){console.log(5)/*console.log(this)*/}
+    function f6(){console.log(6)/*console.log(this)*/}
+    function f7(){console.log(7)/*console.log(this)*/}
+    function f8(){console.log(8)/*console.log(this)*/}
+    function f9(){console.log(9)/*console.log(this)*/}
+    function f10(){console.log(10)/*console.log(this)*/}
+    function f11(){console.log(11)/*console.log(this)*/}
+    function f12(){console.log(12)/*console.log(this)*/}
+    function f13(){console.log(13)/*console.log(this)*/}
+    function f14(){console.log(14)/*console.log(this)*/}
+    function f15(){console.log(15)/*console.log(this)*/}
+
+    function addEvent(ele,type,fn){
+        //1当我们发现当前元素身上没有该自定义事件池的时候，我们就通过自定义属性的方式创建一个自定义事件池。
+        //ele['selfEventclick']=[]
+        //如果发现当前元素上没有该自定义事件池，就创建一个自定义事件池
+        if(!ele['selfCZBK'+type]){
+            ele['selfCZBK'+type]=[];
+        }
+        //2 当想要添加某一个方法的时候
+        // 2.1 如果自定义事件池中已经存在了fn这个方法，那么就不必再次添加该方法到自定义事件池中
+        var selfEvent = ele['selfCZBK'+type];
+        for(var i=0;i<selfEvent.length;i++){
+            //判断是否存在
+            if(selfEvent[i]===fn){
+                return;
+            }
+        }
+        selfEvent.push(fn);
+        //给当前元素添加一个该类型事件的方法，这个方法可以帮助我们去依次执行自定义事件池中的这些方法。
+        ele['on'+type]=exe;
+        // 通过DOM0级事件给元素添加了一个方法。
+        //
+        function exe(e) {
+            var e = e || window.event;
+            //能够通过事件获取到事件源
+            var target = e.target || e.srcElement;
+            //通过事件获取到事件类型
+            var type = e.type;
+
+            //3.1 获取到自定义事件池
+            var selfEvent = target['selfCZBK' + type];
+            //3.2 依次执行自定义事件池中的方法
+            for (var i = 0; i < selfEvent.length; i++) {
+                selfEvent[i].call(target, e);//f1方法通过对象调用模式来进行调用。
+            }
+        }
+    }
+
+
+    addEvent(div,'click',f1)
+    addEvent(div,'click',f2)
+    addEvent(div,'click',f3)
+    addEvent(div,'click',f4)
+    addEvent(div,'click',f5)
+
+
+    addEvent(div,'dblclick',f1)
+    addEvent(div,'dblclick',f2)
+    addEvent(div,'dblclick',f3)
+    addEvent(div,'dblclick',f4)
+    addEvent(div,'dblclick',f5)
+
+
+
+    // 给当前元素解绑某个事件
+    /*
+    * 1获取到当前元素某类型的自定义事件池
+    * 2 循环遍历自定义事件池，判断要删除的方法是否在自定义事件池当中，如果有这个方法，
+    * 就删除掉这个方法。
+    * */
+    function removeEvent(ele,type,fn){
+        //1获取到当前元素某类型的自定义事件池
+        var selfEvent = ele['selfCZBK'+type];
+        //2 循环遍历自定义事件池，判断要删除的方法是否在自定义事件池当中，如果有这个方法，就删除掉这个方法。
+        for(var i=0;i<selfEvent.length;i++){
+            if(selfEvent[i]===fn){
+                //如果fn在自定义事件池中存在，那么就删除这个方法
+                selfEvent.splice(i,1);
+                return;
+            }
+        }
+    }
+
+    removeEvent(div,'dblclick',f2)
+    removeEvent(div,'dblclick',f3)
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

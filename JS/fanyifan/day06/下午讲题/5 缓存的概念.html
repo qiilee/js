@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 缓存
+    // 概念：已经存在的数据就没必要再次计算或者去服务器端请求，直接拿来使用就可以了。
+
+    // 我们可以利用缓存来解决重复计算的问题
+    // 0.把已经计算过的值存入我们的缓存区，然后再计算值的时候
+    // 1.如果在缓存区中已经计算过了，就直接使用这样的一个值，
+    // 2.如果没有计算过，则需要对它进行第一次计算，然后把第一次计算的值仿佛缓存区
+
+
+    // 把缓存区放在全局中
+    /*var cache = [];
+    var count = 0;
+    function fib(n){
+        count++;
+        //判断下缓存区中是否已经计算过
+        if(cache[n]){
+            return cache[n];
+        }
+        if(n===1||n===2) {
+            cache[n]=1;
+            return 1;
+        }
+        //第一次计算n的值，计算出来之后把这个值放入缓存区。
+        cache[n] = fib(n-1)+fib(n-2);
+        return cache[n];
+    }
+
+
+    console.log(fib(5))
+    console.log(count)
+    console.log(cache)*/
+
+
+
+    //如果把缓存放在全局中，任何人都能够对缓存进行操作，这样对缓存的安全性不好，因此我们要把缓存放在一个外界访问不到的地方。
+    // 我们要把缓存放入一个作用域中，在js中我们的作用域，就是函数。
+    /*cache[3]=1111111;*/
+
+    // 在作用域中的变量无法再外界访问到
+    // 因此我们需要利用闭包来打破作用域的限制，以便来查询缓存中的数据是否已经计算过
+    // 闭包的概念：访问一个函数内部私有变量的函数。
+    function fib(){
+        var cache = {}
+        function f(n){
+            //1判断下缓存中是否已经计算过n所对应的那一项fib数值
+            if(cache[n]){
+                return cache[n]
+            }
+            //判断边界条件
+            if(n===1||n===2){
+                cache[n]=1;
+                /*return 1;*/
+                return cache[n];
+            }
+            var nNumber = arguments.callee(n-1)+arguments.callee(n-2);
+         /*   var nNumber = f(n-1)+f(n-2);*/
+            cache[n]=nNumber;
+            return cache[n];
+        }
+        return f;
+
+    }
+
+    var calFib= fib();
+
+    console.log(calFib(1000));
+
+
+
+
+
+</script>
+</body>
+</html>

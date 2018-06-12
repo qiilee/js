@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<script>
+    //    "abcoefoxyozzopp"查找字符串中所有o出现的位置  indexOf
+    var str = "abcoefoxyozzopp";
+    //获得第一个o的索引
+    var index = str.indexOf("o");
+    //创建一个新数组
+    var newArr = [];
+    //吧第一个o的索引放到新数组中
+    newArr.push(index);
+    //把剩余的o的索引放到新数组newArr中
+    while (str.indexOf("o", index + 1) != -1) {
+        index = str.indexOf("o", index + 1);
+        newArr.push(index);
+    }
+    console.log(newArr);//[3, 6, 9, 12]
+    //MYSELF:::::::::
+    ////获得替换第一个o 后的新字符串
+    //    var newStr = str.replace("o", "!");
+    ////利用上面所得的新数组，由于替换掉了一个o，所以newArr.length-1，循环替换之后的o
+    //    for (var i = 0; i < newArr.length-1; i++) {
+    //        newStr = newStr.replace("o", "!");
+    //    }
+    //    console.log(newStr);//abc!ef!xy!zz!pp
+
+
+    //    teacher:::::
+    while (str.indexOf("o") != -1) {
+        //替换使用replace
+        str = str.replace("o", "!");
+    }
+    console.log(str);
+</script>
+</body>
+</html>

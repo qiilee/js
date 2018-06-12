@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='../angular-1.5.8/angular.js'></script>
+</head>
+<body ng-app="mainApp">
+<div ng-controller = 'controller1'>
+    <input type="text" ng-model="txt"/>
+    <input type="text" ng-model="txt"/>
+</div>
+<hr/>
+<div ng-controller="controller2">
+    <input type="text" ng-model="txt"/>
+    <input type="text" ng-model="txt"/>
+</div>
+</body>
+<script>
+    //创建一个模块，传进依赖，
+    var module = angular.module('mainApp',[])
+
+    module.controller('controller1',function($scope){
+        $scope.txt = '请输入';
+    }),
+    module.controller('controller2',function($scope){
+
+    })
+</script>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">点击跑到400</button>
+<div id="box"></div>
+
+<script>
+    //获取元素
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    var timer = null;
+    //添加点击事件
+    btn.onclick = function () {
+        timer = setInterval(function () {
+            //offsetLeft属性在取值的时候会四舍五入
+
+            //取出盒子的当前位置
+            var leader = box.offsetLeft;
+            //缓动公式的一部分是更改step的值
+            var step = (400 - leader ) / 10;
+            //由于offsetLeft在取值的时候会四舍五入，我们的step如果比较小，会造成无法运动的问题
+            //我们采取取整的方式
+            step = Math.ceil(step);
+
+            //匀速运动公式
+//            leader = leader + step;
+            //缓动公式
+            leader = leader + step;
+            //设置给box的left值
+            box.style.left = leader + "px";
+            //检测是否走到了指定位置
+            if (leader == 400) {
+                clearInterval(timer);
+            }
+
+//            console.log(1);
+        }, 17);
+    };
+
+
+</script>
+</body>
+</html>

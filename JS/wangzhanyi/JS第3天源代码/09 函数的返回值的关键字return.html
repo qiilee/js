@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //求2个数中的最大值
+    function getMax(num1,num2){  // 形参
+        // 形参的num1,num2是属于getMax这个函数的
+        if(num1>num2){
+           return num1;
+            console.log("看看这行代码是否执行。。。");
+        }else {
+            return  num2;
+            console.log("这是num2后面的代码。。。");
+        }
+    }
+    // 一个函数，一般只返回一个数据，如果想返回多个数据，最好是放到数组当中，或是对象当中
+    var num1 = +prompt("请输入第一个数字");
+    var num2 = +prompt("请输入第二个数字");
+   var max =  getMax(num1,num2);
+    alert(max);
+    // return的作用
+    // 1. 用来返回函数中的真正的数据值
+    // 2. 用来跳出函数
+</script>
+</body>
+</html>

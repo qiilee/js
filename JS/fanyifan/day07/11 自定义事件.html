@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    dsdasfsaf
+</div>
+<div>
+    sdafgfawqd
+</div>
+<script>
+    //
+
+    //事件的兼容性问题
+    // 方法名的问题
+    // this指向的问题
+    // 方法重复执行的问题
+    // 执行顺序的问题
+
+
+    // 通过自定义事件池来解决方法重复执行和执行顺序的问题。
+
+
+    /*
+    * 实现的思路
+    * 如果是第一次添加方法到事件池当中，就先创造一个事件池
+    * 如果不是第一次添加方法到事件池当中，就查询一下事件池当中存不存在我们要添加的这个方法，
+    * 如果事件池中不存在这个方法，我们就不管它，如果事件池中不存在这个方法，就要给事件池push一个方法
+    *
+    * 通过一个函数来依次执行相应事件自定义事件池中的方法。
+    * 当触发某一类事件的时候就执行相应事件事件池中的方法
+    *
+    * */
+
+
+    //事件绑定的方法
+    function on(ele,type,fn){
+        //第一次绑定一个方法
+        if(!ele['selfEvent'+type]){
+            ele['selfEvent'+type]=[];
+        }
+        var selfEvent =  ele['selfEvent'+type];
+        //判断自定义事件池中是否有相应的方法
+        for(var i=0;i<selfEvent.length;i++){
+            if(selfEvent[i]===fn){
+                return;
+            }
+        }
+        //把fn方法添加到自定义事件池当中
+        selfEvent.push(fn)
+        //通过DOM0级事件来给当前元素绑定一个方法，这个方法的职责是去依次执行自定义事件池中的方法
+        function trigger(e){
+
+            for(var i=0;i<selfEvent.length;i++){
+                //this指向的问题
+                selfEvent[i].call(e.target,e)
+            }
+        }
+        ele['on'+type]=trigger;
+    }
+
+    //trigger 是触发的意思。
+    /*function trigger(e){
+        console.log(1)
+
+        var e = e ||window.event;
+        console.log(e)
+        // e.target
+        var target = e.target ||e.srcElement;
+        //去依次执行自定义事件池中的方法
+        //要执行，就找到事件源，要找到事件源，就找到事件  e.target;
+        var selfEvent = target['selfEvent'+e.type];
+        for(var i=0;i<selfEvent.length;i++){
+            //this指向的问题
+            selfEvent[i].call(e.target,e)
+        }
+    }*/
+
+    //解绑的函数
+
+    function off(ele,type,fn){
+
+        var selfEvent = ele['selfEvent'+type];
+
+        for(var i=0;i<selfEvent.length;i++){
+            if(fn===selfEvent[i]){
+                selfEvent.splice(i,1)
+            }
+        }
+    }
+
+
+    var div = document.getElementsByTagName('div')[0]
+    var div2 = document.getElementsByTagName('div')[1]
+    function f1(){
+        console.log(1)
+    }
+
+    function f2(){
+        console.log(2)
+    }
+    on(div,'click',f1)
+    on(div,'click',f2)
+    on(div2,'click',f2)
+    on(div2,'click',f2)
+   /* document.onclick=function(){
+        console.log(1)
+    }*/
+
+
+
+   document.xxxxxxx= '1111'
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

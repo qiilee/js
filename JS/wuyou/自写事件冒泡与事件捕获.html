@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #one {
+            width: 60px;
+            height: 60px;
+            background-color: red;
+        }
+
+        #two {
+            width: 40px;
+            height: 40px;
+            background-color: cadetblue;
+        }
+
+        #three {
+            width: 20px;
+            height: 20px;
+            background-color: grey;
+        }
+    </style>
+</head>
+<body>
+<div id="one">1
+    <div id="two">2
+        <div id="three">3
+
+        </div>
+    </div>
+</div>
+<script>
+    //事件冒泡
+        var one = document.getElementById("one");
+        one.onclick = function () {
+            console.log(1);
+        }
+
+
+    //事件捕获
+//    var one = document.getElementById("one");
+//    var two = document.getElementById("two");
+//    var three = document.getElementById("three");
+//    one.addEventListener("click", function () {
+//        console.log("one");
+//    }, true);
+//    two.addEventListener("click", function () {
+//        console.log("two");
+//    }, true);
+//    three.addEventListener("click", function () {
+//        console.log("three");
+//    }, true);
+</script>
+</body>
+</html>

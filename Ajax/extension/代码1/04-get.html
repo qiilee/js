@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        function checkname(){
+            //ajax负责抓取用户名信息，传递给服务器进行校验
+            
+            //获得用户名信息
+            var nm = document.getElementById('username').value;
+
+            nm = encodeURIComponent(nm);//对浏览器容易混淆的信息进行编码处理
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    alert(xhr.responseText);
+                }
+            }
+            xhr.open('get','./04.php?name='+nm);
+            xhr.send(null);
+        }
+        </script>
+
+        <style type="text/css">
+        </style>
+    </head>
+    <body>
+        <h2>get方式请求</h2>
+        <form method="post" action="">
+            <p>用户名：<input type="text" name="username" id="username" onblur="checkname()"></p>
+            <p>密码：<input type="text" name="userpwd"></p>
+            <p><input type="submit" value="注册"></p>
+        </form>
+    </body>
+</html>

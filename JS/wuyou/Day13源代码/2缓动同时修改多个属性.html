@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">点击跑到400</button>
+<button id="btn2">点击跑到800</button>
+<div id="box"></div>
+
+<script>
+    //获取元素
+    var btn1 = document.getElementById("btn1");
+    var box = document.getElementById("box");
+    var timer = null;
+    //添加点击事件
+    //    var obj = {
+    //        "width":100,
+    //        "height":200
+    //    }
+
+    btn1.onclick = function () {
+//        animate(box,obj);
+        animate(box, {
+            "width": 200,
+            "height": 150
+        });
+    };
+
+
+    //修改任意属性
+    function animate(tag, obj) {
+        clearInterval(tag.timer);
+        tag.timer = setInterval(function () {
+            //假设成立法:假设当前这次定时器可以清除
+            var flag = true;
+
+            //需要同时修改多个属性
+            //对对象中的每一个属性进行操作
+            for (var k in obj) {
+                //k - 属性名 - 字符串形式 - attr
+                //obj[k] - 属性值 - target
+                var target = obj[k];
+                var leader = parseInt(getStyle(tag, k)) || 0;
+                //缓动运动公式
+                var step = (target - leader) / 10;
+                step = step > 0 ? Math.ceil(step) : Math.floor(step);
+
+                leader = leader + step;
+
+                //设置的时候
+                tag.style[k] = leader + "px";
+
+                //检测，当前这个属性是否到达了指定位置
+                if (leader != target) {
+                    //阻止清除定时器
+                    flag = false;
+                }
+            }
+
+            //我们需要保证obj中每一个obj都运动到位置
+            if (flag) {
+                clearInterval(tag.timer);
+            }
+
+        }, 20);
+    }
+
+
+    //getStyle(box, "width")
+    //获取计算后的样式的值
+    function getStyle(tag, attr) {
+//        if (tag.currentStyle) {
+//            //当你确定你要使用的是及格字母的时候,使用字符串
+//            //当你使用的不是字母，而是内部保存的值，这时使用变量
+//            return tag.currentStyle[attr];
+//        } else {
+//            return getComputedStyle(tag, null)[attr];
+//        }
+
+
+        return tag.currentStyle ? tag.currentStyle[attr] : getComputedStyle(tag, null)[attr];
+
+
+    }
+
+
+</script>
+</body>
+</html>

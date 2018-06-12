@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+(function () {
+var Func = function () {
+    console.log( '构造函数' );
+};
+Func.prototype.print = function () {
+    console.log( Func );
+    console.log( this.constructor );
+    // this 本身没有 constructor 属性. 但是 this 继承自 Func.prototype
+    // 而根据原型对象的结构, 该对象含有 constructor 属性, 指向 的就是 Func 构造函数
+    // 因此 this.constructor 就是 Func
+}
+
+window.F = window.Func = Func;
+
+})();
+
+var f = new F();
+f.print();
+
+</script>
+</html>

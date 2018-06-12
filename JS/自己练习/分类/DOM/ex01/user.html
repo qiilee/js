@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>添加用户</title>
+	</head>
+	<body>
+		<center>
+			<br><br>
+			添加用户:<br><br>
+			姓名: <input type="text" name="name" id="name" />&nbsp;&nbsp;
+			email: <input type="text" name="email" id="email" />&nbsp;&nbsp;
+			电话: <input type="text" name="tel" id="tel" /><br><br>
+			<button id="addUser">提交</button>
+			<br><br>
+			<hr>
+			<br><br>
+			<table id="usertable" border="1" cellpadding="5" cellspacing=0>
+				<tbody>	
+					<tr>
+						<th>姓名</th>
+						<th>email</th>
+						<th>电话</th>
+						<th>&nbsp;</th>
+					</tr>
+					<tr>
+						<td>Tom</td>
+						<td>tom@tom.com</td>
+						<td>5000</td>
+						<td><a href="deleteEmp?id=Tom">Delete</a></td>
+					</tr>
+					<tr>
+						<td>Jerry</td>
+						<td>jerry@sohu.com</td>
+						<td>8000</td>
+						<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+					</tr>
+				</tbody>	
+			</table>
+		</center>
+	</body>
+	<script language="JavaScript">
+		window.onload = function(){
+			document.getElementById("addUser").onclick = function(){
+				//获取姓名、email、电话的值
+				/**
+				 * 姓名: <input type="text" name="name" id="name" />&nbsp;&nbsp;
+				email: <input type="text" name="email" id="email" />&nbsp;&nbsp;
+				电话: <input type="text" name="tel" id="tel" /><br><br>
+				 */
+				var name = document.getElementById("name").value;
+				var email = document.getElementById("email").value;
+				var tel = document.getElementById("tel").value;
+				//创建td，并添加文本内容
+				/**
+				 *      <tr>
+							<td>Jerry</td>
+							<td>jerry@sohu.com</td>
+							<td>8000</td>
+							<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+						</tr>
+				 */
+				var tdName = document.createElement("td");
+				var tdNameText = document.createTextNode(name);
+				tdName.appendChild(tdNameText);
+				
+				var tdEmail = document.createElement("td");
+				var tdEmailText = document.createTextNode(email);
+				tdEmail.appendChild(tdEmailText);
+				
+				var tdTel = document.createElement("td");
+				var tdTelText = document.createTextNode(tel);
+				tdTel.appendChild(tdTelText);
+				
+				var tdDelete = document.createElement("td");
+				var aE = document.createElement("a");
+				aE.setAttribute("href","deleteEmp?id="+name);
+				var aEText = document.createTextNode("Delete");
+				aE.appendChild(aEText);
+				tdDelete.appendChild(aE);
+				
+				//创建tr，将4个创建完成的td对象放置到tr中
+				var tr = document.createElement("tr");
+				tr.appendChild(tdName);
+				tr.appendChild(tdEmail);
+				tr.appendChild(tdTel);
+				tr.appendChild(tdDelete);
+				/**
+				 * <table id="usertable" border="1" cellpadding="5" cellspacing=0>
+					<tbody>	
+				 */
+				//下面的操作，IE浏览器支持，火狐浏览器不支持
+//				//查找tbody
+//				var usertable = document.getElementById("usertable");
+//				var tbody = usertable.firstChild;
+//				//将创建完的tr，放置到tbody中
+//				tbody.appendChild(tr);
+				//让IE浏览器和火狐浏览器都支持
+				//先创建tbody对象，将tr放置到创建的tbody中，将tbody放置到table下
+//				var tbody = document.createElement("tbody");
+//				tbody.appendChild(tr);
+//				//查找table对象
+//				var usertable = document.getElementById("usertable");
+//				usertable.appendChild(tbody);
+				/***********************************************/
+				var tbody = document.getElementsByTagName("tbody");
+				tbody[0].appendChild(tr);
+				//当点击Delete，执行删除对应的行
+				aE.onclick = function(){
+					return deleteTr(this);
+				}
+			}
+			//删除对应行的方法
+			function deleteTr(aE){
+				/**
+				 *  <tr>
+						<td>Jerry</td>
+						<td>jerry@sohu.com</td>
+						<td>8000</td>
+						<td><a href="deleteEmp?id=Jerry">Delete</a></td>
+					</tr>
+				 */
+				var name = aE.parentNode.parentNode.firstChild.firstChild.nodeValue;
+				var flag = window.confirm("您确定要删除【"+name+"】吗？");
+				if(flag){
+					//查找父节点（tbody）
+					var tbody = aE.parentNode.parentNode.parentNode;
+					//查找子节点（tr）
+					var tr = aE.parentNode.parentNode;
+					//删除tr
+					tbody.removeChild(tr);
+				}
+				return false;
+			}
+		}
+
+	</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="button" value="赋值" id="btnSet"/>
+<input type="button" value="取值" id="btnGet"/>
+<script>
+    // 单击赋值按钮的时候，要给文本框赋值
+    // 1. 先获得要操作的对象
+    var inputs = document.getElementsByTagName("input");
+    var btnSet = document.getElementById("btnSet");
+    var btnGet = document.getElementById("btnGet");
+    // 2. 给事件源注册事件
+    btnSet.onclick = function (){
+           for(var i=0;i<inputs.length;i++){
+               if(inputs[i].type=="text"){
+                   inputs[i].value = "aa"+i;
+               }
+           }
+    }
+</script>
+</body>
+</html>

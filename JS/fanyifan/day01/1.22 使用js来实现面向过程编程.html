@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button{
+            width:100px;
+            height:20px;
+            background: #D5D5D5;
+        }
+        div{
+            width:100px;
+            height:100px;
+            background: red;
+            font-size: 100px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .changeTo{
+            border-radius: 50%;
+            background: darksalmon;
+        }
+    </style>
+</head>
+<body>
+<button id="btn1">1</button>
+<button id="btn2">2</button>
+<div>1</div>
+<div>2</div>
+<div>3</div>
+<div class="change">4</div>
+<div class="change">5</div>
+<script>
+    // 实现需求
+
+    /*
+    * 1 获取元素
+    * 2 点击事件
+    * 3 样式变化
+    * */
+
+    // 1 获取元素
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var oDiv = document.getElementsByClassName('change');
+    // oDiv  类数组 伪数组
+    // 数组可以调用数组常用的方法，类数组（伪数组）不能够调用数组常用的方法。
+
+    /*console.log(oDiv instanceof Array);//*/
+
+    btn1.onclick=function(){
+        //3.1 样式变化
+        for(var i=0;i<oDiv.length;i++){
+            oDiv[i].className +=' changeTo';
+        }
+    }
+
+    btn2.onclick=function(){
+        //3.2 样式恢复的操作
+        for(var i=0;i<oDiv.length;i++){
+            oDiv[i].className ='change';
+        }
+    }
+
+
+</script>
+</body>
+</html>

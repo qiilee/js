@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //indexOf("要查找的字符串",检索的起始位置的索引值)   lastIndexOf()
+    //如果indexOf方法没有找到传入的字符串，这时返回-1
+
+
+    var str = "abcagharazz";
+
+    console.log(str.indexOf("a"));
+    //记录第一次找到的位置
+    var index = str.indexOf("a");
+    //第二次从index的后面查找
+    console.log(str.indexOf("a", index + 1));
+    index = str.indexOf("a", index + 1);
+    //第三次
+    console.log(str.indexOf("a", index + 1));
+    index = str.indexOf("a", index + 1);
+    //第四次
+    console.log(str.indexOf("a", index + 1));
+    index = str.indexOf("a", index + 1);
+
+    //使用循环
+    //for  次数一定有规律的执行代码
+    //while  次数不一定
+    //dowhile
+
+
+    //从一个字符串中找到所有a出现的索引值
+    var str = "dwaadwadaadwagahartjeathgae";
+    //声明一个数组保存结果
+    var resultArr = [];
+    //由于str中的a个数不确定，我们在循环查找的时候不能确定循环次数
+    //所以使用while
+    //记录第一次找到的位置
+    var index = str.indexOf("a");
+    resultArr.push(index);
+
+    //什么情况下去继续查找a的索引
+    //如果还有a，这时继续查找
+    while (str.indexOf("a", index + 1) != -1) {
+        //console.log(str.indexOf("a", index + 1));
+        index = str.indexOf("a", index + 1);
+        resultArr.push(index);
+    }
+    console.log(resultArr);
+
+
+</script>
+</body>
+</html>

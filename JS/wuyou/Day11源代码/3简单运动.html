@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            /*left: 500px;*/
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="box"></div>
+
+<script>
+    //获取元素
+    var btn = document.getElementById("btn");
+    var box = document.getElementById("box");
+    //设置定时器
+    var timer = null;
+    //我们手动设置的默认值是不科学的，这个值应该为盒子当前的所在位置
+    //var leftValue = 0;
+
+    //添加事件
+    btn.onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            //leader的值的获取,元素的当前位置
+            //获取的值是数值类型
+            var leader = box.offsetLeft;
+            //step的值设置
+            var step = 10;
+            //检测是否可以进行运动
+            if (leader < 400) {
+                //匀速运动公式
+                //标签的位置（新） = 标签的位置（旧） + 步长
+                leader = leader + step;
+
+                //设置给left属性
+                box.style.left = leader + "px";
+            } else {
+                clearInterval(timer);
+            }
+
+        }, 17);
+    };
+
+</script>
+</body>
+</html>

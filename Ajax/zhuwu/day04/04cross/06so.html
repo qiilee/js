@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我去获取360搜索接口的数据</title>
+    <script src="js/template-native.js"></script>
+    <style>
+            *{
+                 margin: 0;
+                 padding: 0;
+            }
+            .box{
+                 margin: 100px auto;
+                 width: 700px;
+            }
+
+            input[type=text]{
+                 width: 500px;
+                 font-size: 28px;
+            }
+            input[type=button]{
+                font-size: 28px;
+            }
+
+            ul{
+                 list-style: none;
+            }
+            ul li{
+                 padding: 5px;
+            }
+            .message{
+               /*  //margin: 0 auto;*/
+                 width: 500px;
+                 border: 1px solid #ccc;
+                 /*margin-left: ;*/
+                 display: none;
+            }
+    </style>
+</head>
+<body>
+<div class="box">
+    <input type="text" id="keyword"><input type="button" value="传智一下">
+    <div class="message">
+
+    </div>
+</div>
+<script type="text/template" id="soId">
+            <ul>
+                  <%for(var i=0;i<result.length;i++) {%>
+                     <li><%=result[i].word%></li>
+                <%}%>
+            </ul>
+</script>
+<script>
+
+        function getInfo(obj){
+
+             // console.log(obj);
+            //解析数据，填充到页面上面来.
+            var html=template("soId",obj);
+            document.querySelector(".message").innerHTML=html;
+
+
+        }
+
+        window.onload=function(){
+
+
+
+               document.getElementById("keyword").onkeyup=function(){
+                      var keyword=this.value;
+
+                      if(keyword.length>0){
+                          //才去发送请求
+                          //填充数据
+                          //显示盒子
+                          //向360 的接口去获取数据，其实360页没有给我们提供文档.
+                          var script=document.createElement("script");
+
+                          script.src="https://sug.so.360.cn/suggest?callback=getInfo&encodein=utf-8&encodeout=utf-8&format=json&fields=word,obdata&word="+keyword;
+
+                          document.body.appendChild(script);
+
+                          document.querySelector(".message").style.display="block";
+
+                      }else{
+                           //隐藏盒子
+                          document.querySelector(".message").style.display="none";
+
+                      }
+
+
+               }
+
+        }
+</script>
+</body>
+</html>

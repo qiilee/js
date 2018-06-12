@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+    <script src="../js/angular-1.5.8/i18n/angular-locale_zh-cn.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController">
+    <div>{{ price }}</div>
+</body>
+<script>
+
+    angular.module( 'mainApp', [] )
+        .controller( 'mainController', function ( $scope, $filter ) {
+            var currencyFn = $filter( 'currency' );
+            $scope.price = currencyFn( 12345678 );
+
+            // 实际上应用中一般
+            // $filter('currency')( 12345678 )
+        });
+
+</script>
+</html>

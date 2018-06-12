@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script>
+        var arr = [],
+            push = arr.push;
+
+
+        // 封装一个 将数组转换成 Itcast 对象的办法, 同时记录原先的 Itcast 对象
+        Itcast.fn.pushStack = function ( array ) {
+            // this 以前的 Itcast 对象
+            // 栈结构
+            var tmp = this.constructor();
+            push.apply( tmp, array );
+            tmp.prevObject = this;
+            return tmp;
+        }
+
+        Itcast.fn.parent = function () {
+            // 将每一个 this 中的元素的 父元素取出来, 构成 Itcast 对象
+            return this.pushStack(this.map(function ( v, i ) {
+                return v.parentNode;
+            }));
+        }
+
+        // next
+        // prev
+
+        // nextAll, 技巧
+        // prevAll
+
+        // siblings
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

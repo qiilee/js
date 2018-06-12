@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <p>p</p> 
+    <div>div</div>
+    <span>span</span>
+    <p>p</p> 
+    <div>div</div>
+<script>
+function select( selector ) {
+        var obj = document.querySelectorAll( selector ); // 伪数组
+
+        obj.each = function ( callback ) {
+            // 要求遍历 obj, 怎么遍历??? 使用 callback 处理伪数组 obj 中的每一个元素
+            each( this, callback );
+            // this 是什么, 看谁调用的方法
+        };
+
+        return obj;
+    }
+
+    function each( arr, callback ) {
+         for ( var i = 0; i < arr.length; i++ ) { 
+            callback( arr[ i ], i );
+         }
+    }
+
+
+    // 
+    select( 'div, p' ).each(function ( v ) {
+        v.style.border = '1px dashed blue';
+    });
+
+</script>
+</body>
+</html>

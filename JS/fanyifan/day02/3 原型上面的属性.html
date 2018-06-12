@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 原型上面的属性
+    function Person(){
+
+    }
+    console.log(Person.prototype)
+    console.log(Person.prototype.constructor===Person)//true
+    var person = new Person();
+    console.log(person)// 实例身上有一个__proto__属性
+    //
+    console.log(person.__proto__===Person.prototype);//true
+
+
+    // constructor
+    // 指向了原型所在的构造函数
+
+
+    // __proto__  非标准方法，存在着兼容性问题。
+    // 所有的对象都拥有的一个属性，指向了对象的原型。
+    // 兼容性问题：ie11以上才支持这个属性
+
+
+
+</script>
+</body>
+</html>

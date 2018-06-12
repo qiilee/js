@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">点我</button>
+
+<script>
+    //获取元素
+    var btn = document.getElementById("btn");
+
+    //1 问题，简单的事件添加方式每个事件只能添加一次，相互之间会产生覆盖
+
+    //2 需求，想要让多次事件添加相互之间不会覆盖，都执行
+    //封装一个函数，在函数调用中去设置点击事件
+
+    //    btn.onclick = function () {
+    //        console.log("今天天气不错");
+    //    };
+    addEvent(btn, "mouseover", function () {
+        console.log("我是小明的垃圾代码1");
+    });
+
+    addEvent(btn, "mouseover", function () {
+        console.log("我是小明的垃圾代码2");
+    });
+
+    addEvent(btn, "click", function () {
+        console.log("我是小明的垃圾代码2");
+    });
+    addEvent(btn, "click", function () {
+        console.log("我是小明的垃圾代码2");
+    });
+
+
+    //1 先搭建函数的结构
+
+    /**
+     *
+     * @param tag
+     * @param eventName  事件名，不需要加on
+     * @param fn  事件处理程序
+     */
+    function addEvent(tag, eventName, fn) {
+        //2 取出tag的onclick属性值
+        var oldEvent = tag["on" + eventName];
+        //3 检测oldClick的类型
+        if (typeof oldEvent == "function") {
+            //说明tag以及添加过点击事件了
+            //需要保证新的旧的代码都会执行
+            //保证代码执行在点击事件的时候触发
+            tag["on" + eventName] = function () {
+                oldEvent();
+                fn();
+            };
+        } else {
+            //说明以前没添加过点击事件
+            tag["on" + eventName] = fn;
+        }
+    }
+
+
+</script>
+<!--<script src="xiaoming.js"></script>-->
+</body>
+</html>

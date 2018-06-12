@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //求幂
+    function pow(a, b) {
+        if (b == 1) {
+            return a;
+        }
+        return pow(a, b - 1) * a;
+    }
+
+    console.log(pow(3, 3));
+</script>
+</body>
+</html>

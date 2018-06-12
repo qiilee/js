@@ -1,0 +1,12 @@
+
+{{extend ('./layout')}}
+
+{{#block ('section')}}
+<h2>文档</h2>
+<figure>
+	<figcaption>
+		<h3>这张图美不美</h3>
+	</figcaption>
+	<img src="./images/bb.png" alt="">
+</figure>
+{{/block}}

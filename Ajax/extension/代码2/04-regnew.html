@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>新建网页</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+
+        <script type="text/javascript">
+        window.onload = function(){
+            var fm = document.getElementsByTagName('form')[0];
+            fm.onsubmit = function(evt){
+                //dom收集表单信息
+                //利用FormData快速收集表单信息
+                
+                //实例化表单数据对象 同时收集fm的表单域信息
+                //var fd = new FormData(fm); //实例化对象
+                //alert(fd);
+                //fd对象内部有收集的form表单域信息
+
+                //ajax传递表单信息
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function(){
+                    if(xhr.readyState==4){
+                        alert(xhr.responseText);
+                    }
+                }
+                xhr.open('post','./04.php');
+                //使用FormData不需要设置header头(如下行)
+                //xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+                xhr.send();
+
+                //return false;//组织浏览器提交
+                evt.preventDefault();
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <h2>ajax+FormData+javascript实现无刷新表单信息提交</h2>
+        <form method="post" action="">
+            <p>用户名：<input type="text" name="username" id="username"/></p>
+            <p>密码：<input type="password" name="password" id="password" /></p>
+            <p>邮箱：<input type="text" name="email" id="email" /></p>
+            <p><input type="submit" value="注册" /></p>
+        </form>
+    </body>
+</html>

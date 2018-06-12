@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="button" value="XMLHttpRequest GET"/>
+<script>
+    document.querySelector("input[type=button]").onclick = function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("get","1.php?username=ql");
+        xhr.send(null);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState==4 && xhr.status==200){
+                  var data = xhr.responseText;
+                    alert(data);
+
+            }
+        }
+    }
+</script>
+</body>
+</html>

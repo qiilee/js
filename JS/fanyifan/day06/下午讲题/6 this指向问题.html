@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // this
+    // 我们想要研究的是在函数调用的时候this指向了谁
+    // 在全局中，this永远是一个window。
+
+
+    //函数的四种调用模式
+
+    //1. 普通函数调用模式
+    // 概念：看一个函数在调用的时候是不是像一个普通的函数那样进行调用。
+    // 当一个函数是通过普通函数调用模式来进行调用的时候，那它内部的this指向了window
+    /*function fn(){
+        console.log(this)
+    }
+    fn();//window
+
+    var obj  ={
+        f:function(){
+            console.log(this)
+        }
+    }
+    var fo = obj.f;
+    fo()//window  */
+
+
+    /*~function(){
+        console.log(this)//自执行函数也是通过普通函数调用模式调用的，因此它内部的this也指向了window
+    }()*/
+
+
+    // 2 对象方法调用模式
+    // 方法在执行的时候签名有没有.或者[],如果有的话，方法内部的this就指向了.或者[]前面的那个对象 。
+
+    /*var obj = {
+        fn:function(){
+            console.log(this)
+        }
+    }
+    //因为fn前面有.或者[]，所以他它是通过对象方法调用模式来调用的，它内部的this就是.或者[]之前的对象 obj
+    obj.fn();// obj  */
+
+    /*var obj  ={
+        obj2:{
+            fn:function(){
+                console.log(this)
+            }
+        }
+    }
+
+    var obj3  = obj.obj2;
+    obj3.fn();//obj3 这个对象
+    obj.obj2.fn();//  obj.obj2
+    var f = obj.obj2.fn;
+    f();//window
+    obj3['fn']();// obj3 */
+
+    /*var arr = [function a(){
+        console.log(this)
+    }]
+    arr[0]()//[function a(){console.log(this)}]
+    var t = arr[0]
+    t()//window   */
+
+
+    //原型上面的方法
+
+    /*function Person(){
+
+    }
+    Person.prototype.sayThis=function(){
+        console.log(this);
+    }
+
+    var person = new Person;
+
+    person.sayThis();//.前面的是person
+    Person.prototype.sayThis();//  Person.prototype
+    console.log(person)*/
+
+
+    // 构造函数调用模式
+    // 当一个函数通过new关键字来进行调用的时候，内部的this指向了构造函数创建出来的那个实例。
+
+
+    /*function Person(){
+
+        console.log(this);
+        console.log(this.__proto__===Person.prototype)
+    }
+    var person = new Person();*/
+
+    //如果一个函数内部的this是一个window那么它就是通过普通函数调用模式来进行调用的
+    //我们可以根据这一点来判断一个函数是否是搭配new关键字来进行调用。
+
+
+
+
+
+    // 方法借用模式
+    // 当函数通过call、apply、bind来进行调用的时候，函数内部的this指向就是我们手动设置的那个对象。
+    // 使用三种方法对fn这个函数进行调用你
+    // 方法名称   fn函数是否执行  用法                             参数说明    返回值
+    // call          执行          fn.call(context,arg1,arg2)     逐个传递     fn的返回值
+    // apply         执行          fn.call(context,[arg1,arg2])   通过数组     fn的返回值
+    //bind           没有执行       fn.bind(context,arg1)         分批传入      新的函数
+
+
+    //call，apply，bind方法都可以改变this指向，但是bind方法在改变this指向的时候不会让函数执行，只是返回一个改变了this指向并且保存了部分参数的一个新函数，
+    var obj = {
+        xxx:1
+    }
+    function fn(name,age){
+        console.log(this);
+        console.log(name)
+        console.log(age)
+        return 1;
+    }
+    var a = fn.call(obj,'jack',18)
+    var b = fn.apply(obj,['rose',17])
+    //bind方法的返回值是一个新的函数
+    var c = fn.bind(obj,'陈磊')
+
+    console.log(a,b,c)
+
+
+    c(18);//this指向了bind方法传入的第一个参数===obj，
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

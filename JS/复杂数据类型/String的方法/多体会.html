@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var str = "abcokefoxyokzzopp";
+    //第一种while循环方式
+    var indexArr = [];
+    var index = 0;
+    //    //循环条件：必须保证当前位置后面还有"o"
+    while (str.indexOf("ok", index) != -1) {
+        //还有的话可以再取，再取的时候从已有位置的后一个开始查找
+        index = str.indexOf("ok", index);
+        //找到以后放入数组
+        indexArr.push(index);
+        //在这个位置进行+1
+        index++;
+    }
+    console.log(indexArr);
+
+
+    //第二种for循环的方式  ： 不要检测值和值相等
+    var indexArr = [];
+    for (var index = 0; str.indexOf("ok", index) != -1; index++) {
+
+        //还有的话可以再取，再取的时候从已有位置的后一个开始查找
+        index = str.indexOf("ok", index);
+        //找到以后放入数组
+        indexArr.push(index);
+        //在这个位置进行+1
+    }
+    console.log(indexArr);
+
+
+    //把字符串中所有的o替换成!
+    var str = "abcoefoxyozzopp";
+    //记录旧的值
+    var strOld = str;
+    //
+    //替换多少次不确定，还是使用while循环
+    //如果有的话才继续替换
+    while (str.indexOf("o") != -1) {
+        //替换使用replace
+        str = str.replace("o", "!");
+//    console.log(str);
+    }
+    //
+    console.log(str);
+    console.log(strOld);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+
+
+;
+
+
+
+        if(typeof String.prototype.trim  !="function"){
+            String.prototype.trim=function(){
+                return this.replace(/^\s+|\s+$/g,"");
+            }
+        }
+        var str="  test  ";
+        alert("["+str+"]"); // [   test  ]
+        alert("["+str.trim()+"]"); // [test]
+
+
+    //jq中的内部实现
+//    function trim(str) {
+//        return str.replace(/^(\s|\u00A0)+/, '').replace(/(\s|\u00A0)+$/, '');
+//    }
+//    console.log('  hello  ');
+//    console.log(trim('  hello  '));
+
+
+</script>
+</body>
+</html>

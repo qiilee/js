@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--<style>
+        div {
+            width: 200px;
+            height: 100px;    
+        }
+    </style>
+    <link rel="stylesheet" href="./03-css.css"/>-->
+    <script src="./src/Itcast.core.js"></script>
+    <script src="./src/Itcast.dom.js"></script>
+    <script src="./src/Itcast.event.js"></script>
+    <script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>
+    <script>
+        Itcast.fn.css = function ( key, value ) {
+            // 
+            if ( Itcast.isArrayLike( key ) ) { // length
+                // 数组, 忽略第二个参数
+                // 返回的是第 0 个 dom 元素( this[ 0 ] ) 中对应样式属性的 对象
+                var obj = {},
+                    target = this[ 0 ];
+                Itcast.each( key, function ( i, v ) {
+                    // v 表示我要获得的样式名
+                    obj[ v ] = target.style[ v ] || window.getComputedStyle( target )[ v ];
+                });
+                return obj;
+
+            } else if ( Object.prototype.toString.call( key ) === '[object Object]' ) {
+                // 第一个参数是对象, 不考虑第二个参数, 设置
+                // 给 this 中的每一个 元素 都加上 key 中描述的所有样式
+                // this 是 jq 对象
+                return this.each(function () {
+                    for ( var k in key ) {
+                        this.style[ k ] = key[ k ];
+                        // this 是 DOM 对象
+                    }
+                });
+
+            } else if ( typeof key === 'string' ) {
+
+                if ( value === undefined ) {
+                    // 获得对应的样式
+                    return this[ 0 ].style[ key ] || window.getComputedStyle( this[ 0 ] )[ key ];
+
+                } else if ( typeof value === 'string' ) {
+                    // 设置样式
+                    // 给 每一个 DOM 元素 都这个该样式
+                    return this.each(function  () {
+                        this.style[ key ] = value;
+                    });
+
+                } else if ( typeof value === 'function' ) {
+                    // 条件设置
+                    // 给每一个 DOM 元素设置该样式, 但是样式值由函数返回值决定
+                    return this.each(function ( i ) {
+                        this.style[ key ] = value( i, this.style[ key ] || window.getComputedStyle( this )[ key ] )
+                    });
+                }
+
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div style="background-color: lavender;">1</div>
+    <div style="background-color: aqua;">2</div>
+    <div style="background-color: blueviolet;">3</div>
+</body>
+<script>
+    // 函数的形式
+    // var colors = [ 'red', 'green', 'blue' ];
+    // I( 'div' ).css( 'backgroundColor', function ( i, v ) {
+    //     console.log( arguments );
+    //     return colors[ i ];
+    // })
+
+
+
+    // 验证数组方式
+    // var propObj = I( 'div' ).css( [ 'height', 'width', 'backgroundColor', 'border', 'margin' ] );
+
+
+    // 验证对象的方式
+    var oldColor;
+    I( 'div' ).css({
+        width: '400px',
+        height: '100px',
+        border: '1px dashed olive',
+        margin: '10px 0'        
+    }).mouseover(function () {
+        oldColor = I(this).css( 'backgroundColor' );
+        I(this).css( 'backgroundColor', 'yellow' );
+    }).mouseout(function () {
+        I(this).css( 'backgroundColor', oldColor );
+    });
+
+
+
+
+
+
+</script>
+</html>

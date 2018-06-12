@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="box">
+    <p>这是一个p标签</p>
+</div>
+<script>
+    // innerText  IE8及之前低版本的浏览器
+    // textContent  低版本的火狐浏览器支持，
+
+    /**
+     * 定义了一个没有兼容性的获取标签内容的函数
+     * @param element
+     * @returns {*}
+     */
+    function getText(element){ //形参
+        // 能力检测   就是要看当前的浏览器，是否支持此对象的属性或是方法
+//        var b = typeof element.innerText;
+        if(typeof element.innerText=="string"){
+            return    element.innerText;
+        }else {
+            return   element.textContent; // 低版本的火狐浏览器支持
+        }
+    }
+
+    /**
+     * 定义了一个没有兼容性的设置标签内容的函数
+     * @param element
+     * @param value
+     */
+//    function setText(element,value){
+//        if(typeof element.innerText=="string"){
+//            element.innerText = value; //IE8及之前的低版本的浏览器
+//        }else {
+//            element.textContent = value;//低版本的火狐浏览器
+//        }
+//    }
+
+//    function
+    fuon
+</script>
+</body>
+</html>

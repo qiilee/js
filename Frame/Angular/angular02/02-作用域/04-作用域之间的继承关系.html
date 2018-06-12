@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../js/angular-1.5.8/angular.js"></script>
+</head>
+<body ng-app="mainApp">
+
+    <input type="text" ng-model="txt">
+
+    <div ng-controller="controller1">
+
+        controller1: <input type="text" ng-model="txt">
+        
+        <div ng-controller="controller3">
+        
+            controller3: <input type="text" ng-model="txt">
+        
+        </div>
+    </div>
+    <div ng-controller="controller2">
+        controller2: <input type="text" ng-model="txt">
+    </div> 
+</body>
+<script>
+    // 将 所有的 scope 映射到 全局作用域
+    angular.module( 'mainApp', [] )
+        .controller( 'controller1',  function ( $scope ) {
+            window.scope1 = $scope;
+        })
+        .controller( 'controller2',  function ( $scope ) {
+            window.scope2 = $scope;
+        })
+        .controller( 'controller3',  function ( $scope ) {
+            window.scope3 = $scope;
+        })
+        .run(function ( $rootScope ) {
+            window.rootScope = $rootScope;
+        });
+
+
+    // 凡是在页面中 有了 ng-app, 或 ng-controller 的时候
+    // 背后就会创建对应的 scope 对象. 但是前面在调试的时候可以知道
+    // 刚刚创建的 scope 是没有对应属性的. 
+    // 由于双向数据绑定, scope 中没有对应的属性值, 即为 undefined
+    // 那么界面中自然不会更新数据显示. 所以一打开浏览器, 文本框中没有数据.
+
+    // 当用户输入数据的时候. 
+    // 界面中数据发生变化, 自然显示数据. 但是该数据发生变化, 通知背后的 scope 对象改变该数据.
+    // 原本没有数据, 现在改变数据( 动态特性 ), 即给该对象提供了对应的属性.
+    // 属于哪一个 scope 就在哪一个 scope 中添加
+
+    // 页面中 其他的 文本框中也使用了 txt 作为数据
+    // 但是 scope 之间有几成. 理论上需要通知界面更新数据.
+    // 但是 scope1 中没有数据, 所以寻找其 原型 rootScope. 而 rootScope 中含有该数据. 因此同步数据.
+
+    // 而 scope2 与之一样, 数据也是有 rootScope 所提供.
+
+    // 但是 scope3 在显示的时候出现了问题. 
+    // scope3 中没有对应的数据. 因此到其原型 scope1 中检索
+    // 而 scope1 回到 rootScope 中查找. 因此也可以同步数据. 注意数据是走了两层, 由 rootScope 提供.
+
+
+    // 如果在 控制器中设置了对应的属性, 也不会有继承的表现.
+
+
+</script>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-1.9.1.js">
+    </script>
+</head>
+<body>
+<script>
+    //总结：1、a作为实例，$作为构造函数
+    //     2、函数的作用是如下
+//1、
+//    var a = $("document.body");
+//    console.log(a.__proto__=== $.prototype);//true
+
+
+//2、作用是：防止漏掉new关键字，不需要new就能创建实例
+    function Person(){
+        if(this===window){
+            //如果函数内部的this是window说明没有通过new关键字进行调用
+            //如果函数内部的this不是window，说明是通过new关键字进行的调用
+            //如果是用普通函数创建实例的话，就在普通函数内部返回一个 构造函数产生的实例
+            return new Person();
+        }
+        this.name='jack';
+        this.age=18
+    }
+//    var person =new Person();
+    var person = Person();
+    console.log(person);
+</script>
+</body>
+</html>

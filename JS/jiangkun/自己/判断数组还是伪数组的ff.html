@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>div</div>
+<p>p</p>
+
+<div>div</div>
+<span>span</span>
+
+<p>p</p>
+
+<div>div</div>
+<script>
+
+
+    //    7. 如何判断对象是一个数组或伪数组
+    //    // 只需要判断 length 属性即可
+    //    // arr
+    //    1> 是不是一个数组
+    //    toString.call() -> '[object Object]' 形式给出
+    //    instanceof 方法也可以实现, 但是在 html 嵌套的页面中会有问题
+    //
+    //    Object.prototype.toString.call( arr ) == '[object Array]'
+    //
+    //    2> 是不是伪数组?
+    //    1) 必须含有 length 属性
+    //    'length' in arr
+    //    2) 判断他是不是数字
+    //    typeof length == 'number'
+    //    3) 因此长度需要 非负
+    //    length >= 0
+    //
+    //    var length = 'length' in arr && arr.length;
+    //    return typeof length === 'number' && length >= 0;
+
+    function isArrayLike(obj) {
+        if (Object.prototype.toString.call(obj) == '[object Array]') {
+            return true;
+        }
+        var length = 'length' in arr && arr.length;
+        return typeof length === 'number' && length >= 0;
+    }
+    var divs = document.getElementsByTagName("div");
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 200px;
+            background-color: red;
+            border:1px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div id='div'></div>
+<script>
+    //window.getComputedStyle() 用于获取样式信息   【div.currentStyle;用于IE】
+
+    var bgc = window.getComputedStyle(div).backgroundColor;
+    console.log(bgc);
+    var  res2 = window.getComputedStyle( div ).border;
+    console.log(res2);
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    // JS中没有函数的重载
+    function getSum(a,b){
+        return a+b;
+    }
+    function getSum(a,b,c){
+        a = a||0;
+        b=b ||0;
+        c = c||0;
+        return a+b+c;
+    }
+    var sum = getSum(10,20);
+    console.log(sum);//30 NaN
+    // 在我们前端的JS语言当中，如果函数名相同的话，后面的函数会覆盖前面的函数，所以定义函数的时候，函数名一定不要重名
+</script>
+</body>
+</html>

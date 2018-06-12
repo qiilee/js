@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #F7F7F7;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .chatbox {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #CCC;
+            background-color: #FFF;
+            border-radius: 5px;
+        }
+
+        .messages {
+            height: 350px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #CCC;
+            overflow: scroll;
+        }
+
+        .messages h5 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .messages p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .self {
+            text-align: left;
+        }
+
+        .other {
+            text-align: right;
+        }
+
+        .form {
+            height: 150px;
+        }
+
+        .form .input {
+            height: 110px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .form .btn {
+            height: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid #CCC;
+        }
+
+        .form textarea {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 20px;
+        }
+
+        .form input {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 20px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<h3>简单的Ajax实例</h3>
+
+<div class="chatbox">
+    <!-- 这里放置 聊天内容 -->
+    <div class="messages">
+
+    </div>
+    <!-- 表单 -->
+    <div class="form">
+        <!-- 输入框 -->
+        <div class="input">
+            <!--我要发送的消息-->
+            <textarea>
+
+            </textarea>
+        </div>
+        <!-- 按钮 -->
+        <div class="btn">
+            <input type="button" value="发送">
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/template-native.js"></script>
+<script type="text/template" id="messageId">
+    <%if(info=="self"){%>
+    <div class="self">
+        <h5>我说</h5>
+
+        <p><%=value%></p>
+    </div>
+    <%}%>
+    <%if(info=="other"){%>
+    <div class="other">
+        <h5>对方说</h5>
+
+        <p><%=value%></p>
+    </div>
+    <%}%>
+</script>
+
+<script>
+    $(function () {
+        $(".btn input").on("click", function () {
+            var value =$(".input textarea").val();
+            var obj={
+                info:"self",
+                value:value
+            }
+            var a = template("messageId",obj);
+            $(".messages").append(a);
+            $.ajax({
+                url:"02chat.php",
+                type:"get",
+
+                success: function (data) {
+                    var obj = {
+                        info:"other",
+                        value:data
+                    }
+                    var html = template("messageId",obj);
+                    console.log(html);
+                    $(".messages").append(html);
+                }
+            });
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

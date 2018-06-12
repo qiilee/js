@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+//    var arr = [{name: '张三1'},
+//        {name: '张三2'},
+//        {name: '张三3'},
+//        {name: '张三4'}];
+//    for (var i = 0; i < arr.length; i++) {
+//        arr[i].sayHello = (function () {
+//            var j = i;
+//            return function () {
+//                console.log(j);
+//            }
+//        }());
+//    }
+//    for (var j = 0; j < arr.length; j++) {
+//        arr[j].sayHello();
+//    }
+
+//function foo(){
+//    var age=10;
+//    return{
+//        getAge:function(){return age;},
+//        setAge:function(){age++;}
+//    }
+//};
+//var result=foo();
+//console.log(result.getAge());
+//result.setAge();
+//console.log(result.getAge());
+
+
+
+function getRandom(){
+    var random=Math.random();
+    return function(){
+        return random;
+    };
+}
+var result=getRandom();
+for (var i = 0; i < 10; i++) {
+    console.log(result());
+
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+    </style>
+</head>
+<body>
+<input type="text" value="这是一个输入框" class="txt" id="txt"/>
+<script>
+    // 通过Id来获取页面中的标签
+    // 学习的DOM  就是学习DOM中操作页面元素的API    方法都是属于document
+
+   var txt =  document.getElementById("txt");// id为唯一的，因此获取的这个标签对象也是页面中唯一的
+    console.log(txt);
+    console.log(txt.type);
+    console.log(txt.value);
+    console.log(txt.className); // class是系统中的保留字 不能直接使用
+    console.log(txt.id);
+    txt.value="这是一个用JS的方式修改的内容";
+</script>
+</body>
+</html>

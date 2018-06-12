@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto;
+        }
+
+        table {
+            border-collapse: collapse; /*倒塌，合并边框*/
+            border-spacing: 0; /*边框间隔*/
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th, td {
+            border: 1px solid #d0d0d0;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <table>
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" name="" id="j_cbAll"/>
+            </th>
+            <th>菜名</th>
+            <th>饭店</th>
+        </tr>
+        </thead>
+        <tbody id="j_tb">
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>红烧肉</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>西红柿炒鸡蛋</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>红烧狮子头</td>
+            <td>田老师</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox"/>
+            </td>
+            <td>日式肥牛</td>
+            <td>田老师</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+
+    // 1. 获得要操作的对象
+    var btnAll = document.getElementById("j_cbAll");
+    var tBody = document.getElementById("j_tb");
+    var inputs = tBody.getElementsByTagName("input");
+    // 2. 给事件源注册事件  总按钮的做法
+    btnAll.onclick = function (){
+           // 判断总按钮的选中状态，让下面的小按钮和总按钮的选中状态一致
+//        if(btnAll.checked==true){
+//            for(var i=0;i<inputs.length;i++){
+//                inputs[i].checked = true;
+//            }
+//        }else {
+//            for(var i=0;i<inputs.length;i++){
+//                inputs[i].checked =false;
+//            }
+//        }
+
+        for(var i=0;i<inputs.length;i++){
+//            if(btnAll.checked ==true){
+//                inputs[i].checked = true;
+//            }else {
+//                inputs[i].checked = false;
+//            }
+            inputs[i].checked = btnAll.checked;
+        }
+    }
+
+    // 下面的小按钮的做法
+    // 每次单击当小按钮的时候，都要判断一下，其它按钮的选中状态，如果有一个小按钮没有选中的话，则总按钮就不选中，如果都选中的话，则总按钮也是选中的状态
+    // 至少有一个临界条件，只要有一个小按钮没有选中的话，则总按钮也不能选中
+    for(var j=0;j<inputs.length;j++){ // 循环给每一个按钮注册事件
+        inputs[j].onclick = function (){
+            var btnSelect = true;//先假设总的按钮是一个选中的状态
+            for(var k=0;k<inputs.length;k++){
+                if(!inputs[k].checked){ // 如果当前的这个小按钮的选中状态是false的话，加!就变为true，就可以进入大括号执行里面的代码了
+                    btnSelect = false; //
+                    break;//跳出当前循环，后面的代码都不需要再去执行了
+                }
+            }
+            btnAll.checked = btnSelect;
+        }
+    }
+</script>
+</body>
+</html>

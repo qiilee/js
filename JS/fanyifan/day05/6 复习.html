@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 函数声明：利用function关键字来声明一个函数
+
+    //函数表达式：除了利用function关键字来声明一个函数，其他形式都属于函数表达式
+
+    // 函数声明跟函数表达式的区别：
+    // 函数声明不可以直接调用，函数表达式可以直接调用。
+
+
+    // 如何把一个函数声明转换为函数表达式？
+
+
+    (function fn() {
+        console.log(1)
+    })()
+
+    !function fn(){
+        console.log(2)
+    }()
+    ~function fn(){
+        console.log(3)
+    }();
+    +function fn(){
+        console.log(4)
+    }();
+    -function fn(){
+        console.log(5)
+    }();
+
+
+    // 函数参数与变量提升
+    /*
+    * 函数内部代码在执行的时候，先对参数进行声明并且赋值.
+    * 然后再对函数体内部的代码进行变量提升
+    * 最后代码再从上到下依次执行。
+    * */
+
+    //闭包的概念：
+    //当一个函数创建时候的作用域，跟它执行时候的作用域不相同。
+    // 不管函数在哪里执行，函数能够访问到的外界环境都是它在被创建时候的外部作用域。
+
+    //函数本身上面保存了哪些信息
+
+    function fn(){
+        var num= 123;
+    }
+    // 函数携带的信息：
+    /*
+    * 函数本身
+    * 函数内部的代码
+    * 不管函数在哪执行，它的作用域链是不会改变的，作用域链的相关信息都存储在函数身上。
+    *
+    * */
+
+
+    function outer(){
+        function fn(){
+            function inner(){}
+        }
+    }
+
+    // outer的作用域链  outer===》全局作用域
+    // fn的作用域链   fn===》outer===》全局作用域
+    // inner的作用域链 inner ===》fn===》outer===》全局作用域
+
+
+     //闭包的经典形式
+
+    function outer(){
+        function inner(){
+
+        }
+        return inner;
+    }
+    var f = outer();
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav {
+            height: 30px;
+            background: #036663;
+            border-bottom: 1px solid #369;
+            line-height: 30px;
+            padding-left: 30px;
+        }
+
+        .nav a {
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+
+        }
+
+        .d-box {
+            width: 400px;
+            height: 300px;
+            border: 5px solid #eee;
+            box-shadow: 2px 2px 2px 2px #666;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            background-color: white;
+        }
+
+        .hd {
+            width: 100%;
+            height: 25px;
+            background-color: #7c9299;
+            border-bottom: 1px solid #369;
+            line-height: 25px;
+            color: white;
+            cursor: move;
+        }
+
+        #box_close {
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <a href="javascript:;" id="register">注册信息</a>
+</div>
+
+<!--盒子-->
+<div class="d-box" id="d_box">
+    <div class="hd" id="drop">注册信息 (可以拖拽)
+        <span id="box_close">【关闭】</span>
+    </div>
+    <div class="bd"></div>
+</div>
+<script src="common.js"></script>
+<script>
+
+    //拖拽效果操作：鼠标点住盒子时，盒子跟随鼠标运动，鼠标抬起，盒子运动停止。
+
+    //1 根据前面案例铺垫，需要在点住盒子的时候获取鼠标在盒子内的位置。
+    //2 设置鼠标移动时，盒子的跟随。并且为以点击位置为中心的跟随。
+    //3 鼠标抬起时，停止盒子的跟随效果。
+
+
+    //1 获取元素
+    var d_box = document.getElementById("d_box");
+    var drop = document.getElementById("drop");
+
+    //2 点下鼠标的时候，获取鼠标在drop内的位置
+    drop.onmousedown = function (e) {
+        var e = e || event;
+        //获取大盒子左侧的距离
+        var x = e.clientX - d_box.offsetLeft;
+        var y = e.clientY - d_box.offsetTop;
+
+        //3 让盒子跟随鼠标移动
+        document.onmousemove = function (e) {
+            var e = e || event;
+            //将位置设置给d_box
+            d_box.style.left = e.clientX - x + "px";
+            d_box.style.top = e.clientY - y + "px";
+
+            return false;
+        };
+    };
+
+    //onmouseup鼠标抬起
+    drop.onmouseup = function () {
+        document.onmousemove = null;
+    };
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.12.4.js"></script>
+    <script src="jquery-2.2.4.js"></script>
+    <script>
+        //总结：1、如何访问jq的版本号
+        //     2、如何让jq可以放弃对$的控制权
+        //     3、多个版本共存的方式
+
+
+        //当我们使用ie低版本浏览器时，就必须使用1.x版本
+        //如果检测到用户的浏览器版本比较高，这时就可以使用2.x版本
+
+        //访问jq的版本号
+        //console.log($.fn.jquery);
+
+        //jq提供了一个方法，让jq可以放弃对$的控制权
+        //noConflict返回值为jq的控制权
+        var $2 = $.noConflict();
+
+        //多个版本共存的方式
+        console.log($.fn.jquery);
+        console.log($2.fn.jquery);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

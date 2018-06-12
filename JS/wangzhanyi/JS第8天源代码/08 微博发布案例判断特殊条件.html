@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>微博发布案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style:none;
+        }
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline:none; /*去掉环绕线*/
+            resize: none; /*禁用拖动*/
+        }
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+        ul li {
+            /*line-height: 25px;*/
+            height: 25px;
+            width: 450px;
+            /*border: 1px solid #000;*/
+            border-bottom: 1px dashed #cccccc;
+        }
+        input {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="30" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <ul id="ul">
+
+    </ul>
+</div>
+<script src="common.js"></script>
+<script>
+    // 1. 获得要操作的对象
+    var box = document.getElementById("weibo");
+    var btn = $$("btn");
+    var txt= $$("txt");
+    var ul = $$("ul");
+
+    // 2. 给事件源注册事件
+    btn.onclick = function (){
+        var val = txt.value; // 每次单击按钮的时候，要重新获取文本域的内容
+        if(!val){  // 内容为空的情况取反
+            alert("内容不能为空，请重新输入...");
+            return;// 程序运行到return处，直接跳出函数，不再往下执行代码
+        }
+        // 3. 创建li标签
+        var li = document.createElement("li");
+        var lis = ul.children;//获取ul下面的所有的子标签  li
+        if(!lis.length){ // 判断子元素的个数  lis.length为0，转换为对应的boolean类型为false，取反的话，就为true，就可以进到大括号里执行里面的代码
+            ul.appendChild(li); //在父元素中直接追加元素，因为此时父元素中没有子标签
+        }else {
+            ul.insertBefore(li,lis[0]);//在第一个位置进行插入新创建的节点标签
+        }
+        setText(li,val); //给li标签设置文本内容
+//        li.innerHTML = val;
+        // 4.创建删除按钮
+        var input = document.createElement("input");
+        input.type="button"; //添加删除按钮的type属性
+        input.value="删除"; // 添加删除按钮的value属性值
+        li.appendChild(input); // 将删除按钮追加到li标签中
+        // 5. 给删除按钮注册事件
+        input.onclick = function (){
+            // 让ul删除当前按钮所在的的li标签
+           this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+        // 6. 判断特殊情况
+    }
+
+
+
+</script>
+</body>
+</html>

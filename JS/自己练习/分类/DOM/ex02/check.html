@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>check.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+  	您的爱好很广泛!!!
+  	 <br>
+	 <input type="checkbox" name="checkItems"  id="checkItems" value="全选/全不选"/>全选/全不选
+	 <br>
+        <input type="checkbox" name="items" value="足球" />足球
+		<input type="checkbox" name="items" value="篮球" />篮球
+		<input type="checkbox" name="items" value="游泳"/>游泳
+		<input type="checkbox" name="items" value="唱歌"/>唱歌
+		<br>
+		<input type="button" name="checkall" id="checkall" value="全选" />
+		<input type="button" name="checkall" id="checkallNo" value="全不选" />
+		<input type="button" name="checkall" id="check_revsern" value="反选" />
+  </body>
+  <script language="JavaScript">
+   window.onload = function(){
+   	  /**<input type="button" name="checkall" id="checkall" value="全选" />*/
+	  document.getElementById("checkall").onclick = function(){
+	  	 var items = document.getElementsByName("items");
+		 for(var i=0;items!=null && i<items.length;i++){
+		 	var item = items[i];
+			//使用setAttribute时，IE浏览器支持，火狐浏览器不支持
+			//item.setAttribute("checked","checked");
+			//IE和火狐浏览器都支持
+			item.checked = true;
+		 }
+	  }
+	  /**<input type="button" name="checkall" id="checkallNo" value="全不选" />*/
+	  document.getElementById("checkallNo").onclick = function(){
+	  	 var items = document.getElementsByName("items");
+		 for(var i=0;items!=null && i<items.length;i++){
+		 	var item = items[i];
+			//使用setAttribute时，IE浏览器支持，火狐浏览器不支持
+			//item.setAttribute("checked",null);
+			//IE和火狐浏览器都支持
+			item.checked = false;
+		 }
+	  }
+	  /**<input type="button" name="checkall" id="check_revsern" value="反选" />*/
+	 document.getElementById("check_revsern").onclick = function(){
+	 	var items = document.getElementsByName("items");
+		 for(var i=0;items!=null && i<items.length;i++){
+		 	var item = items[i];
+//			if(item.checked){
+//				item.checked = false;
+//			}
+//			else{
+//				item.checked = true;
+//			}
+			//简便写法
+			item.checked = !item.checked;
+		 }
+	 }
+	 /**<input type="checkbox" name="checkItems"  id="checkItems" value="全选/全不选"/>全选/全不选*/
+	 document.getElementById("checkItems").onclick = function(){
+//	 	if(this.checked){
+//			var items = document.getElementsByName("items");
+//			for(var i=0;items!=null && i<items.length;i++){
+//			    var item = items[i];
+//				item.checked = true;
+//			}
+//		}
+//		else{
+//			var items = document.getElementsByName("items");
+//			for(var i=0;items!=null && i<items.length;i++){
+//			    var item = items[i];
+//				item.checked = false;
+//			}
+//		}
+		//简便方法
+		var items = document.getElementsByName("items");
+		for(var i=0;items!=null && i<items.length;i++){
+			var item = items[i];
+			item.checked = this.checked;
+		}
+	 }
+   }
+  </script>
+</html>

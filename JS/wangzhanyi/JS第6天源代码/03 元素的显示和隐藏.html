@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+        }
+        #box1 {
+            background-color: red;
+            margin-bottom: 20px;
+        }
+        #box2 {
+            background-color: blue;
+
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="隐藏" id="btnHide"/>
+<input type="button" value="显示" id="btnShow"/>
+<div id="box1"></div>
+<div id="box2"></div>
+<script>
+    // 1. 先获得要操作的页面标签对象
+    var btnHide = document.getElementById("btnHide");
+    var btnShow = document.getElementById("btnShow");
+    var box1 = document.getElementById("box1");
+    var box2 = document.getElementById("box2");
+    // 2. 给事件源注册事件
+//    btnHide.onclick = function (){
+//           box1.style.display = "none"; // 隐藏不占位置
+//    };
+//    btnShow.onclick =function (){
+//           box1.style.display = "block";
+//    }
+    btnHide.onclick = function (){
+        box1.style.visibility = "hidden"; // 隐藏之后，还占据原来标准流的位置
+    };
+    btnShow.onclick =function (){
+        box1.style.visibility = "visible";
+    }
+</script>
+</body>
+</html>

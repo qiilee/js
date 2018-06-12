@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='../../../jQuery版本/jquery-2.2.4.js'></script>
+</head>
+<body>
+<img src="" alt="">
+<br>
+<a href=""></a>
+<br>
+<input type="checkbox" checked>
+<input type="text" readonly>
+</body>
+<script>
+    //总结：jq中.text()可以设置a标签的名字
+    //
+    //      一般开发时为了讲究规范
+    //      1> 凡是使用 键值对属性的时候 使用 attr
+    //      2> 凡是使用 自定义属性的时候 使用 attr
+    //      3> 凡是使用 单属性的时候 使用 prop
+    //      4> 凡是使用 内置属性的时候 使用 prop
+
+
+    //一、、、、
+    //    //attr设置
+    //    $('img').attr('src', 'http://imgsrc.baidu.com/forum/pic/item/3b292df5e0fe992508c5b9fa34a85edf8cb1714b.jpg');
+    //    $('a').attr('href', 'http://www.itcast.cn').text('哇哈哈');
+    //    $('input').attr('checked', true);
+    //    //    $('input').attr('checked', false);
+    //    //attr获取
+    //    console.log($('img').attr('src'));//可以获取
+    //    console.log($('a').attr('href'));//可以获取
+
+
+    //二、、、、、
+    //    prop设置
+    $('img').prop('src', 'http://imgsrc.baidu.com/forum/pic/item/3b292df5e0fe992508c5b9fa34a85edf8cb1714b.jpg');
+    $('a').prop('href', 'http://www.itcast.cn').text('哇哈哈');
+    $('input').prop('checked', true);
+    //            $('input').prop('checked', false);
+    //    prop获取
+    console.log($('img').prop('src'));//可以获取
+    console.log($('a').prop('href'));//可以获取
+
+
+    //三、、、、
+    //    自定义属性
+    $('body').attr('itcast', '哇哈哈');
+    //    $('body').prop('itcast', '哇哈哈');
+</script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!--<script src="../../../2-其他资料/jquery/jquery-3.1.0/jquery-3.1.0.js"></script>-->
+    <script>
+        function getText ( node ) {
+            // 1> 获得 node 的 innerHTML 并将其 字符串化, 移除 <.+?>
+            // <div></div><div></div>
+            // 有缺陷
+            /*
+            var txt = node.innerHTML.replace( /(&gt;)|(&lt;)/g, function ( _, a, b ) {
+                if ( a ) {
+                    return '>';
+                } else {
+                    return '<';
+                }
+            } );
+            */
+
+            var txt = node.innerHTML = '';
+            return txt.replace( /<[^>]+>/g, ' ' );
+        }
+    </script>
+</head>
+<body>
+    <div id="dv">123
+        <div>456</div>
+        789
+        <div>abc</div>
+        <p>pppp</p>
+        <span>span</span>
+        <a href="">哇哈哈</a>
+        <pre>
+            console.log( '哈哈哈' );
+            if ( 10 < 3 ) {
+                console.log( 'xixixi' );
+            }
+
+        </pre>
+    </div>
+</body>
+<script>
+    // console.log( $( '#dv' ).text() );
+    var dv = document.querySelectorAll( '#dv' )[ 0 ];
+    console.log( getText( dv ) );
+</script>
+</html>

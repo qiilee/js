@@ -1,0 +1,27 @@
+<?xml version="1.0"  encoding="utf-8"?>
+<users>
+        <user>
+                <username>小旋风</username>
+                <age>18</age>
+                <sex>纯爷们</sex>
+                <url>images/1.jpg</url>
+        </user>
+        <user>
+            <username>段老板</username>
+            <age>45</age>
+            <sex>不确定</sex>
+            <url>images/2.jpg</url>
+        </user>
+    <user>
+        <username>李楠</username>
+        <age>45</age>
+        <sex>不确定</sex>
+        <url>images/2.jpg</url>
+    </user>
+    <user>
+        <username>王经理</username>
+        <age>45</age>
+        <sex>不确定</sex>
+        <url>images/2.jpg</url>
+    </user>
+</users>

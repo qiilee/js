@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<script type="text/javascript">
+    function member(name, sex) {
+        this.name = name;
+        this.sex = sex;
+    }
+    function showProperty(obj, objString) {
+        var str = "";
+        for (var i in obj) {//遍历obj中的属性
+            str += objString + "." + i + "=" + obj[i] + "<br>";
+
+        return str;
+    }
+    var obj = new member("刘德华", "男");//创建对象实例
+    document.writeln(showProperty(obj, "person"));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body, ul, ol, li, img {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 490px;
+            height: 270px;
+            padding: 5px;
+            position: relative;
+            border: 1px solid #ccc;
+            margin: 100px auto 0;
+        }
+
+        .ad {
+            width: 490px;
+            height: 270px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        #box img {
+            width: 490px;
+        }
+
+        .ad ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .ad ol li {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background: #fff;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+            _display: inline;
+        }
+
+        .ad ol li.current {
+            background: yellow;
+        }
+
+        .ad ul li {
+            float: left;
+        }
+
+        .ad ul {
+            position: absolute;
+            top: 0;
+            width: 2940px;
+        }
+
+        .ad ul li.current {
+            display: block;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+
+        .square {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .square span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #c0c6ff;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+
+        .square span.current {
+            background-color: orangered;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="all">
+    <div class="ad">
+        <ul id="imgs">
+            <li><img src="images/1.jpg"/></li>
+            <li><img src="images/2.jpg"/></li>
+            <li><img src="images/3.jpg"/></li>
+            <li><img src="images/4.jpg"/></li>
+            <li><img src="images/5.jpg"/></li>
+        </ul>
+        <div class="square">
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+    </div>
+
+    <div id="arr">
+        <span id="left">&lt;</span>
+        <span id="right">&gt;</span>
+    </div>
+</div>
+
+
+<script>
+    //总结：
+    //点击square  1排他思想 2设置属性index=i 3使pic的值等于this.index
+
+    //点击arr  1用pic记录滚过的图片张数  2限制pic的最大最小值  3排他思想并使square的索引为pic的子元素className为current
+    var box = document.getElementById("box");
+    var ad = box.children[0];
+    var list = ad.children[0];
+    var arr = box.children[1];
+    var leftBtn = arr.children[0];
+    var rightBtn = arr.children[1];
+    var imgWid = ad.offsetWidth;
+    var lis = list.children;
+    var sq = ad.children[1];
+    var sps = sq.children;
+
+    //1 鼠标移入移出效果，让两个箭头显示，可以通过控制父盒子arr
+    box.onmouseover = function () {
+        arr.style.display = "block";
+    };
+    box.onmouseout = function () {
+        arr.style.display = "none";
+    };
+
+    //2 由于没有索引让我们使用。我们需要自己声明一个变量pic去记录滚过的图片张数
+    var pic = 0;
+    rightBtn.onclick = function () {
+        //3 需要限制pic的最大值和最小值
+        //pic的最大值是length-1
+        if (pic < lis.length - 1) {
+            //pic的变化必须写在内部，不然的话虽然图片没有运动，pic的值还是在变化
+            //更新pic滚过的图片张数
+            pic++;
+            //根据pic的值计算出target
+            var target = -pic * imgWid;
+            animate(list, target);
+            for (var i = 0; i < sps.length; i++) {
+                sps[i].className = "";
+            }
+            sps[pic].className = "current";
+        }
+    };
+
+    leftBtn.onclick = function () {
+        if (pic > 0) {
+            pic--;
+            //target值最终是被设置给left属性。left最大为0（初始位置）
+            //尽管是往回跑，也不是正的，只是负的更少了
+            var target = -pic * imgWid;
+            animate(list, target);
+            for (var i = 0; i < sps.length; i++) {
+                sps[i].className = "";
+            }
+            sps[pic].className = "current";
+
+        }
+    }
+
+
+    for (var i = 0; i < sps.length; i++) {
+        //设置自定义属性
+        sps[i].index = i;
+        sps[i].onclick = function () {
+            //3 点击按钮变色
+            //排他
+            for (var i = 0; i < sps.length; i++) {
+                sps[i].className = "";
+            }
+            //设置自己
+            this.className = "current";
+            //设置list滚动
+            //1 通过观察我们发现，点击按钮时，滚过的图片张数跟当前按钮的索引相同
+            var target = -this.index * imgWid;
+            //2 根据target进行运动
+            animate(list, target);
+            pic = this.index;
+
+        }
+    }
+
+    function animate(tag, target) {
+        //将定时器设置在tag的自定义属性上
+        clearInterval(tag.timer);
+        //设置定时器，进行运动
+        tag.timer = setInterval(function () {
+            //获取初始位置
+            var leader = tag.offsetLeft;
+            //设置步长
+            var step = 9;
+            //根据leader和target的大小关系去设置step的正负
+            step = leader > target ? -step : step;
+            //检测什么时候可以进行运动
+            //有时候，不能正好运动到指定位置
+            //我们需要检测，当前位置距离目标位置的长度是否够一步
+            //如果足够走一步，随便走，
+            //如果不够，直接走到指定位置
+            if (Math.abs(leader - target) > Math.abs(step)) {
+                //套用公式，计算要运动到的新位置
+                leader = leader + step;
+                //将新位置设置给元素，进行运动
+                tag.style.left = leader + "px";
+            } else {
+                //直接走到指定位置
+                tag.style.left = target + "px";
+                //到达指定位置，清除定时器
+                clearInterval(tag.timer);
+            }
+        }, 17);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>微博发布案例</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style:none;
+        }
+        .box {
+            width: 600px;
+            margin: 100px auto;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+        textarea {
+            width: 450px;
+            height: 160px;
+            outline:none; /*去掉环绕线*/
+            resize: none; /*禁用拖动*/
+        }
+        ul {
+            width: 450px;
+            padding-left: 80px;
+        }
+        ul li {
+            /*line-height: 25px;*/
+            height: 25px;
+            width: 450px;
+            /*border: 1px solid #000;*/
+            border-bottom: 1px dashed #cccccc;
+        }
+        .del {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="30" rows="10"></textarea>
+    <button id="btn">发布</button>
+    <!--<ul>-->
+        <!--<li><input type="button" value="删除"/></li>-->
+    <!--</ul>-->
+</div>
+<script src="common.js"></script>
+<script>
+    // 1. 先获得对象
+    // 2. 创建ul,并追加到box中
+    //3.给事件源注册事件
+    //4.先获得文本域内的文本内容
+    // 5. 动态创建li标签
+    // 6. 创建删除按钮，并追加到li标签当中
+    // 7. 给删除按钮添加事件
+    // 8. 判断文本域的输入内容不能为空
+    //9.判断新创建出来的标签是应该添加在最后，还是插入到最前面
+
+
+    // 1. 先获得对象
+    var box = $$("weibo");
+    var txt= $$("txt");
+    var btn = $$("btn");
+    // 2. 创建ul,并追加到box中
+    var ul = document.createElement("ul");
+    box.appendChild(ul);
+
+    //3.给事件源注册事件
+    btn.onclick =function (){
+           //4.先获得文本域内的文本内容
+        var val = txt.value;
+        // 8. 判断文本域的输入内容不能为空
+        if(!val){
+            alert("内容不能为空，请重新输入。。。");
+            return; // 程序运行到return关键字的时候，跳出当前函数，不再往下执行代码了
+        }
+        // 5. 动态创建li标签
+        var li = document.createElement("li");
+
+        //9.判断新创建出来的标签是应该添加在最后，还是插入到最前面
+        var lis = ul.children;
+        if(lis.length){ // 如果lis.length为0，则说明ul中没有子标签，则是追加节点，0转换为对应的boolean类型为false，所以会执行else里面的代码
+            ul.insertBefore(li,lis[0]);// 在ul的最前面插入li标签
+        }else{
+            ul.appendChild(li); //往数组的最后一项添加li
+        }
+
+        Txt.setText(li,val);// 给li添加内容
+
+        // 6. 创建删除按钮，并追加到li标签当中
+        var input = document.createElement("input");
+        input.className = "del";// 给删除按钮添加类名
+        input.type = "button";// 设置按钮的type属性
+        input.value="删除";//设置删除按钮的value值
+        li.appendChild(input); //给li标签添加input
+
+        // 7. 给删除按钮添加事件
+        input.onclick = function (){
+             this.parentNode.parentNode.removeChild(this.parentNode);
+        }
+    }
+</script>
+</body>
+</html>

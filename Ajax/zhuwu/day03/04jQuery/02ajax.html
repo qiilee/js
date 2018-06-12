@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+
+        var $ = {
+            ajax: function (obj) {
+                var xhr = new XMLHttpRequest();
+                //请求发送之前调用
+                var flag = obj.beforeSend();
+                if (flag == false) {
+                    return;
+                }
+                //判断是get 方式提交，还是post 方式提交.
+                //处理get
+                if (obj.type.toLocaleLowerCase() == "get") {
+                    obj.url = obj.url + "?" + obj.data;
+                    obj.data = null;
+                }
+                xhr.open(obj.type, obj.url);
+                //处理post
+                if (obj.type.toLocaleLowerCase() == "post") {
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                }
+                //发送数据。
+                xhr.send(obj.data);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) { //代表完成
+                        if (xhr.status == 200) { //代表响应成功
+                            var data = xhr.responseText;
+                            obj.success(data);
+                        } else {  //代表失败.
+                            obj.error();
+                        }
+                        obj.complete();
+                    }
+                }
+            }
+        }
+        $.ajax({
+            url: "02ajax.php",
+            data: "username=zhangsan",
+            type: "get",
+            beforeSend: function () {
+                return false;
+            },
+            success: function (data) {
+                alert("请求成功之后调用");
+                alert(data);
+            },
+            error: function () {
+                alert("请求失败之后调用");
+            },
+            complete: function () {
+                alert("请求完成之后调用");
+            }
+        });
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

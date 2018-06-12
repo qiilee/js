@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='../angular-1.5.8/angular.js'></script>
+    <style>
+        .p {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body ng-app>
+<!--总结：搞懂其中的原理，能后口述
+自己的理解：1 ng-app所在的标签就是view，背后产生对象就是$rootScope【viewModel】===vm
+           2 有ng-model就会被vm维护，ng-model的值会称为vm的属性 它改变，vm的此属性同样改变
+           3 {{名字}}是插值语法，进入vm查找对应数据，有就改变，没有也无碍
+           4 如果{{123+123}}}，那么就会输出246
+
+
+
+    -->
+<input type="text" ng-model="txt"/>
+<p class="p">{{txt}}</p>
+</body>
+<script>
+
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a id="link" href="http://www.baidu.com">baidu</a>
+<script>
+    //    能够点击
+    //    找到id是link的dom对象(a标签)
+    //    要等到标签生成之后，再来获取对应的dom对象
+    var link = document.getElementById("link");
+
+    //    给link注册点击事件
+    //    事件三种要素
+    //    事件源--事件的触发者link
+    //    事件名称 click
+    //    事件处理程序--onclick==匿名函数
+    //
+    link.onclick = function () {
+        alert("haha");
+        //取消a标签默认行为的执行
+        return false;
+    }
+</script>
+</body>
+</html>

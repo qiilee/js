@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="text"/><br/>
+<input type="button" value="赋值" id="btnSet"/>
+<input type="button" value="取值" id="btnGet"/>
+<script>
+    // 单击赋值按钮的时候，要给文本框赋值
+    // 1. 先获得要操作的对象
+    var inputs = document.getElementsByTagName("input");
+    var btnSet = document.getElementById("btnSet");
+    var btnGet = document.getElementById("btnGet");
+    // 2. 给事件源注册事件
+    btnSet.onclick = function (){
+           for(var i=0;i<inputs.length;i++){
+               if(inputs[i].type=="text"){
+                   inputs[i].value = "aa"+i;
+               }
+           }
+    }
+
+    // 3. 当单击第二个按钮的时候，要把里面的值，取出来，连成字符串进行输出
+    btnGet.onclick =function (){
+        var str="";
+           for(var i=0;i<inputs.length;i++){
+               if(inputs[i].type=="text"){
+                   str += inputs[i].value;
+                   // 一会儿用数据改造，是先将这些字符串存到数组当中，再把值取出来连成字符串输出
+               }
+           }
+        console.log(str);
+    }
+
+    // 字符具有不可变性，如果频繁的赋值的话，会频繁的开辟内存空间，会造成内存空间的浪费
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // A instanceof B运算符
+    // 作用是：B的prototype属性的值是否在A的原型链上。
+
+    function Person(){
+    }
+    var person = new Person();
+    // person的原型链：Person.prototype ===>Object.prototype===null
+    // Person的原型链: Function.prototype===>Object.prototype
+    console.log(person instanceof Person)//true
+    console.log(person instanceof Object)//true
+    console.log(Person instanceof Object)//true
+
+
+    // Person和Object的prototype属性都在person的原型链上。
+
+
+
+</script>
+</body>
+</html>

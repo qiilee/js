@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    用户名:<input type="text" id="username"  placeholder="请输入正确的用户名哦，亲">
+    <div></div>
+<script>
+      document.querySelector("input[type=text]").onblur=function(){
+            var xhr=new XMLHttpRequest();
+            var username=document.getElementById("username").value;
+            xhr.open("POST","04userReg.php");
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send("username="+username);
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4 && xhr.status==200){
+                    var data=xhr.responseText;
+                    document.querySelector("div").innerHTML=data;
+                }
+            }
+      }
+</script>
+</body>
+</html>

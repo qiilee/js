@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var foo = function () {
+        var a = 3, b = 5;
+        var bar = function () {
+            var b = 7, c = 11;
+            //此时：a为3，b为7，c为11
+            console.log(a,b,c);
+            a += b + c;
+            //此时：a为21，b为7，c为11
+            console.log(a,b,c);
+        }
+        //此时：a为3，b为5，c未定义
+        console.log(a,b);
+        bar();
+        //此时：a为21，b为5!!!!
+        console.log(a,b);
+    };
+    foo();
+</script>
+</body>
+</html>

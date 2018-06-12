@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //slide  滑动  拉动
+            //1 下拉 slideDown();
+            $("#btn1").click(function () {
+                //---注意--- slide组动画可以不传参数，默认时间为normal 400
+                //传入数值，表示执行多少毫秒
+                //可以传字符串参数  fast 200 normal 400 slow 600 不使用
+                //第二个参数为回调函数，运动结束后做一件事
+                $("#box").slideDown(1000, function () {
+                    console.log("我执行完啦");
+                });
+            });
+
+            //2 上拉 slideUp();
+            $("#btn2").click(function () {
+                $("#box").slideUp(1000, function () {
+                    console.log("我执行完了");
+                });
+            });
+
+            //3 切换效果  slideToggle();
+            $("#btn3").click(function () {
+                $("#box").slideToggle(1000, function () {
+                    console.log("我执行完了，呵呵");
+                });
+
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+<button id="btn1">按钮拉下</button>
+<button id="btn2">按钮拉上</button>
+<button id="btn3">按钮切换</button>
+<div id="box"></div>
+</body>
+</html>

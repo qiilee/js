@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // this指向了谁？
+    // 看函数在执行的时候是如何调用的，
+    // 1 如果这个函数是用普通函数调用模式来进行调用，它内部的this指向了window
+    // 2如果一个函数在调用的时候是通过对象方法模式来进行调用，则它内部的this就是我们的对象
+    // 3 如果一个函数在调用的时候通过构造函数模式调用，则它内部的this指向了生成的实例
+    // 4 如果这个函数是通过方法借用模式调用，则这个函数内部的this就是我们手动指定this。
+
+
+
+    /*var obj ={
+        fn:function(){
+            console.log(this)
+        }
+    }
+    obj.fn();//obj
+    var f = obj.fn;
+    f();//window
+    console.log(f===obj.fn)*/
+
+    // f和obj.fn是同一个函数，但是他们在调用的时候使用的函数调用模式不同，因此，它们内部的this指向也就不同。
+
+
+    //
+  /*  var arr = [function(){console.log(this)}]
+    arr[0]();//数组本身*/
+    //数组也是一个复杂数据类型，也是一个对象，那用数组去调用函数，使用的模式就是对象方法调用模式。
+    function f(){
+        console.log(this)
+    }
+    function fn(){
+        console.log(arguments)// 类数组，也是就一个对象    [0:function f(){}]
+        console.log(this);// window
+        arguments[0]()
+        console.log(arguments[0]);//内部的this就是arguments
+        // 通过arguments对f这个方法进行调用，使用的是对象方法调用模式。
+    }
+    fn(f)
+
+
+
+
+
+</script>
+</body>
+</html>

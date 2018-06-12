@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src='../angular-1.5.8/angular.js'></script>
+</head>
+<body ng-app>
+<!--总结：
+            可以认为允许输入的标签（input textarea等），可以使用ng-model的形式实现双向数据绑定
+
+            对于无法输入的标签（div p 等）应该使用插值语法来显示数据，单向数据绑定-->
+<input type="text" ng-model="txt"/><br/>
+<!--<input type="text" value="{{txt}}"/>-->
+<input type="text" ng-model="txt"/>
+</body>
+</html>

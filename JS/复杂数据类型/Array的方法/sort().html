@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+   /*
+   * 1.如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，
+   *   说得更精确点，是按照字符编码的顺序进行排序。要实现这一点，首先应把数组的元素都转换成字符串
+   *   （如有必要），以便进行比较。
+     2.a-b输出从小到大排序，b-a输出从大到小排序。
+
+
+
+//  1.
+//   var arr = new Array(6)
+//   arr[0] = "George"
+//   arr[1] = "John"
+//   arr[2] = "Thomas"
+//   arr[3] = "James"
+//   arr[4] = "Adrew"
+//   arr[5] = "Martin"
+//
+//   document.write(arr + "<br />")
+//   document.write(arr.sort())
+//   George,John,Thomas,James,Adrew,Martin
+//   Adrew,George,James,John,Martin,Thomas
+
+//   2.
+//   var arr = new Array(6)
+//   arr[0] = "10"
+//   arr[1] = "5"
+//   arr[2] = "40"
+//   arr[3] = "25"
+//   arr[4] = "1000"
+//   arr[5] = "1"
+//
+//   document.write(arr + "<br />")
+//   document.write(arr.sort())
+//
+//   10,5,40,25,1000,1
+//   1,10,1000,25,40,5
+
+
+//    3.
+    function sortNumber(a,b)
+    {
+    return a-b;
+    }
+
+    var arr = new Array(6)
+    arr[0] = "10"
+    arr[1] = "5"
+    arr[2] = "40"
+    arr[3] = "25"
+    arr[4] = "1000"
+    arr[5] = "1"
+
+    document.write(arr + "<br />")
+    document.write(arr.sort(sortNumber))
+
+//   10,5,40,25,1000,1
+//   1,5,10,25,40,1000
+
+
+
+</script>
+</body>
+</html>

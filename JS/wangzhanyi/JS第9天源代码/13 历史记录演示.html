@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+原始页面
+<input type="button" value="跳转" id="btn"/>
+<input type="button" value="前进" id="btn2"/>
+<script>
+    document.getElementById("btn").onclick = function (){
+           window.location.href="12 history.html";
+    };
+    document.getElementById("btn2").onclick = function (){
+//        window.history.forward();
+        history.go(1)
+
+    };
+</script>
+</body>
+</html>

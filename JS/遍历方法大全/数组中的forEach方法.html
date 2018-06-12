@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //    .forEach
+    //    和 jq 中的 each 几乎一样
+    //    1> 回调函数的参数 v, i
+    //    2> 数组的 forEach 没有返回值
+    //    3> 数组中的 forEach 没有跳出语法
+    //    4> 没有 this 的使用方法
+
+    //    var arr = [1,2,3];
+    //    arr.forEach(function(v,i){
+    //        console.log("索引："+i+"值："+v);
+    //    })
+
+
+    // forEach 方法
+    // 作用：遍历数组的每一项
+    // 返回值：undefined
+    // 是否改变：否
+    var arr = [2, 5, 3, 4];
+    var ret = arr.forEach(function (value) {
+        console.log(value)
+    })
+    console.log(ret);//undefined
+    console.log(arr)//[2,5,3,4]
+</script>
+</html>

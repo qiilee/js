@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    // 找出字符串 中所有字符 e 的索引
+    //         012345678901234567890
+    var str = 'abcdefghiehijehije';
+
+    // 原始的做法 indexOf( 'e', index+1 ) 循环
+
+    var r = /e/;
+
+    var array = str.match( r );
+    */
+
+
+
+
+    // 匹配邮箱
+    var str = '今天天气很好, 我的邮箱是 12345678901@yahoo.com.cn, 你的邮箱是 23456789012@qq.com'
+    // 
+    // var r = /(\d+)@qq.com/;
+
+    // var array = r.exec( str );
+
+    // 提取 qq 号
+
+
+    // 取一个任务, 如果邮箱是 qq 邮箱, 那么就将 qq 号取出来打印, 否则发送垃圾邮件
+    //       1                    2                3                    
+    var r = /([0-9a-zA-Z\_\-\.]+)@([0-9a-zA-Z\_\-]+(\.[0-9a-zA-Z\_\-]+)+)/;
+
+    var array = r.exec( str );
+
+    if ( array ) {
+        // 匹配上了
+        // 判断是不是 qq 邮箱
+        if ( array[ 2 ] == 'qq.com' ) {
+            // 是 qq 邮箱, 打印 qq 号
+            console.log( array[ 1 ] );
+        } else {
+            // 发垃圾邮件
+            console.log( '给 ' + array[ 0 ] + '发送垃圾邮件' );
+        }
+    }
+
+
+
+</script>
+</html>

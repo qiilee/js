@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <p>我是文本内容</p>
+    <p>我是文本内容</p>
+    <p>我是文本内容</p>
+    <span>我是span的内容</span>
+</div>
+
+
+<script>
+    //总结：事件冒泡与事件委托的对比
+//         事件冒泡：box内部无论是什么元素，点击后都会触发box的点击事件
+//         事件委托：可以对box内部的元素进行筛选（注意：1、2步的兼容，3步的判断条件）
+
+    //点击p的时候弹出一段文字
+    var box = document.getElementById("box");
+    var ps = box.children;
+    //遍历ps
+    //for (var i = 0; i < ps.length; i++) {
+    //    ps[i].onclick = function () {
+    //      console.log("我是p标签的事件内容");
+    //    };
+    //}
+
+
+    //添加方式1 可以让内部子元素执行父亲所具有的事件
+    //如果想要让box的内部的某些标签执行事件，这时我们无法选择
+
+
+    //由于具有事件冒泡，我们额可以不给每个p添加事件，而是给父元素box添加事件
+    //box.onclick = function () {
+    //    console.log("我是p标签的事件内容");
+    //};
+
+
+    //添加方式2  事件委托
+    //我们需要根据冒泡的元素不同，进行筛选，只有p标签才能够执行事件
+    //第一步添加box的事件
+    box.onclick = function (e) {
+        //需要获取，当前这个事件是由哪一个子元素触发的
+        //第二步 兼容事件对象e
+        var e = e || window.event;
+
+        //第三步 兼容取出触发事件的元素的方式  target srcElement
+        var tar = e.target || e.srcElement;
+
+        //第四步 检测tar是什么标签
+        if (tar.nodeName.toLowerCase() == "p") {
+            console.log("呵呵，我是p的代码");
+        }
+    };
+
+    //可以通过nodeName属性获取到元素的标签名
+    console.log(box.nodeName);
+    //取出节点名的时候可能会是大写形式，也可能是小写形式
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var cas = document.querySelectorAll( 'canvas' )[ 0 ];
+    var ctx = cas.getContext( '2d' );
+
+    ctx.moveTo( 100, 50 );
+    ctx.lineTo( 300, 50 );
+    ctx.lineTo( 300, 150 );
+    ctx.lineTo( 150, 150 );
+
+
+    // ctx.stroke(); // 描边
+    
+    ctx.fill(); // 填充
+
+</script>
+</html>
