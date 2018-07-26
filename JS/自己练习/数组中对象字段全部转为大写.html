@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  let newArr = [], newObj = {}
+  function fieldConversion(arr) {
+    for (let arrIndex in arr) {
+      newObj = {}
+      for (let objIndex in arr[arrIndex]) {
+        newObj.objIndex = arr[arrIndex][objIndex]
+      }
+      newArr.push(newObj)
+    }
+    return newArr
+  }
+  </script>
+</body>
+</html>
