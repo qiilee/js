@@ -12,17 +12,28 @@
     traceur.options.experimental = true;
 </script>
 <script type="module">
-class Calc {
+// class Calc {
+//     constructor(){
+//         console.log('Calc constructor');
+//     }
+//     add(a, b){
+//         return a + b;
+//     }
+// }
+// var c = new Calc();
+// console.log(c.add(4,5));
+
+// 1
+class Person {
     constructor(){
-        console.log('Calc constructor');
+        console.log('11111111')
     }
-    add(a, b){
-        return a + b;
+    sayHello(name){
+        alert('hello '+ name)
     }
 }
-var c = new Calc();
-console.log(c.add(4,5));
-
+let liming = new Person()
+liming.sayHello('xiaobai')
 
 </script>
 </head>
