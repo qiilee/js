@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <title>demo1</title>
+    <script>
+        //一、 Symbol函数可以接受一个字符串作为参数，表示对Symbol实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分。Symbol值不能与其他类型的值进行运算
+
+        // 没有参数的情况
+        var s1 = Symbol();
+        var s2 = Symbol();
+
+        // console.log(s1 === s2) // false
+
+        // 有参数的情况
+        var s3 = Symbol("foo");
+        var s4 = Symbol("foo");
+
+        // console.log(s3 === s4) // false
+
+
+        //二、 作为属性名的Symbol  注意，Symbol值作为对象属性名时，不能用点运算符。
+
+        var mySymbol = Symbol();
+
+        // 第一种写法
+        var a = {};
+        a[mySymbol] = 'Hello!';
+
+        // 第二种写法
+        var a = {
+            [mySymbol]: 'Hello!'
+        };
+
+        // 第三种写法
+        var a = {};
+        Object.defineProperty(a, mySymbol, {
+            value: 'Hello!'
+        });
+
+        // 以上写法都得到同样结果
+        // console.log(a[mySymbol]) // "Hello!"
+
+
+        //三、Symbol.for()，Symbol.keyFor()
+
+        // Symbol.for机制有点类似于单例模式，首先在全局中搜索有没有以该参数作为名称的Symbol值，如果有，就返回这个Symbol值，否则就新建并返回一个以该字符串为名称的Symbol值。和直接的Symbol就点不同了。
+
+        var s5 = Symbol.for('foo');
+        var s6 = Symbol.for('foo');
+
+        console.log(s5 === s6) // true
+        // Symbol.keyFor方法返回一个已登记的Symbol类型值的key。实质就是检测该Symbol是否已创建
+
+        var s7 = Symbol.for("foo");
+        console.log(Symbol.keyFor(s7)) // "foo"
+
+        var s8 = Symbol("foo");
+        console.log(Symbol.keyFor(s8)) // undefined
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
