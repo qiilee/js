@@ -7,31 +7,35 @@
 <body>
 <script>
     // Object Date RegExp Array String  Number Boolean Function Math
-//    console.log(typeof new Object())
-//    console.log(typeof new Date())
-//    console.log(typeof new RegExp())
-//    console.log(typeof new Array())
-//    console.log(typeof new String())
-//    console.log(typeof new Number())
-//    console.log(typeof new Boolean())
-//    console.log(typeof new Function())
-//    console.log(typeof new Math())*///Uncaught TypeError: Math is not a constructor
+   
+   console.log(typeof new Object()) // object
+   console.log(typeof new Date()) // object
+   console.log(typeof new RegExp()) // object
+   console.log(typeof new Array()) // object
+   console.log(typeof new String()) // object
+   console.log(typeof new Number()) // object
+   console.log(typeof new Boolean()) // object
+   console.log(typeof new Function()) // function
+   console.log(typeof new Math()) // Uncaught TypeError: Math is not a constructor
+
     //其他的八种大写的Object。。。。都是构造函数（构造器），Math只是一个单纯的对象，不是一个构造器，
     //不能够跟new关键字进行搭配来创建一个相应数据类型的对象
+
+
 
 
     // instanceof
     // A instanceof B    判断B的prototype属性的值是否是在A的原型链上。
 
-    console.log(new Object() instanceof Object);//true
-    console.log(new Date() instanceof Date);//true
-    console.log(new RegExp() instanceof RegExp);//true
-    console.log(new Array() instanceof Array);//true
-    console.log(new String() instanceof String);//true
-    console.log(new Number() instanceof Number);//true
-    console.log(new Boolean() instanceof Boolean);//true
-    console.log(new Function() instanceof Function);//true
-    console.log(Math instanceof Object);//true
+    // console.log(new Object() instanceof Object);//true
+    // console.log(new Date() instanceof Date);//true
+    // console.log(new RegExp() instanceof RegExp);//true
+    // console.log(new Array() instanceof Array);//true
+    // console.log(new String() instanceof String);//true
+    // console.log(new Number() instanceof Number);//true
+    // console.log(new Boolean() instanceof Boolean);//true
+    // console.log(new Function() instanceof Function);//true
+    // console.log(Math instanceof Object);//true
 </script>
 </body>
 </html>

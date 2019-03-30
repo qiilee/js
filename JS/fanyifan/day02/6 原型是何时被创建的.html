@@ -18,8 +18,7 @@
     person.sayHello();//我是原型上面的方法
     // 将构造函数的prototype属性指向了一个空的对象
     Person.prototype={}
-    // 虽然我们将构造函数的prototype属性指向了一个空的对象，但是实力person的原型依旧
-    //是那个拥有sayHello方法的原型。
+    // 虽然我们将构造函数的prototype属性指向了一个空的对象，但是实例person的原型依旧是那个拥有sayHello方法的原型。
     person.sayHello();//我是原型上面的方法
     console.log(person.__proto__);//{sayHello: ƒ, constructor: ƒ}
     var person2 = new Person();
@@ -27,7 +26,7 @@
     // 使用person2 去调用sayHello方法,会报一个错误
     person2.sayHello()// Uncaught TypeError: person2.sayHello is not a function
     // 原型上面有这个方法的话就能够调用
-    //  原型上面没有这个方法就不能调用。
+    // 原型上面没有这个方法就不能调用。
 
 
 </script>
