@@ -16,7 +16,7 @@
 
     // 原型的原型
     console.log(person.__proto__.__proto__);// 原型的原型
-    //Object.prototype
+    console.log(person.__proto__.__proto__ === Object.prototype); // true
     // Object 是一个构造函数
     // Object.prototype===person.__proto__.__proto__ 是原型
     // person.__proto__===Person.prototype   是Object的一个实例
@@ -25,8 +25,9 @@
     console.log(Object.prototype.__proto__)// null
 
 
-    // 原型链: 从对象出发，可以找到它的原型，对象也是一个原型，因此就能够找到原型的原型
-    //这样依次往复，最后就找到了Object.prototype
+    // 原型链：通过一个对象的__proto__可以找到它的原型对象，原型对象也是一个对象，
+    //就可以通过原型对象的__proto__，最后找到了我们的Object.prototype,
+    //从实例的原型对象开始一直到Object.prototype就是我们的原型链
 
 
 

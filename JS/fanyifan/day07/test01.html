@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <script>
+        var bigArr = [{
+            "partitionProjectName": "新城控股",
+            "partitionProjectId": "c9c3982b-d144-420c-9694-6e028a4324b7",
+            "contents": [{
+                    "partitionProjectName": "南区",
+                    "partitionProjectId": "04587c99-9685-4625-87d4-9dd984773c1f",
+                    "contents": [{
+                        "partitionProjectName": "苏州区域",
+                        "partitionProjectId": "e2a410e3-6029-4974-9375-a2237c022cb9",
+                        "contents": [{
+                                "partitionProjectName": "苏州广场",
+                                "partitionProjectId": "Pj3205400001",
+                                "contents": [],
+                                "latitude": "39.0",
+                                "projectLocalId": "3304830002",
+                                "type": "0",
+                                "selected": "0",
+                                "longitude": "112.0"
+                            },
+                            {
+                                "partitionProjectName": "嘉兴桐乡吾悦广场",
+                                "partitionProjectId": "Pj1101130001",
+                                "contents": [],
+                                "latitude": "30.0",
+                                "projectLocalId": "3304830001",
+                                "type": "0",
+                                "selected": "0",
+                                "longitude": "120.0"
+                            }
+                        ],
+                        "type": "1",
+                        "selected": "0"
+                    }],
+                    "type": "1",
+                    "selected": "0"
+                },
+                {
+                    "partitionProjectName": "北区",
+                    "partitionProjectId": "6a49209b-6bec-4607-824f-912e2d396bea",
+                    "contents": [{
+                        "partitionProjectName": "北京区域",
+                        "partitionProjectId": "020d5913-c603-446e-b9b8-918ffdb29f8f",
+                        "contents": [{
+                            "partitionProjectName": "博锐尚格",
+                            "partitionProjectId": "Pj1101080001",
+                            "latitude": "31.0",
+                            "projectLocalId": "3304830003",
+                            "type": "0",
+                            "selected": "0",
+                            "longitude": "123.0"
+                        }],
+                        "type": "1",
+                        "selected": "0"
+                    }],
+                    "type": "1",
+                    "selected": "0"
+                }
+            ],
+            "type": "1",
+            "selected": "0"
+        }]
+        var smallArr = [{
+            "latitude": "31.0",
+            "projectLocalID": "3304830003",
+            "projectName": "博锐尚格",
+            "projectId": "Pj1101080001",
+            "longitude": "123.0"
+        }, {
+            "latitude": "39.0",
+            "projectLocalID": "3304830002",
+            "projectName": "苏州广场",
+            "projectId": "Pj3205400001",
+            "longitude": "112.0"
+        }]
+        
+        var a = bigArr[0].contents
+        console.log(a)
+        for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j < a[i].contents[0].contents.length; j++) {
+                for (let k = 0; k < smallArr.length; k++) {
+                    if (a[i].contents[0].contents[j].partitionProjectId == smallArr[k].projectId) {
+                        // console.log(a[i].contents[0].contents[j])
+                        newArr = []
+                        newArr.push(a[i].contents[0].contents[j])
+                        a[i].contents[0].contents = []
+                        a[i].contents[0].contents.push(newArr[0])
+                        break
+                    } else {
+                        continue
+                    }
+                }
+            }
+
+        }
+        console.log(a)
+    </script>
+</body>
+
+</html>
